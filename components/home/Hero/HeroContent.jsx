@@ -63,9 +63,7 @@ export default function HeroContent() {
           lg:mt-10
         "
       >
-        <PrimaryButton href="/visit">
-          {hero.button}
-        </PrimaryButton>
+        <PrimaryButton href="/visit">{hero.button}</PrimaryButton>
       </div>
     </div>
   );

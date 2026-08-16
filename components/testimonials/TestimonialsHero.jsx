@@ -48,17 +48,13 @@ export default function TestimonialsHero() {
     const isCardFullyVisible = () => {
       const rect = carousel.getBoundingClientRect();
 
-      return (
-        rect.top >= 0 &&
-        rect.bottom <= window.innerHeight
-      );
+      return rect.top >= 0 && rect.bottom <= window.innerHeight;
     };
 
     const handleWheel = (event) => {
       if (!isCardFullyVisible()) return;
 
-      const maxScroll =
-        carousel.scrollWidth - carousel.clientWidth;
+      const maxScroll = carousel.scrollWidth - carousel.clientWidth;
 
       const currentScroll = carousel.scrollLeft;
 
@@ -71,7 +67,7 @@ export default function TestimonialsHero() {
 
           carousel.scrollLeft = Math.min(
             currentScroll + event.deltaY,
-            maxScroll
+            maxScroll,
           );
 
           return;
@@ -87,10 +83,7 @@ export default function TestimonialsHero() {
         if (currentScroll > 2) {
           event.preventDefault();
 
-          carousel.scrollLeft = Math.max(
-            currentScroll + event.deltaY,
-            0
-          );
+          carousel.scrollLeft = Math.max(currentScroll + event.deltaY, 0);
 
           return;
         }
@@ -139,7 +132,6 @@ export default function TestimonialsHero() {
           md:pb-[48px]
         "
       >
-
         {/* =========================================
             HEADING
         ========================================== */}
@@ -235,7 +227,6 @@ export default function TestimonialsHero() {
                 md:flex-row
               "
             >
-
               {/* =========================================
                   PERSON IMAGE
               ========================================== */}
@@ -297,7 +288,6 @@ export default function TestimonialsHero() {
                   md:py-[56px]
                 "
               >
-
                 {/* =========================================
                     TOP RIGHT CORNER GRAPHIC
                 ========================================== */}
@@ -422,7 +412,6 @@ export default function TestimonialsHero() {
           "
         >
           <div className="flex w-max animate-testimonial-marquee">
-
             <p
               className="
                 heading-font
@@ -441,9 +430,8 @@ export default function TestimonialsHero() {
                 lineHeight: "16px",
               }}
             >
-              LOVE IS US • LOVESQUAD CHURCH • LOVE IS US •
-              LOVESQUAD CHURCH • LOVE IS US • LOVESQUAD CHURCH •
-              LOVE IS US • LOVESQUAD CHURCH
+              LOVE IS US • LOVESQUAD CHURCH • LOVE IS US • LOVESQUAD CHURCH •
+              LOVE IS US • LOVESQUAD CHURCH • LOVE IS US • LOVESQUAD CHURCH
             </p>
 
             <p
@@ -464,14 +452,11 @@ export default function TestimonialsHero() {
                 lineHeight: "16px",
               }}
             >
-              LOVE IS US • LOVESQUAD CHURCH • LOVE IS US •
-              LOVESQUAD CHURCH • LOVE IS US • LOVESQUAD CHURCH •
-              LOVE IS US • LOVESQUAD CHURCH
+              LOVE IS US • LOVESQUAD CHURCH • LOVE IS US • LOVESQUAD CHURCH •
+              LOVE IS US • LOVESQUAD CHURCH • LOVE IS US • LOVESQUAD CHURCH
             </p>
-
           </div>
         </div>
-
       </div>
     </section>
   );

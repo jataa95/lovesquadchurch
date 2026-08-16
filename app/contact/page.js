@@ -5,7 +5,8 @@ import AboutFaqs from "@/components/about/AboutFAQs"; // Adjust to your FAQs com
 
 export const metadata = {
   title: "Contact | Love Squad Church",
-  description: "Get in touch with Love Squad Church. Send us a message or inquiry.",
+  description:
+    "Get in touch with Love Squad Church. Send us a message or inquiry.",
 };
 
 export default function ContactPage() {

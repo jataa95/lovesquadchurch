@@ -100,15 +100,10 @@ export default function AboutPastor() {
               lg:text-[72px]
             "
           >
-            <span className="block text-[#F4EBDC]">
-              OUR
-            </span>
+            <span className="block text-[#F4EBDC]">OUR</span>
 
             <span className="block text-[#F4EBDC]">
-              LEAD{" "}
-              <span className="text-[#ED4823]">
-                PASTOR
-              </span>
+              LEAD <span className="text-[#ED4823]">PASTOR</span>
             </span>
           </h2>
 
@@ -148,12 +143,10 @@ export default function AboutPastor() {
                 sm:text-[13px]
               "
             >
-              Lorem Ipsum Adipiscing Elit. Proin Tempor
-              Ligula Euismod Nibh Facilisis Molestie Non
-              Vitae Dolor. Cras Auctor Venenatis Sem,
-              Ultricies Rutrum Est Ultricies Vel. Proin Sit
-              Amet Neque Nec Risus Tincidunt Ultricies In
-              Quis Lorem.
+              Lorem Ipsum Adipiscing Elit. Proin Tempor Ligula Euismod Nibh
+              Facilisis Molestie Non Vitae Dolor. Cras Auctor Venenatis Sem,
+              Ultricies Rutrum Est Ultricies Vel. Proin Sit Amet Neque Nec Risus
+              Tincidunt Ultricies In Quis Lorem.
             </p>
 
             <p
@@ -167,12 +160,10 @@ export default function AboutPastor() {
                 sm:text-[13px]
               "
             >
-              Lorem Ipsum Adipiscing Elit. Proin Tempor
-              Ligula Euismod Nibh Facilisis Molestie Non
-              Vitae Dolor. Cras Auctor Venenatis Sem,
-              Ultricies Rutrum Est Ultricies Vel. Proin Sit
-              Amet Neque Nec Risus Tincidunt Ultricies In
-              Quis Lorem.
+              Lorem Ipsum Adipiscing Elit. Proin Tempor Ligula Euismod Nibh
+              Facilisis Molestie Non Vitae Dolor. Cras Auctor Venenatis Sem,
+              Ultricies Rutrum Est Ultricies Vel. Proin Sit Amet Neque Nec Risus
+              Tincidunt Ultricies In Quis Lorem.
             </p>
 
             <p
@@ -186,16 +177,13 @@ export default function AboutPastor() {
                 sm:text-[13px]
               "
             >
-              Cras Auctor Venenatis Sem, Ultricies Rutrum
-              Est Ultricies Vel. Proin Sit Amet Neque Nec
-              Risus Tincidunt Ultricies In Quis Lorem.
+              Cras Auctor Venenatis Sem, Ultricies Rutrum Est Ultricies Vel.
+              Proin Sit Amet Neque Nec Risus Tincidunt Ultricies In Quis Lorem.
             </p>
 
             {/* PRIMARY BUTTON */}
             <div className="mt-[16px]">
-              <PrimaryButton href="/pastorkay">
-                MORE INFO
-              </PrimaryButton>
+              <PrimaryButton href="/pastorkay">MORE INFO</PrimaryButton>
             </div>
           </div>
         </div>

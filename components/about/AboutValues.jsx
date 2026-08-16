@@ -110,13 +110,9 @@ export default function AboutValues() {
                 fontSize: "clamp(52px, 7vw, 80px)",
               }}
             >
-              <span className="block text-[#4A4A4A]">
-                OUR
-              </span>
+              <span className="block text-[#4A4A4A]">OUR</span>
 
-              <span className="block text-[#ED4823]">
-                VALUES
-              </span>
+              <span className="block text-[#ED4823]">VALUES</span>
             </h2>
           </div>
         </div>

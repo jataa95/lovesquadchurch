@@ -108,8 +108,7 @@ export default function VisitHero() {
                 lineHeight: "1.25",
               }}
             >
-              Cras Aliquet, Sem Consectetur Condimentum
-              Ultricies, Risus Massa
+              Cras Aliquet, Sem Consectetur Condimentum Ultricies, Risus Massa
             </p>
           </div>
 
@@ -159,9 +158,7 @@ export default function VisitHero() {
                 IN PERSON
               </VisitInPersonButton>
 
-              <VisitOnlineButton href="#online">
-                ONLINE
-              </VisitOnlineButton>
+              <VisitOnlineButton href="#online">ONLINE</VisitOnlineButton>
             </div>
           </div>
         </div>

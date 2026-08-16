@@ -47,9 +47,7 @@ export default function Navbar() {
       </header>
 
       {/* MENU OVERLAY */}
-      {isMenuOpen && (
-        <MenuOverlay onClose={() => setIsMenuOpen(false)} />
-      )}
+      {isMenuOpen && <MenuOverlay onClose={() => setIsMenuOpen(false)} />}
     </>
   );
 }

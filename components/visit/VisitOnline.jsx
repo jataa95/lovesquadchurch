@@ -362,9 +362,7 @@ export default function VisitOnline() {
           ========================================== */}
 
           <div className="mt-4">
-            <SecondaryButton href="#lovespot">
-              JOIN A LOVESPOT
-            </SecondaryButton>
+            <SecondaryButton href="#lovespot">JOIN A LOVESPOT</SecondaryButton>
           </div>
         </div>
       </div>

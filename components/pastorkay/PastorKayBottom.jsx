@@ -134,9 +134,7 @@ export default function PastorKayBottom() {
           sm:py-10
         "
       >
-        <SecondaryButton href="/contact">
-          WRITE TO PASTOR KAY
-        </SecondaryButton>
+        <SecondaryButton href="/contact">WRITE TO PASTOR KAY</SecondaryButton>
       </section>
 
       {/* =========================================

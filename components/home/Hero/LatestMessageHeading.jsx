@@ -28,9 +28,7 @@ export default function LatestMessageHeading() {
       </h2>
 
       <div className="mt-3 sm:mt-4">
-        <PrimaryButton href="/messages">
-          WATCH NOW
-        </PrimaryButton>
+        <PrimaryButton href="/messages">WATCH NOW</PrimaryButton>
       </div>
     </div>
   );

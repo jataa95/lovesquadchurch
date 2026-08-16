@@ -112,9 +112,7 @@ export default function GivingHero() {
                   lineHeight: "16px",
                 }}
               >
-                Cras Aliquet, Sem Consectetur
-                Condimentum Ultricies, Risus
-                Massa
+                Cras Aliquet, Sem Consectetur Condimentum Ultricies, Risus Massa
               </p>
 
               {/* GIVE AN OFFERING */}

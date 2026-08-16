@@ -1,8 +1,4 @@
-export default function Label({
-  children,
-  className = "",
-  color = "#575656",
-}) {
+export default function Label({ children, className = "", color = "#575656" }) {
   return (
     <p
       className={`uppercase ${className}`}

@@ -244,9 +244,7 @@ export default function CareersHero() {
             ========================================== */}
 
             <div className="pt-[0px]">
-              <SecondaryButton href="#apply">
-                APPLY
-              </SecondaryButton>
+              <SecondaryButton href="#apply">APPLY</SecondaryButton>
             </div>
           </div>
 

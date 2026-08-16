@@ -6,7 +6,8 @@ import AboutFAQs from "@/components/about/AboutFAQs";
 
 export const metadata = {
   title: "Messages | Love Squad Church",
-  description: "Browse and search through sermons and messages from Love Squad Church.",
+  description:
+    "Browse and search through sermons and messages from Love Squad Church.",
 };
 
 export default function MessagesPage() {

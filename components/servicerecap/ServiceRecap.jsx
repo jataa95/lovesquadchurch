@@ -140,9 +140,7 @@ export default function ServiceRecapPage({
             </p>
 
             <div className="mt-2">
-              <SecondaryButton href="/messages">
-                GO TO MESSAGES
-              </SecondaryButton>
+              <SecondaryButton href="/messages">GO TO MESSAGES</SecondaryButton>
             </div>
           </div>
         </header>
@@ -322,13 +320,11 @@ export default function ServiceRecapPage({
               lg:gap-6
             "
           >
-            {(galleryImages.length > 0
-              ? galleryImages
-              : [1, 2, 3]
-            ).map((item, idx) => (
-              <div
-                key={idx}
-                className="
+            {(galleryImages.length > 0 ? galleryImages : [1, 2, 3]).map(
+              (item, idx) => (
+                <div
+                  key={idx}
+                  className="
                   relative
                   aspect-[16/10]
                   w-full
@@ -336,44 +332,45 @@ export default function ServiceRecapPage({
                   rounded-sm
                   bg-[#222222]
                 "
-              >
-                {typeof item === "string" ? (
-                  <Image
-                    src={item}
-                    alt={`Recap Gallery Image ${idx + 1}`}
-                    fill
-                    sizes="
+                >
+                  {typeof item === "string" ? (
+                    <Image
+                      src={item}
+                      alt={`Recap Gallery Image ${idx + 1}`}
+                      fill
+                      sizes="
                       (max-width: 640px) 100vw,
                       (max-width: 1024px) 50vw,
                       33vw
                     "
-                    className="object-cover transition-transform duration-500 hover:scale-105"
-                  />
-                ) : (
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <svg
-                      className="
+                      className="object-cover transition-transform duration-500 hover:scale-105"
+                    />
+                  ) : (
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <svg
+                        className="
                         h-8
                         w-8
                         text-[#444444]
                         sm:h-10
                         sm:w-10
                       "
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth="1.5"
-                        d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2v12a2 2 0 002 2z"
-                      />
-                    </svg>
-                  </div>
-                )}
-              </div>
-            ))}
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth="1.5"
+                          d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2v12a2 2 0 002 2z"
+                        />
+                      </svg>
+                    </div>
+                  )}
+                </div>
+              ),
+            )}
           </div>
         </div>
       </section>

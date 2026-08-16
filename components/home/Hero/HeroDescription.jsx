@@ -46,9 +46,7 @@ export default function HeroDescription() {
           lg:mt-12
         "
       >
-        <PrimaryButton href="/visit">
-          {hero.button}
-        </PrimaryButton>
+        <PrimaryButton href="/visit">{hero.button}</PrimaryButton>
       </div>
     </div>
   );

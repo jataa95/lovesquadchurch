@@ -2,10 +2,7 @@
 
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
-import {
-  SecondaryButton,
-  TertiaryButton,
-} from "@/components/ui/buttons";
+import { SecondaryButton, TertiaryButton } from "@/components/ui/buttons";
 
 const testimonials = [
   {
@@ -47,18 +44,14 @@ export default function LoveSpotTestimonials() {
       const activationPoint = 120;
 
       const isInPosition =
-        rect.top <= activationPoint &&
-        rect.bottom >= activationPoint;
+        rect.top <= activationPoint && rect.bottom >= activationPoint;
 
       if (!isInPosition) return;
 
       const viewportWidth = viewport.clientWidth;
       const trackWidth = track.scrollWidth;
 
-      const maxOffset = Math.max(
-        trackWidth - viewportWidth,
-        0
-      );
+      const maxOffset = Math.max(trackWidth - viewportWidth, 0);
 
       const currentOffset = offsetRef.current;
 
@@ -72,7 +65,7 @@ export default function LoveSpotTestimonials() {
 
           const nextOffset = Math.min(
             currentOffset + event.deltaY * speed,
-            maxOffset
+            maxOffset,
           );
 
           offsetRef.current = nextOffset;
@@ -92,10 +85,7 @@ export default function LoveSpotTestimonials() {
 
           const speed = 1.1;
 
-          const nextOffset = Math.max(
-            currentOffset + event.deltaY * speed,
-            0
-          );
+          const nextOffset = Math.max(currentOffset + event.deltaY * speed, 0);
 
           offsetRef.current = nextOffset;
           setCardOffset(nextOffset);
@@ -121,8 +111,7 @@ export default function LoveSpotTestimonials() {
   ===================================================== */
 
   const handleTouchStart = (event) => {
-    touchStartY.current =
-      event.touches[0].clientY;
+    touchStartY.current = event.touches[0].clientY;
   };
 
   const handleTouchMove = (event) => {
@@ -131,49 +120,33 @@ export default function LoveSpotTestimonials() {
 
     if (!viewport || !track) return;
 
-    const rect =
-      viewport.getBoundingClientRect();
+    const rect = viewport.getBoundingClientRect();
 
     const activationPoint = 120;
 
     const isInPosition =
-      rect.top <= activationPoint &&
-      rect.bottom >= activationPoint;
+      rect.top <= activationPoint && rect.bottom >= activationPoint;
 
     if (!isInPosition) return;
 
-    const currentY =
-      event.touches[0].clientY;
+    const currentY = event.touches[0].clientY;
 
-    const deltaY =
-      touchStartY.current - currentY;
+    const deltaY = touchStartY.current - currentY;
 
-    const viewportWidth =
-      viewport.clientWidth;
+    const viewportWidth = viewport.clientWidth;
 
-    const trackWidth =
-      track.scrollWidth;
+    const trackWidth = track.scrollWidth;
 
-    const maxOffset = Math.max(
-      trackWidth - viewportWidth,
-      0
-    );
+    const maxOffset = Math.max(trackWidth - viewportWidth, 0);
 
-    const currentOffset =
-      offsetRef.current;
+    const currentOffset = offsetRef.current;
 
     /* SWIPE UP */
 
-    if (
-      deltaY > 0 &&
-      currentOffset < maxOffset
-    ) {
+    if (deltaY > 0 && currentOffset < maxOffset) {
       event.preventDefault();
 
-      const nextOffset = Math.min(
-        currentOffset + deltaY,
-        maxOffset
-      );
+      const nextOffset = Math.min(currentOffset + deltaY, maxOffset);
 
       offsetRef.current = nextOffset;
       setCardOffset(nextOffset);
@@ -185,16 +158,10 @@ export default function LoveSpotTestimonials() {
 
     /* SWIPE DOWN */
 
-    if (
-      deltaY < 0 &&
-      currentOffset > 0
-    ) {
+    if (deltaY < 0 && currentOffset > 0) {
       event.preventDefault();
 
-      const nextOffset = Math.max(
-        currentOffset + deltaY,
-        0
-      );
+      const nextOffset = Math.max(currentOffset + deltaY, 0);
 
       offsetRef.current = nextOffset;
       setCardOffset(nextOffset);
@@ -262,13 +229,9 @@ export default function LoveSpotTestimonials() {
               fontSize: "clamp(22px, 3vw, 32px)",
             }}
           >
-            <span className="block">
-              SAPIEN IPSUM, AC TINCIDUNT
-            </span>
+            <span className="block">SAPIEN IPSUM, AC TINCIDUNT</span>
 
-            <span className="block text-[#ED4823]">
-              LOREM LACINIA VEL.
-            </span>
+            <span className="block text-[#ED4823]">LOREM LACINIA VEL.</span>
           </h2>
         </div>
 
@@ -302,9 +265,7 @@ export default function LoveSpotTestimonials() {
               md:top-[-45px]
             "
           >
-            <TertiaryButton href="#lovespot-faqs">
-              SKIP
-            </TertiaryButton>
+            <TertiaryButton href="#lovespot-faqs">SKIP</TertiaryButton>
           </div>
 
           {/* =================================================
@@ -365,7 +326,8 @@ export default function LoveSpotTestimonials() {
                       lineHeight: "9px",
                     }}
                   >
-                    LOVE IS US • LOVESQUAD CHURCH • LOVE IS US • LOVESQUAD CHURCH • LOVE IS US • LOVESQUAD CHURCH •
+                    LOVE IS US • LOVESQUAD CHURCH • LOVE IS US • LOVESQUAD
+                    CHURCH • LOVE IS US • LOVESQUAD CHURCH •
                   </div>
 
                   <div
@@ -381,7 +343,8 @@ export default function LoveSpotTestimonials() {
                       lineHeight: "9px",
                     }}
                   >
-                    LOVE IS US • LOVESQUAD CHURCH • LOVE IS US • LOVESQUAD CHURCH • LOVE IS US • LOVESQUAD CHURCH •
+                    LOVE IS US • LOVESQUAD CHURCH • LOVE IS US • LOVESQUAD
+                    CHURCH • LOVE IS US • LOVESQUAD CHURCH •
                   </div>
                 </div>
               </div>
@@ -438,16 +401,14 @@ export default function LoveSpotTestimonials() {
                 "
                 style={{
                   transform: `translate3d(-${cardOffset}px, 0, 0)`,
-                  transition:
-                    "transform 0.05s linear",
+                  transition: "transform 0.05s linear",
                   willChange: "transform",
                 }}
               >
-                {testimonials.map(
-                  (testimonial) => (
-                    <div
-                      key={testimonial.name}
-                      className="
+                {testimonials.map((testimonial) => (
+                  <div
+                    key={testimonial.name}
+                    className="
                         relative
                         h-[300px]
                         w-[calc(100vw-130px)]
@@ -460,14 +421,13 @@ export default function LoveSpotTestimonials() {
                         md:w-[600px]
                         md:min-w-[600px]
                       "
-                    >
-                      <TestimonialCard
-                        text={testimonial.text}
-                        name={testimonial.name}
-                      />
-                    </div>
-                  )
-                )}
+                  >
+                    <TestimonialCard
+                      text={testimonial.text}
+                      name={testimonial.name}
+                    />
+                  </div>
+                ))}
               </div>
             </div>
 
@@ -482,10 +442,7 @@ export default function LoveSpotTestimonials() {
                 justify-start
               "
             >
-              <SecondaryButton
-                href="/testimonials"
-                className="!mt-0"
-              >
+              <SecondaryButton href="/testimonials" className="!mt-0">
                 GO TO TESTIMONIALS
               </SecondaryButton>
             </div>
@@ -523,10 +480,7 @@ export default function LoveSpotTestimonials() {
    TESTIMONIAL CARD
 ===================================================== */
 
-function TestimonialCard({
-  text,
-  name,
-}) {
+function TestimonialCard({ text, name }) {
   return (
     <div
       className="

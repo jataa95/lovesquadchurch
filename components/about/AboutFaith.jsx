@@ -50,25 +50,17 @@ export default function AboutFaith() {
 
       const rect = section.getBoundingClientRect();
 
-      const scrollDistance =
-        section.offsetHeight - window.innerHeight;
+      const scrollDistance = section.offsetHeight - window.innerHeight;
 
       if (scrollDistance <= 0) return;
 
-      const progress = Math.min(
-        Math.max(-rect.top / scrollDistance, 0),
-        1
-      );
+      const progress = Math.min(Math.max(-rect.top / scrollDistance, 0), 1);
 
-      const viewportWidth =
-        track.parentElement.offsetWidth;
+      const viewportWidth = track.parentElement.offsetWidth;
 
       const trackWidth = track.scrollWidth;
 
-      const maxTranslate = Math.max(
-        trackWidth - viewportWidth,
-        0
-      );
+      const maxTranslate = Math.max(trackWidth - viewportWidth, 0);
 
       setTranslateX(-maxTranslate * progress);
     };
@@ -142,8 +134,7 @@ export default function AboutFaith() {
                 transparent 1px
               )
             `,
-            backgroundSize:
-              "5px 5px, 7px 7px, 11px 11px",
+            backgroundSize: "5px 5px, 7px 7px, 11px 11px",
           }}
         />
 
@@ -217,15 +208,10 @@ export default function AboutFaith() {
                 fontSize: "clamp(38px, 7vw, 80px)",
               }}
             >
-              <span className="block">
-                OUR STATEMENTS
-              </span>
+              <span className="block">OUR STATEMENTS</span>
 
               <span className="block">
-                OF{" "}
-                <span className="text-[#ED4823]">
-                  FAITH
-                </span>
+                OF <span className="text-[#ED4823]">FAITH</span>
               </span>
             </h2>
           </div>
@@ -343,8 +329,8 @@ export default function AboutFaith() {
                     sm:text-[10px]
                   "
                 >
-                  LOVE IS US * LOVESQUAD CHURCH * LOVE IS US *
-                  LOVESQUAD CHURCH *
+                  LOVE IS US * LOVESQUAD CHURCH * LOVE IS US * LOVESQUAD CHURCH
+                  *
                 </span>
 
                 <span
@@ -362,8 +348,8 @@ export default function AboutFaith() {
                   "
                   aria-hidden="true"
                 >
-                  LOVE IS US * LOVESQUAD CHURCH * LOVE IS US *
-                  LOVESQUAD CHURCH *
+                  LOVE IS US * LOVESQUAD CHURCH * LOVE IS US * LOVESQUAD CHURCH
+                  *
                 </span>
               </div>
             </div>
@@ -448,12 +434,7 @@ export default function AboutFaith() {
    FAITH CARD
 ========================================= */
 
-function FaithCard({
-  number,
-  title,
-  description,
-  scripture,
-}) {
+function FaithCard({ number, title, description, scripture }) {
   return (
     <div
       className="

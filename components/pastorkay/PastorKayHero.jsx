@@ -157,12 +157,11 @@ export default function PastorKayHero() {
             Reprehenderit In Voluptate Velit Esse Cillum Dolore Eu Fugiat Nulla
             Pariatur. Excepteur Sint Occaecat Cupidatat Non Proident, Sunt In
             Culpa Qui Officia Deserunt Mollit Anim Id Est Laborum. Sed Ut
-            Perspiciatis Unde Omnis Iste Natus Error Sit Voluptatem
-            Accusantium Doloremque Laudantium, Totam Rem Aperiam, Eaque Ipsa
-            Quae Ab Illo Inventore Veritatis Et Quasi Architecto Beatae Vitae
-            Dicta Sunt Explicabo. Nemo Enim Ipsam Voluptatem Quia Voluptas Sit
-            Aspernatur Aut Odit Aut Fugit, Sed Quia Consequuntur Magni Dolores
-            Eos Qui.
+            Perspiciatis Unde Omnis Iste Natus Error Sit Voluptatem Accusantium
+            Doloremque Laudantium, Totam Rem Aperiam, Eaque Ipsa Quae Ab Illo
+            Inventore Veritatis Et Quasi Architecto Beatae Vitae Dicta Sunt
+            Explicabo. Nemo Enim Ipsam Voluptatem Quia Voluptas Sit Aspernatur
+            Aut Odit Aut Fugit, Sed Quia Consequuntur Magni Dolores Eos Qui.
           </p>
 
           <p>

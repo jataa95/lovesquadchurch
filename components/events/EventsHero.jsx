@@ -48,7 +48,6 @@ export default function EventsHero() {
   return (
     <section className="w-full bg-[#F9E9D3] text-[#333333]">
       <div className="mx-auto flex w-full max-w-[1440px] flex-col px-6 py-6 md:px-12 md:py-8">
-
         {/* =========================================
             1. GIANT "EVENTS" HEADING
         ========================================== */}
@@ -67,7 +66,6 @@ export default function EventsHero() {
             2. LOWER SECTION GRID (GRAPHIC & CARDS)
         ========================================== */}
         <div className="mt-8 flex flex-col gap-8 lg:flex-row lg:items-center lg:gap-12">
-          
           {/* LEFT COLUMN: Graphic + Subtitle (Center-Aligned Vertically) */}
           <div className="flex shrink-0 flex-col items-center justify-center lg:w-[220px]">
             {/* SVG Graphic */}
@@ -96,7 +94,6 @@ export default function EventsHero() {
 
           {/* RIGHT COLUMN: Description Header + Horizontal Cards Container */}
           <div className="min-w-0 flex-1">
-            
             {/* Description + Imported Tertiary Button */}
             <div className="mb-4 flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
               <div className="max-w-[700px]">
@@ -104,8 +101,8 @@ export default function EventsHero() {
                   NUNC CONDIMENTUM SAPIEN
                 </h2>
                 <p className="body-font text-[20px] leading-relaxed text-[#666666]">
-                  Cras Aliquet, Sem Consectetur Condimentum Ultricies, Risus Massa
-                  Condimentum Quam, A Eleifend Dolor Elit Quis Orci.
+                  Cras Aliquet, Sem Consectetur Condimentum Ultricies, Risus
+                  Massa Condimentum Quam, A Eleifend Dolor Elit Quis Orci.
                 </p>
               </div>
 
@@ -116,7 +113,7 @@ export default function EventsHero() {
                 }}
                 className="text-[#4A4A4A] transition-colors duration-200 hover:text-[#EE4B2B]"
               >
-                SKIP DOWN 
+                SKIP DOWN
               </EventsSkipButton>
             </div>
 
@@ -159,11 +156,8 @@ export default function EventsHero() {
                 ))}
               </div>
             </div>
-
           </div>
-
         </div>
-
       </div>
     </section>
   );

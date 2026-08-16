@@ -34,9 +34,7 @@ export default function LoveSpotsContent() {
           RIGHT COLUMN — BUTTON
       ================================= */}
       <div className="self-start md:shrink-0 md:self-end">
-        <SecondaryButton href="/lovespot">
-          {loveSpots.button}
-        </SecondaryButton>
+        <SecondaryButton href="/lovespot">{loveSpots.button}</SecondaryButton>
       </div>
     </div>
   );

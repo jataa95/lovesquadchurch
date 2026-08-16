@@ -40,9 +40,7 @@ export default function EventsHeader() {
 
       {/* RIGHT SIDE BUTTON */}
       <div className="self-start md:self-auto">
-        <SecondaryButton href="/events">
-          GO TO EVENTS
-        </SecondaryButton>
+        <SecondaryButton href="/events">GO TO EVENTS</SecondaryButton>
       </div>
     </div>
   );

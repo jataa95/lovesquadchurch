@@ -1,21 +1,12 @@
 import { Play } from "lucide-react";
 
-export default function VideoCard({
-  label,
-  title,
-  subtitle,
-  image,
-}) {
+export default function VideoCard({ label, title, subtitle, image }) {
   return (
     <div className="overflow-hidden rounded-[32px] border border-white/10 bg-[#1B1B1B] shadow-2xl">
       {/* Image Area */}
       <div className="relative h-[420px] overflow-hidden">
         {image ? (
-          <img
-            src={image}
-            alt={title}
-            className="h-full w-full object-cover"
-          />
+          <img src={image} alt={title} className="h-full w-full object-cover" />
         ) : (
           <>
             <div className="absolute inset-0 bg-gradient-to-br from-[#3B3B3B] via-[#222222] to-[#111111]" />
@@ -41,13 +32,9 @@ export default function VideoCard({
           {label}
         </p>
 
-        <h3 className="heading-font text-3xl leading-tight">
-          {title}
-        </h3>
+        <h3 className="heading-font text-3xl leading-tight">{title}</h3>
 
-        <p className="text-gray-400">
-          {subtitle}
-        </p>
+        <p className="text-gray-400">{subtitle}</p>
       </div>
     </div>
   );

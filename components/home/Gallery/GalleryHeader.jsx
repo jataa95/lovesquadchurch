@@ -44,10 +44,8 @@ export default function GalleryHeader() {
           lg:leading-[40px]
         "
       >
-        NUNC CONDIMENTUM{" "}
-        <span className="text-[#ED4823]">SAPIEN</span>{" "}
-        IPSUM, AC{" "}
-        <span className="text-[#ED4823]">TINCIDUNT LOREM</span>{" "}
+        NUNC CONDIMENTUM <span className="text-[#ED4823]">SAPIEN</span> IPSUM,
+        AC <span className="text-[#ED4823]">TINCIDUNT LOREM</span>{" "}
         <span className="text-[#ED4823]">LACINIA</span> VEL.
       </h2>
 

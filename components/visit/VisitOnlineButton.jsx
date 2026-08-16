@@ -59,10 +59,8 @@ export default function VisitOnlineButton({
           lg:w-[32px]
         "
         style={{
-          WebkitMaskImage:
-            "url('/images/visit/VisitOnlineButton.svg')",
-          maskImage:
-            "url('/images/visit/VisitOnlineButton.svg')",
+          WebkitMaskImage: "url('/images/visit/VisitOnlineButton.svg')",
+          maskImage: "url('/images/visit/VisitOnlineButton.svg')",
           WebkitMaskRepeat: "no-repeat",
           maskRepeat: "no-repeat",
           WebkitMaskPosition: "center",

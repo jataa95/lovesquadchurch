@@ -6,7 +6,8 @@ import AboutFAQs from "@/components/about/AboutFAQs"; // Adjust import path if n
 
 export const metadata = {
   title: "Careers | Love Squad Church",
-  description: "Join the team at Love Squad Church. Explore available positions and apply today.",
+  description:
+    "Join the team at Love Squad Church. Explore available positions and apply today.",
 };
 
 export default function CareersPage() {

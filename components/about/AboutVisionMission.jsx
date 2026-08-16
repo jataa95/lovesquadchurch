@@ -114,24 +114,15 @@ export default function AboutVisionMission() {
                   fontSize: "clamp(48px, 7vw, 80px)",
                 }}
               >
-                <span className="block">
-                  OUR
-                </span>
+                <span className="block">OUR</span>
 
-                <span className="block text-[#ED4823]">
-                  VISION
-                </span>
+                <span className="block text-[#ED4823]">VISION</span>
 
                 <span className="block">
-                  &amp;{" "}
-                  <span className="text-[#ED4823]">
-                    MISSION
-                  </span>
+                  &amp; <span className="text-[#ED4823]">MISSION</span>
                 </span>
 
-                <span className="block">
-                  STATEMENTS
-                </span>
+                <span className="block">STATEMENTS</span>
               </h2>
             </div>
           </div>
@@ -189,8 +180,7 @@ function Statement({ title, text, isLast }) {
   return (
     <div
       className={
-        "w-full " +
-        (!isLast ? "border-b border-[#9D9A93] pb-[16px]" : "")
+        "w-full " + (!isLast ? "border-b border-[#9D9A93] pb-[16px]" : "")
       }
     >
       {/* TITLE */}

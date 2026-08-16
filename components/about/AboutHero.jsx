@@ -201,9 +201,9 @@ export default function AboutHero() {
             lg:leading-[30px]
           "
         >
-          Condimentum Ultricies, Risus Massa Condimentum Quam, A Eleifend
-          Dolor Elit Quis Orci. Condimentum Ultricies, Risus Massa
-          Condimentum Quam, A Eleifend Dolor Elit Quis Orci.
+          Condimentum Ultricies, Risus Massa Condimentum Quam, A Eleifend Dolor
+          Elit Quis Orci. Condimentum Ultricies, Risus Massa Condimentum Quam, A
+          Eleifend Dolor Elit Quis Orci.
         </p>
 
         {/* =========================================
@@ -220,9 +220,7 @@ export default function AboutHero() {
             lg:mt-[52px]
           "
         >
-          <PrimaryButton href="/visit">
-            PLAN YOUR VISIT
-          </PrimaryButton>
+          <PrimaryButton href="/visit">PLAN YOUR VISIT</PrimaryButton>
         </div>
       </div>
     </section>

@@ -2,18 +2,10 @@
 
 import Image from "next/image";
 
-export default function TestimonialCard({
-  testimonial,
-  className = "",
-}) {
+export default function TestimonialCard({ testimonial, className = "" }) {
   if (!testimonial) return null;
 
-  const {
-    name,
-    text,
-    variant = "orange",
-    rotation = "0deg",
-  } = testimonial;
+  const { name, text, variant = "orange", rotation = "0deg" } = testimonial;
 
   const isOrange = variant === "orange";
 

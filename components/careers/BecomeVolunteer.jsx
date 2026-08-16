@@ -106,9 +106,7 @@ export default function BecomeVolunteer() {
 
             {/* APPLY BUTTON */}
             <div className="pt-0.5 sm:pt-1">
-              <SecondaryButton href="#volunteer-apply">
-                APPLY
-              </SecondaryButton>
+              <SecondaryButton href="#volunteer-apply">APPLY</SecondaryButton>
             </div>
 
             {/* STANDALONE PARAGRAPH */}
@@ -123,8 +121,8 @@ export default function BecomeVolunteer() {
                 lineHeight: "1.55",
               }}
             >
-              Cras Aliquet, Sem Consectetur Condimentum Ultricies, Risus
-              Massa Condimentum Quam, A Eleifend Dolor Elit Quis Orci.
+              Cras Aliquet, Sem Consectetur Condimentum Ultricies, Risus Massa
+              Condimentum Quam, A Eleifend Dolor Elit Quis Orci.
             </p>
 
             {/* DIVIDER */}

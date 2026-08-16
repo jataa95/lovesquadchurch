@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState } from "react";
@@ -112,10 +111,7 @@ export default function ContactHero() {
                 md:p-8
               "
             >
-              <form
-                onSubmit={handleSubmit}
-                className="flex flex-col gap-5"
-              >
+              <form onSubmit={handleSubmit} className="flex flex-col gap-5">
                 {/* First Name */}
                 <div className="flex flex-col gap-1.5">
                   <label

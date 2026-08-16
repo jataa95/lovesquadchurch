@@ -11,12 +11,7 @@ export default function AboutGalleryCard({ image }) {
         overflow-hidden
       "
     >
-      <Image
-        src={image}
-        alt="About"
-        fill
-        className="object-cover"
-      />
+      <Image src={image} alt="About" fill className="object-cover" />
     </div>
   );
 }

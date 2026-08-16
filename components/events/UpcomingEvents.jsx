@@ -7,7 +7,6 @@ export default function UpcomingEvents() {
     <section className="w-full bg-[#F9E9D3] text-[#575656] py-12 md:py-16">
       <div className="mx-auto max-w-[1440px] px-6 md:px-12">
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-12">
-          
           {/* =========================================
               LEFT COLUMN: Header & Calendar SVG Icon
           ========================================== */}
@@ -29,7 +28,9 @@ export default function UpcomingEvents() {
                 fontSize: "clamp(2.5rem, 6vw, 80px)",
               }}
             >
-              UPCOMING<br />EVENTS
+              UPCOMING
+              <br />
+              EVENTS
             </h2>
           </div>
 
@@ -37,7 +38,6 @@ export default function UpcomingEvents() {
               RIGHT COLUMN: Main Content Block
           ========================================== */}
           <div className="flex flex-col lg:col-span-7">
-            
             {/* Section Subhead & Top Border Line */}
             <div className="border-t border-[#575656]/30 pt-2 pb-4">
               <span className="heading-font text-sm font-bold uppercase tracking-wider text-[#575656]">
@@ -91,22 +91,20 @@ export default function UpcomingEvents() {
 
               <div className="space-y-3 body-font text-[20px] leading-relaxed text-[#575656]">
                 <p>
-                  Cras Aliquet, Sem Consectetur Condimentum Ultricies, Risus Massa
-                  Condimentum Quam, A Eleifend Dolor Elit Quis Orci.
+                  Cras Aliquet, Sem Consectetur Condimentum Ultricies, Risus
+                  Massa Condimentum Quam, A Eleifend Dolor Elit Quis Orci.
                 </p>
                 <p>
-                  Cras Aliquet, Sem Consectetur Condimentum Ultricies, Risus Massa
-                  Condimentum Quam, A Eleifend Dolor Elit Quis Orci.
+                  Cras Aliquet, Sem Consectetur Condimentum Ultricies, Risus
+                  Massa Condimentum Quam, A Eleifend Dolor Elit Quis Orci.
                 </p>
                 <p>
-                  Cras Aliquet, Sem Consectetur Condimentum Ultricies, Risus Massa
-                  Condimentum Quam, A Eleifend Dolor Elit Quis Orci.
+                  Cras Aliquet, Sem Consectetur Condimentum Ultricies, Risus
+                  Massa Condimentum Quam, A Eleifend Dolor Elit Quis Orci.
                 </p>
               </div>
             </div>
-
           </div>
-
         </div>
       </div>
     </section>

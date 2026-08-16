@@ -171,8 +171,8 @@ export default function GivingBeliefs() {
                   lineHeight: "20px",
                 }}
               >
-                Cras Aliquet, Sem Consectetur Condimentum Ultricies, Risus
-                Massa Condimentum Quam, A Eleifend Dolor Elit Quis Orci.
+                Cras Aliquet, Sem Consectetur Condimentum Ultricies, Risus Massa
+                Condimentum Quam, A Eleifend Dolor Elit Quis Orci.
               </p>
 
               <p
@@ -186,23 +186,8 @@ export default function GivingBeliefs() {
                   lineHeight: "20px",
                 }}
               >
-                Cras Aliquet, Sem Consectetur Condimentum Ultricies, Risus
-                Massa Condimentum Quam, A Eleifend Dolor Elit Quis Orci.
-              </p>
-
-              <p
-                className="
-                  body-font
-                  max-w-[650px]
-                  text-[#5A5853]
-                "
-                style={{
-                  fontSize: "16px",
-                  lineHeight: "20px"
-                }}
-              >
-                Cras Aliquet, Sem Consectetur Condimentum Ultricies, Risus
-                Massa Condimentum Quam, A Eleifend Dolor Elit Quis Orci.
+                Cras Aliquet, Sem Consectetur Condimentum Ultricies, Risus Massa
+                Condimentum Quam, A Eleifend Dolor Elit Quis Orci.
               </p>
 
               <p
@@ -216,8 +201,8 @@ export default function GivingBeliefs() {
                   lineHeight: "20px",
                 }}
               >
-                Cras Aliquet, Sem Consectetur Condimentum Ultricies, Risus
-                Massa Condimentum Quam, A Eleifend Dolor Elit Quis Orci.
+                Cras Aliquet, Sem Consectetur Condimentum Ultricies, Risus Massa
+                Condimentum Quam, A Eleifend Dolor Elit Quis Orci.
               </p>
 
               <p
@@ -231,8 +216,8 @@ export default function GivingBeliefs() {
                   lineHeight: "20px",
                 }}
               >
-                Cras Aliquet, Sem Consectetur Condimentum Ultricies, Risus
-                Massa Condimentum Quam, A Eleifend Dolor Elit Quis Orci.
+                Cras Aliquet, Sem Consectetur Condimentum Ultricies, Risus Massa
+                Condimentum Quam, A Eleifend Dolor Elit Quis Orci.
               </p>
 
               <p
@@ -246,8 +231,23 @@ export default function GivingBeliefs() {
                   lineHeight: "20px",
                 }}
               >
-                Cras Aliquet, Sem Consectetur Condimentum Ultricies, Risus
-                Massa Condimentum Quam, A Eleifend Dolor Elit Quis Orci.
+                Cras Aliquet, Sem Consectetur Condimentum Ultricies, Risus Massa
+                Condimentum Quam, A Eleifend Dolor Elit Quis Orci.
+              </p>
+
+              <p
+                className="
+                  body-font
+                  max-w-[650px]
+                  text-[#5A5853]
+                "
+                style={{
+                  fontSize: "16px",
+                  lineHeight: "20px",
+                }}
+              >
+                Cras Aliquet, Sem Consectetur Condimentum Ultricies, Risus Massa
+                Condimentum Quam, A Eleifend Dolor Elit Quis Orci.
               </p>
             </div>
           </div>

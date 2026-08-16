@@ -117,7 +117,9 @@ export default function MenuOverlay({ onClose }) {
       <nav className="relative z-40 flex flex-col items-center justify-center px-6 pt-6 sm:px-12">
         <div className="flex flex-col items-center gap-4 text-center sm:gap-6">
           {menuItems.map((item) => {
-            const hasSubLinks = Boolean(item.subLinks && item.subLinks.length > 0);
+            const hasSubLinks = Boolean(
+              item.subLinks && item.subLinks.length > 0,
+            );
 
             return (
               <div

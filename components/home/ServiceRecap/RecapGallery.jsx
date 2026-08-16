@@ -26,33 +26,19 @@ export default function RecapGallery() {
       const rect = section.getBoundingClientRect();
       const windowHeight = window.innerHeight;
 
-      const progress =
-        (windowHeight - rect.top) /
-        (windowHeight + rect.height);
+      const progress = (windowHeight - rect.top) / (windowHeight + rect.height);
 
-      const clampedProgress = Math.min(
-        Math.max(progress, 0),
-        1
-      );
+      const clampedProgress = Math.min(Math.max(progress, 0), 1);
 
-      const maxScroll =
-        slider.scrollWidth - slider.clientWidth;
+      const maxScroll = slider.scrollWidth - slider.clientWidth;
 
-      slider.scrollLeft =
-        clampedProgress * maxScroll;
+      slider.scrollLeft = clampedProgress * maxScroll;
     };
 
-    window.addEventListener(
-      "scroll",
-      handleScroll,
-      { passive: true }
-    );
+    window.addEventListener("scroll", handleScroll, { passive: true });
 
     return () => {
-      window.removeEventListener(
-        "scroll",
-        handleScroll
-      );
+      window.removeEventListener("scroll", handleScroll);
     };
   }, []);
 
@@ -67,11 +53,9 @@ export default function RecapGallery() {
 
     isDragging.current = true;
 
-    startX.current =
-      clientX - slider.getBoundingClientRect().left;
+    startX.current = clientX - slider.getBoundingClientRect().left;
 
-    scrollLeft.current =
-      slider.scrollLeft;
+    scrollLeft.current = slider.scrollLeft;
 
     slider.classList.add("cursor-grabbing");
   };
@@ -85,15 +69,11 @@ export default function RecapGallery() {
 
     if (!isDragging.current || !slider) return;
 
-    const x =
-      clientX -
-      slider.getBoundingClientRect().left;
+    const x = clientX - slider.getBoundingClientRect().left;
 
-    const distance =
-      (x - startX.current) * 1.5;
+    const distance = (x - startX.current) * 1.5;
 
-    slider.scrollLeft =
-      scrollLeft.current - distance;
+    slider.scrollLeft = scrollLeft.current - distance;
   };
 
   // =====================================================
@@ -105,9 +85,7 @@ export default function RecapGallery() {
 
     isDragging.current = false;
 
-    slider?.classList.remove(
-      "cursor-grabbing"
-    );
+    slider?.classList.remove("cursor-grabbing");
   };
 
   // =====================================================
@@ -131,17 +109,13 @@ export default function RecapGallery() {
   // =====================================================
 
   const handleTouchStart = (e) => {
-    handleDragStart(
-      e.touches[0].clientX
-    );
+    handleDragStart(e.touches[0].clientX);
   };
 
   const handleTouchMove = (e) => {
     if (!isDragging.current) return;
 
-    handleDragMove(
-      e.touches[0].clientX
-    );
+    handleDragMove(e.touches[0].clientX);
   };
 
   return (
@@ -181,11 +155,10 @@ export default function RecapGallery() {
           touch-pan-y
         "
       >
-        {serviceRecap.images.map(
-          (image, index) => (
-            <div
-              key={index}
-              className="
+        {serviceRecap.images.map((image, index) => (
+          <div
+            key={index}
+            className="
                 relative
                 flex-none
                 w-[85vw]
@@ -201,24 +174,23 @@ export default function RecapGallery() {
                 lg:w-[50vw]
                 lg:h-[520px]
               "
-            >
-              <Image
-                src={image}
-                alt={`Service Recap ${index + 1}`}
-                fill
-                draggable={false}
-                sizes="(max-width: 640px) 85vw,(max-width: 768px) 70vw,(max-width: 1024px) 60vw,50vw"
-                className="
+          >
+            <Image
+              src={image}
+              alt={`Service Recap ${index + 1}`}
+              fill
+              draggable={false}
+              sizes="(max-width: 640px) 85vw,(max-width: 768px) 70vw,(max-width: 1024px) 60vw,50vw"
+              className="
                   pointer-events-none
                   object-cover
                   transition-transform
                   duration-500
                   hover:scale-105
                 "
-              />
-            </div>
-          )
-        )}
+            />
+          </div>
+        ))}
       </div>
     </section>
   );

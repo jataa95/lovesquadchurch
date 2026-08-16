@@ -1,10 +1,7 @@
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 
-export default function ServiceRecapButton({
-  href = "#",
-  children,
-}) {
+export default function ServiceRecapButton({ href = "#", children }) {
   return (
     <Link
       href={href}

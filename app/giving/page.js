@@ -14,7 +14,6 @@ export default function GivingPage() {
       <GivingDetails />
       <AboutFAQs />
       <Footer />
-      
     </main>
   );
 }

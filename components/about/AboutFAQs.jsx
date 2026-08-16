@@ -180,11 +180,7 @@ export default function AboutFAQs() {
                     duration-300
                     ease-out
 
-                    ${
-                      isOpen
-                        ? "bg-[#EDE3D2]"
-                        : "hover:bg-[#EEE4D4]"
-                    }
+                    ${isOpen ? "bg-[#EDE3D2]" : "hover:bg-[#EEE4D4]"}
                   `}
                 >
                   {/* =================================================
@@ -255,11 +251,7 @@ export default function AboutFAQs() {
                           duration-300
                           ease-out
 
-                          ${
-                            isOpen
-                              ? "rotate-45"
-                              : "rotate-0"
-                          }
+                          ${isOpen ? "rotate-45" : "rotate-0"}
                         `}
                       />
                     </span>
@@ -275,11 +267,7 @@ export default function AboutFAQs() {
                       duration-500
                       ease-[cubic-bezier(0.22,1,0.36,1)]
 
-                      ${
-                        isOpen
-                          ? "grid-rows-[1fr]"
-                          : "grid-rows-[0fr]"
-                      }
+                      ${isOpen ? "grid-rows-[1fr]" : "grid-rows-[0fr]"}
                     `}
                   >
                     <div className="min-h-0 overflow-hidden">

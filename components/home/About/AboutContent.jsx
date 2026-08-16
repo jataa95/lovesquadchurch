@@ -9,7 +9,11 @@ export default function AboutContent() {
         {/* Description */}
         <p
           className="text-[#575656]"
-          style={{fontSize: "clamp(16px, 2vw, 20px)",fontWeight: 400,lineHeight: "1.5",}}
+          style={{
+            fontSize: "clamp(16px, 2vw, 20px)",
+            fontWeight: 400,
+            lineHeight: "1.5",
+          }}
         >
           {about.description}
         </p>
@@ -17,7 +21,11 @@ export default function AboutContent() {
         {/* Anchor Scripture */}
         <p
           className="mt-4 uppercase text-[#575656] sm:mt-6"
-          style={{fontSize: "clamp(16px, 2vw, 20px)",fontWeight: 500,lineHeight: "1.5",}}
+          style={{
+            fontSize: "clamp(16px, 2vw, 20px)",
+            fontWeight: 500,
+            lineHeight: "1.5",
+          }}
         >
           {about.scripture}
         </p>
@@ -33,36 +41,22 @@ export default function AboutContent() {
             letterSpacing: "0px",
           }}
         >
-          <div className="text-[#575656]">
-            NUNC CONDIMENTUM
+          <div className="text-[#575656]">NUNC CONDIMENTUM</div>
+
+          <div>
+            <span className="text-[#ED4823]">SAPIEN</span>
+            <span className="text-[#575656]"> IPSUM, AC </span>
+            <span className="text-[#ED4823]">TINCIDUNT</span>
           </div>
 
           <div>
-            <span className="text-[#ED4823]">
-              SAPIEN
-            </span>
-            <span className="text-[#575656]">
-              {" "}IPSUM, AC{" "}
-            </span>
-            <span className="text-[#ED4823]">
-              TINCIDUNT
-            </span>
-          </div>
-
-          <div>
-            <span className="text-[#ED4823]">
-              LOREM LACINIA
-            </span>
-            <span className="text-[#575656]">
-              {" "}VEL.
-            </span>
+            <span className="text-[#ED4823]">LOREM LACINIA</span>
+            <span className="text-[#575656]"> VEL.</span>
           </div>
         </h2>
 
         <div className="mt-6 sm:mt-8 lg:mt-10">
-          <SecondaryButton href="/about">
-            {about.button}
-          </SecondaryButton>
+          <SecondaryButton href="/about">{about.button}</SecondaryButton>
         </div>
       </div>
     </div>

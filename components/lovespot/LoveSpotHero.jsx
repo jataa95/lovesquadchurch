@@ -54,12 +54,8 @@ export default function LoveSpotHero() {
               lineHeight: "1",
             }}
           >
-            <span className="text-[#ED4823]">
-              LOVESQUAD
-            </span>{" "}
-            <span className="text-[#4A4A4A]">
-              IN
-            </span>
+            <span className="text-[#ED4823]">LOVESQUAD</span>{" "}
+            <span className="text-[#4A4A4A]">IN</span>
           </div>
 
           {/* LOVESPOTS */}
@@ -161,9 +157,8 @@ export default function LoveSpotHero() {
                 lineHeight: "20px",
               }}
             >
-              Cras Aliquet, Sem Consectetur Condimentum
-              Ultricies, Risus Massa Condimentum Quam,
-              A Eleifend Dolor Elit Quis Orci.
+              Cras Aliquet, Sem Consectetur Condimentum Ultricies, Risus Massa
+              Condimentum Quam, A Eleifend Dolor Elit Quis Orci.
             </p>
 
             <div className="mt-[8px]">

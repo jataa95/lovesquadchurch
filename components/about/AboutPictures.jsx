@@ -49,65 +49,29 @@ export default function AboutPictures() {
         >
           {/* LEFT COLUMN */}
           <div className="flex w-[28%] flex-col gap-[12px] xl:gap-[16px]">
-            <ImageTile
-              src={images[0]}
-              alt="LoveSquad church"
-              aspect="wide"
-            />
+            <ImageTile src={images[0]} alt="LoveSquad church" aspect="wide" />
 
-            <ImageTile
-              src={images[1]}
-              alt="LoveSquad church"
-              aspect="wide"
-            />
+            <ImageTile src={images[1]} alt="LoveSquad church" aspect="wide" />
 
-            <ImageTile
-              src={images[2]}
-              alt="LoveSquad church"
-              aspect="wide"
-            />
+            <ImageTile src={images[2]} alt="LoveSquad church" aspect="wide" />
           </div>
 
           {/* CENTER COLUMN */}
           <div className="flex w-[38%] flex-col gap-[12px] xl:gap-[16px]">
-            <ImageTile
-              src={images[3]}
-              alt="LoveSquad church"
-              aspect="center"
-            />
+            <ImageTile src={images[3]} alt="LoveSquad church" aspect="center" />
 
-            <ImageTile
-              src={images[4]}
-              alt="LoveSquad church"
-              aspect="center"
-            />
+            <ImageTile src={images[4]} alt="LoveSquad church" aspect="center" />
 
-            <ImageTile
-              src={images[5]}
-              alt="LoveSquad church"
-              aspect="center"
-            />
+            <ImageTile src={images[5]} alt="LoveSquad church" aspect="center" />
           </div>
 
           {/* RIGHT COLUMN */}
           <div className="flex w-[28%] flex-col gap-[12px] xl:gap-[16px]">
-            <ImageTile
-              src={images[6]}
-              alt="LoveSquad church"
-              aspect="wide"
-            />
+            <ImageTile src={images[6]} alt="LoveSquad church" aspect="wide" />
 
-            <ImageTile
-              src={images[7]}
-              alt="LoveSquad church"
-              aspect="wide"
-            />
+            <ImageTile src={images[7]} alt="LoveSquad church" aspect="wide" />
 
-            <ImageTile
-              src={images[8]}
-              alt="LoveSquad church"
-              aspect="wide"
-            />
+            <ImageTile src={images[8]} alt="LoveSquad church" aspect="wide" />
           </div>
         </div>
 
@@ -164,11 +128,7 @@ export default function AboutPictures() {
    IMAGE TILE
 ================================= */
 
-function ImageTile({
-  src,
-  alt,
-  aspect = "wide",
-}) {
+function ImageTile({ src, alt, aspect = "wide" }) {
   const aspectClasses = {
     wide: "aspect-[16/10]",
     center: "aspect-[5/3]",
