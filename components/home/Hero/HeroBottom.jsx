@@ -17,7 +17,7 @@ export default function HeroBottom() {
           md:gap-10
 
           lg:grid-cols-12
-          lg:gap-x-16
+          lg:gap-x-12
         "
       >
         {/* LEFT COLUMN */}
@@ -27,7 +27,7 @@ export default function HeroBottom() {
 
             md:col-span-1
 
-            lg:col-span-5
+            lg:col-span-6
           "
         >
           <HeroDescription />
@@ -36,7 +36,11 @@ export default function HeroBottom() {
         {/* RIGHT COLUMN */}
         <div
           className="
+            flex
             w-full
+            flex-col
+            items-center sm:items-end   {/* Centered on mobile, right-aligned on desktop */}
+            text-center sm:text-right   {/* Text alignment for child headings */}
 
             md:col-span-1
 
@@ -45,7 +49,7 @@ export default function HeroBottom() {
         >
           <LatestMessageHeading />
 
-          <div className="mt-5 sm:mt-6">
+          <div className="mt-4 w-full sm:mt-5">
             <HeroVideo />
           </div>
         </div>

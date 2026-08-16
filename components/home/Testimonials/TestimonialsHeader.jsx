@@ -3,7 +3,7 @@ import { testimonials } from "@/data/testimonials";
 
 export default function TestimonialsHeader() {
   return (
-    <div className="relative z-10 -mt-8 mb-[16px] flex items-center gap-[10px] sm:-mt-12 sm:mb-[20px] sm:gap-[12px] md:-mt-16 md:mb-[24px] md:gap-[14px] lg:gap-[16px]">
+    <div className="relative z-10 -mt-2 mb-[16px] flex items-start gap-[10px] sm:-mt-12 sm:mb-[20px] sm:gap-[12px] md:-mt-16 md:mb-[24px] md:gap-[14px] lg:gap-[16px]">
       {/* =========================================
           ICON
       ========================================== */}

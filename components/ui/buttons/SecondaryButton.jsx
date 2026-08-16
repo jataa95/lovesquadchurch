@@ -13,7 +13,7 @@ export default function SecondaryButton({
         group
         inline-flex
         items-center
-        gap-2
+        gap-1 sm:gap-1.5 md:gap-2
         transition-all
         duration-300
         ${className}
@@ -28,13 +28,13 @@ export default function SecondaryButton({
           transition-colors
           duration-300
           group-hover:text-[#575656]
+
+          text-[18px] leading-[16px]
+          sm:text-[20px] sm:leading-[18px]
+          md:text-[24px] md:leading-[20px]
+          font-bold
+          tracking-[-0.02em]
         "
-        style={{
-          fontSize: "24px",
-          fontWeight: 700,
-          lineHeight: "20px",
-          letterSpacing: "-0.02em",
-        }}
       >
         {"{"}
       </span>
@@ -48,20 +48,19 @@ export default function SecondaryButton({
           transition-colors
           duration-300
           group-hover:text-[#ED4823]
+
+          text-[14px] leading-[16px]
+          sm:text-[16px] sm:leading-[18px]
+          md:text-[20px] md:leading-[20px]
+          font-bold
+          tracking-[-0.02em]
         "
-        style={{
-          fontSize: "20px",
-          fontWeight: 700,
-          lineHeight: "20px",
-          letterSpacing: "-0.02em",
-        }}
       >
         {children}
       </span>
 
       {/* Arrow */}
       <ArrowUpRight
-        size={24}
         className="
           text-[#575656]
           transition-all
@@ -69,6 +68,10 @@ export default function SecondaryButton({
           group-hover:text-[#ED4823]
           group-hover:translate-x-0.5
           group-hover:-translate-y-0.5
+
+          h-4 w-4
+          sm:h-5 sm:w-5
+          md:h-6 md:w-6
         "
       />
 
@@ -81,13 +84,13 @@ export default function SecondaryButton({
           transition-colors
           duration-300
           group-hover:text-[#575656]
+
+          text-[18px] leading-[16px]
+          sm:text-[20px] sm:leading-[18px]
+          md:text-[24px] md:leading-[20px]
+          font-bold
+          tracking-[-0.02em]
         "
-        style={{
-          fontSize: "24px",
-          fontWeight: 700,
-          lineHeight: "20px",
-          letterSpacing: "-0.02em",
-        }}
       >
         {"}"}
       </span>

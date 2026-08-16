@@ -15,13 +15,14 @@ function AboutGalleryCard({ image, index }) {
   if (!image) return null;
 
   return (
-    <div className="relative h-[320px] w-[420px] flex-shrink-0 overflow-hidden bg-[#151515] sm:h-[400px] sm:w-[540px] md:h-[480px] md:w-[640px] lg:h-[555px] lg:w-[720px]">
+    <div className="relative h-[360px] w-[85vw] flex-shrink-0 overflow-hidden bg-[#151515] sm:h-[480px] sm:w-[90vw] md:h-[600px] lg:h-[720px]">
       <Image
         src={image}
         alt={`About Lovesquad ${index + 1}`}
         fill
         className="object-cover"
-        sizes="(max-width: 640px) 420px, (max-width: 1024px) 640px, 720px"
+        sizes="100vw"
+        priority={index < 2}
       />
     </div>
   );
@@ -31,8 +32,7 @@ export default function AboutGallery() {
   const validImages = aboutImages.filter(Boolean);
 
   return (
-    /* Updated: Set py-2 sm:py-4 so top and bottom padding match equally */
-    <section className="relative z-10 -mt-8 w-full bg-[#1A1A1A] py-2 sm:-mt-12 sm:py-4">
+    <section className="relative z-10 -mt-8 w-screen left-1/2 -translate-x-1/2 bg-[#1A1A1A] py-2 sm:-mt-12 sm:py-4 overflow-hidden">
       <style jsx>{`
         @keyframes marqueeScroll {
           0% {
@@ -45,7 +45,7 @@ export default function AboutGallery() {
         .animate-marquee {
           display: flex;
           width: max-content;
-          animation: marqueeScroll 25s linear infinite;
+          animation: marqueeScroll 35s linear infinite;
         }
         .animate-marquee:hover {
           animation-play-state: paused;
@@ -53,7 +53,7 @@ export default function AboutGallery() {
       `}</style>
 
       <div className="w-full overflow-hidden scrollbar-hide">
-        <div className="animate-marquee flex gap-[12px] px-[20px] sm:gap-[16px] sm:px-[30px] md:gap-[20px] md:px-[40px] lg:px-[0px]">
+        <div className="animate-marquee flex gap-[12px] px-0 sm:gap-[16px] md:gap-[20px]">
           {/* First track copy */}
           {validImages.map((image, index) => (
             <AboutGalleryCard

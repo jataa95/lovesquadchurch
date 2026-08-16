@@ -36,7 +36,7 @@ const testimonials = [
   },
 ];
 
-export default function TestimonialsHero() {
+export default function Testimonials() {
   const carouselRef = useRef(null);
   const sectionRef = useRef(null);
 

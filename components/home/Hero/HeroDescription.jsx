@@ -7,10 +7,9 @@ export default function HeroDescription() {
       className="
         w-full
         max-w-[420px]
+        mx-auto sm:mx-0       {/* Centers container block on mobile */}
         mt-8
-
         sm:mt-10
-
         lg:mt-0
       "
     >
@@ -19,8 +18,9 @@ export default function HeroDescription() {
         className="
           body-font
           text-[#F4EBDC]/85
-          text-[16px]
-          leading-[24px]
+          text-center sm:text-left   {/* Center text on mobile only */}
+          text-[12px]
+          leading-[16px]
 
           sm:text-[17px]
           sm:leading-[26px]
@@ -36,17 +36,16 @@ export default function HeroDescription() {
         {hero.description}
       </p>
 
-      {/* CTA */}
+      {/* CTA Wrapper */}
       <div
         className="
-          mt-8
-
-          sm:mt-10
-
-          lg:mt-12
+          mt-6 sm:mt-10 lg:mt-12      {/* Slightly reduced mobile top margin */}
+          flex justify-center sm:block  {/* Center-aligns button wrapper on mobile */}
         "
       >
-        <PrimaryButton href="/visit">{hero.button}</PrimaryButton>
+        <div className="scale-90 origin-center sm:scale-100"> {/* Shrinks button size on mobile */}
+          <PrimaryButton href="/visit">{hero.button}</PrimaryButton>
+        </div>
       </div>
     </div>
   );

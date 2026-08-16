@@ -8,11 +8,11 @@ export default function HeroHeading() {
         flex-col
         items-center
         text-left
-        mt-[5px]
+        mt-[30px]
 
-        sm:mt-[10px]
-        md:mt-[15px]
-        lg:mt-[20px]
+        sm:mt-[60px]
+        md:mt-[60px]
+        lg:mt-[60px]
       "
     >
       {/* WELCOME HOME */}
@@ -22,10 +22,10 @@ export default function HeroHeading() {
           uppercase
           text-[#F5EBDD]
 
-          text-[20px]
-          leading-[26px]
+          text-[16px]         {/* Reduced from 20px */}
+          leading-[20px]       {/* Reduced from 26px */}
 
-          sm:text-[24px]
+          sm:text-[20px]
           sm:leading-[30px]
 
           md:text-[28px]
@@ -50,20 +50,20 @@ export default function HeroHeading() {
           uppercase
           text-[#F5EBDD]
 
-          mt-[10px]
-          mb-[18px]
+          mt-[8px]             {/* Adjusted margin */}
+          mb-[12px]            {/* Adjusted margin */}
 
-          text-[72px]
+          text-[60px]         {/* Reduced from 72px */}
           leading-[0.8]
           tracking-[-0.06em]
 
           sm:mt-[14px]
           sm:mb-[22px]
-          sm:text-[100px]
+          sm:text-[80px]
 
           md:mt-[18px]
           md:mb-[28px]
-          md:text-[135px]
+          md:text-[100px]
 
           lg:mt-[20px]
           lg:mb-[32px]
@@ -85,10 +85,10 @@ export default function HeroHeading() {
           uppercase
           text-[#F5EBDD]
 
-          text-[20px]
-          leading-[26px]
+          text-[16px]         {/* Reduced from 20px */}
+          leading-[20px]       {/* Reduced from 26px */}
 
-          sm:text-[24px]
+          sm:text-[20px]
           sm:leading-[30px]
 
           md:text-[28px]

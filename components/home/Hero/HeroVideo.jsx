@@ -8,12 +8,14 @@ export default function HeroVideo() {
         relative
         aspect-[444/211]
         w-full
-        max-w-[444px]
+        max-w-[300px]
+        mx-auto sm:ml-auto sm:mr-0   {/* Centered on mobile, right-aligned on sm+ */}
         overflow-hidden
         rounded-[20px]
         bg-[#1A1A1A]
         shadow-xl
 
+        sm:max-w-[380px]
         sm:rounded-[22px]
         lg:rounded-[24px]
       "
@@ -24,7 +26,7 @@ export default function HeroVideo() {
         alt="Latest Message"
         fill
         priority
-        sizes="(max-width: 640px) 100vw,(max-width: 1024px) 50vw,444px"
+        sizes="(max-width: 300px) 80vw, (max-width: 824px) 50vw, 380px"
         className="
           object-cover
           transition-transform
@@ -45,8 +47,8 @@ export default function HeroVideo() {
           left-1/2
           top-1/2
           flex
-          h-12
-          w-12
+          h-10
+          w-10
           -translate-x-1/2
           -translate-y-1/2
           items-center
@@ -59,17 +61,17 @@ export default function HeroVideo() {
           hover:scale-110
           hover:bg-[#ff5d33]
 
-          sm:h-14
-          sm:w-14
+          sm:h-12
+          sm:w-12
 
-          lg:h-16
-          lg:w-16
+          lg:h-14
+          lg:w-14
         "
       >
         <Play
-          size={20}
+          size={18}
           fill="white"
-          className="ml-[2px] text-white sm:h-[22px] sm:w-[22px] lg:h-6 lg:w-6"
+          className="ml-[2px] text-white sm:h-[20px] sm:w-[20px] lg:h-5 lg:w-5"
         />
       </button>
     </div>

@@ -3,40 +3,47 @@ import { loveSpots } from "@/data/lovespots";
 
 export default function LoveSpotsHeader() {
   return (
-    <div className="relative z-10 -mt-8 mb-[16px] flex items-center gap-[10px] sm:-mt-12 sm:mb-[20px] sm:gap-[12px] md:-mt-16 md:mb-[24px] md:gap-[14px] lg:gap-[16px]">
-      {/* ICON */}
+    <div className="flex items-start gap-3 sm:gap-4">
+      {/* Icon */}
       <Image
-        src={loveSpots.icon}
-        alt="LoveSpot Icon"
+        src={loveSpots.icon || "/icons/lovespot.svg"}
+        alt="Love Spots Icon"
         width={96}
         height={80}
-        className="h-[54px] w-[65px] shrink-0 object-contain sm:h-[62px] sm:w-[74px] md:h-[70px] md:w-[84px] lg:h-[80px] lg:w-[96px]"
+        className="
+          h-[38px]
+          w-[46px]
+          shrink-0
+          object-contain
+          sm:h-[44px]
+          sm:w-[50px]
+          md:h-[56px]
+          md:w-[64px]
+        "
       />
 
-      {/* HEADING */}
-      <div className="leading-none">
-        {/* TOP TITLE */}
-        <h2
-          className="heading-font text-[34px] uppercase leading-[34px] text-[#575656] sm:text-[42px] sm:leading-[42px] md:text-[50px] md:leading-[50px] lg:text-[60px] lg:leading-[60px]"
-          style={{
-            fontWeight: 900,
-            letterSpacing: "0px",
-          }}
-        >
-          {loveSpots.titleTop}
-        </h2>
+      {/* Multiline Header */}
+      <h2
+        className="
+          heading-font
+          flex
+          flex-col
+          uppercase
+          text-[28px]
+          leading-[1.05]
 
-        {/* BOTTOM TITLE */}
-        <h2
-          className="heading-font text-[34px] uppercase leading-[34px] text-[#ED4823] sm:text-[42px] sm:leading-[42px] md:text-[50px] md:leading-[50px] lg:text-[60px] lg:leading-[60px]"
-          style={{
-            fontWeight: 900,
-            letterSpacing: "0px",
-          }}
-        >
-          {loveSpots.titleBottom}
-        </h2>
-      </div>
+          sm:text-[36px]
+          md:text-[40px]
+          lg:text-[48px]
+        "
+        style={{
+          fontWeight: 900,
+          letterSpacing: "0px",
+        }}
+      >
+        <span className="text-[#575656]">{loveSpots.titleTop}</span>
+        <span className="text-[#ED4823]">{loveSpots.titleBottom}</span>
+      </h2>
     </div>
   );
 }

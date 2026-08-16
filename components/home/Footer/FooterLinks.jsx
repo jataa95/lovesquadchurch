@@ -45,14 +45,14 @@ export default function FooterLinks() {
             {/* COLUMN HEADING */}
             <div className="mb-[14px] flex items-center justify-start text-left sm:mb-[18px]">
               <span className="mr-[4px] text-[#ED4823]">[</span>
-              <span className="heading-font text-[12px] font-semibold uppercase text-[#F5EBDD] sm:text-[14px]">
+              <span className="heading-font text-[14px] font-semibold uppercase text-[#F5EBDD] sm:text-[14px]">
                 {column.title}
               </span>
               <span className="ml-[4px] text-[#ED4823]">]</span>
             </div>
 
             {/* LINKS */}
-            <div className="flex flex-col items-start gap-[10px] text-left sm:gap-[14px]">
+            <div className="flex flex-col items-start gap-[12px] text-left sm:gap-[14px]">
               {column.links.map((link) =>
                 link.external ? (
                   <a
@@ -60,7 +60,7 @@ export default function FooterLinks() {
                     href={link.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="heading-font text-left text-[11px] font-medium uppercase text-[#F5EBDD] transition-colors duration-200 hover:text-[#ED4823] sm:text-[12px]"
+                    className="heading-font py-[2px] text-left text-[13px] font-medium uppercase text-[#F5EBDD] transition-colors duration-200 hover:text-[#ED4823] sm:py-0 sm:text-[12px]"
                   >
                     {link.label}
                   </a>
@@ -68,7 +68,7 @@ export default function FooterLinks() {
                   <Link
                     key={link.label}
                     href={link.href}
-                    className="heading-font text-left text-[11px] font-medium uppercase text-[#F5EBDD] transition-colors duration-200 hover:text-[#ED4823] sm:text-[12px]"
+                    className="heading-font py-[2px] text-left text-[13px] font-medium uppercase text-[#F5EBDD] transition-colors duration-200 hover:text-[#ED4823] sm:py-0 sm:text-[12px]"
                   >
                     {link.label}
                   </Link>

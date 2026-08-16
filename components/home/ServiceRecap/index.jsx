@@ -7,23 +7,27 @@ export default function ServiceRecap() {
     <section
       className="
         bg-[#F9E9D3]
-        py-12
+        pt-8
+        pb-8
 
-        sm:py-16
+        sm:pt-10
+        sm:pb-10
 
-        lg:py-20
+        lg:pt-12
+        lg:pb-12
       "
     >
       <Container>
         <ServiceRecapHeader />
 
+        {/* Tighter spacing above gallery */}
         <div
           className="
-            mt-8
+            mt-3
 
-            sm:mt-10
+            sm:mt-4
 
-            lg:mt-12
+            lg:mt-5
           "
         >
           <RecapGallery />

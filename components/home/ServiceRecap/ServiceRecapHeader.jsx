@@ -9,12 +9,12 @@ export default function ServiceRecapHeader() {
         flex
         flex-col
         items-start
-        gap-6
+        gap-2
 
         sm:flex-row
         sm:items-end
         sm:justify-between
-        sm:gap-4
+        sm:gap-2
       "
     >
       {/* ================================
@@ -24,9 +24,9 @@ export default function ServiceRecapHeader() {
         className="
           flex
           items-start
-          gap-3
+          gap-2
 
-          sm:gap-4
+          sm:gap-3.5
         "
       >
         {/* Service Icon */}
@@ -36,19 +36,19 @@ export default function ServiceRecapHeader() {
           width={96}
           height={80}
           className="
-            h-[52px]
-            w-[62px]
+            h-[38px]
+            w-[46px]
             shrink-0
             object-contain
 
-            sm:h-[64px]
-            sm:w-[76px]
+            sm:h-[44px]
+            sm:w-[48px]
 
-            md:h-[72px]
-            md:w-[86px]
+            md:h-[56px]
+            md:w-[68px]
 
-            lg:h-[80px]
-            lg:w-[96px]
+            lg:h-[64px]
+            lg:w-[76px]
           "
         />
 
@@ -60,17 +60,17 @@ export default function ServiceRecapHeader() {
               uppercase
               text-[#ED4823]
 
-              text-[38px]
-              leading-[38px]
+              text-[28px]
+              leading-[1.05]
 
-              sm:text-[46px]
-              sm:leading-[46px]
+              sm:text-[36px]
+              sm:leading-[36px]
 
-              md:text-[52px]
-              md:leading-[52px]
+              md:text-[42px]
+              md:leading-[42px]
 
-              lg:text-[60px]
-              lg:leading-[60px]
+              lg:text-[48px]
+              lg:leading-[48px]
             "
             style={{
               fontWeight: 900,
@@ -86,17 +86,17 @@ export default function ServiceRecapHeader() {
               uppercase
               text-[#575656]
 
-              text-[38px]
-              leading-[38px]
+              text-[28px]
+              leading-[1.05]
 
-              sm:text-[46px]
-              sm:leading-[46px]
+              sm:text-[36px]
+              sm:leading-[36px]
 
-              md:text-[52px]
-              md:leading-[52px]
+              md:text-[42px]
+              md:leading-[42px]
 
-              lg:text-[60px]
-              lg:leading-[60px]
+              lg:text-[48px]
+              lg:leading-[48px]
             "
             style={{
               fontWeight: 900,

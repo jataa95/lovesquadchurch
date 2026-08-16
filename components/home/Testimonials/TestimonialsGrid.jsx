@@ -47,18 +47,12 @@ const testimonials = [
   },
 ];
 
-/*
- * Duplicate the complete sequence so the marquee
- * can loop continuously.
- */
 const items = [...testimonials, ...testimonials];
 
 export default function TestimonialsGrid() {
   return (
     <section className="w-full overflow-hidden bg-[#080808] py-4 sm:py-6 md:py-8 lg:py-10">
-      {/* =====================================================
-          TOP ROW - MOVES LEFT
-      ====================================================== */}
+      {/* TOP ROW - SHOWN ON ALL SCREENS */}
       <div className="testimonial-marquee">
         <div className="testimonial-track testimonial-track-top">
           {items.map((item, index) => (
@@ -70,10 +64,8 @@ export default function TestimonialsGrid() {
         </div>
       </div>
 
-      {/* =====================================================
-          BOTTOM ROW - MOVES RIGHT
-      ====================================================== */}
-      <div className="testimonial-marquee mt-3 sm:mt-4 md:mt-6 lg:mt-8">
+      {/* BOTTOM ROW - HIDDEN ON MOBILE, SHOWN FROM 'SM' UPWARDS */}
+      <div className="testimonial-marquee hidden mt-3 sm:block sm:mt-4 md:mt-6 lg:mt-8">
         <div className="testimonial-track testimonial-track-bottom">
           {items
             .slice()
