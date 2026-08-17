@@ -13,9 +13,10 @@ export default function TertiaryButton({
         group
         inline-flex
         items-center
-        gap-2
+        gap-1
         transition-all
         duration-300
+        sm:gap-2
         ${className}
       `}
     >
@@ -23,18 +24,18 @@ export default function TertiaryButton({
       <span
         className="
           heading-font
+          text-[18px]
+          font-bold
           uppercase
+          leading-none
+          tracking-[-0.02em]
           text-[#ED4823]
           transition-colors
           duration-300
           group-hover:text-[#F4EBDC]
+
+          sm:text-[24px]
         "
-        style={{
-          fontSize: "24px",
-          fontWeight: 700,
-          lineHeight: "20px",
-          letterSpacing: "-0.02em",
-        }}
       >
         {"{"}
       </span>
@@ -43,31 +44,35 @@ export default function TertiaryButton({
       <span
         className="
           heading-font
+          text-[14px]
+          font-bold
           uppercase
+          leading-none
+          tracking-[-0.02em]
           text-[#F4EBDC]
           transition-colors
           duration-300
           group-hover:text-[#ED4823]
+
+          sm:text-[20px]
         "
-        style={{
-          fontSize: "20px",
-          fontWeight: 700,
-          lineHeight: "20px",
-          letterSpacing: "-0.02em",
-        }}
       >
         {children}
       </span>
 
       {/* Down Arrow */}
       <ArrowDown
-        size={24}
         className="
+          h-4
+          w-4
           text-[#F4EBDC]
           transition-all
           duration-300
-          group-hover:text-[#ED4823]
           group-hover:translate-y-0.5
+          group-hover:text-[#ED4823]
+
+          sm:h-6
+          sm:w-6
         "
       />
 
@@ -75,18 +80,18 @@ export default function TertiaryButton({
       <span
         className="
           heading-font
+          text-[18px]
+          font-bold
           uppercase
+          leading-none
+          tracking-[-0.02em]
           text-[#ED4823]
           transition-colors
           duration-300
           group-hover:text-[#F4EBDC]
+
+          sm:text-[24px]
         "
-        style={{
-          fontSize: "24px",
-          fontWeight: 700,
-          lineHeight: "20px",
-          letterSpacing: "-0.02em",
-        }}
       >
         {"}"}
       </span>
