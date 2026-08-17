@@ -33,7 +33,7 @@ export default function HeroHeading() {
           lg:text-[32px]
           lg:leading-[40px]
         "
-        style={{ fontWeight: 500, letterSpacing: "-0.02em" }}
+        style={{ fontWeight: 300, letterSpacing: "-0.02em" }}
       >
         {hero.tag}
       </p>
@@ -82,7 +82,7 @@ export default function HeroHeading() {
           lg:text-[32px]
           lg:leading-[40px]
         "
-        style={{ fontWeight: 500, letterSpacing: "-0.02em" }}
+        style={{ fontWeight: 300, letterSpacing: "-0.02em" }}
       >
         {hero.subtitle}
       </p>

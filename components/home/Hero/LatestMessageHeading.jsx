@@ -10,7 +10,7 @@ export default function LatestMessageHeading() {
           uppercase
           text-[#F04A23]
 
-          text-[22px]          {/* Reduced from 28px */}
+          text-[20px]          {/* Reduced from 28px */}
           leading-[22px]        {/* Reduced from 34px */}
 
           sm:text-[20px]
@@ -20,7 +20,7 @@ export default function LatestMessageHeading() {
           lg:leading-[48px]
         "
         style={{
-          fontWeight: 500,
+          fontWeight: 300,
           letterSpacing: "-0.03em",
         }}
       >
