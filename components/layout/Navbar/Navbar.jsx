@@ -12,8 +12,8 @@ export default function Navbar() {
   return (
     <>
       {/* FIXED NAVBAR HEADER */}
-      <header className="fixed left-0 top-0 z-[9999] w-full pointer-events-none bg-transparent">
-        <div className="relative z-10 flex items-center justify-between px-4 pt-4 sm:px-2 sm:py-2 lg:px-8 lg:py-8 pointer-events-auto">
+      <header className="fixed left-0 top-0 z-[9999] w-full pointer-events-none bg-[#F9E9D3]">
+        <div className="relative z-10 flex items-center justify-between px-3 pt-3 pb-4 sm:px-2 sm:py-2 lg:px-8 lg:py-8 pointer-events-auto">
           {/* LOGO */}
           <Link
             href="/"

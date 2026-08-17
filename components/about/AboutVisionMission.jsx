@@ -25,7 +25,7 @@ export default function AboutVisionMission() {
   return (
     <section
       id="vision"
-      className="relative w-full overflow-hidden bg-[#F5EBDD] px-[8px]"
+      className="relative w-full bg-[#F5EBDD] px-[8px]"
     >
       {/* INNER WRAPPER */}
       <div
@@ -47,6 +47,7 @@ export default function AboutVisionMission() {
             grid
             w-full
             grid-cols-1
+            items-start
             gap-[55px]
             lg:min-h-[610px]
             lg:grid-cols-2
@@ -54,14 +55,21 @@ export default function AboutVisionMission() {
           "
         >
           {/* =================================
-              LEFT SIDE
+              LEFT SIDE (STICKY)
           ================================== */}
-
           <div
             className="
               flex
               items-start
               pt-0
+              sticky
+              top-16
+              lg:top-28
+              h-fit
+              bg-[#F9E9D3]
+              z-10
+              pb-4
+              lg:pb-0
               lg:pt-[8px]
             "
           >
@@ -111,7 +119,7 @@ export default function AboutVisionMission() {
                   text-[#4A4A4A]
                 "
                 style={{
-                  fontSize: "clamp(48px, 7vw, 80px)",
+                  fontSize: "clamp(36px, 7vw, 80px)",
                 }}
               >
                 <span className="block">OUR</span>
@@ -130,7 +138,6 @@ export default function AboutVisionMission() {
           {/* =================================
               RIGHT SIDE
           ================================== */}
-
           <div
             className="
               flex
@@ -173,7 +180,7 @@ export default function AboutVisionMission() {
 }
 
 /* =================================
-   STATEMENT
+    STATEMENT
 ================================= */
 
 function Statement({ title, text, isLast }) {

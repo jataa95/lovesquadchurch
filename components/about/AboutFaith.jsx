@@ -52,7 +52,7 @@ export default function AboutFaith() {
         />
 
         {/* STICKY HEADER CONTAINER */}
-        <div className="sticky top-16 z-40 mx-auto flex max-w-[1400px] flex-col gap-4 bg-[#0B0B0B]/95 px-4 pt-4 pb-4 backdrop-blur-md sm:px-8 sm:pt-6 sm:pb-6 lg:flex-row lg:items-start lg:justify-between lg:px-12">
+        <div className="sticky top-24 z-40 mx-auto flex max-w-[1400px] flex-col gap-4 bg-[#0B0B0B]/95 px-4 pt-4 pb-4 backdrop-blur-md sm:px-8 sm:pt-6 sm:pb-6 lg:flex-row lg:items-start lg:justify-between lg:px-12">
           {/* HEADER TITLE */}
           <div className="flex items-start gap-3 sm:gap-4 lg:gap-6">
             <Image
@@ -63,7 +63,7 @@ export default function AboutFaith() {
               className="mt-1 h-8 w-8 shrink-0 object-contain sm:h-12 sm:w-12 lg:mt-1.5 lg:h-16 lg:w-16"
             />
 
-            <h2 className="heading-font text-[32px] font-bold uppercase leading-[0.88] tracking-[-0.05em] sm:text-[52px] lg:text-[72px] xl:text-[84px]">
+            <h2 className="heading-font text-[36px] font-bold uppercase leading-[0.88] tracking-[-0.05em] sm:text-[52px] lg:text-[72px] xl:text-[84px]">
               <span className="block">OUR STATEMENTS</span>
               <span className="block">
                 OF <span className="text-[#ED4823]">FAITH</span>

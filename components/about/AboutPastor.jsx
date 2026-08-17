@@ -9,7 +9,6 @@ export default function AboutPastor() {
       className="
         relative
         w-full
-        overflow-hidden
         bg-[#0B0B0B]
         px-[8px]
         text-[#F4EBDC]
@@ -50,17 +49,18 @@ export default function AboutPastor() {
         className="
           relative
           z-10
-          grid
+          mx-auto
           w-full
-          grid-cols-1
-          gap-[40px]
+          max-w-[1440px]
           px-[16px]
           py-[48px]
 
           sm:px-[24px]
           sm:py-[56px]
 
+          md:grid
           md:grid-cols-2
+          md:items-start
           md:gap-[32px]
           md:px-[32px]
           md:py-[28px]
@@ -70,17 +70,19 @@ export default function AboutPastor() {
         "
       >
         {/* ================================= */}
-        {/* LEFT SIDE                         */}
+        {/* LEFT SIDE (HEADING & TEXT)        */}
         {/* ================================= */}
-
         <div
           className="
             flex
+            w-full
             flex-col
             justify-start
-            pt-0
+            bg-[#0B0B0B]
+            z-10
 
-            md:pt-[4px]
+            md:sticky
+            md:top-28
           "
         >
           {/* HEADING */}
@@ -91,7 +93,7 @@ export default function AboutPastor() {
               font-bold
               leading-[0.82]
               tracking-[-0.05em]
-              text-[52px]
+              text-[36px]
 
               sm:text-[62px]
 
@@ -189,16 +191,17 @@ export default function AboutPastor() {
         </div>
 
         {/* ================================= */}
-        {/* RIGHT SIDE                        */}
+        {/* RIGHT SIDE (IMAGE - FLOWS BELOW ON MOBILE) */}
         {/* ================================= */}
-
         <div
           className="
+            mt-[40px]
             flex
             w-full
             items-start
             justify-center
 
+            md:mt-0
             md:justify-end
           "
         >

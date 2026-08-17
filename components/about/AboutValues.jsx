@@ -48,11 +48,11 @@ export default function AboutValues() {
         lg:py-20
       "
     >
-      <div className="mx-auto flex w-full max-w-[1400px] flex-col gap-8 sm:gap-10 lg:min-h-[540px] lg:flex-row lg:gap-0">
+      <div className="mx-auto flex w-full max-w-[1400px] flex-col items-start gap-8 sm:gap-10 lg:min-h-[540px] lg:flex-row lg:gap-0">
         {/* ================================
-            LEFT SIDE
+            LEFT SIDE (STICKY)
         ================================= */}
-        <div className="flex w-full items-start lg:w-1/2">
+        <div className="flex w-full items-start sticky top-16 lg:top-28 h-fit lg:w-1/2 bg-[#F9E9D3] z-10 pb-4 lg:pb-0">
           <div className="flex items-start gap-3 sm:gap-4 lg:gap-[16px]">
             {/* Icon */}
             <Image
@@ -67,7 +67,7 @@ export default function AboutValues() {
             <h2
               className="heading-font font-bold uppercase leading-[0.9] tracking-[-0.05em]"
               style={{
-                fontSize: "clamp(42px, 10vw, 80px)",
+                fontSize: "clamp(36px, 10vw, 80px)",
               }}
             >
               <span className="block text-[#4A4A4A]">OUR</span>

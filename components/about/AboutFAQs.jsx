@@ -88,7 +88,7 @@ export default function AboutFAQs() {
             tracking-[-0.04em]
             text-[#4A4A4A]
 
-            text-[52px]
+            text-[36px]
 
             sm:text-[64px]
 
