@@ -1,5 +1,5 @@
 import Navbar from "@/components/layout/Navbar/Navbar";
-import TestimonialsHero from "@/components/testimonials/Testimonials";
+import Testimonials from "@/components/home/Testimonials";
 import AboutFAQs from "@/components/about/AboutFAQs";
 import Footer from "@/components/home/Footer";
 
