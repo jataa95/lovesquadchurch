@@ -35,8 +35,8 @@ const footerColumns = [
 export default function FooterLinks() {
   return (
     <div className="w-full max-w-[700px] pt-[20px] sm:pt-[30px] md:pt-[40px] lg:pt-[30px]">
-      {/* NAVIGATION BOX */}
-      <div className="flex flex-col items-center gap-[32px] border border-[#575656] px-[24px] py-[28px] sm:gap-[36px] sm:px-[32px] sm:py-[36px] md:px-[40px] md:py-[42px] lg:grid lg:grid-cols-3 lg:items-start lg:justify-items-center lg:gap-0 lg:px-[58px] lg:py-[52px]">
+      {/* NAVIGATION BOX - Faint border added via border-[#575656]/20 */}
+      <div className="flex flex-col items-center gap-[32px] border border-[#575656]/20 px-[24px] py-[28px] sm:gap-[36px] sm:px-[32px] sm:py-[36px] md:px-[40px] md:py-[42px] lg:grid lg:grid-cols-3 lg:items-start lg:justify-items-center lg:gap-0 lg:px-[58px] lg:py-[52px]">
         {footerColumns.map((column) => (
           <div
             key={column.title}

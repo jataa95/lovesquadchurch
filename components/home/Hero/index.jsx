@@ -4,30 +4,11 @@ import HeroBottom from "./HeroBottom";
 
 export default function Hero() {
   return (
-    <section className="relative min-h-screen overflow-hidden bg-[#111111]">
+    <section className="relative min-h-fit overflow-hidden bg-[#111111] xl:min-h-screen">
       {/* Background */}
-      <div
-        className="
-          absolute
-          inset-0
-          bg-[radial-gradient(circle_at_top,#2A2A2A_0%,#111111_45%,#050505_100%)]
-        "
-      />
-
-      {/* Soft vignette */}
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,#2A2A2A_0%,#111111_45%,#050505_100%)]" />
       <div className="absolute inset-0 bg-black/35" />
-
-      {/* Noise */}
-      <div
-        className="
-          absolute
-          inset-0
-          bg-[url('/images/noise.png')]
-          bg-repeat
-          opacity-[0.03]
-          mix-blend-soft-light
-        "
-      />
+      <div className="absolute inset-0 bg-[url('/images/noise.png')] bg-repeat opacity-[0.03] mix-blend-soft-light" />
 
       {/* Hero Content */}
       <Container
@@ -35,25 +16,22 @@ export default function Hero() {
           relative
           z-10
           flex
-          min-h-screen
           flex-col
-          justify-between
-          
+          justify-start
+          gap-3
           px-4
-          pb-16
+          pb-8
           pt-20
 
-          sm:px-6
-          sm:pb-20
-          sm:pt-24
-
-          lg:px-8
-          lg:pb-24
-          lg:pt-28
+          xl:min-h-screen
+          xl:justify-between
+          xl:gap-0
+          xl:px-8
+          xl:pb-24
+          xl:pt-28
         "
       >
         <HeroHeading />
-
         <HeroBottom />
       </Container>
     </section>

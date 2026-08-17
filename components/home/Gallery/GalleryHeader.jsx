@@ -28,10 +28,10 @@ export default function GalleryHeader() {
           uppercase
           text-[#575656]
 
-          text-[26px]
-          leading-[27px]
+          text-[23px]        {/* Reduced from 26px */}
+          leading-[26px]     {/* Reduced from 27px */}
           tracking-[-0.03em]
-          font-extrabold
+          font-bold
 
           sm:max-w-[650px]
           sm:text-[32px]

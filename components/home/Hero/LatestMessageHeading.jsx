@@ -27,7 +27,7 @@ export default function LatestMessageHeading() {
         Latest Message
       </h2>
 
-      <div className="mt-2 sm:mt-4">
+      <div className="mt-1 sm:mt-4">
         <div className="scale-90 origin-center sm:scale-100"> {/* Optional: Scales down button slightly on mobile */}
           <PrimaryButton href="/messages">WATCH NOW</PrimaryButton>
         </div>
