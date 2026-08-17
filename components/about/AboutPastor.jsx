@@ -70,7 +70,7 @@ export default function AboutPastor() {
         "
       >
         {/* ================================= */}
-        {/* LEFT SIDE (HEADING & TEXT)        */}
+        {/* LEFT SIDE                         */}
         {/* ================================= */}
         <div
           className="
@@ -79,48 +79,58 @@ export default function AboutPastor() {
             flex-col
             justify-start
             bg-[#0B0B0B]
-            z-10
-
-            md:sticky
-            md:top-28
           "
         >
-          {/* HEADING */}
-          <h2
-            className="
-              heading-font
-              uppercase
-              font-bold
-              leading-[0.82]
-              tracking-[-0.05em]
-              text-[36px]
-
-              sm:text-[62px]
-
-              md:text-[64px]
-
-              lg:text-[72px]
-            "
-          >
-            <span className="block text-[#F4EBDC]">OUR</span>
-
-            <span className="block text-[#F4EBDC]">
-              LEAD <span className="text-[#ED4823]">PASTOR</span>
-            </span>
-          </h2>
-
-          {/* DIVIDER */}
+          {/* STICKY HEADING WRAPPER */}
           <div
             className="
-              mt-[18px]
-              h-[2px]
-              w-full
-              max-w-[600px]
-              bg-[#77736D]
+              sticky
+              top-16
+              sm:top-24
+              md:top-28
+              z-20
+              bg-[#0B0B0B]
+              pb-4
+              pt-4
             "
-          />
+          >
+            {/* HEADING */}
+            <h2
+              className="
+                heading-font
+                uppercase
+                font-bold
+                leading-[0.82]
+                tracking-[-0.05em]
+                text-[36px]
 
-          {/* DESCRIPTION CARD */}
+                sm:text-[62px]
+
+                md:text-[64px]
+
+                lg:text-[72px]
+              "
+            >
+              <span className="block text-[#F4EBDC]">OUR</span>
+
+              <span className="block text-[#F4EBDC]">
+                LEAD <span className="text-[#ED4823]">PASTOR</span>
+              </span>
+            </h2>
+
+            {/* DIVIDER */}
+            <div
+              className="
+                mt-[18px]
+                h-[2px]
+                w-full
+                max-w-[600px]
+                bg-[#77736D]
+              "
+            />
+          </div>
+
+          {/* DESCRIPTION CARD (SCROLLS UNDER HEADING) */}
           <div
             className="
               mt-[24px]
@@ -130,6 +140,7 @@ export default function AboutPastor() {
               border-[#3A3A3A]
               px-[14px]
               py-[16px]
+              z-10
 
               sm:px-[18px]
               sm:py-[18px]
@@ -191,7 +202,7 @@ export default function AboutPastor() {
         </div>
 
         {/* ================================= */}
-        {/* RIGHT SIDE (IMAGE - FLOWS BELOW ON MOBILE) */}
+        {/* RIGHT SIDE (IMAGE)                */}
         {/* ================================= */}
         <div
           className="

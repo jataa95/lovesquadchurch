@@ -84,7 +84,7 @@ export default function MenuOverlay({ onClose }) {
       {/* =====================================================
           HEADER
       ====================================================== */}
-      <header className="relative z-50 flex w-full items-center justify-between px-4 pt-4 sm:px-6">
+      <header className="relative z-50 flex w-full items-center justify-between px-6 pt-6 sm:px-6">
         {/* Logo */}
         <Link
           href="/"
@@ -105,7 +105,7 @@ export default function MenuOverlay({ onClose }) {
           type="button"
           onClick={onClose}
           aria-label="Close navigation menu"
-          className="flex h-12 w-12 items-center justify-center rounded-full bg-[#F04423] text-[#0B0B0B] transition-transform duration-200 hover:scale-105 sm:h-14 sm:w-14"
+          className="flex h-16 w-16 items-center justify-center rounded-full bg-transparent text-[#F04423] transition-transform duration-200 hover:scale-105 sm:h-16 sm:w-16"
         >
           <span className="text-3xl font-light leading-none">×</span>
         </button>

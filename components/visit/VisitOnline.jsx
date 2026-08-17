@@ -15,8 +15,8 @@ export default function VisitOnline() {
           grid-cols-1
           gap-10
           px-5
-          pb-12
-          pt-8
+          pb-4
+          pt-4
 
           sm:px-6
           sm:pb-14

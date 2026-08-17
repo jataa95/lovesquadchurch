@@ -13,10 +13,10 @@ export default function VisitDirection() {
           md:px-8
           lg:px-12
           xl:px-[32px]
-          pb-12
+          pb-4
           sm:pb-14
           md:pb-16
-          lg:pb-[80px]
+          lg:pb-[30px]
         "
       >
         {/* DIRECTION LABEL */}

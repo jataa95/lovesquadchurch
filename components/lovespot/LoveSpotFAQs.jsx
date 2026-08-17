@@ -54,7 +54,7 @@ export default function LoveSpotFAQs() {
       id="lovespot-faqs"
       className="relative w-full overflow-hidden bg-[#F9E9D3] px-[8px]"
     >
-      <div className="relative w-full bg-[#F9E9D3] px-[16px] py-[40px] sm:px-[24px] sm:py-[48px] md:px-[32px] md:py-[56px]">
+      <div className="relative w-full bg-[#F9E9D3] px-[16px] py-[24px] sm:px-[24px] sm:py-[48px] md:px-[32px] md:py-[56px]">
         {/* HEADING */}
         <h2
           className="heading-font uppercase font-bold leading-none tracking-[-0.04em] text-[#4A4A4A]"

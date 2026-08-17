@@ -12,52 +12,55 @@ export default function VisitInPerson() {
           w-full
           max-w-[1440px]
           grid-cols-1
-          gap-12
-          px-5
-          pb-12
-          pt-8
-
+          gap-8
+          px-4
+          py-6
+          
           sm:px-6
-          sm:pb-14
-
-          md:px-8
-          md:pb-16
-          md:pt-10
+          sm:py-8
 
           lg:grid-cols-2
           lg:gap-[60px]
           lg:px-12
-          lg:pb-[80px]
-          lg:pt-[20px]
-
+          lg:py-[80px]
+          
           xl:px-[32px]
+          relative
+          items-start
         "
       >
         {/* =========================================
-            LEFT SIDE
+            LEFT SIDE (STICKY HEADING BLOCK)
         ========================================== */}
 
         <div
           className="
             flex
             items-start
-            gap-3
-
+            gap-2
+            
             sm:gap-4
 
-            lg:pt-[4px]
+            sticky
+            top-16
+            lg:top-24
+            self-start
+            h-fit
+            z-10
+            bg-[#F9E9D3]
+            py-2
           "
         >
           {/* ICON */}
 
           <div
             className="
-              mt-3
+              mt-1.5
               shrink-0
 
-              sm:mt-5
+              sm:mt-2
 
-              lg:mt-[35px]
+              lg:mt-[10px]
             "
           >
             <Image
@@ -66,18 +69,15 @@ export default function VisitInPerson() {
               width={96}
               height={80}
               className="
-                h-[48px]
-                w-[48px]
+                h-[36px]
+                w-[36px]
                 object-contain
 
-                sm:h-[60px]
-                sm:w-[60px]
+                sm:h-[48px]
+                sm:w-[48px]
 
-                md:h-[70px]
-                md:w-[70px]
-
-                lg:h-[80px]
-                lg:w-[80px]
+                lg:h-[64px]
+                lg:w-[64px]
               "
             />
           </div>
@@ -89,12 +89,12 @@ export default function VisitInPerson() {
               heading-font
               uppercase
               font-bold
-              leading-[0.82]
+              leading-[0.85]
               tracking-[-0.045em]
               text-[#4A4A4A]
             "
             style={{
-              fontSize: "clamp(52px, 7vw, 80px)",
+              fontSize: "clamp(40px, 11vw, 80px)",
             }}
           >
             WE AWAIT
@@ -132,17 +132,17 @@ export default function VisitInPerson() {
               width={60}
               height={60}
               className="
-                h-[36px]
-                w-[36px]
+                h-[30px]
+                w-[30px]
                 object-contain
                 grayscale
                 brightness-75
 
-                sm:h-[42px]
-                sm:w-[42px]
+                sm:h-[38px]
+                sm:w-[38px]
 
-                md:h-[48px]
-                md:w-[48px]
+                lg:h-[48px]
+                lg:w-[48px]
               "
             />
 
@@ -155,7 +155,7 @@ export default function VisitInPerson() {
                 text-[#4A4A4A]
               "
               style={{
-                fontSize: "clamp(36px, 5vw, 64px)",
+                fontSize: "clamp(28px, 7vw, 64px)",
                 lineHeight: "1",
               }}
             >
@@ -169,14 +169,15 @@ export default function VisitInPerson() {
 
           <div
             className="
-              mt-8
+              mt-5
               border-b
               border-[#A9A49D]
-              py-3
+              py-2.5
 
-              sm:mt-9
+              sm:mt-6
+              sm:py-3
 
-              lg:mt-[40px]
+              lg:mt-[32px]
             "
           >
             <p
@@ -186,8 +187,8 @@ export default function VisitInPerson() {
                 text-[#77736D]
               "
               style={{
-                fontSize: "clamp(13px, 1.2vw, 16px)",
-                lineHeight: "1.25",
+                fontSize: "clamp(12px, 1.1vw, 16px)",
+                lineHeight: "1.2",
                 fontWeight: 500,
               }}
             >
@@ -196,7 +197,7 @@ export default function VisitInPerson() {
 
             <div
               className="
-                mt-2
+                mt-1.5
                 flex
                 items-end
                 justify-between
@@ -208,12 +209,12 @@ export default function VisitInPerson() {
                   heading-font
                   uppercase
                   font-bold
-                  leading-[1]
+                  leading-[1.05]
                   tracking-[-0.015em]
                   text-[#4A4A4A]
                 "
                 style={{
-                  fontSize: "clamp(20px, 2.5vw, 32px)",
+                  fontSize: "clamp(18px, 3.5vw, 32px)",
                 }}
               >
                 <div>SUNDAYS</div>
@@ -225,12 +226,12 @@ export default function VisitInPerson() {
                   heading-font
                   text-right
                   font-bold
-                  leading-[1]
+                  leading-[1.05]
                   tracking-[-0.015em]
                   text-[#4A4A4A]
                 "
                 style={{
-                  fontSize: "clamp(20px, 2.5vw, 32px)",
+                  fontSize: "clamp(18px, 3.5vw, 32px)",
                 }}
               >
                 <div>9AM</div>
@@ -245,14 +246,18 @@ export default function VisitInPerson() {
 
           <div
             className="
-              mt-8
-              mb-8
+              mt-5
+              mb-5
               border-b
               border-[#A9A49D]
-              py-3
+              py-2.5
 
-              lg:mt-[40px]
-              lg:mb-[40px]
+              sm:mt-6
+              sm:mb-6
+              sm:py-3
+
+              lg:mt-[32px]
+              lg:mb-[32px]
             "
           >
             <p
@@ -262,8 +267,8 @@ export default function VisitInPerson() {
                 text-[#77736D]
               "
               style={{
-                fontSize: "clamp(13px, 1.2vw, 16px)",
-                lineHeight: "1.25",
+                fontSize: "clamp(12px, 1.1vw, 16px)",
+                lineHeight: "1.2",
                 fontWeight: 500,
               }}
             >
@@ -272,11 +277,11 @@ export default function VisitInPerson() {
 
             <div
               className="
-                mt-2
+                mt-1.5
                 flex
                 flex-col
                 items-start
-                gap-3
+                gap-2
 
                 sm:flex-row
                 sm:items-end
@@ -294,7 +299,7 @@ export default function VisitInPerson() {
                   text-[#4A4A4A]
                 "
                 style={{
-                  fontSize: "clamp(20px, 2.5vw, 32px)",
+                  fontSize: "clamp(18px, 3.5vw, 32px)",
                 }}
               >
                 <div>53 RIKAZ PLAZA,</div>
@@ -312,7 +317,7 @@ export default function VisitInPerson() {
                   hover:opacity-60
                 "
                 style={{
-                  fontSize: "clamp(12px, 1.2vw, 16px)",
+                  fontSize: "clamp(12px, 1.1vw, 16px)",
                   lineHeight: "1",
                 }}
               >
@@ -327,12 +332,15 @@ export default function VisitInPerson() {
 
           <div
             className="
-              mb-8
+              mb-5
               border-b
               border-[#A9A49D]
-              py-3
+              py-2.5
 
-              lg:mb-[40px]
+              sm:mb-6
+              sm:py-3
+
+              lg:mb-[32px]
             "
           >
             <p
@@ -342,8 +350,8 @@ export default function VisitInPerson() {
                 text-[#77736D]
               "
               style={{
-                fontSize: "clamp(13px, 1.2vw, 16px)",
-                lineHeight: "1.25",
+                fontSize: "clamp(12px, 1.1vw, 16px)",
+                lineHeight: "1.2",
                 fontWeight: 500,
               }}
             >
@@ -353,13 +361,13 @@ export default function VisitInPerson() {
             <p
               className="
                 body-font
-                mt-2
+                mt-1.5
                 max-w-[650px]
                 text-[#5A5853]
               "
               style={{
-                fontSize: "clamp(15px, 1.5vw, 20px)",
-                lineHeight: "1.2",
+                fontSize: "clamp(14px, 1.8vw, 20px)",
+                lineHeight: "1.3",
               }}
             >
               Cras Aliquet, Sem Consectetur Condimentum Ultricies, Risus Massa
@@ -373,10 +381,9 @@ export default function VisitInPerson() {
 
           <div
             className="
-              mb-8
-              py-3
-
-              lg:mb-[40px]
+              py-2.5
+              
+              sm:py-3
             "
           >
             <p
@@ -386,8 +393,8 @@ export default function VisitInPerson() {
                 text-[#77736D]
               "
               style={{
-                fontSize: "clamp(13px, 1.2vw, 16px)",
-                lineHeight: "1.25",
+                fontSize: "clamp(12px, 1.1vw, 16px)",
+                lineHeight: "1.2",
                 fontWeight: 500,
               }}
             >
@@ -397,13 +404,13 @@ export default function VisitInPerson() {
             <p
               className="
                 body-font
-                mt-2
+                mt-1.5
                 max-w-[650px]
                 text-[#5A5853]
               "
               style={{
-                fontSize: "clamp(15px, 1.5vw, 20px)",
-                lineHeight: "1.2",
+                fontSize: "clamp(14px, 1.8vw, 20px)",
+                lineHeight: "1.3",
               }}
             >
               Cras Aliquet, Sem Consectetur Condimentum Ultricies, Risus Massa

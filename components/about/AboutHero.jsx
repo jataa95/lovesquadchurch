@@ -24,26 +24,26 @@ export default function AboutHero() {
       className="
         relative
         flex
-        min-h-[calc(100dvh-70px)]
+        min-h-[100dvh]
         w-full
         flex-col
         items-center
-        justify-center
+        justify-end
         overflow-hidden
         bg-[#0B0B0B]
         px-5
-        py-8
+        py-12
         text-[#F4EBDC]
 
-        sm:justify-start
+        sm:justify-center
         sm:px-8
-        sm:pt-[65px]
-        sm:pb-[70px]
+        sm:pb-8
+        sm:pt-24
 
         md:px-10
-        md:pt-[75px]
+        md:pt-28
 
-        lg:pt-[90px]
+        lg:pt-32
       "
     >
       {/* =========================================
@@ -79,9 +79,6 @@ export default function AboutHero() {
       />
 
       {/* =========================================
-          HERO CONTENT (NO EXTRA WRAPPER NEEDED)
-      ========================================== */}
-      {/* =========================================
           WELCOME
       ========================================== */}
       <h1
@@ -94,6 +91,7 @@ export default function AboutHero() {
           leading-none
           tracking-[-0.06em]
           text-[#F4EBDC]
+          text-center
 
           text-[48px]
 
@@ -127,11 +125,11 @@ export default function AboutHero() {
           gap-x-4
           gap-y-3
 
-          sm:mt-[50px]
+          sm:mt-[20px]
           sm:gap-x-[40px]
           sm:gap-y-[20px]
 
-          md:mt-[55px]
+          md:mt-[25px]
           md:gap-x-[60px]
           md:gap-y-[22px]
 
