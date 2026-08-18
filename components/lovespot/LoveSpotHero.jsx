@@ -9,12 +9,13 @@ export default function LoveSpotHero() {
       id="lovespot"
       className="
         relative
-        min-h-[calc(100vh-70px)]
+        min-h-[calc(100dvh-70px)]
         w-full
         overflow-hidden
         bg-[#F9E9D3]
         px-[12px]
         pt-20
+        pb-0
         sm:px-[18px]
         sm:pb-[0px]
         lg:pt-[100px]
