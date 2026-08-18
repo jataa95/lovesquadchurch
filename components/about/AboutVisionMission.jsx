@@ -24,7 +24,7 @@ const statements = [
 export default function AboutVisionMission() {
   return (
     <section
-      id="vision"
+      id="about_vision-mission"
       className="relative w-full bg-[#F5EBDD] px-[8px]"
     >
       {/* INNER WRAPPER */}

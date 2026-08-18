@@ -31,14 +31,14 @@ export default function AboutHero() {
         justify-end
         overflow-hidden
         bg-[#0B0B0B]
-        px-5
-        py-12
+        px-12
+        pb-24
         text-[#F4EBDC]
 
         sm:justify-center
         sm:px-8
         sm:pb-8
-        sm:pt-24
+        sm:pt-16
 
         md:px-10
         md:pt-28

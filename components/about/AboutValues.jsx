@@ -34,7 +34,7 @@ const values = [
 export default function AboutValues() {
   return (
     <section
-      id="values"
+      id="about_values"
       className="
         w-full
         bg-[#F9E9D3]

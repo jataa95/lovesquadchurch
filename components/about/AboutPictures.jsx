@@ -51,6 +51,22 @@ export default function AboutPictures() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // Precise scroll handler ensuring it aligns cleanly to the top of #values
+  const handleSkipClick = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    const targetElement = document.getElementById("values");
+    if (targetElement) {
+      // Calculates exact top offset taking any sticky headers into account if needed
+      const elementPosition = targetElement.getBoundingClientRect().top + window.pageYOffset;
+      window.scrollTo({
+        top: elementPosition,
+        behavior: "smooth"
+      });
+      history.pushState(null, null, "#values");
+    }
+  };
+
   // Parallax translation offsets for desktop columns
   const leftColumnY = useTransform(scrollYProgress, [0, 1], [40, -40]);
   const centerColumnY = useTransform(scrollYProgress, [0, 1], [-20, 50]);
@@ -190,7 +206,7 @@ export default function AboutPictures() {
         </div>
       </motion.div>
 
-      {/* FLOATING SKIP BUTTON */}
+      {/* FLOATING SKIP BUTTON (Moved higher up with bottom-20) */}
       <AnimatePresence>
         {showSkip && (
           <motion.div
@@ -198,10 +214,13 @@ export default function AboutPictures() {
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.8, y: 20 }}
             transition={{ duration: 0.2 }}
-            className="fixed inset-x-0 bottom-12 z-50 flex justify-center pointer-events-none sm:hidden"
+            className="fixed inset-x-0 bottom-20 z-50 flex justify-center pointer-events-none sm:hidden"
           >
-            <div className="pointer-events-auto">
-              <TertiaryButton href="#values">
+            <div 
+              className="pointer-events-auto cursor-pointer"
+              onClick={handleSkipClick}
+            >
+              <TertiaryButton href="#about_values">
                 Skip
               </TertiaryButton>
             </div>

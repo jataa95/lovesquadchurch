@@ -1,5 +1,6 @@
 "use client";
 
+import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import { TertiaryButton } from "@/components/ui/buttons";
 
@@ -35,13 +36,59 @@ const faithStatements = [
 ];
 
 export default function AboutFaith() {
+  const sectionRef = useRef(null);
+  const [showSkip, setShowSkip] = useState(true);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (!sectionRef.current) return;
+      const rect = sectionRef.current.getBoundingClientRect();
+      const sectionHeight = rect.height;
+      const scrollProgress = -rect.top;
+      
+      const hideThreshold = sectionHeight - 350;
+      
+      if (scrollProgress > 0 && scrollProgress < hideThreshold) {
+        setShowSkip(true);
+      } else {
+        setShowSkip(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    handleScroll();
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const handleSkipClick = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    const targetElement = document.getElementById("about_vision-mission");
+    if (targetElement) {
+      const elementPosition = targetElement.getBoundingClientRect().top + window.pageYOffset;
+      window.scrollTo({
+        top: elementPosition,
+        behavior: "smooth"
+      });
+      history.pushState(null, null, "#about_vision-mission");
+    }
+  };
+
   return (
     <section
+      ref={sectionRef}
       id="statement-of-faith"
       className="relative w-full bg-[#F9E9D3] px-1.5 sm:px-2 lg:px-4"
     >
+      <div className={`fixed right-6 lg:right-12 z-50 transition-all duration-300 pointer-events-none top-24 pt-8 lg:pt-20 lg:top-32 ${showSkip ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-4 pointer-events-none"}`}>
+        <div className="pointer-events-auto shadow-2xl" onClick={handleSkipClick}>
+          <TertiaryButton href="#about_vision-mission">
+            SKIP
+          </TertiaryButton>
+        </div>
+      </div>
+
       <div className="relative min-h-screen bg-[#0B0B0B] pb-16 text-[#F4EBDC] sm:pb-24 lg:pb-36">
-        {/* BACKGROUND TEXTURE */}
         <div
           className="pointer-events-none absolute inset-0 opacity-40"
           style={{
@@ -51,9 +98,7 @@ export default function AboutFaith() {
           }}
         />
 
-        {/* STICKY HEADER CONTAINER */}
-        <div className="sticky top-24 z-40 mx-auto flex max-w-[1400px] flex-col gap-4 bg-[#0B0B0B]/95 px-4 pt-4 pb-4 backdrop-blur-md sm:px-8 sm:pt-6 sm:pb-6 lg:flex-row lg:items-start lg:justify-between lg:px-12">
-          {/* HEADER TITLE */}
+        <div className="sticky top-16 lg:top-24 z-40 mx-auto flex max-w-[1400px] flex-col gap-4 bg-[#0B0B0B]/95 px-4 pt-4 pb-4 backdrop-blur-md sm:px-8 sm:pt-6 sm:pb-6 lg:flex-row lg:items-start lg:justify-between lg:px-12">
           <div className="flex items-start gap-3 sm:gap-4 lg:gap-6">
             <Image
               src="/images/about/statement-of-faith-icon.svg"
@@ -70,25 +115,9 @@ export default function AboutFaith() {
               </span>
             </h2>
           </div>
-
-          {/* STICKY SKIP BUTTON DESKTOP ALIGNMENT */}
-          <div className="hidden lg:flex lg:self-center">
-            <TertiaryButton href="#about_vision-mission">
-              SKIP DOWN
-            </TertiaryButton>
-          </div>
         </div>
 
-        {/* MOBILE STICKY SKIP BUTTON */}
-        <div className="sticky top-[104px] z-30 mx-auto flex max-w-[1400px] justify-end px-4 sm:px-8 lg:hidden">
-          <TertiaryButton href="#about_vision-mission">
-            SKIP DOWN
-          </TertiaryButton>
-        </div>
-
-        {/* MAIN CONTENT LAYOUT */}
         <div className="relative z-10 mx-auto mt-6 flex max-w-[1400px] flex-col px-4 sm:px-8 lg:mt-12 lg:flex-row lg:items-start lg:gap-12 lg:px-12">
-          {/* LOVESQUAD GRAPHIC (Sticky on Desktop) */}
           <div className="hidden shrink-0 flex-col items-center justify-center lg:sticky lg:top-72 lg:flex lg:w-[30%] xl:w-[25%]">
             <Image
               src="/images/footer/lovesquad-graphic-cream.svg"
@@ -98,7 +127,6 @@ export default function AboutFaith() {
               className="h-auto w-36 shrink-0 object-contain lg:w-44 xl:w-52"
             />
 
-            {/* MARQUEE */}
             <div className="mt-4 w-36 overflow-hidden whitespace-nowrap lg:w-44 xl:w-52">
               <div className="marquee-track flex w-max">
                 <span className="marquee-text heading-font shrink-0 text-[10px] font-bold uppercase tracking-[-0.02em] text-[#ED4823]">
@@ -116,7 +144,6 @@ export default function AboutFaith() {
             </div>
           </div>
 
-          {/* RIGHT COLUMN: STACKING CARDS */}
           <div className="w-full lg:w-[70%] xl:w-[75%]">
             <div className="flex flex-col gap-5 sm:gap-6 lg:gap-8">
               {faithStatements.map((statement, index) => (
@@ -134,7 +161,6 @@ export default function AboutFaith() {
         </div>
       </div>
 
-      {/* MARQUEE ANIMATION */}
       <style jsx>{`
         .marquee-track {
           animation: lovesquad-marquee 12s linear infinite;
@@ -154,7 +180,6 @@ export default function AboutFaith() {
   );
 }
 
-/* RESPONSIVE STACKING FAITH CARD (JSX Plain JavaScript) */
 function FaithCard({ index, number, title, description, scripture }) {
   return (
     <div
@@ -165,17 +190,14 @@ function FaithCard({ index, number, title, description, scripture }) {
       }}
     >
       <article className="relative min-h-[220px] border border-[#3B3B3B] bg-[#0B0B0B] p-4 pb-12 sm:p-6 sm:pb-14 lg:min-h-[280px] lg:p-8 lg:pb-16 xl:p-10 xl:pb-20">
-        {/* TITLE */}
         <h3 className="heading-font text-[24px] font-bold uppercase leading-none tracking-[-0.03em] text-[#F4EBDC] sm:text-[32px] lg:text-[40px] xl:text-[48px]">
           {title}
         </h3>
 
-        {/* DESCRIPTION */}
         <p className="mt-2 max-w-[680px] text-[13px] leading-[18px] text-[#F4EBDC] sm:mt-3 sm:text-[15px] sm:leading-[22px] lg:mt-4 lg:text-[16px] lg:leading-[24px] xl:text-[17px] xl:leading-[26px]">
           {description}
         </p>
 
-        {/* SCRIPTURES */}
         <a
           href="#"
           className="absolute bottom-3 left-4 text-[12px] text-[#F4EBDC] underline underline-offset-4 transition-colors duration-300 hover:text-[#ED4823] sm:bottom-4 sm:left-6 sm:text-[13px] lg:bottom-6 lg:left-8 lg:text-[15px]"
@@ -183,7 +205,6 @@ function FaithCard({ index, number, title, description, scripture }) {
           {scripture}
         </a>
 
-        {/* NUMBER */}
         <span className="heading-font absolute bottom-2 right-3 text-[32px] font-normal leading-none text-[#F4EBDC] sm:bottom-3 sm:right-4 sm:text-[44px] lg:bottom-5 lg:right-8 lg:text-[56px] xl:text-[64px]">
           {number}
         </span>
