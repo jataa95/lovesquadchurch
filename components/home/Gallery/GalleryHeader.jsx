@@ -24,11 +24,11 @@ export default function GalleryHeader() {
         className="
           heading-font
           w-full
-          max-w-[620px]
+          max-w-[1000px]
           uppercase
           text-[#575656]
 
-          text-[23px]        {/* Reduced from 26px */}
+          text-[22px]        {/* Reduced from 26px */}
           leading-[26px]     {/* Reduced from 27px */}
           tracking-[-0.03em]
           font-bold
@@ -50,17 +50,17 @@ export default function GalleryHeader() {
       </h2>
 
       {/* =========================================
-          SKIP BUTTON
+         SKIP BUTTON (Hidden on mobile, visible on md and up)
       ========================================== */}
       <div
         className="
+          hidden
+          md:block
           shrink-0
-          self-start
-
-          md:self-auto
+          self-auto
         "
       >
-        <GallerySkipButton />
+        <GallerySkipButton href="#homepage-bottom" />
       </div>
     </div>
   );

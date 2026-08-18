@@ -28,11 +28,11 @@ export default function AboutHero() {
         w-full
         flex-col
         items-center
-        justify-end
+        justify-center
         overflow-hidden
         bg-[#0B0B0B]
         px-12
-        pb-24
+        pt-12
         text-[#F4EBDC]
 
         sm:justify-center

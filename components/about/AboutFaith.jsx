@@ -37,7 +37,7 @@ const faithStatements = [
 
 export default function AboutFaith() {
   const sectionRef = useRef(null);
-  const [showSkip, setShowSkip] = useState(true);
+  const [showSkip, setShowSkip] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {

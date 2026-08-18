@@ -15,10 +15,10 @@ export default function LoveSpotHero() {
         bg-[#F9E9D3]
         px-[12px]
         pb-[24px]
-        pt-[8px]
+        pt-[60px]
         sm:px-[18px]
         sm:pb-[32px]
-        lg:pt-[80px]
+        lg:pt-[100px]
       "
     >
       {/* ================================= */}
@@ -149,11 +149,11 @@ export default function LoveSpotHero() {
             <p
               className="
                 mt-[8px]
-                max-w-[300px]
+                max-w-[700px]
                 text-[#5A5853]
               "
               style={{
-                fontSize: "16px",
+                fontSize: "14px",
                 lineHeight: "20px",
               }}
             >

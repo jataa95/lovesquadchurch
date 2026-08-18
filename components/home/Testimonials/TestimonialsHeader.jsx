@@ -3,7 +3,7 @@ import { testimonials } from "@/data/testimonials";
 
 export default function TestimonialsHeader() {
   return (
-    <div className="relative z-10 -mt-2 mb-[16px] flex items-start gap-[10px] sm:-mt-12 sm:mb-[20px] sm:gap-[12px] md:-mt-16 md:mb-[24px] md:gap-[14px] lg:gap-[16px]">
+    <div className="relative z-10 -mt-2 mb-[16px] flex items-start gap-[4px] sm:-mt-12 sm:mb-[20px] sm:gap-[12px] md:-mt-16 md:mb-[24px] md:gap-[14px] lg:gap-[6px]">
       {/* =========================================
           ICON
       ========================================== */}
@@ -12,7 +12,7 @@ export default function TestimonialsHeader() {
         alt="Stories Icon"
         width={80}
         height={60}
-        className="h-[44px] w-[58px] shrink-0 object-contain sm:h-[50px] sm:w-[66px] md:h-[55px] md:w-[73px] lg:h-[60px] lg:w-[80px]"
+        className="h-[30px] w-[36px] shrink-0 object-contain sm:h-[50px] sm:w-[66px] md:h-[55px] md:w-[73px] lg:h-[60px] lg:w-[80px]"
       />
 
       {/* =========================================
@@ -21,9 +21,9 @@ export default function TestimonialsHeader() {
       <div className="leading-none">
         {/* TOP TITLE */}
         <h2
-          className="heading-font text-[34px] uppercase leading-[34px] text-[#F9E9D3] sm:text-[42px] sm:leading-[42px] md:text-[50px] md:leading-[50px] lg:text-[60px] lg:leading-[60px]"
+          className="heading-font text-[28px] uppercase leading-[30px] text-[#F9E9D3] sm:text-[42px] sm:leading-[42px] md:text-[50px] md:leading-[50px] lg:text-[60px] lg:leading-[60px]"
           style={{
-            fontWeight: 900,
+            fontWeight: 500,
             letterSpacing: "0px",
           }}
         >
@@ -32,9 +32,9 @@ export default function TestimonialsHeader() {
 
         {/* BOTTOM TITLE */}
         <h2
-          className="heading-font text-[34px] uppercase leading-[34px] text-[#ED4823] sm:text-[42px] sm:leading-[42px] md:text-[50px] md:leading-[50px] lg:text-[60px] lg:leading-[60px]"
+          className="heading-font text-[28px] uppercase leading-[30px] text-[#ED4823] sm:text-[42px] sm:leading-[42px] md:text-[50px] md:leading-[50px] lg:text-[60px] lg:leading-[60px]"
           style={{
-            fontWeight: 900,
+            fontWeight: 500,
             letterSpacing: "0px",
           }}
         >

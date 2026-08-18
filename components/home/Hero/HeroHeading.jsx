@@ -9,7 +9,7 @@ export default function HeroHeading() {
         items-center
         text-left
         mt-0               {/* Removed top margin */}
-        mb-2               {/* Minimal gap before description */}
+        mb-4              {/* Minimal gap before description */}
 
         sm:mt-[30px]
         sm:mb-0
@@ -45,7 +45,7 @@ export default function HeroHeading() {
           select-none
           uppercase
           text-[#F5EBDD]
-          my-1             {/* Zero margins on mobile */}
+          my-2             {/* Zero margins on mobile */}
           text-[52px]      {/* Reduced slightly to fit tighter */}
           leading-[0.8]
           tracking-[-0.06em]

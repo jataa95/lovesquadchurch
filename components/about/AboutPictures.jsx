@@ -51,19 +51,36 @@ export default function AboutPictures() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Precise scroll handler ensuring it aligns cleanly to the top of #values
+  // Custom robust scroll handler using requestAnimationFrame to override sticky stacking interference
   const handleSkipClick = (e) => {
     e.preventDefault();
     e.stopPropagation();
-    const targetElement = document.getElementById("values");
+    const targetElement = document.getElementById("about_values");
     if (targetElement) {
-      // Calculates exact top offset taking any sticky headers into account if needed
-      const elementPosition = targetElement.getBoundingClientRect().top + window.pageYOffset;
-      window.scrollTo({
-        top: elementPosition,
-        behavior: "smooth"
-      });
-      history.pushState(null, null, "#values");
+      const headerOffset = 70; // Adjust for your navbar height
+      const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - headerOffset;
+      const startPosition = window.pageYOffset;
+      const distance = targetPosition - startPosition;
+      const duration = 600; // Animation duration in milliseconds
+      let startTime = null;
+
+      const animation = (currentTime) => {
+        if (startTime === null) startTime = currentTime;
+        const timeElapsed = currentTime - startTime;
+        const progress = Math.min(timeElapsed / duration, 1);
+        // EaseInOutQuad formula for smooth acceleration and deceleration
+        const ease = progress < 0.5 ? 2 * progress * progress : -1 + (4 - 2 * progress) * progress;
+
+        window.scrollTo(0, startPosition + distance * ease);
+
+        if (timeElapsed < duration) {
+          requestAnimationFrame(animation);
+        } else {
+          history.pushState(null, null, "#about_values");
+        }
+      };
+
+      requestAnimationFrame(animation);
     }
   };
 
@@ -206,7 +223,7 @@ export default function AboutPictures() {
         </div>
       </motion.div>
 
-      {/* FLOATING SKIP BUTTON (Moved higher up with bottom-20) */}
+      {/* FLOATING SKIP BUTTON */}
       <AnimatePresence>
         {showSkip && (
           <motion.div
@@ -232,7 +249,7 @@ export default function AboutPictures() {
 }
 
 /* =================================
-   IMAGE TILE WITH SCROLL ENTRY + HOVER
+    IMAGE TILE WITH SCROLL ENTRY + HOVER
 ================================= */
 
 function ImageTile({ src, alt, aspect = "wide", delay = 0, isStacked = false, stackIndex = 0 }) {

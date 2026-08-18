@@ -24,27 +24,30 @@ export default function AboutContent() {
       </div>
 
       {/* RIGHT COLUMN */}
-      <div className="flex flex-col items-start lg:col-span-7 lg:items-end xl:col-span-8">
+      <div className="flex flex-col items-end lg:col-span-7 lg:items-end lg:flex-col xl:col-span-8">
         <h2
-          className="heading-font text-left text-[18px] leading-[22px] uppercase font-black lg:text-right sm:text-[28px] sm:leading-[32px] md:text-[32px] md:leading-[36px] lg:text-[36px] lg:leading-[40px]"
+          className="heading-font text-left text-[18px] leading-[20px] uppercase font-black sm:text-[28px] sm:leading-[32px] md:text-[32px] md:leading-[36px] lg:text-right lg:text-[36px] lg:leading-[40px]"
           style={{ letterSpacing: "0px" }}
         >
+          {/* Line 1 */}
           <div className="text-[#575656]">NUNC CONDIMENTUM</div>
 
-          <div>
+          {/* Line 2: Horizontal flow on mobile, wrapping smoothly */}
+          <div className="flex flex-wrap gap-x-1.5 lg:justify-end">
             <span className="text-[#ED4823]">SAPIEN</span>
-            <span className="text-[#575656]"> IPSUM, AC </span>
+            <span className="text-[#575656]">IPSUM, AC</span>
             <span className="text-[#ED4823]">TINCIDUNT</span>
           </div>
 
-          <div>
+          {/* Line 3 */}
+          <div className="flex flex-wrap gap-x-1.5 lg:justify-end">
             <span className="text-[#ED4823]">LOREM LACINIA</span>
-            <span className="text-[#575656]"> VEL.</span>
+            <span className="text-[#575656]">VEL.</span>
           </div>
         </h2>
 
         {/* Button Wrapper */}
-        <div className="mt-2 sm:mt-8 lg:mt-10">
+        <div className="mt-4 sm:mt-8 lg:mt-10">
           <SecondaryButton href="/about">{about.button}</SecondaryButton>
         </div>
       </div>

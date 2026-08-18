@@ -3,7 +3,7 @@ import { loveSpots } from "@/data/lovespots";
 
 export default function LoveSpotsHeader() {
   return (
-    <div className="flex items-start gap-3 sm:gap-4">
+    <div className="flex items-start gap-2 sm:gap-2">
       {/* Icon */}
       <Image
         src={loveSpots.icon || "/icons/lovespot.svg"}
@@ -11,8 +11,8 @@ export default function LoveSpotsHeader() {
         width={96}
         height={80}
         className="
-          h-[38px]
-          w-[46px]
+          h-[30px]
+          w-[36px]
           shrink-0
           object-contain
           sm:h-[44px]
@@ -29,7 +29,7 @@ export default function LoveSpotsHeader() {
           flex
           flex-col
           uppercase
-          text-[28px]
+          text-[22px]
           leading-[1.05]
 
           sm:text-[36px]

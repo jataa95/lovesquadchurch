@@ -7,14 +7,10 @@ export default function ServiceRecapHeader() {
     <div
       className="
         flex
-        flex-col
-        items-start
+        flex-row
+        items-end
+        justify-between
         gap-2
-
-        sm:flex-row
-        sm:items-end
-        sm:justify-between
-        sm:gap-2
       "
     >
       {/* ================================
@@ -36,8 +32,8 @@ export default function ServiceRecapHeader() {
           width={96}
           height={80}
           className="
-            h-[38px]
-            w-[46px]
+            h-[30px]
+            w-[36px]
             shrink-0
             object-contain
 
@@ -52,16 +48,17 @@ export default function ServiceRecapHeader() {
           "
         />
 
-        {/* Heading */}
-        <div className="leading-none">
+        {/* Heading Container: Horizontal row on mobile, stacked column on small screens and up */}
+        <div className="flex flex-col items-start gap-1.0 leading-none sm:flex-col sm:items-start sm:gap-0">
+          {/* Service Title */}
           <h2
             className="
               heading-font
               uppercase
               text-[#ED4823]
 
-              text-[28px]
-              leading-[1.05]
+              text-[22px]
+              leading-none
 
               sm:text-[36px]
               sm:leading-[36px]
@@ -80,14 +77,15 @@ export default function ServiceRecapHeader() {
             SERVICE
           </h2>
 
+          {/* Recap Title */}
           <h2
             className="
               heading-font
               uppercase
               text-[#575656]
 
-              text-[28px]
-              leading-[1.05]
+              text-[22px]
+              leading-none
 
               sm:text-[36px]
               sm:leading-[36px]
@@ -111,7 +109,7 @@ export default function ServiceRecapHeader() {
       {/* ================================
           RIGHT — BUTTON
       ================================= */}
-      <div className="self-start sm:self-auto">
+      <div className="shrink-0">
         <SecondaryButton href="/servicerecap">
           {serviceRecap.button}
         </SecondaryButton>

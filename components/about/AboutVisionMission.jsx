@@ -60,10 +60,11 @@ export default function AboutVisionMission() {
           <div
             className="
               flex
+              flex-col
               items-start
               pt-0
               sticky
-              top-16
+              top-16.5
               lg:top-28
               h-fit
               bg-[#F9E9D3]
@@ -97,8 +98,8 @@ export default function AboutVisionMission() {
                   width={96}
                   height={80}
                   className="
-                    h-[42px]
-                    w-[42px]
+                    h-[32px]
+                    w-[32px]
                     object-contain
                     sm:h-[50px]
                     sm:w-[50px]
@@ -133,6 +134,9 @@ export default function AboutVisionMission() {
                 <span className="block">STATEMENTS</span>
               </h2>
             </div>
+
+            {/* Sticky Orange Divider (Mobile / Tablet) */}
+            <div className="mt-4 w-full border-t-2 border-[#ED4823] lg:hidden" />
           </div>
 
           {/* =================================
@@ -141,14 +145,11 @@ export default function AboutVisionMission() {
           <div
             className="
               flex
-              border-l-0
-              border-t-[2px]
-              border-[#ED4823]
-              pl-0
-              pt-[28px]
-              sm:pt-[35px]
+              w-full
+              pt-0
+
               lg:border-l-[3px]
-              lg:border-t-0
+              lg:border-[#ED4823]
               lg:pl-[34px]
               lg:pt-0
             "

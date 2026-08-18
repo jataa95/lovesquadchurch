@@ -6,7 +6,7 @@ export default function LatestMessageHeading() {
       <h2
         className="
           heading-font
-          mt-0
+          mt-1
           uppercase
           text-[#F04A23]
 

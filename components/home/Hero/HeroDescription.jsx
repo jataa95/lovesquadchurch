@@ -8,7 +8,7 @@ export default function HeroDescription() {
         w-full
         max-w-[420px]
         mx-auto sm:mx-0
-        mt-0
+        mt-1              {/* Set to 0 to eliminate gap below HeroHeading */}
         sm:mt-4
         lg:mt-0
       "
@@ -20,7 +20,7 @@ export default function HeroDescription() {
           text-[#F4EBDC]/85
           text-center sm:text-left
           text-[12px]
-          leading-[15px]
+          leading-[15px]   {/* Tightened leading slightly */}
 
           sm:text-[17px]
           sm:leading-[26px]
@@ -39,7 +39,7 @@ export default function HeroDescription() {
       {/* CTA Wrapper */}
       <div
         className="
-          mt-1 sm:mt-4 lg:mt-12
+          mt-1.5 sm:mt-4 lg:mt-12    {/* Dropped from mt-3 to mt-1.5 */}
           flex justify-center sm:block
         "
       >

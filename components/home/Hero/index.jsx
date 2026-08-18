@@ -20,7 +20,7 @@ export default function Hero() {
           flex-col
           justify-center   {/* Spreads top heading and bottom content to fill full height */}
           px-4
-          pb-8
+          pb-4
           pt-20             {/* Clearance for Navbar */}
 
           xl:px-8

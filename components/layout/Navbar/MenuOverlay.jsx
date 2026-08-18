@@ -48,7 +48,7 @@ export default function MenuOverlay({ onClose }) {
   const [bgError, setBgError] = useState(false);
 
   return (
-    <div className="fixed inset-0 z-[99999] overflow-hidden bg-[#0B0B0B] text-[#F5EBDD] animate-in fade-in slide-in-from-bottom-6 duration-300">
+    <div className="fixed inset-0 z-[99999] flex flex-col justify-between overflow-hidden bg-[#0B0B0B] text-[#F5EBDD] animate-in fade-in slide-in-from-bottom-6 duration-300">
       {/* =====================================================
           1. BACKGROUND IMAGE
       ====================================================== */}
@@ -84,7 +84,7 @@ export default function MenuOverlay({ onClose }) {
       {/* =====================================================
           HEADER
       ====================================================== */}
-      <header className="relative z-50 flex w-full items-center justify-between px-6 pt-6 sm:px-6">
+      <header className="relative z-50 flex w-full items-center justify-between px-3 pt-3 pb-4 sm:px-2 sm:py-2 lg:px-8 lg:py-8">
         {/* Logo */}
         <Link
           href="/"
@@ -105,7 +105,7 @@ export default function MenuOverlay({ onClose }) {
           type="button"
           onClick={onClose}
           aria-label="Close navigation menu"
-          className="flex h-16 w-16 items-center justify-center rounded-full bg-transparent text-[#F04423] transition-transform duration-200 hover:scale-105 sm:h-16 sm:w-16"
+          className="flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center rounded-full text-[#F04423] transition-transform duration-200 hover:scale-105"
         >
           <span className="text-3xl font-light leading-none">×</span>
         </button>
@@ -114,7 +114,7 @@ export default function MenuOverlay({ onClose }) {
       {/* =====================================================
           MAIN NAVIGATION
       ====================================================== */}
-      <nav className="relative z-40 flex flex-col items-center justify-center px-6 pt-6 sm:px-12">
+      <nav className="relative z-40 my-auto flex flex-col items-center justify-center px-6">
         <div className="flex flex-col items-center gap-4 text-center sm:gap-6">
           {menuItems.map((item) => {
             const hasSubLinks = Boolean(
@@ -163,6 +163,9 @@ export default function MenuOverlay({ onClose }) {
           })}
         </div>
       </nav>
+
+      {/* FOOTER SPACER TO BALANCE THE HEADER */}
+      <div className="relative z-50 h-10 sm:h-12" />
     </div>
   );
 }
