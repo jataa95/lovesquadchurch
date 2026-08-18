@@ -16,7 +16,7 @@ export default function LoveSpotHero() {
         px-[12px]
         pt-20
         sm:px-[18px]
-        sm:pb-[32px]
+        sm:pb-[0px]
         lg:pt-[100px]
       "
     >
