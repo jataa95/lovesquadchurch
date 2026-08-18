@@ -2,7 +2,7 @@ import SecondaryButton from "@/components/ui/buttons/SecondaryButton";
 
 export default function EventsHeader() {
   return (
-    <div className="mt-3 flex  flex-row items-end gap-28 sm:mt-4 sm:gap-6 md:mt-5 md:flex-row md:items-end md:justify-between lg:gap-0">
+    <div className="mt-3 flex  flex-row items-end justify-between sm:mt-4 sm:gap-6 md:mt-5 md:flex-row md:items-end md:justify-between lg:gap-0">
       {/* LEFT SIDE */}
       <div className="flex items-start gap-2 sm:gap-3">
         {/* CALENDAR ICON */}

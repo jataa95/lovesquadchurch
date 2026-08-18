@@ -12,79 +12,83 @@ export default function GivingDetails() {
           w-full
           max-w-[1440px]
           grid-cols-1
-          items-center
-          gap-10
+          items-start
+          gap-4
           px-4
-          py-12
+          py-2
           sm:gap-12
           sm:px-6
           sm:py-14
           md:px-8
           md:py-16
           lg:grid-cols-2
-          lg:gap-[60px]
+          lg:gap-[40px]
           lg:px-[32px]
-          lg:py-[80px]
+          lg:py-[40px]
+          relative
         "
       >
         {/* =========================================
-            LEFT — GIVING DETAILS HEADING
+            LEFT — GIVING DETAILS HEADING (Sticky)
         ========================================== */}
 
-        <div
-          className="
-            flex
-            items-start
-            gap-3
-            sm:gap-[14px]
-          "
-        >
-          {/* GIVING DETAILS ICON */}
-
+        <div className="lg:relative">
           <div
             className="
-              shrink-0
-              pt-[6px]
-              sm:pt-[8px]
-              lg:pt-[10px]
+              flex
+              items-center
+              justify-center
+              gap-2
+              sm:gap-[14px]
+              lg:sticky
+              lg:top-24
             "
           >
-            <Image
-              src="/images/giving/giving.svg"
-              alt=""
-              width={76}
-              height={56}
+            {/* GIVING DETAILS ICON (Reduced size) */}
+
+            <div
               className="
-                h-[60px]
-                w-[72px]
-                object-contain
-                sm:h-[70px]
-                sm:w-[84px]
-                lg:h-[80px]
-                lg:w-[96px]
+                shrink-0
+                pt-[4px]
+                sm:pt-[6px]
+                lg:pt-[8px]
               "
-            />
+            >
+              <Image
+                src="/images/giving/giving.svg"
+                alt=""
+                width={76}
+                height={56}
+                className="
+                  h-[40px]
+                  w-[48px]
+                  object-contain
+                  sm:h-[56px]
+                  sm:w-[68px]
+                  lg:h-[64px]
+                  lg:w-[76px]
+                "
+              />
+            </div>
+
+            {/* HEADING (Reduced size) */}
+
+            <h2
+              className="
+                heading-font
+                uppercase
+                font-bold
+                leading-[0.88]
+                tracking-[-0.055em]
+                text-[#4A4A4A]
+              "
+              style={{
+                fontSize: "clamp(2.75rem, 6vw, 60px)",
+              }}
+            >
+              GIVING DETAILS
+            </h2>
           </div>
-
-          {/* HEADING */}
-
-          <h2
-            className="
-              heading-font
-              uppercase
-              font-bold
-              leading-[0.88]
-              tracking-[-0.055em]
-              text-[#4A4A4A]
-            "
-            style={{
-              fontSize: "clamp(3.5rem, 8vw, 80px)",
-            }}
-          >
-            GIVING
-            <br />
-            DETAILS
-          </h2>
         </div>
 
         {/* =========================================

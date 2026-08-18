@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import SecondaryButton from "@/components/ui/buttons/SecondaryButton"; // or direct path
+import SecondaryButton from "@/components/ui/buttons/SecondaryButton";
 
 export default function LoveSpotHero() {
   return (
@@ -14,8 +14,7 @@ export default function LoveSpotHero() {
         overflow-hidden
         bg-[#F9E9D3]
         px-[12px]
-        pb-[24px]
-        pt-[60px]
+        pt-20
         sm:px-[18px]
         sm:pb-[32px]
         lg:pt-[100px]
@@ -32,15 +31,20 @@ export default function LoveSpotHero() {
           w-full
           max-w-[1440px]
           flex-col
+          items-center
+          justify-center
+          text-center
+          lg:items-stretch
+          lg:text-left
+          lg:pt-[20px]
         "
       >
         {/* ================================= */}
         {/* TITLE                             */}
         {/* ================================= */}
 
-        <div className="mt-[20px] sm:mt-[24px]">
+        <div className="w-full">
           {/* LOVESQUAD IN */}
-
           <div
             className="
               heading-font
@@ -59,7 +63,6 @@ export default function LoveSpotHero() {
           </div>
 
           {/* LOVESPOTS */}
-
           <h1
             className="
               heading-font
@@ -83,22 +86,27 @@ export default function LoveSpotHero() {
 
         <div
           className="
-            mt-[18px]
-            grid
-            grid-cols-1
-            gap-[18px]
+            mt-4
+            flex
+            w-full
+            flex-col
+            items-center
+            gap-4
+            lg:mt-[18px]
+            lg:grid
             lg:grid-cols-[minmax(0,1fr)_320px]
             lg:items-end
+            lg:gap-[18px]
           "
         >
           {/* ================================= */}
-          {/* IMAGE / VIDEO                    */}
+          {/* IMAGE / VIDEO                     */}
           {/* ================================= */}
 
           <div
             className="
               relative
-              h-[280px]
+              h-[260px]
               w-full
               overflow-hidden
               bg-[#171515]
@@ -118,16 +126,20 @@ export default function LoveSpotHero() {
           </div>
 
           {/* ================================= */}
-          {/* DESCRIPTION                      */}
+          {/* DESCRIPTION                       */}
           {/* ================================= */}
 
           <div
             className="
               flex
               flex-col
+              items-center
               justify-end
+              text-center
               pb-0
               lg:h-[420px]
+              lg:items-start
+              lg:text-left
             "
           >
             <h2
@@ -148,9 +160,10 @@ export default function LoveSpotHero() {
 
             <p
               className="
-                mt-[8px]
+                mt-2
                 max-w-[700px]
                 text-[#5A5853]
+                lg:mt-[8px]
               "
               style={{
                 fontSize: "14px",
@@ -161,7 +174,7 @@ export default function LoveSpotHero() {
               Condimentum Quam, A Eleifend Dolor Elit Quis Orci.
             </p>
 
-            <div className="mt-[8px]">
+            <div className="mt-3 lg:mt-[8px]">
               <SecondaryButton href="#lovespots">
                 JOIN A LOVESPOT
               </SecondaryButton>

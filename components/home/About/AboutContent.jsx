@@ -3,7 +3,7 @@ import SecondaryButton from "@/components/ui/buttons/SecondaryButton";
 
 export default function AboutContent() {
   return (
-    <div className="mb-[4px] grid w-full grid-cols-1 gap-4 lg:grid-cols-12 lg:items-start lg:gap-12">
+    <div className="mb-[4px] justify-center grid w-full grid-cols-1 gap-4 lg:grid-cols-12 lg:items-start lg:gap-12">
       {/* LEFT COLUMN */}
       <div className="flex flex-col lg:col-span-5 xl:col-span-4">
         {/* Description */}

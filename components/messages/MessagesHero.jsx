@@ -5,14 +5,15 @@ export default function MessagesHero() {
     <section
       id="messages"
       className="
-        mt-[80px]
+        mt-[60px]
         w-full
         bg-[#F9E9D3]
-        pt-6
+        pt-4
         pb-4
         text-[#575656]
-        sm:pt-8
+        sm:pt-6
         md:pb-6
+        lg:mt-[80px]
       "
     >
       <div
@@ -22,8 +23,12 @@ export default function MessagesHero() {
           w-full
           max-w-[1440px]
           flex-col
+          items-center
+          text-center
           px-4
           sm:px-6
+          md:items-start
+          md:text-left
           md:px-12
         "
       >
@@ -31,7 +36,7 @@ export default function MessagesHero() {
             GIANT MESSAGES HEADING
         ========================================== */}
 
-        <div className="w-full overflow-hidden">
+        <div className="w-full overflow-hidden flex justify-center md:justify-start">
           <h1
             className="
               heading-font
@@ -59,9 +64,9 @@ export default function MessagesHero() {
         <p
           className="
             body-font
-            mt-3
+            mt-2
             w-full
-            max-w-[500px]
+            max-w-[800px]
             text-[15px]
             leading-[1.5]
             text-[#575656]

@@ -5,7 +5,7 @@ import GiveAnOfferingButton from "@/components/giving/GiveAnOfferingButton";
 
 export default function GivingHero() {
   return (
-    <section id="giving-hero" className="mt-[80px] w-full">
+    <section id="giving-hero" className="mt-[60px] w-full">
       <div
         className="
           mx-auto
@@ -14,8 +14,8 @@ export default function GivingHero() {
           max-w-[1440px]
           flex-col
           px-4
-          pt-6
-          pb-8
+          pt-4
+          pb-4
           sm:px-6
           sm:pt-7
           sm:pb-10
@@ -23,7 +23,7 @@ export default function GivingHero() {
           md:pt-8
           md:pb-10
           lg:px-[32px]
-          lg:pt-[32px]
+          lg:pt-[60px]
           lg:pb-[40px]
         "
       >
@@ -35,10 +35,13 @@ export default function GivingHero() {
           className="
             grid
             grid-cols-1
-            items-end
-            gap-8
+            items-center
+            text-center
+            gap-2
             sm:gap-10
             lg:grid-cols-2
+            lg:items-end
+            lg:text-left
             lg:gap-[40px]
           "
         >
@@ -71,24 +74,29 @@ export default function GivingHero() {
           <div
             className="
               flex
-              items-start
+              flex-col
+              items-center
+              text-center
               gap-4
               pb-0
               sm:gap-5
+              lg:flex-row
+              lg:items-start
+              lg:text-left
               lg:gap-[20px]
               lg:pb-[8px]
             "
           >
-            {/* VERTICAL DIVIDER */}
+            {/* VERTICAL DIVIDER (Hidden on mobile, shown on lg+) */}
 
             <div
               className="
-                h-[70px]
+                hidden
+                lg:block
+                h-[80px]
                 w-[1px]
                 shrink-0
                 bg-[#A9A49D]
-                sm:h-[80px]
-                lg:h-[80px]
               "
             />
 
@@ -98,7 +106,10 @@ export default function GivingHero() {
               className="
                 flex
                 flex-col
-                items-start
+                items-center
+                text-center
+                lg:items-start
+                lg:text-left
               "
             >
               <p

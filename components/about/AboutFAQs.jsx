@@ -64,7 +64,7 @@ export default function AboutFAQs() {
           w-full
           bg-[#F9E9D3]
           px-[16px]
-          py-[40px]
+          py-[20px]
 
           sm:px-[24px]
           sm:py-[48px]
@@ -73,7 +73,7 @@ export default function AboutFAQs() {
           md:py-[56px]
 
           lg:px-[40px]
-          lg:py-[64px]
+          lg:py-[60px]
         "
       >
         {/* =====================================================
@@ -105,7 +105,7 @@ export default function AboutFAQs() {
         ====================================================== */}
         <div
           className="
-            mt-[24px]
+            mt-[16px]
             grid
             grid-cols-1
             gap-[28px]

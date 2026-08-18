@@ -20,9 +20,8 @@ export default function LoveSpotIntro() {
   return (
     <section
       id="what-is-lovespot"
-      className="relative w-full bg-[#F9E9D3] px-[16px] pt-[12px] pb-[30px] sm:px-[24px] md:py-[48px] lg:px-[48px] lg:py-[64px]"
+      className="relative w-full bg-[#F9E9D3] px-[16px] pt-[32px] pb-[32px] sm:px-[24px] md:py-[48px] lg:px-[48px] lg:py-[64px]"
     >
-      {/* Ensure NO overflow-hidden is on this section or grid */}
       <div
         className="
           relative
@@ -32,25 +31,25 @@ export default function LoveSpotIntro() {
           grid
           grid-cols-1
           items-start
-          gap-[4px]
+          gap-[2px]
           md:gap-[48px]
           lg:grid-cols-[1fr_1.4fr]
           lg:gap-[16%]
         "
       >
-        {/* LEFT SIDE (STICKY CONTAINER WRAPPER - STICKY ON ALL SCREENS) */}
+        {/* LEFT SIDE (STICKY CONTAINER WRAPPER) */}
         <div className="sticky top-0 lg:top-28 z-20 h-fit bg-[#F9E9D3] pt-1 pb-2 md:pt-2 md:pb-4 lg:py-0">
-          <div className="flex items-start gap-[4px] sm:gap-[16px]">
+          <div className="flex flex-row items-center justify-center text-center gap-[8px] sm:gap-[16px] lg:items-start lg:text-left">
             {/* ICON */}
-            <div className="shrink-0">
+            <div className="shrink-0 flex justify-center">
               <Image
                 src="/images/lovespot/lovespot-icon.svg"
                 alt="LoveSpot community"
                 width={135}
                 height={95}
                 className="
-                  h-[30px]
-                  w-[36px]
+                  h-[40px]
+                  w-[46px]
                   object-contain
                   sm:h-[56px]
                   sm:w-[68px]
@@ -79,9 +78,9 @@ export default function LoveSpotIntro() {
         </div>
 
         {/* RIGHT SIDE */}
-        <div className="flex w-full max-w-[800px] flex-col pt-[4px] lg:pt-0">
+        <div className="flex w-full max-w-[800px] flex-col items-center text-center pt-[4px] lg:items-start lg:text-left lg:pt-0">
           {/* INTRO */}
-          <div>
+          <div className="w-full flex flex-col items-center lg:items-start">
             <h3
               className="
                 heading-font
@@ -98,7 +97,7 @@ export default function LoveSpotIntro() {
               AC TINCIDUNT LOREM.
             </h3>
 
-            <div className="mt-[8px] max-w-[500px] sm:mt-[12px]">
+            <div className="mt-[8px] max-w-[500px] sm:mt-[12px] flex flex-col items-center lg:items-start">
               {introParagraphs.map((paragraph, index) => (
                 <p
                   key={`intro-${index}`}
@@ -115,7 +114,7 @@ export default function LoveSpotIntro() {
           </div>
 
           {/* WHY JOIN ONE */}
-          <div className="mt-[16px] sm:mt-[16px]">
+          <div className="mt-[24px] sm:mt-[32px] w-full flex flex-col items-center lg:items-start">
             <h3
               className="
                 heading-font
@@ -130,7 +129,7 @@ export default function LoveSpotIntro() {
               WHY JOIN ONE?
             </h3>
 
-            <div className="mt-[4px] max-w-[800px] sm:mt-[16px]">
+            <div className="mt-[4px] max-w-[800px] sm:mt-[16px] flex flex-col items-center lg:items-start">
               {whyJoinParagraphs.map((paragraph, index) => (
                 <p
                   key={`why-${index}`}

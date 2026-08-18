@@ -21,7 +21,7 @@ export default function MessageSearch() {
   };
 
   return (
-    <section className="w-full bg-[#F9E9D3] pb-12 text-[#575656] sm:pb-16">
+    <section className="w-full bg-[#F9E9D3] pb-2 text-[#575656] sm:pb-16">
       <div
         className="
           mx-auto
@@ -77,11 +77,11 @@ export default function MessageSearch() {
                 py-3
                 text-sm
                 font-medium
-                text-white
-                placeholder-gray-300
+                text-[#F9E9D3]
+                placeholder-[#F9E9D3]/60
                 focus:outline-none
                 focus:ring-2
-                focus:ring-[#ED4823]
+                focus:ring-[#F9E9D3]
                 sm:px-5
                 sm:py-4
               "
@@ -187,25 +187,6 @@ export default function MessageSearch() {
                     />
                   </svg>
                 </div>
-
-                {/* Real Image:
-                <Image
-                  src={item.image}
-                  alt={`${item.title} - ${item.date}`}
-                  fill
-                  sizes="
-                    (max-width: 639px) 100vw,
-                    (max-width: 1023px) 50vw,
-                    33vw
-                  "
-                  className="
-                    object-cover
-                    transition-transform
-                    duration-300
-                    group-hover:scale-105
-                  "
-                />
-                */}
               </div>
 
               {/* Message Label */}
