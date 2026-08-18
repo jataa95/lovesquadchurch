@@ -20,7 +20,8 @@ export default function LoveSpotIntro() {
   return (
     <section
       id="what-is-lovespot"
-      className="relative w-full bg-[#F9E9D3] px-[16px] pt-[12x] pb-[8px] sm:px-[24px] md:py-[48px] lg:px-[48px] lg:py-[64px]"
+      // Fixed typo: changed pt-[12x] to pt-[12px] or pt-0 to eliminate the excess mobile top gap/margin
+      className="relative w-full bg-[#F9E9D3] px-[16px] pt-[16px] pb-[8px] sm:px-[24px] md:py-[48px] lg:px-[48px] lg:py-[64px]"
     >
       <div
         className="
@@ -38,7 +39,7 @@ export default function LoveSpotIntro() {
         "
       >
         {/* LEFT SIDE (STICKY CONTAINER WRAPPER) */}
-        <div className="sticky top-0 lg:top-28 z-20 h-fit bg-[#F9E9D3] pt-6 pb-2 md:pt-2 md:pb-4 lg:py-0">
+        <div className="sticky top-0 lg:top-28 z-20 h-fit bg-[#F9E9D3] pt-2 pb-2 md:pt-2 md:pb-4 lg:py-0">
           <div className="flex flex-row items-center justify-center text-center gap-[8px] sm:gap-[16px] lg:items-start lg:text-left">
             {/* ICON */}
             <div className="shrink-0 flex justify-center">
