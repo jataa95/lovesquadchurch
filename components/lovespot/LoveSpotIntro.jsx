@@ -20,7 +20,7 @@ export default function LoveSpotIntro() {
   return (
     <section
       id="what-is-lovespot"
-      className="relative w-full bg-[#F9E9D3] px-[16px] pt-[32px] pb-[32px] sm:px-[24px] md:py-[48px] lg:px-[48px] lg:py-[64px]"
+      className="relative w-full bg-[#F9E9D3] px-[16px] pt-[12x] pb-[8px] sm:px-[24px] md:py-[48px] lg:px-[48px] lg:py-[64px]"
     >
       <div
         className="
@@ -38,7 +38,7 @@ export default function LoveSpotIntro() {
         "
       >
         {/* LEFT SIDE (STICKY CONTAINER WRAPPER) */}
-        <div className="sticky top-0 lg:top-28 z-20 h-fit bg-[#F9E9D3] pt-1 pb-2 md:pt-2 md:pb-4 lg:py-0">
+        <div className="sticky top-0 lg:top-28 z-20 h-fit bg-[#F9E9D3] pt-6 pb-2 md:pt-2 md:pb-4 lg:py-0">
           <div className="flex flex-row items-center justify-center text-center gap-[8px] sm:gap-[16px] lg:items-start lg:text-left">
             {/* ICON */}
             <div className="shrink-0 flex justify-center">
@@ -78,7 +78,7 @@ export default function LoveSpotIntro() {
         </div>
 
         {/* RIGHT SIDE */}
-        <div className="flex w-full max-w-[800px] flex-col items-center text-center pt-[4px] lg:items-start lg:text-left lg:pt-0">
+        <div className="flex w-full max-w-[800px] flex-col items-center text-center pt-[1px] lg:items-start lg:text-left lg:pt-0">
           {/* INTRO */}
           <div className="w-full flex flex-col items-center lg:items-start">
             <h3
@@ -97,7 +97,7 @@ export default function LoveSpotIntro() {
               AC TINCIDUNT LOREM.
             </h3>
 
-            <div className="mt-[8px] max-w-[500px] sm:mt-[12px] flex flex-col items-center lg:items-start">
+            <div className="mt-[4px] max-w-[500px] sm:mt-[12px] flex flex-col items-center lg:items-start">
               {introParagraphs.map((paragraph, index) => (
                 <p
                   key={`intro-${index}`}
