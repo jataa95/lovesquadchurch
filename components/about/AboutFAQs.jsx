@@ -197,7 +197,7 @@ export default function AboutFAQs() {
                       items-center
                       justify-between
                       px-[12px]
-                      py-[10px]
+                      py-[8px]
                       text-left
                       transition-all
                       duration-300
@@ -276,8 +276,8 @@ export default function AboutFAQs() {
                           border-t
                           border-[#9D9A93]
                           px-[14px]
-                          pb-[16px]
-                          pt-[12px]
+                          pb-[10px]
+                          pt-[10px]
                           transition-all
                           duration-500
 

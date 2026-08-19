@@ -35,6 +35,8 @@ export default function CareersHero() {
               font-extrabold
               leading-[0.8]
               tracking-[-0.06em]
+              text-center
+              lg:text-left
               text-[#575656]
               sm:mt-[65px]
               lg:mt-[90px]
@@ -53,7 +55,7 @@ export default function CareersHero() {
 
         <div
           className="
-            mt-[40px]
+            mt-[12px]
             grid
             grid-cols-1
             gap-[48px]
@@ -61,7 +63,7 @@ export default function CareersHero() {
             sm:gap-[60px]
             lg:mt-[32px]
             lg:grid-cols-12
-            lg:items-start
+            lg:items-center
             lg:gap-[48px]
           "
         >
@@ -73,7 +75,7 @@ export default function CareersHero() {
             className="
               flex
               flex-col
-              gap-[32px]
+              gap-[16px]
               lg:col-span-6
               lg:gap-[36px]
             "
@@ -84,7 +86,9 @@ export default function CareersHero() {
               className="
                 body-font
                 space-y-[14px]
-                text-[17px]
+                text-[15px]
+                text-center
+                lg:text-left
                 leading-[1.55]
                 text-[#575656]
                 sm:text-[18px]
@@ -112,7 +116,7 @@ export default function CareersHero() {
                 AVAILABLE POSITIONS
             ========================================== */}
 
-            <div className="mt-[4px] flex flex-col gap-[20px]">
+            <div className="mt-[2px] flex flex-col gap-[8px]">
               <h2
                 className="
                   heading-font
@@ -120,7 +124,9 @@ export default function CareersHero() {
                   font-bold
                   tracking-[-0.03em]
                   text-[#575656]
-                  text-[24px]
+                  text-[22px]
+                  text-center
+                  lg:text-left
                   leading-[28px]
                   sm:text-[28px]
                   sm:leading-[32px]
@@ -131,7 +137,7 @@ export default function CareersHero() {
                 AVAILABLE POSITIONS
               </h2>
 
-              <div className="space-y-[24px]">
+              <div className="space-y-[16px]">
                 {/* POSITION 1 */}
 
                 <div>
@@ -139,6 +145,9 @@ export default function CareersHero() {
                     className="
                       font-mono
                       text-[13px]
+                      text-center
+                      lg:text-left
+                      block
                       font-bold
                       uppercase
                       tracking-[0.08em]
@@ -154,7 +163,9 @@ export default function CareersHero() {
                     className="
                       body-font
                       mt-[5px]
-                      text-[16px]
+                      text-[15px]
+                      text-center
+                      lg:text-left
                       leading-[1.5]
                       text-[#575656]
                       sm:text-[17px]
@@ -174,6 +185,9 @@ export default function CareersHero() {
                     className="
                       font-mono
                       text-[13px]
+                      text-center
+                      lg:text-left
+                      block
                       font-bold
                       uppercase
                       tracking-[0.08em]
@@ -189,7 +203,9 @@ export default function CareersHero() {
                     className="
                       body-font
                       mt-[5px]
-                      text-[16px]
+                      text-[15px]
+                      text-center
+                      lg:text-left
                       leading-[1.5]
                       text-[#575656]
                       sm:text-[17px]
@@ -209,6 +225,9 @@ export default function CareersHero() {
                     className="
                       font-mono
                       text-[13px]
+                      text-center
+                      lg:text-left
+                      block
                       font-bold
                       uppercase
                       tracking-[0.08em]
@@ -224,7 +243,9 @@ export default function CareersHero() {
                     className="
                       body-font
                       mt-[5px]
-                      text-[16px]
+                      text-[15px]
+                      text-center
+                      lg:text-left
                       leading-[1.5]
                       text-[#575656]
                       sm:text-[17px]
@@ -243,7 +264,7 @@ export default function CareersHero() {
                 APPLY BUTTON
             ========================================== */}
 
-            <div className="pt-[0px]">
+            <div className="pt-[0px] flex justify-center lg:justify-start">
               <SecondaryButton href="#apply">APPLY</SecondaryButton>
             </div>
           </div>

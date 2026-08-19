@@ -9,15 +9,15 @@ export default function ServiceRecapPage({
   speaker = "PST. SDESRWHXBS",
   heroImageUrl = "",
   bodyTitle = "LOREM IPSUM",
-  leadText = "Cras Aliquet, Sem Consectetur Condimentum Ultrices, Risus Massa Condimentum Quam, A Eleifend Dolor Elit Quis Orci.",
+  leadText = "Cras Aliquet, Sem Consectetur Condimentum Ultricies, Risus Massa Condimentum Quam, A Eleifend Dolor Elit Quis Orci.",
   paragraphs = [
-    "Cras Aliquet, Sem Consectetur Condimentum Ultrices, Risus Massa Condimentum Quam, A Eleifend Dolor Elit Quis Orci.",
-    "Cras Aliquet, Sem Consectetur Condimentum Ultrices, Risus Massa Condimentum Quam, A Eleifend Dolor Elit Quis Orci.",
-    "Cras Aliquet, Sem Consectetur Condimentum Ultrices, Risus Massa Condimentum Quam, A Eleifend Dolor Elit Quis Orci.",
-    "Cras Aliquet, Sem Consectetur Condimentum Ultrices, Risus Massa Condimentum Quam, A Eleifend Dolor Elit Quis Orci.",
-    "Cras Aliquet, Sem Consectetur Condimentum Ultrices, Risus Massa Condimentum Quam, A Eleifend Dolor Elit Quis Orci.",
-    "Cras Aliquet, Sem Consectetur Condimentum Ultrices, Risus Massa Condimentum Quam, A Eleifend Dolor Elit Quis Orci.",
-    "Cras Aliquet, Sem Consectetur Condimentum Ultrices, Risus Massa Condimentum Quam, A Eleifend Dolor Elit Quis Orci.",
+    "Cras Aliquet, Sem Consectetur Condimentum Ultricies, Risus Massa Condimentum Quam, A Eleifend Dolor Elit Quis Orci.",
+    "Cras Aliquet, Sem Consectetur Condimentum Ultricies, Risus Massa Condimentum Quam, A Eleifend Dolor Elit Quis Orci.",
+    "Cras Aliquet, Sem Consectetur Condimentum Ultricies, Risus Massa Condimentum Quam, A Eleifend Dolor Elit Quis Orci.",
+    "Cras Aliquet, Sem Consectetur Condimentum Ultricies, Risus Massa Condimentum Quam, A Eleifend Dolor Elit Quis Orci.",
+    "Cras Aliquet, Sem Consectetur Condimentum Ultricies, Risus Massa Condimentum Quam, A Eleifend Dolor Elit Quis Orci.",
+    "Cras Aliquet, Sem Consectetur Condimentum Ultricies, Risus Massa Condimentum Quam, A Eleifend Dolor Elit Quis Orci.",
+    "Cras Aliquet, Sem Consectetur Condimentum Ultricies, Risus Massa Condimentum Quam, A Eleifend Dolor Elit Quis Orci.",
   ],
   galleryImages = [],
 }) {
@@ -36,12 +36,13 @@ export default function ServiceRecapPage({
           w-full
           max-w-7xl
           px-4
-          py-6
+          py-4
           sm:px-6
           sm:py-8
           md:px-10
           lg:px-16
-          mt-[80px]
+          mt-[60px]
+          lg:mt-[80px]
         "
       >
         {/* =====================================================
@@ -52,16 +53,18 @@ export default function ServiceRecapPage({
           className="
             flex
             flex-col
-            gap-6
+            gap-4
+            items-center
+            text-center
             md:flex-row
             md:items-end
             md:justify-between
-            md:gap-8
+            md:text-left
           "
         >
           {/* MAIN TITLE STACK */}
 
-          <div className="leading-none">
+          <div className="leading-none flex flex-col items-center md:items-start">
             <h1
               className="
                 heading-font
@@ -101,9 +104,10 @@ export default function ServiceRecapPage({
               flex
               w-full
               flex-col
-              items-start
+              items-center
+              justify-center
               gap-1
-              text-left
+              text-center
               md:w-auto
               md:min-w-[220px]
               md:items-end
@@ -139,7 +143,7 @@ export default function ServiceRecapPage({
               {speaker}
             </p>
 
-            <div className="mt-2">
+            <div className="mt-1">
               <SecondaryButton href="/messages">GO TO MESSAGES</SecondaryButton>
             </div>
           </div>
@@ -149,7 +153,7 @@ export default function ServiceRecapPage({
             HERO MEDIA BLOCK
         ====================================================== */}
 
-        <section className="mt-8 sm:mt-10 md:mt-12">
+        <section className="mt-3 sm:mt-5 md:mt-7">
           <div
             className="
               relative
@@ -191,7 +195,7 @@ export default function ServiceRecapPage({
                     strokeLinecap="round"
                     strokeLinejoin="round"
                     strokeWidth="1.5"
-                    d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2v12a2 2 0 002 2z"
+                    d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
                   />
                 </svg>
               </div>
@@ -206,7 +210,7 @@ export default function ServiceRecapPage({
         <article
           className="
             mx-auto
-            mt-10
+            mt-4
             w-full
             max-w-2xl
             text-center
@@ -248,14 +252,14 @@ export default function ServiceRecapPage({
             {leadText}
           </p>
 
-          <div className="my-4 border-b border-[#DCD3C5] sm:my-5" />
+          <div className="my-2 border-b border-[#DCD3C5] sm:my-5" />
 
           {/* SUBHEADING + PARAGRAPHS */}
 
           <div
             className="
-              space-y-4
-              text-left
+              space-y-2
+              text-center
               text-xs
               leading-6
               text-[#555555]
@@ -289,9 +293,9 @@ export default function ServiceRecapPage({
 
       <section
         className="
-          mt-12
+          mt-4
           bg-[#161616]
-          py-8
+          py-6
           text-white
           sm:mt-16
           sm:py-12
@@ -363,7 +367,7 @@ export default function ServiceRecapPage({
                           strokeLinecap="round"
                           strokeLinejoin="round"
                           strokeWidth="1.5"
-                          d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2v12a2 2 0 002 2z"
+                          d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
                         />
                       </svg>
                     </div>

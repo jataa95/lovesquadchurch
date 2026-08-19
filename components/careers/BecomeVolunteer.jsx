@@ -11,7 +11,7 @@ export default function BecomeVolunteer() {
           className="
             grid
             grid-cols-1
-            gap-10
+            gap-4
             sm:gap-12
             lg:grid-cols-2
             lg:items-start
@@ -72,7 +72,7 @@ export default function BecomeVolunteer() {
               flex
               w-full
               flex-col
-              gap-6
+              gap-3
               sm:gap-7
               lg:pt-1
               xl:pt-2
@@ -87,6 +87,7 @@ export default function BecomeVolunteer() {
                 leading-[0.9]
                 tracking-[-0.04em]
                 text-[#575656]
+                text-center
               "
               style={{
                 fontSize: "clamp(2rem, 4vw, 3rem)",
@@ -98,14 +99,14 @@ export default function BecomeVolunteer() {
             {/* =========================================
                 INTRO LIST
             ========================================== */}
-            <div className="space-y-5 sm:space-y-6">
+            <div className="space-y-3 sm:space-y-6">
               <VolunteerItem />
               <VolunteerItem />
               <VolunteerItem />
             </div>
 
             {/* APPLY BUTTON */}
-            <div className="pt-0.5 sm:pt-1">
+            <div className="pt-0.5 sm:pt-1 flex justify-center">
               <SecondaryButton href="#volunteer-apply">APPLY</SecondaryButton>
             </div>
 
@@ -115,9 +116,10 @@ export default function BecomeVolunteer() {
                 body-font
                 pt-1
                 text-[#575656]
+                text-center
+                text-[15px]
               "
               style={{
-                fontSize: "clamp(0.95rem, 1.4vw, 1.25rem)",
                 lineHeight: "1.55",
               }}
             >
@@ -131,7 +133,7 @@ export default function BecomeVolunteer() {
             {/* =========================================
                 LONG LIST
             ========================================== */}
-            <div className="space-y-4 sm:space-y-5">
+            <div className="space-y-3 sm:space-y-5 flex flex-col items-center">
               <span
                 className="
                   font-mono
@@ -142,6 +144,7 @@ export default function BecomeVolunteer() {
                   text-[#575656]
                   sm:text-[14px]
                   md:text-[16px]
+                  text-center
                 "
               >
                 LOREM IPSUM
@@ -153,9 +156,10 @@ export default function BecomeVolunteer() {
                   space-y-3
                   text-[#575656]
                   sm:space-y-4
+                  text-center
+                  text-[15px]
                 "
                 style={{
-                  fontSize: "clamp(0.95rem, 1.4vw, 1.25rem)",
                   lineHeight: "1.55",
                 }}
               >
@@ -183,7 +187,7 @@ export default function BecomeVolunteer() {
 
 function VolunteerItem() {
   return (
-    <div>
+    <div className="text-center">
       <span
         className="
           font-mono
@@ -194,6 +198,7 @@ function VolunteerItem() {
           text-[#575656]
           sm:text-[14px]
           md:text-[16px]
+          block
         "
       >
         LOREM IPSUM
@@ -204,9 +209,9 @@ function VolunteerItem() {
           body-font
           mt-1
           text-[#575656]
+          text-[15px]
         "
         style={{
-          fontSize: "clamp(0.95rem, 1.4vw, 1.25rem)",
           lineHeight: "1.55",
         }}
       >
@@ -223,7 +228,7 @@ function VolunteerItem() {
 
 function VolunteerParagraph() {
   return (
-    <p>
+    <p className="text-[15px]">
       Cras Aliquet, Sem Consectetur Condimentum Ultricies, Risus Massa
       Condimentum Quam, A Eleifend Dolor Elit Quis Orci.
     </p>

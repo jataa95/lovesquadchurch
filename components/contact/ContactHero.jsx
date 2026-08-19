@@ -26,12 +26,13 @@ export default function ContactHero() {
   return (
     <section
       className="
-        mt-[80px]
+        mt-[40px]
         w-full
         bg-[#F9E9D3]
         py-8
         text-[#575656]
         md:py-12
+        lg:py-12
       "
     >
       <div
@@ -49,7 +50,7 @@ export default function ContactHero() {
         {/* =========================================
             1. GIANT "CONTACT" HEADING
         ========================================== */}
-        <div className="w-full">
+        <div className="w-full text-center md:text-left">
           <h1
             className="
               heading-font
@@ -75,9 +76,13 @@ export default function ContactHero() {
             body-font
             mt-4
             max-w-[500px]
-            text-[16px]
+            text-[14px]
             leading-relaxed
             text-[#575656]
+            mx-auto
+            md:mx-0
+            text-center
+            md:text-left
           "
         >
           Cras Aliquet, Sem Consectetur Condimentum Ultricies, Risus Massa
@@ -140,7 +145,7 @@ export default function ContactHero() {
                       bg-[#575656]
                       px-3
                       py-3
-                      text-l
+                      text-sm
                       text-white
                       placeholder-gray-400
                       focus:outline-none
@@ -373,16 +378,6 @@ export default function ContactHero() {
                   />
                 </svg>
               </div>
-
-              {/* Real Image Integration Example:
-              <Image
-                src="/images/contact/hero.jpg"
-                alt="Contact Love Squad Church"
-                fill
-                priority
-                className="object-cover"
-              />
-              */}
             </div>
           </div>
         </div>
