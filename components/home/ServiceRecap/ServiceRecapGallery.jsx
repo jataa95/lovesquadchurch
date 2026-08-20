@@ -266,8 +266,8 @@ export default function ServiceRecapGallery() {
                   relative
                   overflow-hidden
                   flex-none
-                  w-[75vw]
-                  h-[360px]
+                  w-[50vw]
+                  h-[380px]
                   bg-[#111]
                   sm:w-[70vw]
                   sm:h-[420px]
@@ -301,9 +301,9 @@ export default function ServiceRecapGallery() {
           {/* =========================================================
               MOBILE OVERLAY CONTROLS (< md breakpoint)
           ========================================================= */}
-          <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center text-center gap-2.5 w-11/12 max-w-xs md:hidden">
+          <div className="absolute bottom-16 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center text-center gap-2.5 w-11/12 max-w-xs md:hidden">
             <div className="pointer-events-none">
-              <span className="block text-[10px] tracking-widest text-[#F9E9D3]/80 font-semibold mb-0.5">
+              <span className="block text-[12px] tracking-widest text-[#575656]/80 font-bold mb-1">
                 ASFDHHSGDDHZ
               </span>
               <p className="text-[#F9E9D3] text-xs leading-tight">
