@@ -48,7 +48,7 @@ export default function ServiceRecapGallery() {
       const rect = section.getBoundingClientRect();
       const windowHeight = window.innerHeight;
 
-      // Calculate progress through the 300vh section
+      // Calculate progress through the 300dvh section
       const progress = (windowHeight - rect.top) / (windowHeight + rect.height);
       const clampedProgress = Math.min(Math.max(progress, 0), 1);
 
@@ -146,7 +146,7 @@ export default function ServiceRecapGallery() {
       ref={sectionRef}
       className="
         relative
-        h-[300vh]
+        h-[300dvh]
         left-1/2
         right-1/2
         -mx-[50vw]
@@ -155,7 +155,7 @@ export default function ServiceRecapGallery() {
       "
     >
       {/* Sticky Viewport Wrapper */}
-      <div className="sticky top-8 flex flex-col h-screen justify-center overflow-hidden py-2 pt-2 sm:pt-2 lg:top-3">
+      <div className="sticky top-8 flex flex-col h-dvh justify-center overflow-hidden py-2 pt-2 sm:pt-2 lg:top-3">
         
         {/* ================================
             SERVICE RECAP HEADER (CENTERED)
@@ -301,8 +301,6 @@ export default function ServiceRecapGallery() {
 
           {/* =========================================================
               MOBILE OVERLAY CONTROLS (< md breakpoint)
-              - Fixed position overlay stack (Center-aligned)
-              - Description -> Secondary Button -> Skip Button (with reduced font size)
           ========================================================= */}
           <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center text-center gap-3 w-11/12 max-w-xs md:hidden">
             {/* Description Block */}
@@ -322,7 +320,7 @@ export default function ServiceRecapGallery() {
               </SecondaryButton>
             </div>
 
-            {/* Skip Button (Reduced font size on mobile via text-xs) */}
+            {/* Skip Button */}
             <div
               className="cursor-pointer transition-opacity duration-200 text-xs sm:text-sm"
               style={{ opacity: skipOpacity, pointerEvents: skipOpacity === 0 ? "none" : "auto" }}
