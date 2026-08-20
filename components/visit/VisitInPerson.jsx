@@ -42,7 +42,7 @@ export default function VisitInPerson() {
             sm:gap-4
 
             sticky
-            top-16
+            top-12
             lg:top-24
             self-start
             h-fit
@@ -69,8 +69,8 @@ export default function VisitInPerson() {
               width={96}
               height={80}
               className="
-                h-[36px]
-                w-[36px]
+                h-[40px]
+                w-[46px]
                 object-contain
 
                 sm:h-[48px]
@@ -99,9 +99,7 @@ export default function VisitInPerson() {
           >
             WE AWAIT
             <br />
-            YOUR
-            <br />
-            VISIT!
+            YOUR VISIT!
           </h2>
         </div>
 
@@ -279,9 +277,10 @@ export default function VisitInPerson() {
               className="
                 mt-1.5
                 flex
-                flex-col
-                items-start
-                gap-2
+                flex-row
+                items-end
+                justify-between
+                gap-4
 
                 sm:flex-row
                 sm:items-end

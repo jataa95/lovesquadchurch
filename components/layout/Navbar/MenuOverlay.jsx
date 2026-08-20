@@ -39,6 +39,10 @@ const menuItems = [
     href: "/giving",
   },
   {
+    label: "PASTOR KAY",
+    href: "/pastorkay",
+  },
+  {
     label: "PLAN YOUR VISIT",
     href: "/visit",
   },
@@ -84,7 +88,7 @@ export default function MenuOverlay({ onClose }) {
       {/* =====================================================
           HEADER
       ====================================================== */}
-      <header className="relative z-50 flex w-full items-center justify-between px-3 pt-3 pb-4 sm:px-2 sm:py-2 lg:px-8 lg:py-8">
+      <header className="relative z-50 flex w-full items-center justify-between pl-2 pr-1 pt-3 pb-4 sm:px-2 sm:py-2 lg:pl-6 lg:pr-3 lg:py-6">
         {/* Logo */}
         <Link
           href="/"
@@ -115,7 +119,7 @@ export default function MenuOverlay({ onClose }) {
           MAIN NAVIGATION
       ====================================================== */}
       <nav className="relative z-40 my-auto flex flex-col items-center justify-center px-6">
-        <div className="flex flex-col items-center gap-4 text-center sm:gap-6">
+        <div className="flex flex-col items-center gap-4 text-center sm:gap-6 lg:gap-3">
           {menuItems.map((item) => {
             const hasSubLinks = Boolean(
               item.subLinks && item.subLinks.length > 0,

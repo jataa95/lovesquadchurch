@@ -6,7 +6,7 @@ import VisitOnlineButton from "@/components/visit/VisitOnlineButton";
 
 export default function VisitHero() {
   return (
-    <section className="mt-[80px] bg-[#F9E9D3] w-full">
+    <section className="mt-[50px] lg:mt-[80px] bg-[#F9E9D3] w-full">
       {/* =========================================
           HERO CONTENT
       ========================================== */}
@@ -21,7 +21,7 @@ export default function VisitHero() {
           flex-col
           px-5
           pt-6
-          pb-8
+          pb-6
 
           sm:px-6
           sm:pt-7
@@ -44,7 +44,7 @@ export default function VisitHero() {
             grid
             grid-cols-1
             items-end
-            gap-8
+            gap-2
 
             lg:grid-cols-[minmax(0,1fr)_380px]
             lg:gap-[40px]
@@ -147,7 +147,7 @@ export default function VisitHero() {
 
             <div
               className="
-                mt-4
+                mt-2
                 flex
                 flex-wrap
                 items-center
@@ -170,7 +170,7 @@ export default function VisitHero() {
         <div
           className="
             relative
-            mt-7
+            mt-6
             h-[180px]
             w-full
             overflow-hidden
