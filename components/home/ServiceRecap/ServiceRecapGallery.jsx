@@ -60,14 +60,12 @@ export default function ServiceRecapGallery() {
       const fadeEnd = 0.50;
 
       if (clampedProgress >= fadeEnd) {
-        // Past the midpoint: hide when scrolling down, show when scrolling up
         if (isScrollingDown) {
           setSkipOpacity(0);
         } else {
           setSkipOpacity(1);
         }
       } else {
-        // Before the midpoint: handle gradual fade based on progress
         if (clampedProgress > fadeStart) {
           const fadeProgress = (clampedProgress - fadeStart) / (fadeEnd - fadeStart);
           setSkipOpacity(isScrollingDown ? Math.max(0, 1 - fadeProgress) : 1);
@@ -146,21 +144,22 @@ export default function ServiceRecapGallery() {
       ref={sectionRef}
       className="
         relative
-        h-[600px]
+        h-[1200px]
         left-1/2
         right-1/2
         -mx-[50vw]
         w-screen
         bg-[#F9E9D3]
+        lg:h-[1200px]
       "
     >
       {/* Sticky Viewport Wrapper */}
-      <div className="sticky top-0 flex flex-col h-[600px] justify-center overflow-hidden py-2 pt-2 sm:pt-2 lg:top-14">
+      <div className="sticky top-0 flex flex-col h-[500px] justify-start lg:sticky lg:h-[750px] lg:top-2 overflow-hidden pt-4">
         
         {/* ================================
             SERVICE RECAP HEADER (CENTERED)
         ================================= */}
-        <div className="w-full px-4 mt-0 mb-2 sm:mb-6 lg:mt-12 flex justify-center shrink-0">
+        <div className="w-full px-4 mb-2 mt-8 sm:mb-6 flex justify-center lg:mt-16 shrink-0">
           <div
             className="
               flex
@@ -267,15 +266,15 @@ export default function ServiceRecapGallery() {
                   relative
                   overflow-hidden
                   flex-none
-                  w-[85vw]
-                  h-[400px]
+                  w-[75vw]
+                  h-[360px]
                   bg-[#111]
                   sm:w-[70vw]
                   sm:h-[420px]
                   md:w-[60vw]
                   md:h-[460px]
-                  lg:w-[45vw]
-                  lg:h-[400px]
+                  lg:w-[35vw]
+                  lg:h-[500px]
                 "
               >
                 <Image
@@ -288,7 +287,7 @@ export default function ServiceRecapGallery() {
                     pointer-events-none
                     object-cover
                     transition-transform
-                    duration-500
+                    duration-700
                     hover:scale-105
                   "
                 />
@@ -302,27 +301,24 @@ export default function ServiceRecapGallery() {
           {/* =========================================================
               MOBILE OVERLAY CONTROLS (< md breakpoint)
           ========================================================= */}
-          <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center text-center gap-3 w-11/12 max-w-xs md:hidden">
-            {/* Description Block */}
+          <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center text-center gap-2.5 w-11/12 max-w-xs md:hidden">
             <div className="pointer-events-none">
-              <span className="block text-[11px] tracking-widest text-[#F9E9D3]/80 font-semibold mb-0.5">
+              <span className="block text-[10px] tracking-widest text-[#F9E9D3]/80 font-semibold mb-0.5">
                 ASFDHHSGDDHZ
               </span>
-              <p className="text-[#F9E9D3] text-xs leading-relaxed">
-                Condimentum Ultrices, Risus Massa Condimentum Quam, A Eleifend Dolor Elit Quis Orci.
+              <p className="text-[#F9E9D3] text-xs leading-tight">
+                Condimentum Ultrices, Risus Massa Condimentum Quam.
               </p>
             </div>
 
-            {/* Recap Last Service Button */}
             <div>
               <SecondaryButton href="/servicerecap">
                 {serviceRecap.button}
               </SecondaryButton>
             </div>
 
-            {/* Skip Button */}
             <div
-              className="cursor-pointer transition-opacity duration-200 text-xs sm:text-sm"
+              className="cursor-pointer transition-opacity duration-200 text-xs"
               style={{ opacity: skipOpacity, pointerEvents: skipOpacity === 0 ? "none" : "auto" }}
               onClick={handleSkip}
             >
@@ -336,8 +332,7 @@ export default function ServiceRecapGallery() {
               DESKTOP OVERLAY CONTROLS (>= md breakpoint)
           ========================================================= */}
           <div className="hidden md:block">
-            {/* Left Description Block */}
-            <div className="absolute bottom-8 left-12 z-20 max-w-xs pointer-events-none">
+            <div className="absolute bottom-32 left-12 z-20 max-w-xs pointer-events-none">
               <span className="block text-xs tracking-widest text-[#575656] font-semibold mb-1">
                 ASFDHHSGDDHZ
               </span>
@@ -346,9 +341,8 @@ export default function ServiceRecapGallery() {
               </p>
             </div>
 
-            {/* Centered Skip Button */}
             <div
-              className="absolute bottom-8 left-1/2 z-20 -translate-x-1/2 cursor-pointer transition-opacity duration-200"
+              className="absolute bottom-32 left-1/2 z-20 -translate-x-1/2 cursor-pointer transition-opacity duration-200"
               style={{ opacity: skipOpacity, pointerEvents: skipOpacity === 0 ? "none" : "auto" }}
               onClick={handleSkip}
             >
@@ -357,8 +351,7 @@ export default function ServiceRecapGallery() {
               </TertiaryButton>
             </div>
 
-            {/* Right Action Button */}
-            <div className="absolute bottom-8 right-12 z-25">
+            <div className="absolute bottom-32 right-12 z-25">
               <SecondaryButton href="/servicerecap">
                 {serviceRecap.button}
               </SecondaryButton>

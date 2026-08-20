@@ -3,7 +3,7 @@ import ServiceRecapGallery from "./ServiceRecapGallery";
 
 export default function ServiceRecap() {
   return (
-    <section className="bg-[#F9E9D3] w-full overflow-hidden">
+    <section className="bg-[#F9E9D3] w-full">
       <ServiceRecapGallery />
     </section>
   );
