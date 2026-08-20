@@ -48,7 +48,7 @@ export default function ServiceRecapGallery() {
       const rect = section.getBoundingClientRect();
       const windowHeight = window.innerHeight;
 
-      // Calculate progress through the 300dvh section
+      // Calculate progress through the section
       const progress = (windowHeight - rect.top) / (windowHeight + rect.height);
       const clampedProgress = Math.min(Math.max(progress, 0), 1);
 
@@ -146,7 +146,7 @@ export default function ServiceRecapGallery() {
       ref={sectionRef}
       className="
         relative
-        h-[300dvh]
+        h-[600px]
         left-1/2
         right-1/2
         -mx-[50vw]
@@ -155,7 +155,7 @@ export default function ServiceRecapGallery() {
       "
     >
       {/* Sticky Viewport Wrapper */}
-      <div className="sticky top-8 flex flex-col h-dvh justify-center overflow-hidden py-2 pt-2 sm:pt-2 lg:top-3">
+      <div className="sticky top-0 flex flex-col h-[600px] justify-center overflow-hidden py-2 pt-2 sm:pt-2 lg:top-14">
         
         {/* ================================
             SERVICE RECAP HEADER (CENTERED)
