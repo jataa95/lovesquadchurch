@@ -23,90 +23,139 @@ const GALLERY_IMAGES = [
 export default function ServiceRecapGallery() {
   const sliderRef = useRef(null);
   const sectionRef = useRef(null);
+  const mobileContainerRef = useRef(null);
+
   const [skipOpacity, setSkipOpacity] = useState(1);
-  
+  const [mobileOpacity, setMobileOpacity] = useState(1);
+  const [mobileSlide, setMobileSlide] = useState(0);
+  const [mounted, setMounted] = useState(false);
+
   const lastScrollTop = useRef(0);
   const isDragging = useRef(false);
   const startX = useRef(0);
   const scrollLeft = useRef(0);
 
-  // =====================================================
-  // SCROLL-DRIVEN HORIZONTAL MOVEMENT & UI TRIGGERS
-  // =====================================================
-
   useEffect(() => {
+    setMounted(true);
+
     const slider = sliderRef.current;
     const section = sectionRef.current;
+    const mobileContainer = mobileContainerRef.current;
 
-    if (!slider || !section) return;
+    if (!section) return;
 
     const handleScroll = () => {
-      const currentScrollTop = window.pageYOffset || document.documentElement.scrollTop;
-      const isScrollingDown = currentScrollTop > lastScrollTop.current;
-      lastScrollTop.current = currentScrollTop <= 0 ? 0 : currentScrollTop;
+      const currentScrollTop =
+        window.pageYOffset || document.documentElement.scrollTop;
+
+      const isScrollingDown =
+        currentScrollTop > lastScrollTop.current;
+
+      lastScrollTop.current =
+        currentScrollTop <= 0 ? 0 : currentScrollTop;
 
       const rect = section.getBoundingClientRect();
       const windowHeight = window.innerHeight;
 
-      // Calculate progress through the section
-      const progress = (windowHeight - rect.top) / (windowHeight + rect.height);
+      const progress =
+        (windowHeight - rect.top) /
+        (windowHeight + rect.height);
+
       const clampedProgress = Math.min(Math.max(progress, 0), 1);
 
-      const maxScroll = slider.scrollWidth - slider.clientWidth;
-      slider.scrollLeft = clampedProgress * maxScroll;
+      // DESKTOP
+      if (window.innerWidth >= 1024 && slider) {
+        const maxScroll =
+          slider.scrollWidth - slider.clientWidth;
 
-      // Fade boundaries
-      const fadeStart = 0.35;
-      const fadeEnd = 0.50;
+        slider.scrollLeft = clampedProgress * maxScroll;
 
-      if (clampedProgress >= fadeEnd) {
-        if (isScrollingDown) {
-          setSkipOpacity(0);
-        } else {
-          setSkipOpacity(1);
-        }
-      } else {
-        if (clampedProgress > fadeStart) {
-          const fadeProgress = (clampedProgress - fadeStart) / (fadeEnd - fadeStart);
-          setSkipOpacity(isScrollingDown ? Math.max(0, 1 - fadeProgress) : 1);
+        const fadeStart = 0.35;
+        const fadeEnd = 0.5;
+
+        if (clampedProgress >= fadeEnd) {
+          setSkipOpacity(isScrollingDown ? 0 : 1);
+        } else if (clampedProgress > fadeStart) {
+          const fadeProgress =
+            (clampedProgress - fadeStart) /
+            (fadeEnd - fadeStart);
+
+          setSkipOpacity(
+            isScrollingDown
+              ? Math.max(0, 1 - fadeProgress)
+              : 1
+          );
         } else {
           setSkipOpacity(1);
         }
       }
+
+      // MOBILE FADE
+      if (window.innerWidth < 1024 && mobileContainer) {
+        const mobileFadeStart = 0.6;
+        const mobileFadeEnd = 0.9;
+
+        if (clampedProgress >= mobileFadeEnd) {
+          setMobileOpacity(0);
+        } else if (clampedProgress > mobileFadeStart) {
+          const fadeVal =
+            (clampedProgress - mobileFadeStart) /
+            (mobileFadeEnd - mobileFadeStart);
+
+          setMobileOpacity(1 - fadeVal);
+        } else {
+          setMobileOpacity(1);
+        }
+      }
     };
 
-    window.addEventListener("scroll", handleScroll, { passive: true });
+    window.addEventListener("scroll", handleScroll, {
+      passive: true,
+    });
+
+    const timer = setInterval(() => {
+      if (window.innerWidth < 1024) {
+        setMobileSlide(
+          (prev) => (prev + 1) % GALLERY_IMAGES.length
+        );
+      }
+    }, 3000);
 
     return () => {
       window.removeEventListener("scroll", handleScroll);
+      clearInterval(timer);
     };
   }, []);
 
-  // =====================================================
-  // SKIP BUTTON HANDLER
-  // =====================================================
-
   const handleSkip = (e) => {
     e.preventDefault();
-    const aboutSection = document.getElementById("about-page");
+
+    const aboutSection =
+      document.getElementById("about-page");
+
     if (aboutSection) {
-      aboutSection.scrollIntoView({ behavior: "smooth" });
+      aboutSection.scrollIntoView({
+        behavior: "smooth",
+      });
     } else if (sectionRef.current) {
-      const sectionBottom = sectionRef.current.offsetTop + sectionRef.current.offsetHeight;
-      window.scrollTo({ top: sectionBottom, behavior: "smooth" });
+      const sectionBottom =
+        sectionRef.current.offsetTop +
+        sectionRef.current.offsetHeight;
+
+      window.scrollTo({
+        top: sectionBottom,
+        behavior: "smooth",
+      });
     }
   };
-
-  // =====================================================
-  // DRAG START / MOVE / END
-  // =====================================================
 
   const handleDragStart = (clientX) => {
     const slider = sliderRef.current;
     if (!slider) return;
 
     isDragging.current = true;
-    startX.current = clientX - slider.getBoundingClientRect().left;
+    startX.current =
+      clientX - slider.getBoundingClientRect().left;
     scrollLeft.current = slider.scrollLeft;
     slider.classList.add("cursor-grabbing");
   };
@@ -117,6 +166,7 @@ export default function ServiceRecapGallery() {
 
     const x = clientX - slider.getBoundingClientRect().left;
     const distance = (x - startX.current) * 1.5;
+
     slider.scrollLeft = scrollLeft.current - distance;
   };
 
@@ -126,17 +176,34 @@ export default function ServiceRecapGallery() {
     slider?.classList.remove("cursor-grabbing");
   };
 
-  const handleMouseDown = (e) => handleDragStart(e.clientX);
+  const handleMouseDown = (e) =>
+    handleDragStart(e.clientX);
+
   const handleMouseMove = (e) => {
     if (!isDragging.current) return;
     e.preventDefault();
     handleDragMove(e.clientX);
   };
 
-  const handleTouchStart = (e) => handleDragStart(e.touches[0].clientX);
+  const handleTouchStart = (e) =>
+    handleDragStart(e.touches[0].clientX);
+
   const handleTouchMove = (e) => {
     if (!isDragging.current) return;
     handleDragMove(e.touches[0].clientX);
+  };
+
+  // Mobile navigation
+  const goToPrevious = () => {
+    setMobileSlide((prev) =>
+      prev === 0 ? GALLERY_IMAGES.length - 1 : prev - 1
+    );
+  };
+
+  const goToNext = () => {
+    setMobileSlide(
+      (prev) => (prev + 1) % GALLERY_IMAGES.length
+    );
   };
 
   return (
@@ -144,99 +211,180 @@ export default function ServiceRecapGallery() {
       ref={sectionRef}
       className="
         relative
-        h-[1200px]
+        w-screen
         left-1/2
         right-1/2
         -mx-[50vw]
-        w-screen
         bg-[#F9E9D3]
-        lg:h-[1200px]
+        h-auto
+        lg:h-[1600px]
       "
     >
-      {/* Sticky Viewport Wrapper */}
-      <div className="sticky top-0 flex flex-col h-[500px] justify-start lg:sticky lg:h-[750px] lg:top-2 overflow-hidden pt-4">
-        
-        {/* ================================
-            SERVICE RECAP HEADER (CENTERED)
-        ================================= */}
-        <div className="w-full px-4 mb-2 mt-8 sm:mb-6 flex justify-center lg:mt-16 shrink-0">
-          <div
-            className="
-              flex
-              items-center
-              justify-center
-              gap-2
-              sm:gap-3.5
-            "
-          >
-            {/* Service Icon */}
+      {/* ================= MOBILE ================= */}
+
+      <div
+        ref={mobileContainerRef}
+        className="block lg:hidden py-6 px-4 w-full transition-opacity duration-500"
+        style={{ opacity: mobileOpacity }}
+      >
+        {/* Header */}
+
+        <div className="w-full mb-4 mt-8 flex justify-center">
+          <div className="flex items-center justify-center gap-2">
             <Image
               src="/icons/service-icon.svg"
               alt="Service Icon"
               width={96}
               height={80}
-              className="
-                h-[30px]
-                w-[36px]
-                shrink-0
-                object-contain
-                sm:h-[44px]
-                sm:w-[48px]
-                md:h-[56px]
-                md:w-[68px]
-                lg:h-[64px]
-                lg:w-[76px]
-              "
+              className="h-[28px] w-[34px] object-contain"
             />
 
-            {/* Heading Container */}
-            <div className="flex flex-row items-start leading-none gap-2">
-              <h2
-                className="
-                  heading-font
-                  uppercase
-                  text-[#ED4823]
-                  text-[22px]
-                  leading-none
-                  sm:text-[36px]
-                  sm:leading-[36px]
-                  md:text-[42px]
-                  md:leading-[42px]
-                  lg:text-[48px]
-                  lg:leading-[48px]
-                "
-                style={{ fontWeight: 900, letterSpacing: "0px" }}
-              >
+            <div className="flex gap-1.5 leading-none">
+              <h2 className="heading-font uppercase text-[#ED4823] text-[20px] font-black">
                 SERVICE
               </h2>
-              <h2
-                className="
-                  heading-font
-                  uppercase
-                  text-[#575656]
-                  text-[22px]
-                  leading-none
-                  sm:text-[36px]
-                  sm:leading-[36px]
-                  md:text-[42px]
-                  md:leading-[42px]
-                  lg:text-[48px]
-                  lg:leading-[48px]
-                "
-                style={{ fontWeight: 900, letterSpacing: "0px" }}
-              >
+
+              <h2 className="heading-font uppercase text-[#575656] text-[20px] font-black">
                 RECAP
               </h2>
             </div>
           </div>
         </div>
 
-        {/* ================================
-            GALLERY CONTAINER WITH OVERLAYS
-        ================================= */}
+        {/* Mobile Slideshow */}
+
+        <div className="w-full">
+          <div className="relative w-full h-[395px] overflow-hidden rounded-xl bg-[#111] shadow-sm">
+            {mounted &&
+              GALLERY_IMAGES.map((imagePath, index) => (
+                <div
+                  key={index}
+                  className={`absolute inset-0 transition-opacity duration-700 ${
+                    mobileSlide === index
+                      ? "opacity-100"
+                      : "opacity-0"
+                  }`}
+                >
+                  <Image
+                    src={imagePath}
+                    alt={`Service Recap ${index + 1}`}
+                    fill
+                    sizes="100vw"
+                    className="object-cover"
+                  />
+
+                  {/* Dark Overlay */}
+                  <div className="absolute inset-0 bg-black/40" />
+
+                  {/* Left Arrow */}
+                  <button
+                    onClick={goToPrevious}
+                    className="absolute left-2.5 top-[46%] -translate-y-1/2 z-20 flex h-8 w-8 items-center justify-center rounded-full bg-black/30 backdrop-blur-sm"
+                    aria-label="Previous image"
+                  >
+                    <svg
+                      width="16"
+                      height="16"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="white"
+                      strokeWidth="2.5"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    >
+                      <path d="M15 18l-6-6 6-6" />
+                    </svg>
+                  </button>
+
+                  {/* Right Arrow */}
+                  <button
+                    onClick={goToNext}
+                    className="absolute right-2.5 top-[46%] -translate-y-1/2 z-20 flex h-8 w-8 items-center justify-center rounded-full bg-black/30 backdrop-blur-sm"
+                    aria-label="Next image"
+                  >
+                    <svg
+                      width="16"
+                      height="16"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="white"
+                      strokeWidth="2.5"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    >
+                      <path d="M9 18l6-6-6-6" />
+                    </svg>
+                  </button>
+
+                  {/* Centered Content */}
+                  <div className="absolute bottom-5 left-1/2 z-20 w-[85%] -translate-x-1/2 text-center flex flex-col items-center">
+                    <span className="block text-[14px] tracking-[0.1em] font-semibold mb-1 text-[#575656]">
+                      ASFDHHSGDDHZ
+                    </span>
+
+                    <p className="text-[12px] leading-snug mb-2 text-[#F9E9D3]/70">
+                      Condimentum Ultrices, Risus Massa
+                      Condimentum Quam.
+                    </p>
+
+                    <div className="flex justify-center mb-6">
+                      <SecondaryButton href="/servicerecap">
+                        {serviceRecap.button}
+                      </SecondaryButton>
+                    </div>
+
+                    {/* Indicators positioned after the button */}
+                    <div className="flex justify-center gap-1">
+                      {GALLERY_IMAGES.map((_, dotIndex) => (
+                        <button
+                          key={dotIndex}
+                          onClick={() => setMobileSlide(dotIndex)}
+                          aria-label={`Go to slide ${dotIndex + 1}`}
+                          className={`rounded-full transition-all duration-300 ${
+                            mobileSlide === dotIndex
+                              ? "w-6 h-[5px] bg-[#ED4823]"
+                              : "w-1.5 h-[5px] bg-[#D8CBB8]/60"
+                          }`}
+                        />
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              ))}
+          </div>
+        </div>
+      </div>
+
+      {/* ================= DESKTOP ================= */}
+
+      <div className="hidden lg:block sticky top-0 h-[750px] overflow-hidden pt-2">
+        {/* Header */}
+
+        <div className="w-full px-4 lg:mb-3 lg:mt-20 flex justify-center shrink-0">
+          <div className="flex items-center justify-center gap-3.5">
+            <Image
+              src="/icons/service-icon.svg"
+              alt="Service Icon"
+              width={96}
+              height={80}
+              className="h-[64px] w-[76px] object-contain"
+            />
+
+            <div className="flex gap-2 leading-none">
+              <h2 className="heading-font uppercase text-[#ED4823] text-[48px] font-black">
+                SERVICE
+              </h2>
+
+              <h2 className="heading-font uppercase text-[#575656] text-[48px] font-black">
+                RECAP
+              </h2>
+            </div>
+          </div>
+        </div>
+
+        {/* Gallery */}
+
         <div className="relative w-full shrink-0">
-          
-          {/* SLIDER TRACK */}
           <div
             ref={sliderRef}
             onMouseDown={handleMouseDown}
@@ -254,7 +402,6 @@ export default function ServiceRecapGallery() {
               cursor-grab
               select-none
               scrollbar-hide
-              touch-pan-y
               w-full
               bg-[#111]
             "
@@ -262,104 +409,60 @@ export default function ServiceRecapGallery() {
             {GALLERY_IMAGES.map((imagePath, index) => (
               <div
                 key={index}
-                className="
-                  relative
-                  overflow-hidden
-                  flex-none
-                  w-[50vw]
-                  h-[380px]
-                  bg-[#111]
-                  sm:w-[70vw]
-                  sm:h-[420px]
-                  md:w-[60vw]
-                  md:h-[460px]
-                  lg:w-[35vw]
-                  lg:h-[500px]
-                "
+                className="relative overflow-hidden flex-none w-[35vw] h-[700px] bg-[#111] lg:h-[500px]"
               >
                 <Image
                   src={imagePath}
                   alt={`Service Recap ${index + 1}`}
                   fill
                   draggable={false}
-                  sizes="(max-width: 640px) 85vw,(max-width: 768px) 70vw,(max-width: 1024px) 60vw,50vw"
-                  className="
-                    pointer-events-none
-                    object-cover
-                    transition-transform
-                    duration-700
-                    hover:scale-105
-                  "
+                  sizes="35vw"
+                  className="pointer-events-none object-cover transition-transform duration-700 hover:scale-105"
                 />
-                
-                {/* DARK OVERLAY ON PICTURE ONLY */}
+
                 <div className="absolute inset-0 bg-black/40 pointer-events-none z-10" />
               </div>
             ))}
           </div>
 
-          {/* =========================================================
-              MOBILE OVERLAY CONTROLS (< md breakpoint)
-          ========================================================= */}
-          <div className="absolute bottom-16 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center text-center gap-2.5 w-11/12 max-w-xs md:hidden">
-            <div className="pointer-events-none">
-              <span className="block text-[12px] tracking-widest text-[#575656]/80 font-bold mb-1">
-                ASFDHHSGDDHZ
-              </span>
-              <p className="text-[#F9E9D3] text-xs leading-tight">
-                Condimentum Ultrices, Risus Massa Condimentum Quam.
-              </p>
-            </div>
+          {/* Desktop Description */}
 
-            <div>
-              <SecondaryButton href="/servicerecap">
-                {serviceRecap.button}
-              </SecondaryButton>
-            </div>
+          <div className="absolute bottom-28 left-12 z-20 max-w-xs pointer-events-none">
+            <span className="block text-xs tracking-widest text-[#575656] font-semibold mb-1">
+              ASFDHHSGDDHZ
+            </span>
 
-            <div
-              className="cursor-pointer transition-opacity duration-200 text-xs"
-              style={{ opacity: skipOpacity, pointerEvents: skipOpacity === 0 ? "none" : "auto" }}
-              onClick={handleSkip}
-            >
-              <TertiaryButton href="#about-page">
-                Skip
-              </TertiaryButton>
-            </div>
+            <p className="text-[#F9E9D3]/70 text-sm leading-relaxed">
+              Condimentum Ultrices, Risus Massa
+              Condimentum Quam, A Eleifend Dolor Elit Quis
+              Orci.
+            </p>
           </div>
 
-          {/* =========================================================
-              DESKTOP OVERLAY CONTROLS (>= md breakpoint)
-          ========================================================= */}
-          <div className="hidden md:block">
-            <div className="absolute bottom-32 left-12 z-20 max-w-xs pointer-events-none">
-              <span className="block text-xs tracking-widest text-[#575656] font-semibold mb-1">
-                ASFDHHSGDDHZ
-              </span>
-              <p className="text-[#F9E9D3] text-sm leading-relaxed">
-                Condimentum Ultrices, Risus Massa Condimentum Quam, A Eleifend Dolor Elit Quis Orci.
-              </p>
-            </div>
+          {/* Desktop Skip */}
 
-            <div
-              className="absolute bottom-32 left-1/2 z-20 -translate-x-1/2 cursor-pointer transition-opacity duration-200"
-              style={{ opacity: skipOpacity, pointerEvents: skipOpacity === 0 ? "none" : "auto" }}
-              onClick={handleSkip}
-            >
-              <TertiaryButton href="#about-page">
-                Skip
-              </TertiaryButton>
-            </div>
-
-            <div className="absolute bottom-32 right-12 z-25">
-              <SecondaryButton href="/servicerecap">
-                {serviceRecap.button}
-              </SecondaryButton>
-            </div>
+          <div
+            className="absolute bottom-28 left-1/2 z-20 -translate-x-1/2 cursor-pointer transition-opacity duration-200"
+            style={{
+              opacity: skipOpacity,
+              pointerEvents:
+                skipOpacity === 0 ? "none" : "auto",
+            }}
+            onClick={handleSkip}
+          >
+            <TertiaryButton href="#about-page">
+              Skip
+            </TertiaryButton>
           </div>
 
+          {/* Desktop CTA */}
+
+          <div className="absolute bottom-28 right-12 z-20">
+            <SecondaryButton href="/servicerecap">
+              {serviceRecap.button}
+            </SecondaryButton>
+          </div>
         </div>
-
       </div>
     </section>
   );
