@@ -34,7 +34,7 @@ const NAV_OFFSET = 94;
 // How much page scroll (in vh) moves the gallery on by one picture.
 const SCROLL_PER_SLIDE_VH = 35;
 // Width of the main picture as a share of the pictures box.
-const MAIN_WIDTH = 0.68;
+const MAIN_WIDTH = 0.74;
 // Gap between pictures, in px.
 const SLIDE_GAP = 16;
 // How much smaller the picture waiting to be revealed is.
@@ -46,21 +46,28 @@ const NEXT_SCALE = 0.8;
 
 function RecapText({ onSkip }) {
   return (
-    <div className="flex w-full flex-col items-start lg:w-1/2">
+    // On desktop the block stretches to the height of the pictures and
+    // spreads out: heading at the top, text in the middle, buttons at the
+    // bottom.
+    <div className="flex w-full flex-col items-start lg:w-1/2 lg:justify-between">
       <h2 className="heading-font text-[28px] font-black uppercase leading-none sm:text-[36px] md:text-[40px] lg:text-[48px]">
         <span className="text-[#ED4823]">Service</span>{" "}
         <span className="text-[#575656]">Recap</span>
       </h2>
 
-      <span className="mt-4 block text-[12px] font-semibold uppercase tracking-[0.1em] text-[#575656] sm:mt-5 sm:text-[13px] lg:mt-6">
-        {serviceRecap.label}
-      </span>
+      <div className="mt-4 sm:mt-5 lg:mt-0">
+        <span className="block text-[12px] font-semibold uppercase tracking-[0.1em] text-[#575656] sm:text-[13px]">
+          {serviceRecap.label}
+        </span>
 
-      <p className="mt-2 max-w-[460px] text-[14px] leading-[21px] text-[#575656] sm:text-[16px] sm:leading-[24px] lg:text-[18px] lg:leading-[27px]">
-        {serviceRecap.description}
-      </p>
+        <p className="mt-2 max-w-[460px] text-[14px] leading-[21px] text-[#575656] sm:text-[16px] sm:leading-[24px] lg:text-[18px] lg:leading-[27px]">
+          {serviceRecap.description}
+        </p>
+      </div>
 
-      <div className="mt-6 flex flex-col items-start gap-4 sm:mt-8 lg:mt-10">
+      {/* Side by side: main button on the left, Skip on the right next to
+          the pictures */}
+      <div className="mt-10 flex w-full flex-wrap items-center justify-between gap-x-6 gap-y-4 sm:mt-12 lg:mt-0">
         <SecondaryButton href="/servicerecap">
           {serviceRecap.button}
         </SecondaryButton>
@@ -168,7 +175,7 @@ function DesktopGallery({ sectionRef, panelRef }) {
       className="relative w-full overflow-hidden"
       style={{
         // Fit the pinned panel inside the screen under the navbar.
-        height: `clamp(360px, calc(100dvh - ${NAV_OFFSET}px - 2 * var(--section-space)), 520px)`,
+        height: `clamp(360px, calc(100dvh - ${NAV_OFFSET}px - 2 * var(--section-space)), 600px)`,
       }}
     >
       {boxWidth > 0 && (
@@ -229,7 +236,7 @@ function MobileGallery() {
           return (
             <div
               key={src}
-              className={`relative aspect-[4/5] w-[78%] shrink-0 snap-start overflow-hidden bg-[#111] transition-transform duration-500 ease-out sm:aspect-[4/3] ${
+              className={`relative aspect-[4/5] w-[84%] shrink-0 snap-start overflow-hidden bg-[#111] transition-transform duration-500 ease-out sm:aspect-[4/3] ${
                 isMain
                   ? "scale-100"
                   : index > active
@@ -241,7 +248,7 @@ function MobileGallery() {
                 src={src}
                 alt={`Service recap photo ${index + 1}`}
                 fill
-                sizes="(min-width: 640px) 60vw, 78vw"
+                sizes="(min-width: 640px) 70vw, 84vw"
                 className="object-cover"
               />
               <div
@@ -300,7 +307,7 @@ export default function ServiceRecapGallery() {
         style={{ top: NAV_OFFSET }}
       >
         <Container>
-          <div className="flex flex-col gap-(--section-gap) lg:flex-row lg:items-center lg:gap-[60px]">
+          <div className="flex flex-col gap-(--section-gap) lg:flex-row lg:items-stretch lg:gap-[60px]">
             <RecapText onSkip={handleSkip} />
 
             <div className="w-full lg:hidden">
