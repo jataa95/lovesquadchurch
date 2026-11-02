@@ -193,7 +193,7 @@ export default function AboutGallery() {
       ref={rootRef}
       aria-roledescription="carousel"
       aria-label="Life at LoveSquad"
-      className="relative w-full"
+      className="group/gallery relative w-full"
       onMouseEnter={() => updatePause("hover", true)}
       onMouseLeave={() => updatePause("hover", false)}
     >
@@ -214,7 +214,8 @@ export default function AboutGallery() {
           >
             <div
               ref={(el) => (imgRefs.current[i] = el)}
-              className="absolute inset-0 will-change-transform"
+              // Desktop (with a mouse): black and white, full colour on hover.
+              className="absolute inset-0 transition-[filter] duration-700 ease-out will-change-transform lg:[@media(hover:hover)]:grayscale lg:[@media(hover:hover)]:group-hover/gallery:grayscale-0"
             >
               <Image
                 src={src}
