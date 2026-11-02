@@ -1,27 +1,8 @@
-import Image from "next/image";
 import { loveSpots } from "@/data/lovespots";
 
 export default function LoveSpotsHeader() {
   return (
     <div className="flex flex-row items-center justify-center text-center gap-1 sm:gap-2 md:flex-row md:items-center md:text-left">
-      {/* Icon */}
-      <Image
-        src={loveSpots.icon || "/icons/lovespot.svg"}
-        alt="Love Spots Icon"
-        width={96}
-        height={80}
-        className="
-          h-[30px]
-          w-[36px]
-          shrink-0
-          object-contain
-          sm:h-[44px]
-          sm:w-[50px]
-          md:h-[56px]
-          md:w-[64px]
-        "
-      />
-
       {/* Multiline Header */}
       <h2
         className="

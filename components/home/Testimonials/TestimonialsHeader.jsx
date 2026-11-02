@@ -1,20 +1,8 @@
-import Image from "next/image";
 import { testimonials } from "@/data/testimonials";
 
 export default function TestimonialsHeader() {
   return (
     <div className="relative z-10 flex items-start gap-[4px] sm:gap-[12px] md:gap-[14px] lg:gap-[6px]">
-      {/* =========================================
-          ICON
-      ========================================== */}
-      <Image
-        src="/icons/stories-icon.svg"
-        alt="Stories Icon"
-        width={80}
-        height={60}
-        className="h-[30px] w-[36px] shrink-0 object-contain sm:h-[50px] sm:w-[66px] md:h-[55px] md:w-[73px] lg:h-[60px] lg:w-[80px]"
-      />
-
       {/* =========================================
           HEADING
       ========================================== */}

@@ -231,14 +231,6 @@ export default function ServiceRecapGallery() {
 
         <div className="w-full mb-(--section-gap) flex justify-center">
           <div className="flex items-center justify-center gap-2">
-            <Image
-              src="/icons/service-icon.svg"
-              alt="Service Icon"
-              width={96}
-              height={80}
-              className="h-[28px] w-[34px] object-contain"
-            />
-
             <div className="flex gap-1.5 leading-none">
               <h2 className="heading-font uppercase text-[#ED4823] text-[20px] font-black">
                 SERVICE
@@ -362,14 +354,6 @@ export default function ServiceRecapGallery() {
 
         <div className="w-full px-4 mb-(--section-gap) flex justify-center shrink-0">
           <div className="flex items-center justify-center gap-3.5">
-            <Image
-              src="/icons/service-icon.svg"
-              alt="Service Icon"
-              width={96}
-              height={80}
-              className="h-[64px] w-[76px] object-contain"
-            />
-
             <div className="flex gap-2 leading-none">
               <h2 className="heading-font uppercase text-[#ED4823] text-[48px] font-black">
                 SERVICE
