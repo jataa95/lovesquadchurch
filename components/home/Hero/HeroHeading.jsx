@@ -1,5 +1,4 @@
 import { hero } from "@/data/hero";
-import { Reveal, RevealLetters } from "./HeroReveal";
 
 export default function HeroHeading() {
   return (
@@ -19,8 +18,8 @@ export default function HeroHeading() {
       "
     >
       {/* WELCOME HOME! */}
-      <Reveal start={0.04} end={0.28}>
       <p
+        data-hero="tag"
         className="
           heading-font
           uppercase
@@ -39,11 +38,10 @@ export default function HeroHeading() {
       >
         {hero.tag}
       </p>
-      </Reveal>
 
       {/* LOVESQUAD */}
       <h1
-        aria-label={hero.title}
+        data-hero="title"
         className="
           heading-font
           select-none
@@ -67,12 +65,12 @@ export default function HeroHeading() {
         "
         style={{ fontWeight: 700 }}
       >
-        <RevealLetters text={hero.title} start={0.1} end={0.5} />
+        {hero.title}
       </h1>
 
       {/* CHURCH */}
-      <Reveal start={0.38} end={0.56} y={16}>
       <p
+        data-hero="subtitle"
         className="
           heading-font
           uppercase
@@ -91,7 +89,6 @@ export default function HeroHeading() {
       >
         {hero.subtitle}
       </p>
-      </Reveal>
     </div>
   );
 }

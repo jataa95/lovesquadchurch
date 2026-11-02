@@ -1,7 +1,6 @@
 import HeroDescription from "./HeroDescription";
 import LatestMessageHeading from "./LatestMessageHeading";
 import HeroVideo from "./HeroVideo";
-import { Reveal } from "./HeroReveal";
 
 export default function HeroBottom() {
   return (
@@ -22,22 +21,19 @@ export default function HeroBottom() {
         "
       >
         {/* LEFT COLUMN */}
-        <Reveal start={0.5} end={0.76} className="w-full md:col-span-1 lg:col-span-6">
+        <div className="w-full md:col-span-1 lg:col-span-6">
           <HeroDescription />
-        </Reveal>
+        </div>
 
         {/* RIGHT COLUMN */}
-        <Reveal
-          start={0.58}
-          end={0.88}
-          y={40}
+        <div
           className="flex w-full flex-col items-center text-center sm:items-end sm:text-right md:col-span-1 lg:col-span-6"
         >
           <LatestMessageHeading />
           <div className="mt-2 w-full sm:mt-5">
             <HeroVideo />
           </div>
-        </Reveal>
+        </div>
       </div>
     </section>
   );

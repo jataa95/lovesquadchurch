@@ -4,6 +4,7 @@ export default function LatestMessageHeading() {
   return (
     <div className="flex flex-col items-center sm:items-end"> {/* Center on mobile, right-align on sm+ */}
       <h2
+        data-hero="latest-title"
         className="
           heading-font
           mt-1
@@ -28,7 +29,7 @@ export default function LatestMessageHeading() {
       </h2>
 
       <div className="mt-1 sm:mt-4">
-        <div className="scale-90 origin-center sm:scale-100"> {/* Optional: Scales down button slightly on mobile */}
+        <div data-hero="latest-cta" className="scale-90 origin-center sm:scale-100">
           <PrimaryButton href="/messages">WATCH NOW</PrimaryButton>
         </div>
       </div>

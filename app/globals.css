@@ -72,6 +72,17 @@ body {
   background-repeat: repeat;
 }
 
+/* Hero SplitText masks (GSAP). The big title's tight line-height would
+   clip the tail of the Q, so its masks get extra room underneath. */
+.hero-title-char-mask {
+  padding-bottom: 0.2em;
+  margin-bottom: -0.2em;
+}
+
+.hero-title-char {
+  will-change: transform;
+}
+
 /* Hero "Scroll" cue: a short orange line sliding down a thin track */
 .hero-scroll-cue {
   animation: hero-scroll-cue 1.8s cubic-bezier(0.65, 0, 0.35, 1) infinite;

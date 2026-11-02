@@ -15,6 +15,7 @@ export default function HeroDescription() {
     >
       {/* Description */}
       <p
+        data-hero="desc-text"
         className="
           body-font
           text-[#F4EBDC]/85
@@ -43,7 +44,7 @@ export default function HeroDescription() {
           flex justify-center sm:block
         "
       >
-        <div className="scale-90 origin-center sm:scale-100">
+        <div data-hero="desc-cta" className="scale-90 origin-center sm:scale-100">
           <PrimaryButton href="/visit">{hero.button}</PrimaryButton>
         </div>
       </div>

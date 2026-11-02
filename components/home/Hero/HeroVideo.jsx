@@ -4,6 +4,7 @@ import { Play } from "lucide-react";
 export default function HeroVideo() {
   return (
     <div
+      data-hero="latest-card"
       className="
         relative
         aspect-[444/211]
