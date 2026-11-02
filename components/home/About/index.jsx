@@ -11,7 +11,7 @@ export default function About() {
       <Container>
         <AboutContent />
 
-        <div className="mt-(--section-space)">
+        <div className="mt-(--section-gap)">
           <AboutGallery />
         </div>
       </Container>

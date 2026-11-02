@@ -46,6 +46,25 @@ body {
   }
 }
 
+/* Shared height for the large homepage pictures (Service Recap main
+   picture on desktop and the About gallery), so they always match.
+   Desktop: fits the screen under the 94px navbar, up to 600px. */
+:root {
+  --media-h: 380px;
+}
+
+@media (min-width: 640px) {
+  :root {
+    --media-h: 480px;
+  }
+}
+
+@media (min-width: 1024px) {
+  :root {
+    --media-h: clamp(360px, calc(100dvh - 94px - 2 * var(--section-space)), 600px);
+  }
+}
+
 @utility section-py {
   padding-top: var(--section-space);
   padding-bottom: var(--section-space);
@@ -81,6 +100,19 @@ body {
 
 .hero-title-char {
   will-change: transform;
+}
+
+/* About gallery: the active progress bar fills over the slide interval
+   (duration and pause state are set inline). */
+.about-progress {
+  animation-name: about-progress;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+}
+
+@keyframes about-progress {
+  from { width: 0%; }
+  to { width: 100%; }
 }
 
 /* Hero "Scroll" cue: a short orange line sliding down a thin track */

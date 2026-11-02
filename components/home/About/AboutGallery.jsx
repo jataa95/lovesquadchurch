@@ -1,8 +1,13 @@
 "use client";
 
 import Image from "next/image";
+import { useCallback, useEffect, useRef, useState } from "react";
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
 
-const aboutImages = [
+gsap.registerPlugin(useGSAP);
+
+const ABOUT_IMAGES = [
   "/images/about/about1.jpg",
   "/images/about/about2.jpg",
   "/images/about/about3.jpg",
@@ -11,65 +16,251 @@ const aboutImages = [
   "/images/about/about6.jpg",
 ];
 
-function AboutGalleryCard({ image, index }) {
-  if (!image) return null;
+// Seconds each picture stays before the next slides in.
+const INTERVAL = 4;
+// Length of the slide transition, in seconds.
+const TRANSITION = 1.3;
+// Slow zoom while a picture is on screen (1 = none).
+const DRIFT_SCALE = 1.06;
 
-  return (
-    <div className="relative h-[360px] w-[85vw] flex-shrink-0 overflow-hidden bg-[#151515] sm:h-[480px] sm:w-[90vw] md:h-[600px] lg:h-[720px]">
-      <Image
-        src={image}
-        alt={`About Lovesquad ${index + 1}`}
-        fill
-        className="object-cover"
-        sizes="100vw"
-        priority={index < 2}
-      />
-    </div>
-  );
+const COUNT = ABOUT_IMAGES.length;
+const pad = (n) => String(n).padStart(2, "0");
+
+const prefersReducedMotion = () =>
+  window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+// Slow zoom on the picture currently on screen.
+function driftImage(img) {
+  if (!img || prefersReducedMotion()) return;
+  gsap.to(img, {
+    scale: DRIFT_SCALE,
+    duration: INTERVAL + TRANSITION,
+    ease: "none",
+    overwrite: "auto",
+  });
 }
 
+/*
+ * Premium auto-advancing slider: the next picture wipes in from the side
+ * while settling from a slight zoom, and the outgoing one slides away
+ * underneath (parallax). Pauses on hover and while off screen; swipe on
+ * touch screens; the progress bars jump to a picture.
+ */
 export default function AboutGallery() {
-  const validImages = aboutImages.filter(Boolean);
+  const rootRef = useRef(null);
+  const slideRefs = useRef([]);
+  const imgRefs = useRef([]);
+  const activeRef = useRef(0);
+  const busyRef = useRef(false);
+  const timerRef = useRef(null);
+  const pausedRef = useRef({ hover: false, offscreen: true, hidden: false });
+  const touchX = useRef(null);
+
+  const [active, setActive] = useState(0);
+  const [paused, setPaused] = useState(true);
+  // Bumped on every resume so the progress bar restarts with the timer.
+  const [run, setRun] = useState(0);
+
+  const isPaused = () => {
+    const p = pausedRef.current;
+    return p.hover || p.offscreen || p.hidden;
+  };
+
+  const goTo = useCallback((nextIndex, direction = 1) => {
+    const from = activeRef.current;
+    const to = (nextIndex + COUNT) % COUNT;
+    if (to === from || busyRef.current) return;
+    busyRef.current = true;
+
+    const out = slideRefs.current[from];
+    const inc = slideRefs.current[to];
+    const outImg = imgRefs.current[from];
+    const incImg = imgRefs.current[to];
+    const dir = direction >= 0 ? 1 : -1;
+
+    activeRef.current = to;
+    setActive(to);
+
+    const done = () => {
+      gsap.set(out, { zIndex: 0, autoAlpha: 0, xPercent: 0 });
+      gsap.set(outImg, { xPercent: 0, scale: 1 });
+      gsap.set(inc, { zIndex: 1 });
+      busyRef.current = false;
+    };
+
+    gsap.set(inc, { zIndex: 2, autoAlpha: 1 });
+
+    if (prefersReducedMotion()) {
+      gsap.fromTo(
+        inc,
+        { opacity: 0 },
+        { opacity: 1, duration: 0.6, ease: "power1.inOut", onComplete: done }
+      );
+      return;
+    }
+
+    const tl = gsap.timeline({
+      defaults: { duration: TRANSITION, ease: "expo.inOut" },
+      onComplete: done,
+    });
+    tl.fromTo(
+      inc,
+      {
+        clipPath:
+          dir > 0 ? "inset(0% 0% 0% 100%)" : "inset(0% 100% 0% 0%)",
+      },
+      { clipPath: "inset(0% 0% 0% 0%)" },
+      0
+    )
+      .fromTo(
+        incImg,
+        { scale: 1.25, xPercent: 12 * dir },
+        { scale: 1, xPercent: 0 },
+        0
+      )
+      .to(outImg, { xPercent: -18 * dir }, 0)
+      .to(out, { xPercent: -6 * dir }, 0)
+      .add(() => driftImage(imgRefs.current[to]), TRANSITION * 0.7);
+  }, []);
+
+  // Auto-advance. A fresh timer starts after every change of picture,
+  // so a manual jump also restarts the countdown.
+  const schedule = useCallback(() => {
+    clearTimeout(timerRef.current);
+    if (isPaused()) return;
+    timerRef.current = setTimeout(() => {
+      goTo(activeRef.current + 1, 1);
+    }, INTERVAL * 1000);
+  }, [goTo]);
+
+  useEffect(() => {
+    schedule();
+    return () => clearTimeout(timerRef.current);
+  }, [active, paused, run, schedule]);
+
+  const updatePause = (key, value) => {
+    const wasPaused = isPaused();
+    pausedRef.current[key] = value;
+    setPaused(isPaused());
+    if (wasPaused && !isPaused()) setRun((n) => n + 1);
+    const img = imgRefs.current[activeRef.current];
+    if (isPaused()) gsap.getTweensOf(img).forEach((t) => t.pause());
+    else gsap.getTweensOf(img).forEach((t) => t.resume());
+  };
+
+  // Initial state, plus pausing while off screen or in a background tab.
+  useGSAP(
+    () => {
+      slideRefs.current.forEach((el, i) =>
+        gsap.set(el, { zIndex: i === 0 ? 1 : 0, autoAlpha: i === 0 ? 1 : 0 })
+      );
+      driftImage(imgRefs.current[0]);
+
+      const io = new IntersectionObserver(
+        ([entry]) => updatePause("offscreen", !entry.isIntersecting),
+        { threshold: 0.25 }
+      );
+      io.observe(rootRef.current);
+      const onVisibility = () => updatePause("hidden", document.hidden);
+      document.addEventListener("visibilitychange", onVisibility);
+      return () => {
+        io.disconnect();
+        document.removeEventListener("visibilitychange", onVisibility);
+      };
+    },
+    { scope: rootRef }
+  );
+
+  const onTouchStart = (e) => {
+    touchX.current = e.touches[0].clientX;
+  };
+  const onTouchEnd = (e) => {
+    if (touchX.current == null) return;
+    const dx = e.changedTouches[0].clientX - touchX.current;
+    touchX.current = null;
+    if (Math.abs(dx) < 40) return;
+    goTo(activeRef.current + (dx < 0 ? 1 : -1), dx < 0 ? 1 : -1);
+  };
 
   return (
-    <section className="relative z-10 w-screen left-1/2 -translate-x-1/2 bg-[#1A1A1A] py-2 sm:py-4 overflow-hidden">
-      <style jsx>{`
-        @keyframes marqueeScroll {
-          0% {
-            transform: translateX(0%);
-          }
-          100% {
-            transform: translateX(-50%);
-          }
-        }
-        .animate-marquee {
-          display: flex;
-          width: max-content;
-          animation: marqueeScroll 35s linear infinite;
-        }
-        .animate-marquee:hover {
-          animation-play-state: paused;
-        }
-      `}</style>
+    <section
+      ref={rootRef}
+      aria-roledescription="carousel"
+      aria-label="Life at LoveSquad"
+      className="relative left-1/2 z-10 w-screen -translate-x-1/2 overflow-hidden bg-[#1A1A1A] py-2 sm:py-4"
+      onMouseEnter={() => updatePause("hover", true)}
+      onMouseLeave={() => updatePause("hover", false)}
+    >
+      <div
+        className="relative w-full overflow-hidden bg-[#151515]"
+        style={{ height: "var(--media-h)" }}
+        onTouchStart={onTouchStart}
+        onTouchEnd={onTouchEnd}
+      >
+        {ABOUT_IMAGES.map((src, i) => (
+          <div
+            key={src}
+            ref={(el) => (slideRefs.current[i] = el)}
+            className="absolute inset-0 overflow-hidden will-change-transform"
+            style={{ visibility: i === 0 ? "visible" : "hidden" }}
+            aria-hidden={i !== active}
+          >
+            <div
+              ref={(el) => (imgRefs.current[i] = el)}
+              className="absolute inset-0 will-change-transform"
+            >
+              <Image
+                src={src}
+                alt={`Life at LoveSquad, photo ${i + 1} of ${COUNT}`}
+                fill
+                sizes="100vw"
+                priority={i === 0}
+                className="object-cover"
+              />
+            </div>
+          </div>
+        ))}
 
-      <div className="w-full overflow-hidden scrollbar-hide">
-        <div className="animate-marquee flex gap-[12px] px-0 sm:gap-[16px] md:gap-[20px]">
-          {/* First track copy */}
-          {validImages.map((image, index) => (
-            <AboutGalleryCard
-              key={`original-${image}-${index}`}
-              image={image}
-              index={index}
-            />
-          ))}
-          {/* Duplicate track copy for seamless continuous infinite marquee loop */}
-          {validImages.map((image, index) => (
-            <AboutGalleryCard
-              key={`duplicate-${image}-${index}`}
-              image={image}
-              index={index}
-            />
-          ))}
+        {/* Soft shade at the bottom so the counter and bars stay readable */}
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 z-[3] h-28 bg-gradient-to-t from-black/60 to-transparent" />
+
+        {/* Counter + progress bars */}
+        <div className="absolute inset-x-0 bottom-0 z-[4] flex items-end justify-between gap-6 px-4 pb-4 sm:px-8 sm:pb-6 lg:px-12 lg:pb-8">
+          <p className="heading-font text-[13px] tracking-[0.2em] text-[#F4EBDC] tabular-nums sm:text-[15px]">
+            <span className="text-[#ED4823]">{pad(active + 1)}</span>
+            <span className="mx-2 text-[#F4EBDC]/50">/</span>
+            {pad(COUNT)}
+          </p>
+
+          <div className="flex w-full max-w-[320px] gap-1.5 sm:max-w-[420px] sm:gap-2">
+            {ABOUT_IMAGES.map((src, i) => (
+              <button
+                key={src}
+                type="button"
+                onClick={() => goTo(i, i > activeRef.current ? 1 : -1)}
+                aria-label={`Show photo ${i + 1}`}
+                aria-current={i === active}
+                className="group relative h-6 flex-1 cursor-pointer"
+              >
+                <span className="absolute inset-x-0 top-1/2 block h-[2px] -translate-y-1/2 overflow-hidden bg-[#F4EBDC]/25 transition-colors group-hover:bg-[#F4EBDC]/45">
+                  <span
+                    key={i === active ? `on-${active}-${run}` : "off"}
+                    className={`absolute inset-y-0 left-0 block bg-[#ED4823] ${
+                      i < active ? "w-full" : "w-0"
+                    } ${i === active ? "about-progress" : ""}`}
+                    style={
+                      i === active
+                        ? {
+                            animationDuration: `${INTERVAL + TRANSITION * 0.3}s`,
+                            animationPlayState: paused ? "paused" : "running",
+                          }
+                        : undefined
+                    }
+                  />
+                </span>
+              </button>
+            ))}
+          </div>
         </div>
       </div>
     </section>
