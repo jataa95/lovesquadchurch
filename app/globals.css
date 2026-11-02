@@ -168,40 +168,29 @@ body {
 ========================================= */
 
 .testimonial-marquee {
-  width: 100vw;
+  width: 100%;
   overflow: hidden;
-  padding-top: 35px;
-  padding-bottom: 35px;
+  /* Just enough room for the tilted card corners */
+  padding-top: 18px;
+  padding-bottom: 18px;
 }
 
 .testimonial-track {
   display: flex;
   width: max-content;
   align-items: center;
-  gap: 70px;
+  gap: 40px;
+  /* Same as the gap, so half the row is exactly one set of cards and
+     the loop has no jump */
+  padding-right: 40px;
   will-change: transform;
 }
 
-.testimonial-track-top {
-  animation: testimonials-left 34s linear infinite;
-}
-
-.testimonial-track-bottom {
-  animation: testimonials-left 40s linear infinite;
-}
-
-@keyframes testimonials-left {
-  from {
-    transform: translateX(0);
+@media (min-width: 768px) {
+  .testimonial-track {
+    gap: 56px;
+    padding-right: 56px;
   }
-
-  to {
-    transform: translateX(-50%);
-  }
-}
-
-.testimonial-marquee:hover .testimonial-track {
-  animation-play-state: paused;
 }
 
 /* =========================================

@@ -2,7 +2,7 @@ import { testimonials } from "@/data/testimonials";
 
 export default function TestimonialsHeader() {
   return (
-    <div className="relative z-10 flex items-start gap-[4px] sm:gap-[12px] md:gap-[14px] lg:gap-[6px]">
+    <div className="relative z-10 flex justify-center text-center">
       {/* =========================================
           HEADING
       ========================================== */}
