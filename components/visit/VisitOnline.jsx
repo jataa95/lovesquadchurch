@@ -5,7 +5,7 @@ import { SecondaryButton } from "@/components/ui/buttons";
 
 export default function VisitOnline() {
   return (
-    <section id="online" className="w-full bg-[#F9E9D3]">
+    <section id="online" className="w-full bg-cream">
       <div
         className="
           mx-auto

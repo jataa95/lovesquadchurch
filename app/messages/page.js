@@ -11,7 +11,7 @@ export const metadata = {
 
 export default function MessagesPage() {
   return (
-    <main className="min-h-screen bg-[#F9E9D3]">
+    <main className="min-h-screen bg-cream">
       <MessagesHero />
       <MessageSearch />
       <AboutFAQs />

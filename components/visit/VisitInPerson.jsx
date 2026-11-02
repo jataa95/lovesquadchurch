@@ -4,7 +4,7 @@ import Image from "next/image";
 
 export default function VisitInPerson() {
   return (
-    <section id="in-person" className="w-full bg-[#F9E9D3]">
+    <section id="in-person" className="w-full bg-cream">
       <div
         className="
           mx-auto
@@ -47,7 +47,7 @@ export default function VisitInPerson() {
             self-start
             h-fit
             z-10
-            bg-[#F9E9D3]
+            bg-cream
             py-2
           "
         >

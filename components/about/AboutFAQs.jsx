@@ -51,7 +51,7 @@ export default function AboutFAQs() {
         relative
         w-full
         overflow-hidden
-        bg-[#F9E9D3]
+        bg-cream
         px-[8px]
       "
     >
@@ -62,7 +62,7 @@ export default function AboutFAQs() {
         className="
           relative
           w-full
-          bg-[#F9E9D3]
+          bg-cream
           px-[16px]
           py-[20px]
 

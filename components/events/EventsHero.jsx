@@ -94,7 +94,7 @@ export default function EventsHero() {
   }, []);
 
   return (
-    <section ref={sectionRef} className="relative w-full bg-[#F9E9D3] text-[#333333]">
+    <section ref={sectionRef} className="relative w-full bg-cream text-[#333333]">
       <div className="mx-auto flex w-full max-w-[1440px] flex-col px-6 py-3 md:px-12 md:py-8">
         {/* =========================================
             1. GIANT "EVENTS" HEADING

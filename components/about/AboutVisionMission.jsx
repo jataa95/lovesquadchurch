@@ -32,7 +32,7 @@ export default function AboutVisionMission() {
         className="
           relative
           w-full
-          bg-[#F9E9D3]
+          bg-cream
           px-[18px]
           py-[55px]
           sm:px-[28px]
@@ -67,7 +67,7 @@ export default function AboutVisionMission() {
               top-16.5
               lg:top-28
               h-fit
-              bg-[#F9E9D3]
+              bg-cream
               z-10
               pb-4
               lg:pb-0

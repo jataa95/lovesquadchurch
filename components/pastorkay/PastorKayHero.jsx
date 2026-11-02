@@ -7,7 +7,7 @@ export default function PastorKayHero() {
       className="
         mt-[80px]
         w-full
-        bg-[#F9E9D3]
+        bg-cream
         py-6
         text-[#575656]
         sm:py-8

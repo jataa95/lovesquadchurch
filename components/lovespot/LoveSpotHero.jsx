@@ -11,7 +11,7 @@ export default function LoveSpotHero() {
         relative
         w-full
         overflow-hidden
-        bg-[#F9E9D3]
+        bg-cream
         px-[12px]
         pt-20
         pb-6

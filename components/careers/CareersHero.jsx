@@ -4,7 +4,7 @@ import SecondaryButton from "@/components/ui/buttons/SecondaryButton";
 
 export default function CareersHero() {
   return (
-    <section className="w-full bg-[#F9E9D3] text-[#575656]">
+    <section className="w-full bg-cream text-[#575656]">
       <div
         className="
           mx-auto

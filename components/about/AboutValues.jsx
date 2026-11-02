@@ -37,7 +37,7 @@ export default function AboutValues() {
       id="about_values"
       className="
         w-full
-        bg-[#F9E9D3]
+        bg-cream
         px-5
         py-8
 
@@ -52,7 +52,7 @@ export default function AboutValues() {
         {/* ================================
             LEFT SIDE (STICKY)
         ================================ */}
-        <div className="flex w-full flex-col sticky top-16 lg:top-28 h-fit lg:w-1/2 bg-[#F9E9D3] z-10 pb-3 lg:pb-0">
+        <div className="flex w-full flex-col sticky top-16 lg:top-28 h-fit lg:w-1/2 bg-cream z-10 pb-3 lg:pb-0">
           <div className="flex items-start gap-2.5 sm:gap-4 lg:gap-[16px]">
             {/* Icon */}
             <Image

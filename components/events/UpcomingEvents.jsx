@@ -4,13 +4,13 @@ import Image from "next/image";
 
 export default function UpcomingEvents() {
   return (
-    <section id="upcoming-events" className="relative w-full bg-[#F9E9D3] text-[#575656] py-6 md:py-16">
+    <section id="upcoming-events" className="relative w-full bg-cream text-[#575656] py-6 md:py-16">
       <div className="mx-auto max-w-[1440px] px-6 md:px-12">
         <div className="grid grid-cols-1 gap-6 lg:grid-cols-12 lg:items-start lg:relative">
           {/* =========================================
               LEFT COLUMN: Header, Calendar SVG Icon & Sticky Wrapper (Mobile & Desktop)
           ========================================== */}
-          <div className="flex flex-col lg:col-span-5 sticky top-16 md:top-20 lg:top-28 z-10 bg-[#F9E9D3] pb-4 lg:pb-0">
+          <div className="flex flex-col lg:col-span-5 sticky top-16 md:top-20 lg:top-28 z-10 bg-cream pb-4 lg:pb-0">
             {/* Header + Icon Row */}
             <div className="flex items-left justify-center lg:justify-start gap-2">
               {/* SVG Icon File */}

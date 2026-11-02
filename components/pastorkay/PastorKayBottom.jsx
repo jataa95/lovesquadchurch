@@ -128,7 +128,7 @@ export default function PastorKayBottom() {
           w-full
           items-center
           justify-center
-          bg-[#F9E9D3]
+          bg-cream
           px-4
           py-8
           sm:py-10

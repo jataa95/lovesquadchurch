@@ -5,7 +5,7 @@ import GalleryGrid from "./GalleryGrid";
 export default function Gallery() {
   return (
     <section
-      className="bg-[#F9E9D3] section-py"
+      className="bg-cream section-py"
     >
       {/* =========================
           GALLERY HEADER

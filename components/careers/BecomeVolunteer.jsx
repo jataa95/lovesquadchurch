@@ -5,7 +5,7 @@ import SecondaryButton from "@/components/ui/buttons/SecondaryButton";
 
 export default function BecomeVolunteer() {
   return (
-    <section className="relative w-full overflow-hidden bg-[#F9E9D3] py-10 text-[#575656] sm:py-14 md:py-16 lg:py-20">
+    <section className="relative w-full overflow-hidden bg-cream py-10 text-[#575656] sm:py-14 md:py-16 lg:py-20">
       <div className="relative mx-auto w-full max-w-[1440px] px-5 sm:px-8 md:px-10 lg:px-12">
         <div
           className="

@@ -28,7 +28,7 @@ export default function ContactHero() {
       className="
         mt-[40px]
         w-full
-        bg-[#F9E9D3]
+        bg-cream
         py-8
         text-[#575656]
         md:py-12

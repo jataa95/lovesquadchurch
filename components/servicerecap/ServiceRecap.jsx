@@ -24,7 +24,7 @@ export default function ServiceRecapPage({
   return (
     <div
       id="servicerecap"
-      className="min-h-screen w-full overflow-hidden bg-[#F9E9D3] text-[#1E1E1E]"
+      className="min-h-screen w-full overflow-hidden bg-cream text-[#1E1E1E]"
     >
       {/* =====================================================
           MAIN CONTENT

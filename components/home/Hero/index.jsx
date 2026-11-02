@@ -12,7 +12,7 @@ export default function Hero() {
       <HeroBackgroundVideo />
       <div className="absolute inset-0 bg-black/55" />
       <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black/70" />
-      <div className="absolute inset-0 bg-[url('/images/noise.png')] bg-repeat opacity-[0.03] mix-blend-soft-light" />
+      <div className="absolute inset-0 bg-[url('/textures/grain.png')] bg-repeat opacity-60 mix-blend-soft-light" />
 
       {/* Hero Content */}
       <Container

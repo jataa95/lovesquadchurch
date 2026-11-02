@@ -78,7 +78,7 @@ export default function AboutFaith() {
     <section
       ref={sectionRef}
       id="statement-of-faith"
-      className="relative w-full bg-[#F9E9D3] px-1.5 sm:px-2 lg:px-4"
+      className="relative w-full bg-cream px-1.5 sm:px-2 lg:px-4"
     >
       <div className={`fixed right-6 lg:right-12 z-50 transition-all duration-300 pointer-events-none top-24 pt-8 lg:pt-20 lg:top-32 ${showSkip ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-4 pointer-events-none"}`}>
         <div className="pointer-events-auto shadow-2xl" onClick={handleSkipClick}>

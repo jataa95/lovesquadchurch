@@ -6,7 +6,7 @@ import VisitOnlineButton from "@/components/visit/VisitOnlineButton";
 
 export default function VisitHero() {
   return (
-    <section className="mt-[50px] lg:mt-[80px] bg-[#F9E9D3] w-full">
+    <section className="mt-[50px] lg:mt-[80px] bg-cream w-full">
       {/* =========================================
           HERO CONTENT
       ========================================== */}
@@ -119,7 +119,7 @@ export default function VisitHero() {
           <div className="w-full pb-0 lg:pb-[2px]">
             {/* DIVIDER */}
 
-            <div className="mb-3 h-px w-full bg-[#F9E9D3]" />
+            <div className="mb-3 h-px w-full bg-cream" />
 
             {/* HEADING */}
 

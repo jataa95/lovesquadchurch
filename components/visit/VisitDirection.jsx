@@ -2,7 +2,7 @@
 
 export default function VisitDirection() {
   return (
-    <section id="direction" className="w-full bg-[#F9E9D3]">
+    <section id="direction" className="w-full bg-cream">
       <div
         className="
           mx-auto

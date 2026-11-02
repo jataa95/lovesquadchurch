@@ -21,7 +21,7 @@ export default function MessageSearch() {
   };
 
   return (
-    <section className="w-full bg-[#F9E9D3] pb-2 text-[#575656] sm:pb-16">
+    <section className="w-full bg-cream pb-2 text-[#575656] sm:pb-16">
       <div
         className="
           mx-auto

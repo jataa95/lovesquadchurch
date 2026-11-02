@@ -7,7 +7,7 @@ export default function MessagesHero() {
       className="
         mt-[60px]
         w-full
-        bg-[#F9E9D3]
+        bg-cream
         pt-4
         pb-4
         text-[#575656]

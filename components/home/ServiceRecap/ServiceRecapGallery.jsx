@@ -292,7 +292,7 @@ export default function ServiceRecapGallery() {
   };
 
   return (
-    <div ref={sectionRef} id="service-recap" className="relative w-full bg-[#F9E9D3]">
+    <div ref={sectionRef} id="service-recap" className="relative w-full bg-cream">
       {/* Pinned on desktop while the pictures slide; normal flow below lg */}
       <div
         ref={panelRef}
