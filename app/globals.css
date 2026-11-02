@@ -72,6 +72,20 @@ body {
   background-repeat: repeat;
 }
 
+/* Hero "Scroll" cue: a short orange line sliding down a thin track */
+.hero-scroll-cue {
+  animation: hero-scroll-cue 1.8s cubic-bezier(0.65, 0, 0.35, 1) infinite;
+}
+
+@keyframes hero-scroll-cue {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(200%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-scroll-cue { animation: none; }
+}
+
 .heading-font {
   font-family: var(--font-heading);
 }

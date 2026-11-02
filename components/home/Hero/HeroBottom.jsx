@@ -1,36 +1,11 @@
-"use client";
-
-import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef, useEffect, useState } from "react";
 import HeroDescription from "./HeroDescription";
 import LatestMessageHeading from "./LatestMessageHeading";
 import HeroVideo from "./HeroVideo";
+import { Reveal } from "./HeroReveal";
 
 export default function HeroBottom() {
-  const ref = useRef(null);
-  const [isMobile, setIsMobile] = useState(false);
-
-  useEffect(() => {
-    const checkMobile = () => setIsMobile(window.innerWidth < 640);
-    checkMobile();
-    window.addEventListener("resize", checkMobile);
-    return () => window.removeEventListener("resize", checkMobile);
-  }, []);
-
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["start end", "end end"],
-  });
-
-  // Moves element down smoothly on scroll only when on mobile
-  const y = useTransform(scrollYProgress, [0, 1], isMobile ? [-40, 0] : [0, 0]);
-
   return (
-    <motion.section
-      ref={ref}
-      style={{ y }}
-      className="mt-0 w-full transition-transform duration-75 ease-out"
-    >
+    <section className="mt-0 w-full">
       <div
         className="
           grid
@@ -47,18 +22,23 @@ export default function HeroBottom() {
         "
       >
         {/* LEFT COLUMN */}
-        <div className="w-full md:col-span-1 lg:col-span-6">
+        <Reveal start={0.5} end={0.76} className="w-full md:col-span-1 lg:col-span-6">
           <HeroDescription />
-        </div>
+        </Reveal>
 
         {/* RIGHT COLUMN */}
-        <div className="flex w-full flex-col items-center text-center sm:items-end sm:text-right md:col-span-1 lg:col-span-6">
+        <Reveal
+          start={0.58}
+          end={0.88}
+          y={40}
+          className="flex w-full flex-col items-center text-center sm:items-end sm:text-right md:col-span-1 lg:col-span-6"
+        >
           <LatestMessageHeading />
           <div className="mt-2 w-full sm:mt-5">
             <HeroVideo />
           </div>
-        </div>
+        </Reveal>
       </div>
-    </motion.section>
+    </section>
   );
 }
