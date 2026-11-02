@@ -224,7 +224,7 @@ export default function AboutGallery() {
       </div>
 
       {/* Dot indicators */}
-      <div className="mt-4 flex justify-center gap-1 sm:mt-5">
+      <div className="mt-4 flex justify-center sm:mt-5">
         {ABOUT_IMAGES.map((src, i) => (
           <button
             key={src}
@@ -232,7 +232,7 @@ export default function AboutGallery() {
             onClick={() => goTo(i, i > activeRef.current ? 1 : -1)}
             aria-label={`Show photo ${i + 1}`}
             aria-current={i === active}
-            className="group flex h-6 w-6 items-center justify-center"
+            className="group flex h-6 w-3 items-center justify-center"
           >
             <span
               className={`block h-2 w-2 rounded-full transition-all duration-500 ease-out ${
