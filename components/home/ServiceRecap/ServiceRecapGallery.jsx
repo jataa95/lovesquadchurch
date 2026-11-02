@@ -46,23 +46,26 @@ const NEXT_SCALE = 0.8;
 
 function RecapText({ onSkip }) {
   return (
-    // On desktop the block stretches to the height of the pictures and
-    // spreads out: heading at the top, text in the middle, buttons at the
-    // bottom.
+    // On desktop the block stretches to the height of the pictures:
+    // heading and text at the top, buttons at the bottom.
     <div className="flex w-full flex-col items-start lg:w-1/2 lg:justify-between">
-      <h2 className="heading-font text-[28px] font-black uppercase leading-none sm:text-[36px] md:text-[40px] lg:text-[48px]">
-        <span className="text-[#ED4823]">Service</span>{" "}
-        <span className="text-[#575656]">Recap</span>
-      </h2>
+      <div>
+        <h2 className="heading-font text-[28px] font-black uppercase leading-none sm:text-[36px] md:text-[40px] lg:text-[48px]">
+          <span className="text-[#ED4823]">Service</span>{" "}
+          <span className="text-[#575656]">Recap</span>
+        </h2>
 
-      <div className="mt-4 sm:mt-5 lg:mt-0">
-        <span className="block text-[12px] font-semibold uppercase tracking-[0.1em] text-[#575656] sm:text-[13px]">
-          {serviceRecap.label}
-        </span>
+        {/* Desktop: text sits 20px under the heading. Phones/tablets keep
+            their original spacing (16px / 20px). */}
+        <div className="mt-4 sm:mt-5 lg:mt-5">
+          <span className="block text-[12px] font-semibold uppercase tracking-[0.1em] text-[#575656] sm:text-[13px]">
+            {serviceRecap.label}
+          </span>
 
-        <p className="mt-2 max-w-[460px] text-[14px] leading-[21px] text-[#575656] sm:text-[16px] sm:leading-[24px] lg:text-[18px] lg:leading-[27px]">
-          {serviceRecap.description}
-        </p>
+          <p className="mt-2 max-w-[460px] text-[14px] leading-[21px] text-[#575656] sm:text-[16px] sm:leading-[24px] lg:text-[18px] lg:leading-[27px]">
+            {serviceRecap.description}
+          </p>
+        </div>
       </div>
 
       {/* Side by side: main button on the left, Skip on the right next to
