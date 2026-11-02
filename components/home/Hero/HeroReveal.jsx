@@ -251,9 +251,11 @@ export function HeroStage({ background, children }) {
         {children}
       </div>
 
-      {/* Scroll cue: fades in after a delay, scrubs out on scroll */}
+      {/* Scroll cue: sits at the bottom of the screen (not of the section,
+          which can be taller on short screens). Fades in after a delay and
+          scrubs out on scroll. */}
       <div
-        className={`pointer-events-none absolute inset-x-0 bottom-6 z-20 flex justify-center transition-opacity duration-1000 motion-reduce:hidden sm:bottom-8 ${
+        className={`pointer-events-none absolute inset-x-0 top-[calc(100dvh-94px)] z-20 flex justify-center transition-opacity duration-1000 motion-reduce:hidden sm:top-[calc(100dvh-102px)] ${
           cueReady ? "opacity-100" : "opacity-0"
         }`}
         aria-hidden="true"
