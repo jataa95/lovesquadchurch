@@ -100,6 +100,9 @@ export function HeroStage({ background, children }) {
               start: "top top",
               end: REVEAL_DISTANCE,
               pin: true,
+              // Measure this pin before the scroll effects further down,
+              // which are created earlier (before the fonts load).
+              refreshPriority: 1,
               scrub: SCRUB,
               anticipatePin: 1,
             },
@@ -210,6 +213,11 @@ export function HeroStage({ background, children }) {
 
           // Starting states are set; now it is safe to show the content.
           gsap.set(content, { autoAlpha: 1 });
+
+          // The pin just added scroll space above everything else, so put
+          // the scroll animations back in page order and re-measure them.
+          ScrollTrigger.sort();
+          ScrollTrigger.refresh();
         });
 
         return () => {
