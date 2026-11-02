@@ -70,17 +70,17 @@ const SCATTERED = [
   },
   {
     left: "78%",
-    top: 930,
+    top: 900,
     width: "min(21vw, 302px)",
     ratio: "4 / 3",
     zoom: "out",
-    speed: 460,
+    speed: 300,
   },
   // The 8th picture sits close to the paragraph.
   {
     left: "60%",
-    top: 1235,
-    width: "min(16vw, 230px)",
+    top: 1260,
+    width: "min(22vw, 317px)",
     ratio: "4 / 3",
     zoom: "in",
     speed: 220,
