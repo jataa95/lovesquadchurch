@@ -1,8 +1,15 @@
-// app/components/ServiceRecapGallery.jsx
 "use client";
 
 import Image from "next/image";
-import { useRef, useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import {
+  motion,
+  useMotionValue,
+  useReducedMotion,
+  useSpring,
+  useTransform,
+} from "framer-motion";
+import Container from "@/components/ui/Container";
 import { serviceRecap } from "@/data/serviceRecap";
 import SecondaryButton from "@/components/ui/buttons/SecondaryButton";
 import TertiaryButton from "@/components/ui/buttons/TertiaryButton";
@@ -20,434 +27,299 @@ const GALLERY_IMAGES = [
   "/images/service-recap/sr10.jpg",
 ];
 
-export default function ServiceRecapGallery() {
-  const sliderRef = useRef(null);
-  const sectionRef = useRef(null);
-  const mobileContainerRef = useRef(null);
+const COUNT = GALLERY_IMAGES.length;
 
-  const [skipOpacity, setSkipOpacity] = useState(1);
-  const [mobileOpacity, setMobileOpacity] = useState(1);
-  const [mobileSlide, setMobileSlide] = useState(0);
-  const [mounted, setMounted] = useState(false);
+// Height of the fixed navbar on desktop; the panel pins just below it.
+const NAV_OFFSET = 94;
+// How much page scroll (in vh) moves the gallery on by one picture.
+const SCROLL_PER_SLIDE_VH = 35;
+// Width of the main picture as a share of the pictures box.
+const MAIN_WIDTH = 0.68;
+// Gap between pictures, in px.
+const SLIDE_GAP = 16;
+// How much smaller the picture waiting to be revealed is.
+const NEXT_SCALE = 0.8;
 
-  const lastScrollTop = useRef(0);
-  const isDragging = useRef(false);
-  const startX = useRef(0);
-  const scrollLeft = useRef(0);
+/* ------------------------------------------------------------------ */
+/* Text block (heading, description, buttons)                          */
+/* ------------------------------------------------------------------ */
 
+function RecapText({ onSkip }) {
+  return (
+    <div className="flex w-full flex-col items-start lg:w-1/2">
+      <h2 className="heading-font text-[28px] font-black uppercase leading-none sm:text-[36px] md:text-[40px] lg:text-[48px]">
+        <span className="text-[#ED4823]">Service</span>{" "}
+        <span className="text-[#575656]">Recap</span>
+      </h2>
+
+      <span className="mt-4 block text-[12px] font-semibold uppercase tracking-[0.1em] text-[#575656] sm:mt-5 sm:text-[13px] lg:mt-6">
+        {serviceRecap.label}
+      </span>
+
+      <p className="mt-2 max-w-[460px] text-[14px] leading-[21px] text-[#575656] sm:text-[16px] sm:leading-[24px] lg:text-[18px] lg:leading-[27px]">
+        {serviceRecap.description}
+      </p>
+
+      <div className="mt-6 flex flex-col items-start gap-4 sm:mt-8 lg:mt-10">
+        <SecondaryButton href="/servicerecap">
+          {serviceRecap.button}
+        </SecondaryButton>
+
+        <TertiaryButton href="#about-page" tone="dark" onClick={onSkip}>
+          Skip
+        </TertiaryButton>
+      </div>
+    </div>
+  );
+}
+
+/* ------------------------------------------------------------------ */
+/* Desktop: pictures slide sideways as the page scrolls                */
+/* ------------------------------------------------------------------ */
+
+function DesktopSlide({ src, index, position, slideWidth }) {
+  // 0 when this picture is the main one, 1 when it is a full step away.
+  const distance = useTransform(position, (p) =>
+    Math.min(Math.abs(p - index), 1)
+  );
+  const scale = useTransform(distance, (d) => 1 - (1 - NEXT_SCALE) * d);
+  const shade = useTransform(distance, (d) => 0.15 + 0.35 * d);
+  // Upcoming pictures shrink towards their left edge, passed ones towards
+  // their right edge, so each one stays tucked against the main picture.
+  const origin = useTransform(position, (p) =>
+    index >= p ? "0% 50%" : "100% 50%"
+  );
+
+  return (
+    <motion.div
+      className="relative h-full shrink-0 overflow-hidden bg-[#111]"
+      style={{ width: slideWidth, scale, transformOrigin: origin }}
+    >
+      <Image
+        src={src}
+        alt={`Service recap photo ${index + 1}`}
+        fill
+        draggable={false}
+        sizes="(min-width: 1280px) 420px, 34vw"
+        className="pointer-events-none object-cover"
+      />
+      <motion.div
+        className="pointer-events-none absolute inset-0 bg-black"
+        style={{ opacity: shade }}
+      />
+    </motion.div>
+  );
+}
+
+function DesktopGallery({ sectionRef, panelRef }) {
+  const boxRef = useRef(null);
+  const [boxWidth, setBoxWidth] = useState(0);
+  const reduceMotion = useReducedMotion();
+
+  // 0 → first picture is main, 1 → last picture is main.
+  const progress = useMotionValue(0);
+  const smooth = useSpring(progress, {
+    stiffness: 120,
+    damping: 26,
+    mass: 0.35,
+  });
+  const driver = reduceMotion ? progress : smooth;
+
+  const slideWidth = boxWidth * MAIN_WIDTH;
+  const step = slideWidth + SLIDE_GAP;
+  const position = useTransform(driver, (v) => v * (COUNT - 1));
+  const x = useTransform(position, (p) => -p * step);
+
+  // Keep the picture size in step with the box width.
   useEffect(() => {
-    setMounted(true);
-
-    const slider = sliderRef.current;
-    const section = sectionRef.current;
-    const mobileContainer = mobileContainerRef.current;
-
-    if (!section) return;
-
-    const handleScroll = () => {
-      const currentScrollTop =
-        window.pageYOffset || document.documentElement.scrollTop;
-
-      const isScrollingDown =
-        currentScrollTop > lastScrollTop.current;
-
-      lastScrollTop.current =
-        currentScrollTop <= 0 ? 0 : currentScrollTop;
-
-      const rect = section.getBoundingClientRect();
-      const windowHeight = window.innerHeight;
-
-      const progress =
-        (windowHeight - rect.top) /
-        (windowHeight + rect.height);
-
-      const clampedProgress = Math.min(Math.max(progress, 0), 1);
-
-      // DESKTOP
-      if (window.innerWidth >= 1024 && slider) {
-        const maxScroll =
-          slider.scrollWidth - slider.clientWidth;
-
-        slider.scrollLeft = clampedProgress * maxScroll;
-
-        const fadeStart = 0.35;
-        const fadeEnd = 0.5;
-
-        if (clampedProgress >= fadeEnd) {
-          setSkipOpacity(isScrollingDown ? 0 : 1);
-        } else if (clampedProgress > fadeStart) {
-          const fadeProgress =
-            (clampedProgress - fadeStart) /
-            (fadeEnd - fadeStart);
-
-          setSkipOpacity(
-            isScrollingDown
-              ? Math.max(0, 1 - fadeProgress)
-              : 1
-          );
-        } else {
-          setSkipOpacity(1);
-        }
-      }
-
-      // MOBILE FADE
-      if (window.innerWidth < 1024 && mobileContainer) {
-        const mobileFadeStart = 0.6;
-        const mobileFadeEnd = 0.9;
-
-        if (clampedProgress >= mobileFadeEnd) {
-          setMobileOpacity(0);
-        } else if (clampedProgress > mobileFadeStart) {
-          const fadeVal =
-            (clampedProgress - mobileFadeStart) /
-            (mobileFadeEnd - mobileFadeStart);
-
-          setMobileOpacity(1 - fadeVal);
-        } else {
-          setMobileOpacity(1);
-        }
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll, {
-      passive: true,
-    });
-
-    const timer = setInterval(() => {
-      if (window.innerWidth < 1024) {
-        setMobileSlide(
-          (prev) => (prev + 1) % GALLERY_IMAGES.length
-        );
-      }
-    }, 3000);
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-      clearInterval(timer);
-    };
+    const box = boxRef.current;
+    if (!box) return;
+    const observer = new ResizeObserver(([entry]) =>
+      setBoxWidth(entry.contentRect.width)
+    );
+    observer.observe(box);
+    return () => observer.disconnect();
   }, []);
 
-  const handleSkip = (e) => {
-    e.preventDefault();
+  // Map the page scroll while the panel is pinned onto 0 → 1.
+  useEffect(() => {
+    const update = () => {
+      const section = sectionRef.current;
+      const panel = panelRef.current;
+      if (!section || !panel) return;
+      const travel = section.offsetHeight - panel.offsetHeight;
+      if (travel <= 0) return;
+      const moved = NAV_OFFSET - section.getBoundingClientRect().top;
+      progress.set(Math.min(Math.max(moved / travel, 0), 1));
+    };
 
-    const aboutSection =
-      document.getElementById("about-page");
+    update();
+    window.addEventListener("scroll", update, { passive: true });
+    window.addEventListener("resize", update);
+    return () => {
+      window.removeEventListener("scroll", update);
+      window.removeEventListener("resize", update);
+    };
+  }, [progress, sectionRef, panelRef]);
 
-    if (aboutSection) {
-      aboutSection.scrollIntoView({
-        behavior: "smooth",
-      });
-    } else if (sectionRef.current) {
-      const sectionBottom =
-        sectionRef.current.offsetTop +
-        sectionRef.current.offsetHeight;
+  return (
+    <div
+      ref={boxRef}
+      className="relative w-full overflow-hidden"
+      style={{
+        // Fit the pinned panel inside the screen under the navbar.
+        height: `clamp(360px, calc(100dvh - ${NAV_OFFSET}px - 2 * var(--section-space)), 520px)`,
+      }}
+    >
+      {boxWidth > 0 && (
+        <motion.div
+          className="flex h-full items-center"
+          style={{ x, gap: SLIDE_GAP }}
+        >
+          {GALLERY_IMAGES.map((src, index) => (
+            <DesktopSlide
+              key={src}
+              src={src}
+              index={index}
+              position={position}
+              slideWidth={slideWidth}
+            />
+          ))}
+        </motion.div>
+      )}
+    </div>
+  );
+}
 
-      window.scrollTo({
-        top: sectionBottom,
-        behavior: "smooth",
-      });
-    }
-  };
+/* ------------------------------------------------------------------ */
+/* Phone / tablet: swipeable row with the same big + small look        */
+/* ------------------------------------------------------------------ */
 
-  const handleDragStart = (clientX) => {
-    const slider = sliderRef.current;
-    if (!slider) return;
+function MobileGallery() {
+  const trackRef = useRef(null);
+  const [active, setActive] = useState(0);
 
-    isDragging.current = true;
-    startX.current =
-      clientX - slider.getBoundingClientRect().left;
-    scrollLeft.current = slider.scrollLeft;
-    slider.classList.add("cursor-grabbing");
-  };
-
-  const handleDragMove = (clientX) => {
-    const slider = sliderRef.current;
-    if (!isDragging.current || !slider) return;
-
-    const x = clientX - slider.getBoundingClientRect().left;
-    const distance = (x - startX.current) * 1.5;
-
-    slider.scrollLeft = scrollLeft.current - distance;
-  };
-
-  const handleDragEnd = () => {
-    const slider = sliderRef.current;
-    isDragging.current = false;
-    slider?.classList.remove("cursor-grabbing");
-  };
-
-  const handleMouseDown = (e) =>
-    handleDragStart(e.clientX);
-
-  const handleMouseMove = (e) => {
-    if (!isDragging.current) return;
-    e.preventDefault();
-    handleDragMove(e.clientX);
-  };
-
-  const handleTouchStart = (e) =>
-    handleDragStart(e.touches[0].clientX);
-
-  const handleTouchMove = (e) => {
-    if (!isDragging.current) return;
-    handleDragMove(e.touches[0].clientX);
-  };
-
-  // Mobile navigation
-  const goToPrevious = () => {
-    setMobileSlide((prev) =>
-      prev === 0 ? GALLERY_IMAGES.length - 1 : prev - 1
+  const handleScroll = () => {
+    const track = trackRef.current;
+    const first = track?.firstElementChild;
+    if (!track || !first) return;
+    const slideStep = first.offsetWidth + SLIDE_GAP;
+    setActive(
+      Math.min(COUNT - 1, Math.max(0, Math.round(track.scrollLeft / slideStep)))
     );
   };
 
-  const goToNext = () => {
-    setMobileSlide(
-      (prev) => (prev + 1) % GALLERY_IMAGES.length
-    );
+  const goTo = (index) => {
+    const track = trackRef.current;
+    const slide = track?.children[index];
+    if (!track || !slide) return;
+    track.scrollTo({ left: slide.offsetLeft - track.offsetLeft, behavior: "smooth" });
   };
 
   return (
-    <section
-      ref={sectionRef}
-      className="
-        relative
-        w-screen
-        left-1/2
-        right-1/2
-        -mx-[50vw]
-        bg-[#F9E9D3]
-        h-auto
-        lg:h-[1600px]
-      "
-    >
-      {/* ================= MOBILE ================= */}
-
+    <div className="w-full">
       <div
-        ref={mobileContainerRef}
-        className="block lg:hidden section-py px-4 w-full transition-opacity duration-500"
-        style={{ opacity: mobileOpacity }}
+        ref={trackRef}
+        onScroll={handleScroll}
+        className="scrollbar-hide flex snap-x snap-mandatory overflow-x-auto"
+        style={{ gap: SLIDE_GAP }}
       >
-        {/* Header */}
-
-        <div className="w-full mb-(--section-gap) flex justify-center">
-          <div className="flex items-center justify-center gap-2">
-            <div className="flex gap-1.5 leading-none">
-              <h2 className="heading-font uppercase text-[#ED4823] text-[20px] font-black">
-                SERVICE
-              </h2>
-
-              <h2 className="heading-font uppercase text-[#575656] text-[20px] font-black">
-                RECAP
-              </h2>
-            </div>
-          </div>
-        </div>
-
-        {/* Mobile Slideshow */}
-
-        <div className="w-full">
-          <div className="relative w-full h-[395px] overflow-hidden rounded-xl bg-[#111] shadow-sm">
-            {mounted &&
-              GALLERY_IMAGES.map((imagePath, index) => (
-                <div
-                  key={index}
-                  className={`absolute inset-0 transition-opacity duration-700 ${
-                    mobileSlide === index
-                      ? "opacity-100"
-                      : "opacity-0"
-                  }`}
-                >
-                  <Image
-                    src={imagePath}
-                    alt={`Service Recap ${index + 1}`}
-                    fill
-                    sizes="100vw"
-                    className="object-cover"
-                  />
-
-                  {/* Dark Overlay */}
-                  <div className="absolute inset-0 bg-black/40" />
-
-                  {/* Left Arrow */}
-                  <button
-                    onClick={goToPrevious}
-                    className="absolute left-2.5 top-[46%] -translate-y-1/2 z-20 flex h-8 w-8 items-center justify-center rounded-full bg-black/30 backdrop-blur-sm"
-                    aria-label="Previous image"
-                  >
-                    <svg
-                      width="16"
-                      height="16"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="white"
-                      strokeWidth="2.5"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    >
-                      <path d="M15 18l-6-6 6-6" />
-                    </svg>
-                  </button>
-
-                  {/* Right Arrow */}
-                  <button
-                    onClick={goToNext}
-                    className="absolute right-2.5 top-[46%] -translate-y-1/2 z-20 flex h-8 w-8 items-center justify-center rounded-full bg-black/30 backdrop-blur-sm"
-                    aria-label="Next image"
-                  >
-                    <svg
-                      width="16"
-                      height="16"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="white"
-                      strokeWidth="2.5"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    >
-                      <path d="M9 18l6-6-6-6" />
-                    </svg>
-                  </button>
-
-                  {/* Centered Content */}
-                  <div className="absolute bottom-5 left-1/2 z-20 w-[85%] -translate-x-1/2 text-center flex flex-col items-center">
-                    <span className="block text-[14px] tracking-[0.1em] font-semibold mb-1 text-[#575656]">
-                      ASFDHHSGDDHZ
-                    </span>
-
-                    <p className="text-[12px] leading-snug mb-2 text-[#F9E9D3]/70">
-                      Condimentum Ultrices, Risus Massa
-                      Condimentum Quam.
-                    </p>
-
-                    <div className="flex justify-center mb-6">
-                      <SecondaryButton href="/servicerecap">
-                        {serviceRecap.button}
-                      </SecondaryButton>
-                    </div>
-
-                    {/* Indicators positioned after the button */}
-                    <div className="flex justify-center gap-1">
-                      {GALLERY_IMAGES.map((_, dotIndex) => (
-                        <button
-                          key={dotIndex}
-                          onClick={() => setMobileSlide(dotIndex)}
-                          aria-label={`Go to slide ${dotIndex + 1}`}
-                          className={`rounded-full transition-all duration-300 ${
-                            mobileSlide === dotIndex
-                              ? "w-6 h-[5px] bg-[#ED4823]"
-                              : "w-1.5 h-[5px] bg-[#D8CBB8]/60"
-                          }`}
-                        />
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              ))}
-          </div>
-        </div>
-      </div>
-
-      {/* ================= DESKTOP ================= */}
-
-      <div className="hidden lg:block sticky top-0 overflow-hidden section-py">
-        {/* Header */}
-
-        <div className="w-full px-4 mb-(--section-gap) flex justify-center shrink-0">
-          <div className="flex items-center justify-center gap-3.5">
-            <div className="flex gap-2 leading-none">
-              <h2 className="heading-font uppercase text-[#ED4823] text-[48px] font-black">
-                SERVICE
-              </h2>
-
-              <h2 className="heading-font uppercase text-[#575656] text-[48px] font-black">
-                RECAP
-              </h2>
-            </div>
-          </div>
-        </div>
-
-        {/* Gallery */}
-
-        <div className="relative w-full shrink-0">
-          <div
-            ref={sliderRef}
-            onMouseDown={handleMouseDown}
-            onMouseMove={handleMouseMove}
-            onMouseUp={handleDragEnd}
-            onMouseLeave={handleDragEnd}
-            onTouchStart={handleTouchStart}
-            onTouchMove={handleTouchMove}
-            onTouchEnd={handleDragEnd}
-            className="
-              flex
-              gap-[2px]
-              overflow-x-auto
-              overflow-y-hidden
-              cursor-grab
-              select-none
-              scrollbar-hide
-              w-full
-              bg-[#111]
-            "
-          >
-            {GALLERY_IMAGES.map((imagePath, index) => (
+        {GALLERY_IMAGES.map((src, index) => {
+          const isMain = index === active;
+          return (
+            <div
+              key={src}
+              className={`relative aspect-[4/5] w-[78%] shrink-0 snap-start overflow-hidden bg-[#111] transition-transform duration-500 ease-out sm:aspect-[4/3] ${
+                isMain
+                  ? "scale-100"
+                  : index > active
+                    ? "origin-left scale-[0.85]"
+                    : "origin-right scale-[0.85]"
+              }`}
+            >
+              <Image
+                src={src}
+                alt={`Service recap photo ${index + 1}`}
+                fill
+                sizes="(min-width: 640px) 60vw, 78vw"
+                className="object-cover"
+              />
               <div
-                key={index}
-                className="relative overflow-hidden flex-none w-[35vw] h-[700px] bg-[#111] lg:h-[500px]"
-              >
-                <Image
-                  src={imagePath}
-                  alt={`Service Recap ${index + 1}`}
-                  fill
-                  draggable={false}
-                  sizes="35vw"
-                  className="pointer-events-none object-cover transition-transform duration-700 hover:scale-105"
-                />
-
-                <div className="absolute inset-0 bg-black/40 pointer-events-none z-10" />
-              </div>
-            ))}
-          </div>
-
-          {/* Desktop Description */}
-
-          <div className="absolute bottom-28 left-12 z-20 max-w-xs pointer-events-none">
-            <span className="block text-xs tracking-widest text-[#575656] font-semibold mb-1">
-              ASFDHHSGDDHZ
-            </span>
-
-            <p className="text-[#F9E9D3]/70 text-sm leading-relaxed">
-              Condimentum Ultrices, Risus Massa
-              Condimentum Quam, A Eleifend Dolor Elit Quis
-              Orci.
-            </p>
-          </div>
-
-          {/* Desktop Skip */}
-
-          <div
-            className="absolute bottom-28 left-1/2 z-20 -translate-x-1/2 cursor-pointer transition-opacity duration-200"
-            style={{
-              opacity: skipOpacity,
-              pointerEvents:
-                skipOpacity === 0 ? "none" : "auto",
-            }}
-            onClick={handleSkip}
-          >
-            <TertiaryButton href="#about-page">
-              Skip
-            </TertiaryButton>
-          </div>
-
-          {/* Desktop CTA */}
-
-          <div className="absolute bottom-28 right-12 z-20">
-            <SecondaryButton href="/servicerecap">
-              {serviceRecap.button}
-            </SecondaryButton>
-          </div>
-        </div>
+                className={`absolute inset-0 bg-black transition-opacity duration-500 ${
+                  isMain ? "opacity-15" : "opacity-50"
+                }`}
+              />
+            </div>
+          );
+        })}
       </div>
-    </section>
+
+      {/* Slide indicators */}
+      <div className="mt-4 flex gap-1">
+        {GALLERY_IMAGES.map((src, index) => (
+          <button
+            key={src}
+            type="button"
+            onClick={() => goTo(index)}
+            aria-label={`Show photo ${index + 1}`}
+            className={`h-[5px] rounded-full transition-all duration-300 ${
+              active === index ? "w-6 bg-[#ED4823]" : "w-1.5 bg-[#575656]/30"
+            }`}
+          />
+        ))}
+      </div>
+    </div>
+  );
+}
+
+/* ------------------------------------------------------------------ */
+/* Section                                                             */
+/* ------------------------------------------------------------------ */
+
+export default function ServiceRecapGallery() {
+  const sectionRef = useRef(null);
+  const panelRef = useRef(null);
+
+  const handleSkip = (e) => {
+    e.preventDefault();
+    const about = document.getElementById("about-page");
+    if (about) {
+      about.scrollIntoView({ behavior: "smooth" });
+    } else if (sectionRef.current) {
+      const s = sectionRef.current;
+      window.scrollTo({ top: s.offsetTop + s.offsetHeight, behavior: "smooth" });
+    }
+  };
+
+  return (
+    <div ref={sectionRef} id="service-recap" className="relative w-full bg-[#F9E9D3]">
+      {/* Pinned on desktop while the pictures slide; normal flow below lg */}
+      <div
+        ref={panelRef}
+        className="section-py lg:sticky"
+        style={{ top: NAV_OFFSET }}
+      >
+        <Container>
+          <div className="flex flex-col gap-(--section-gap) lg:flex-row lg:items-center lg:gap-[60px]">
+            <RecapText onSkip={handleSkip} />
+
+            <div className="w-full lg:hidden">
+              <MobileGallery />
+            </div>
+
+            <div className="hidden w-1/2 lg:block">
+              <DesktopGallery sectionRef={sectionRef} panelRef={panelRef} />
+            </div>
+          </div>
+        </Container>
+      </div>
+
+      {/* Extra scroll distance that drives the desktop slide (desktop only) */}
+      <div
+        aria-hidden="true"
+        className="hidden lg:block"
+        style={{ height: `${(COUNT - 1) * SCROLL_PER_SLIDE_VH}vh` }}
+      />
+    </div>
   );
 }
