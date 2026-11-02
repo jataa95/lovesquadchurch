@@ -102,19 +102,6 @@ body {
   will-change: transform;
 }
 
-/* About gallery: the active progress bar fills over the slide interval
-   (duration and pause state are set inline). */
-.about-progress {
-  animation-name: about-progress;
-  animation-timing-function: linear;
-  animation-fill-mode: forwards;
-}
-
-@keyframes about-progress {
-  from { width: 0%; }
-  to { width: 100%; }
-}
-
 /* Hero "Scroll" cue: a short orange line sliding down a thin track */
 .hero-scroll-cue {
   animation: hero-scroll-cue 1.8s cubic-bezier(0.65, 0, 0.35, 1) infinite;

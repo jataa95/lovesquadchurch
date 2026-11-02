@@ -16,15 +16,14 @@ const ABOUT_IMAGES = [
   "/images/about/about6.jpg",
 ];
 
-// Seconds each picture stays before the next slides in.
-const INTERVAL = 4;
+// Seconds each picture stays fully on screen before the next slides in.
+const INTERVAL = 2;
 // Length of the slide transition, in seconds.
-const TRANSITION = 1.3;
+const TRANSITION = 1.1;
 // Slow zoom while a picture is on screen (1 = none).
 const DRIFT_SCALE = 1.06;
 
 const COUNT = ABOUT_IMAGES.length;
-const pad = (n) => String(n).padStart(2, "0");
 
 const prefersReducedMotion = () =>
   window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -44,7 +43,7 @@ function driftImage(img) {
  * Premium auto-advancing slider: the next picture wipes in from the side
  * while settling from a slight zoom, and the outgoing one slides away
  * underneath (parallax). Pauses on hover and while off screen; swipe on
- * touch screens; the progress bars jump to a picture.
+ * touch screens; the dots jump to a picture.
  */
 export default function AboutGallery() {
   const rootRef = useRef(null);
@@ -58,8 +57,8 @@ export default function AboutGallery() {
 
   const [active, setActive] = useState(0);
   const [paused, setPaused] = useState(true);
-  // Bumped on every resume so the progress bar restarts with the timer.
-  const [run, setRun] = useState(0);
+  // Bumped when a slide-in finishes (and on resume): starts the countdown.
+  const [settled, setSettled] = useState(0);
 
   const isPaused = () => {
     const p = pausedRef.current;
@@ -86,6 +85,7 @@ export default function AboutGallery() {
       gsap.set(outImg, { xPercent: 0, scale: 1 });
       gsap.set(inc, { zIndex: 1 });
       busyRef.current = false;
+      setSettled((n) => n + 1);
     };
 
     gsap.set(inc, { zIndex: 2, autoAlpha: 1 });
@@ -123,8 +123,8 @@ export default function AboutGallery() {
       .add(() => driftImage(imgRefs.current[to]), TRANSITION * 0.7);
   }, []);
 
-  // Auto-advance. A fresh timer starts after every change of picture,
-  // so a manual jump also restarts the countdown.
+  // Auto-advance. The countdown starts once a picture has fully slid in,
+  // so each one is on screen for INTERVAL seconds.
   const schedule = useCallback(() => {
     clearTimeout(timerRef.current);
     if (isPaused()) return;
@@ -136,13 +136,13 @@ export default function AboutGallery() {
   useEffect(() => {
     schedule();
     return () => clearTimeout(timerRef.current);
-  }, [active, paused, run, schedule]);
+  }, [settled, paused, schedule]);
 
   const updatePause = (key, value) => {
     const wasPaused = isPaused();
     pausedRef.current[key] = value;
     setPaused(isPaused());
-    if (wasPaused && !isPaused()) setRun((n) => n + 1);
+    if (wasPaused && !isPaused()) setSettled((n) => n + 1);
     const img = imgRefs.current[activeRef.current];
     if (isPaused()) gsap.getTweensOf(img).forEach((t) => t.pause());
     else gsap.getTweensOf(img).forEach((t) => t.resume());
@@ -187,7 +187,7 @@ export default function AboutGallery() {
       ref={rootRef}
       aria-roledescription="carousel"
       aria-label="Life at LoveSquad"
-      className="relative left-1/2 z-10 w-screen -translate-x-1/2 overflow-hidden bg-[#1A1A1A] py-2 sm:py-4"
+      className="relative w-full"
       onMouseEnter={() => updatePause("hover", true)}
       onMouseLeave={() => updatePause("hover", false)}
     >
@@ -221,47 +221,28 @@ export default function AboutGallery() {
           </div>
         ))}
 
-        {/* Soft shade at the bottom so the counter and bars stay readable */}
-        <div className="pointer-events-none absolute inset-x-0 bottom-0 z-[3] h-28 bg-gradient-to-t from-black/60 to-transparent" />
+      </div>
 
-        {/* Counter + progress bars */}
-        <div className="absolute inset-x-0 bottom-0 z-[4] flex items-end justify-between gap-6 px-4 pb-4 sm:px-8 sm:pb-6 lg:px-12 lg:pb-8">
-          <p className="heading-font text-[13px] tracking-[0.2em] text-[#F4EBDC] tabular-nums sm:text-[15px]">
-            <span className="text-[#ED4823]">{pad(active + 1)}</span>
-            <span className="mx-2 text-[#F4EBDC]/50">/</span>
-            {pad(COUNT)}
-          </p>
-
-          <div className="flex w-full max-w-[320px] gap-1.5 sm:max-w-[420px] sm:gap-2">
-            {ABOUT_IMAGES.map((src, i) => (
-              <button
-                key={src}
-                type="button"
-                onClick={() => goTo(i, i > activeRef.current ? 1 : -1)}
-                aria-label={`Show photo ${i + 1}`}
-                aria-current={i === active}
-                className="group relative h-6 flex-1 cursor-pointer"
-              >
-                <span className="absolute inset-x-0 top-1/2 block h-[2px] -translate-y-1/2 overflow-hidden bg-[#F4EBDC]/25 transition-colors group-hover:bg-[#F4EBDC]/45">
-                  <span
-                    key={i === active ? `on-${active}-${run}` : "off"}
-                    className={`absolute inset-y-0 left-0 block bg-[#ED4823] ${
-                      i < active ? "w-full" : "w-0"
-                    } ${i === active ? "about-progress" : ""}`}
-                    style={
-                      i === active
-                        ? {
-                            animationDuration: `${INTERVAL + TRANSITION * 0.3}s`,
-                            animationPlayState: paused ? "paused" : "running",
-                          }
-                        : undefined
-                    }
-                  />
-                </span>
-              </button>
-            ))}
-          </div>
-        </div>
+      {/* Dot indicators */}
+      <div className="mt-4 flex justify-center gap-1 sm:mt-5">
+        {ABOUT_IMAGES.map((src, i) => (
+          <button
+            key={src}
+            type="button"
+            onClick={() => goTo(i, i > activeRef.current ? 1 : -1)}
+            aria-label={`Show photo ${i + 1}`}
+            aria-current={i === active}
+            className="group flex h-6 w-6 items-center justify-center"
+          >
+            <span
+              className={`block h-2 w-2 rounded-full transition-all duration-500 ease-out ${
+                i === active
+                  ? "scale-125 bg-[#ED4823]"
+                  : "bg-[#575656]/30 group-hover:bg-[#575656]/60"
+              }`}
+            />
+          </button>
+        ))}
       </div>
     </section>
   );

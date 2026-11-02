@@ -6,7 +6,7 @@ export default function About() {
   return (
     <section
       id="about-page"
-      className="bg-cream section-pt overflow-hidden"
+      className="bg-cream section-py overflow-hidden"
     >
       <Container>
         <AboutContent />
