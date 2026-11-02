@@ -224,12 +224,12 @@ export default function ServiceRecapGallery() {
 
       <div
         ref={mobileContainerRef}
-        className="block lg:hidden py-6 px-4 w-full transition-opacity duration-500"
+        className="block lg:hidden section-py px-4 w-full transition-opacity duration-500"
         style={{ opacity: mobileOpacity }}
       >
         {/* Header */}
 
-        <div className="w-full mb-4 mt-8 flex justify-center">
+        <div className="w-full mb-(--section-gap) flex justify-center">
           <div className="flex items-center justify-center gap-2">
             <Image
               src="/icons/service-icon.svg"
@@ -357,10 +357,10 @@ export default function ServiceRecapGallery() {
 
       {/* ================= DESKTOP ================= */}
 
-      <div className="hidden lg:block sticky top-0 h-[750px] overflow-hidden pt-2">
+      <div className="hidden lg:block sticky top-0 overflow-hidden section-py">
         {/* Header */}
 
-        <div className="w-full px-4 lg:mb-3 lg:mt-20 flex justify-center shrink-0">
+        <div className="w-full px-4 mb-(--section-gap) flex justify-center shrink-0">
           <div className="flex items-center justify-center gap-3.5">
             <Image
               src="/icons/service-icon.svg"

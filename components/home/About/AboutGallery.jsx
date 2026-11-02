@@ -32,7 +32,7 @@ export default function AboutGallery() {
   const validImages = aboutImages.filter(Boolean);
 
   return (
-    <section className="relative z-10 -mt-8 w-screen left-1/2 -translate-x-1/2 bg-[#1A1A1A] py-2 sm:-mt-12 sm:py-4 overflow-hidden">
+    <section className="relative z-10 w-screen left-1/2 -translate-x-1/2 bg-[#1A1A1A] py-2 sm:py-4 overflow-hidden">
       <style jsx>{`
         @keyframes marqueeScroll {
           0% {

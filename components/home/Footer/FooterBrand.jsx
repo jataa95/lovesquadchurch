@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export default function FooterBrand() {
   return (
-    <div className="mx-auto flex w-full max-w-[180px] flex-col items-center px-0 pt-[20px] sm:pt-[50px] md:pt-[60px] lg:pt-[30px]">
+    <div className="mx-auto flex w-full max-w-[180px] flex-col items-center px-0">
       {/* =================================
           LOVESQUAD CREAM GRAPHIC
       ================================== */}

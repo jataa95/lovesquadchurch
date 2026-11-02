@@ -8,7 +8,7 @@ export default function EventsContent() {
   const imageSrc = rawPath.startsWith("/") ? rawPath : `/${rawPath}`;
 
   return (
-    <div className="mt-4 sm:mt-5 md:mt-6">
+    <div className="mt-(--section-gap)">
       <div className="flex flex-col md:flex-row md:items-center">
         {/* LEFT COLUMN (DESKTOP ONLY) */}
         <div className="hidden flex-col items-center md:flex md:w-[30%] md:shrink-0 md:px-3 lg:px-6">

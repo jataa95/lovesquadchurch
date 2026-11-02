@@ -13,8 +13,7 @@ export default function Testimonials() {
         relative 
         overflow-hidden 
         bg-[#0E0E0E] 
-        pt-8 sm:pt-12 md:pt-16 lg:pt-20 
-        pb-4 sm:pb-6 md:pb-8 lg:pb-10
+        section-py
       "
     >
       <Container>
@@ -22,12 +21,12 @@ export default function Testimonials() {
         <TestimonialsHeader />
 
         {/* TESTIMONIALS GRID */}
-        <div className="mt-4 sm:mt-6 md:mt-8 lg:mt-8">
+        <div className="mt-(--section-gap)">
           <TestimonialsGrid />
         </div>
 
         {/* BUTTON */}
-        <div className="mt-4 flex justify-center sm:mt-6 md:mt-8 lg:mt-10">
+        <div className="mt-(--section-gap) flex justify-center">
           <SecondaryButton href="/testimonials">
             {testimonials.button}
           </SecondaryButton>

@@ -14,6 +14,51 @@ body {
   font-family: var(--font-body);
 }
 
+/* =========================================
+   SECTION SPACING (single source of truth)
+   --section-space: padding at the top/bottom of every section
+   --section-gap:   gap between a section's heading and its content
+========================================= */
+
+:root {
+  --section-space: 48px;
+  --section-gap: 24px;
+}
+
+@media (min-width: 640px) {
+  :root {
+    --section-space: 56px;
+    --section-gap: 28px;
+  }
+}
+
+@media (min-width: 768px) {
+  :root {
+    --section-space: 64px;
+    --section-gap: 32px;
+  }
+}
+
+@media (min-width: 1024px) {
+  :root {
+    --section-space: 80px;
+    --section-gap: 40px;
+  }
+}
+
+@utility section-py {
+  padding-top: var(--section-space);
+  padding-bottom: var(--section-space);
+}
+
+@utility section-pt {
+  padding-top: var(--section-space);
+}
+
+@utility section-pb {
+  padding-bottom: var(--section-space);
+}
+
 .heading-font {
   font-family: var(--font-heading);
 }

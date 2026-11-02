@@ -5,7 +5,7 @@ import LoveSpotsContent from "./LoveSpotsContent";
 
 export default function LoveSpots() {
   return (
-    <section className="w-full bg-[#F9E9D3] py-8 sm:py-8 md:py-10">
+    <section className="w-full bg-[#F9E9D3] section-py">
       <Container>
         <div className="flex w-full flex-col">
           <LoveSpotsHeader />

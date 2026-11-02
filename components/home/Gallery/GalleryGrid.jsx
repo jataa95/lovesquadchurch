@@ -55,7 +55,7 @@ export default function GalleryGrid() {
   const rightColumnY = useTransform(scrollYProgress, [0, 1], [30, -30]);
 
   return (
-    <section ref={containerRef} id="gallery" className="w-full bg-[#242323] px-[6px] py-[6px] relative mt-[24px] sm:mt-[28px]">
+    <section ref={containerRef} id="gallery" className="w-full bg-[#242323] px-[6px] py-[6px] relative">
       <motion.div
         initial={{ opacity: 0, y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}
