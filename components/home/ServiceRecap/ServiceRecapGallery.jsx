@@ -177,8 +177,8 @@ function DesktopGallery({ sectionRef, panelRef }) {
       ref={boxRef}
       className="relative w-full overflow-hidden"
       style={{
-        // Shared with the About gallery (see --media-h in globals.css):
-        // fits the pinned panel inside the screen under the navbar.
+        // See --media-h in globals.css: fits the pinned panel inside the
+        // screen under the navbar.
         height: "var(--media-h)",
       }}
     >

@@ -46,8 +46,7 @@ body {
   }
 }
 
-/* Shared height for the large homepage pictures (Service Recap main
-   picture on desktop and the About gallery), so they always match.
+/* Height of the Service Recap pictures on desktop.
    Desktop: fits the screen under the 94px navbar, up to 600px. */
 :root {
   --media-h: 380px;
@@ -62,6 +61,24 @@ body {
 @media (min-width: 1024px) {
   :root {
     --media-h: clamp(360px, calc(100dvh - 94px - 2 * var(--section-space)), 600px);
+  }
+}
+
+/* About gallery height: taller than the Service Recap pictures.
+   Desktop: fits the screen with some room to spare, up to 760px. */
+:root {
+  --about-gallery-h: 440px;
+}
+
+@media (min-width: 640px) {
+  :root {
+    --about-gallery-h: 560px;
+  }
+}
+
+@media (min-width: 1024px) {
+  :root {
+    --about-gallery-h: clamp(440px, calc(100dvh - 140px), 760px);
   }
 }
 

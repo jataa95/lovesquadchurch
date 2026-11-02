@@ -17,9 +17,9 @@ const ABOUT_IMAGES = [
 ];
 
 // Seconds each picture stays fully on screen before the next slides in.
-const INTERVAL = 2;
+const INTERVAL = 0.5;
 // Length of the slide transition, in seconds.
-const TRANSITION = 1.1;
+const TRANSITION = 0.5;
 // Slow zoom while a picture is on screen (1 = none).
 const DRIFT_SCALE = 1.06;
 
@@ -42,8 +42,8 @@ function driftImage(img) {
 /*
  * Premium auto-advancing slider: the next picture wipes in from the side
  * while settling from a slight zoom, and the outgoing one slides away
- * underneath (parallax). Pauses on hover and while off screen; swipe on
- * touch screens; the dots jump to a picture.
+ * underneath (parallax). Pauses on hover and while off screen. Swipe
+ * (touch) or drag (mouse) and the dots move between pictures.
  */
 export default function AboutGallery() {
   const rootRef = useRef(null);
@@ -53,7 +53,7 @@ export default function AboutGallery() {
   const busyRef = useRef(false);
   const timerRef = useRef(null);
   const pausedRef = useRef({ hover: false, offscreen: true, hidden: false });
-  const touchX = useRef(null);
+  const dragX = useRef(null);
 
   const [active, setActive] = useState(0);
   const [paused, setPaused] = useState(true);
@@ -100,7 +100,7 @@ export default function AboutGallery() {
     }
 
     const tl = gsap.timeline({
-      defaults: { duration: TRANSITION, ease: "expo.inOut" },
+      defaults: { duration: TRANSITION, ease: "power3.inOut" },
       onComplete: done,
     });
     tl.fromTo(
@@ -114,12 +114,12 @@ export default function AboutGallery() {
     )
       .fromTo(
         incImg,
-        { scale: 1.25, xPercent: 12 * dir },
+        { scale: 1.12, xPercent: 8 * dir },
         { scale: 1, xPercent: 0 },
         0
       )
-      .to(outImg, { xPercent: -18 * dir }, 0)
-      .to(out, { xPercent: -6 * dir }, 0)
+      .to(outImg, { xPercent: -14 * dir }, 0)
+      .to(out, { xPercent: -5 * dir }, 0)
       .add(() => driftImage(imgRefs.current[to]), TRANSITION * 0.7);
   }, []);
 
@@ -171,15 +171,21 @@ export default function AboutGallery() {
     { scope: rootRef }
   );
 
-  const onTouchStart = (e) => {
-    touchX.current = e.touches[0].clientX;
+  const prev = () => goTo(activeRef.current - 1, -1);
+  const next = () => goTo(activeRef.current + 1, 1);
+
+  // Swipe (touch) or drag (mouse) sideways to change picture.
+  const onPointerDown = (e) => {
+    if (e.target.closest("button")) return;
+    dragX.current = e.clientX;
   };
-  const onTouchEnd = (e) => {
-    if (touchX.current == null) return;
-    const dx = e.changedTouches[0].clientX - touchX.current;
-    touchX.current = null;
+  const onPointerUp = (e) => {
+    if (dragX.current == null) return;
+    const dx = e.clientX - dragX.current;
+    dragX.current = null;
     if (Math.abs(dx) < 40) return;
-    goTo(activeRef.current + (dx < 0 ? 1 : -1), dx < 0 ? 1 : -1);
+    if (dx < 0) next();
+    else prev();
   };
 
   return (
@@ -192,10 +198,11 @@ export default function AboutGallery() {
       onMouseLeave={() => updatePause("hover", false)}
     >
       <div
-        className="relative w-full overflow-hidden bg-[#151515]"
-        style={{ height: "var(--media-h)" }}
-        onTouchStart={onTouchStart}
-        onTouchEnd={onTouchEnd}
+        className="relative w-full cursor-grab select-none overflow-hidden bg-[#151515] active:cursor-grabbing"
+        style={{ height: "var(--about-gallery-h)", touchAction: "pan-y" }}
+        onPointerDown={onPointerDown}
+        onPointerUp={onPointerUp}
+        onPointerCancel={() => (dragX.current = null)}
       >
         {ABOUT_IMAGES.map((src, i) => (
           <div
@@ -215,34 +222,37 @@ export default function AboutGallery() {
                 fill
                 sizes="100vw"
                 priority={i === 0}
-                className="object-cover"
+                draggable={false}
+                className="pointer-events-none select-none object-cover"
               />
             </div>
           </div>
         ))}
 
-      </div>
+        {/* Soft shade so the dots stay visible on bright photos */}
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 z-[3] h-20 bg-gradient-to-t from-black/45 to-transparent" />
 
-      {/* Dot indicators */}
-      <div className="mt-4 flex justify-center sm:mt-5">
-        {ABOUT_IMAGES.map((src, i) => (
-          <button
-            key={src}
-            type="button"
-            onClick={() => goTo(i, i > activeRef.current ? 1 : -1)}
-            aria-label={`Show photo ${i + 1}`}
-            aria-current={i === active}
-            className="group flex h-6 w-3 items-center justify-center"
-          >
-            <span
-              className={`block h-2 w-2 rounded-full transition-all duration-500 ease-out ${
-                i === active
-                  ? "scale-125 bg-[#ED4823]"
-                  : "bg-[#575656]/30 group-hover:bg-[#575656]/60"
-              }`}
-            />
-          </button>
-        ))}
+        {/* Dot indicators, on the bottom of the picture */}
+        <div className="absolute inset-x-0 bottom-2 z-[4] flex justify-center sm:bottom-4">
+          {ABOUT_IMAGES.map((src, i) => (
+            <button
+              key={src}
+              type="button"
+              onClick={() => goTo(i, i > activeRef.current ? 1 : -1)}
+              aria-label={`Show photo ${i + 1}`}
+              aria-current={i === active}
+              className="group flex h-6 w-3 items-center justify-center"
+            >
+              <span
+                className={`block h-2 w-2 rounded-full transition-all duration-300 ease-out ${
+                  i === active
+                    ? "scale-125 bg-[#ED4823]"
+                    : "bg-[#F4EBDC]/55 group-hover:bg-[#F4EBDC]/90"
+                }`}
+              />
+            </button>
+          ))}
+        </div>
       </div>
     </section>
   );
