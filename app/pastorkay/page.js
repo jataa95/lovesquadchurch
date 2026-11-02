@@ -1,4 +1,3 @@
-import Navbar from "@/components/layout/Navbar/Navbar";
 import PastorKayHero from "@/components/pastorkay/PastorKayHero";
 import PastorKayBottom from "@/components/pastorkay/PastorKayBottom";
 
@@ -11,7 +10,6 @@ export const metadata = {
 export default function PastorKayPage() {
   return (
     <main className="min-h-screen bg-[#F9E9D3]">
-      <Navbar />
       <PastorKayHero />
       <PastorKayBottom />
     </main>

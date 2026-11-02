@@ -1,4 +1,3 @@
-import Navbar from "@/components/layout/Navbar/Navbar";
 import Footer from "@/components/home/Footer";
 import CareersHero from "@/components/careers/CareersHero";
 import BecomeVolunteer from "@/components/careers/BecomeVolunteer";
@@ -13,7 +12,6 @@ export const metadata = {
 export default function CareersPage() {
   return (
     <main className="min-h-screen bg-[#F9E9D3]">
-      <Navbar />
       <CareersHero />
       <BecomeVolunteer />
       <AboutFAQs />

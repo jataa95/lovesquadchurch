@@ -1,4 +1,3 @@
-import Navbar from "@/components/layout/Navbar/Navbar";
 import Hero from "@/components/home/Hero";
 import ServiceRecap from "@/components/home/ServiceRecap";
 import About from "@/components/home/About";
@@ -11,7 +10,6 @@ import Footer from "@/components/home/Footer";
 export default function Home() {
   return (
     <>
-      <Navbar />
       <Hero />
       <ServiceRecap />
       <About />

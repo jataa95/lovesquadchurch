@@ -1,4 +1,3 @@
-import Navbar from "@/components/layout/Navbar/Navbar";
 import AboutHero from "@/components/about/AboutHero";
 import AboutPictures from "@/components/about/AboutPictures";
 import AboutValues from "@/components/about/AboutValues";
@@ -11,7 +10,6 @@ import Footer from "@/components/home/Footer";
 export default function AboutPage() {
   return (
     <>
-      <Navbar />
 
       <main>
         <AboutHero />

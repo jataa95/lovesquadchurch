@@ -13,11 +13,11 @@ export default function Navbar() {
     <>
       {/* FIXED NAVBAR HEADER */}
       <header className="fixed left-0 top-0 z-[9999] w-full pointer-events-none">
-        {/* Dark, blurred gradient behind the bar. The mask fades the blur
+        {/* Very light dark-to-clear gradient with a soft blur behind the bar. The mask fades the blur
             out at the bottom so there is no hard edge over the page. */}
         <div
           aria-hidden="true"
-          className="absolute inset-x-0 top-0 -bottom-6 bg-gradient-to-b from-black/80 via-black/50 to-transparent backdrop-blur-md [mask-image:linear-gradient(to_bottom,black_55%,transparent)]"
+          className="absolute inset-x-0 top-0 -bottom-6 bg-gradient-to-b from-black/15 via-black/5 to-transparent backdrop-blur-sm [mask-image:linear-gradient(to_bottom,black_55%,transparent)]"
         />
 
         <div className="relative z-10 flex items-center justify-between px-2 pt-2 pb-2 sm:px-2 sm:py-2 lg:px-6 lg:py-6 pointer-events-auto">

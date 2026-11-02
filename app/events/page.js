@@ -1,4 +1,3 @@
-import Navbar from "@/components/layout/Navbar/Navbar";
 import EventsHero from "@/components/events/EventsHero";
 import UpcomingEvents from "@/components/events/UpcomingEvents";
 import AboutFAQs from "@/components/about/AboutFAQs";
@@ -9,7 +8,6 @@ export default function EventsPage() {
     <main className="w-full">
       {/* Your existing navbar */}
 
-      <Navbar />
       <EventsHero />
       <UpcomingEvents />
       <AboutFAQs />
