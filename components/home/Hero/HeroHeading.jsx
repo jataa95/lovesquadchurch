@@ -8,13 +8,8 @@ export default function HeroHeading() {
         flex-col
         items-center
         text-left
-        mt-0               {/* Removed top margin */}
-        mb-4              {/* Minimal gap before description */}
-
-        sm:mt-[30px]
+        mb-4
         sm:mb-0
-        md:mt-[30px]
-        lg:mt-[60px]
       "
     >
       {/* WELCOME HOME! */}

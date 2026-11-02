@@ -228,7 +228,7 @@ export function HeroStage({ background, children }) {
   return (
     <section
       ref={stageRef}
-      className="relative h-[100dvh] overflow-hidden bg-[#111111]"
+      className="relative flex min-h-[100dvh] flex-col overflow-hidden bg-[#111111]"
     >
       {/* Background video and texture */}
       <div data-hero="bg" className="absolute inset-0 will-change-transform">
@@ -244,7 +244,10 @@ export function HeroStage({ background, children }) {
       <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black/70" />
 
       {/* Hidden until GSAP has set the starting states (no flash) */}
-      <div data-hero="content" className="invisible relative z-10 h-full">
+      <div
+        data-hero="content"
+        className="invisible relative z-10 flex flex-1 flex-col"
+      >
         {children}
       </div>
 

@@ -17,21 +17,25 @@ export default function Hero() {
       }
     >
       {/* Hero Content */}
+      {/* Top padding clears the fixed navbar; bottom padding leaves room
+          for the Scroll cue. The section grows if the content needs more
+          than one screen, so nothing is ever cut off. */}
       <Container
         className="
           relative
           z-10
           flex
-          h-full
-          min-h-[100dvh]
+          flex-1
           flex-col
           justify-center
           px-4
-          pb-4
-          pt-20
+          pt-[104px]
+          pb-[96px]
+          sm:pt-[120px]
+          sm:pb-[104px]
+          lg:pt-[136px]
+          lg:pb-[112px]
           xl:px-8
-          xl:pb-24
-          xl:pt-28
         "
       >
         <HeroHeading />
