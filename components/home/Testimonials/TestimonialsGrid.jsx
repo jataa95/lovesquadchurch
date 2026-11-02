@@ -124,8 +124,8 @@ export default function TestimonialsGrid() {
         </div>
       </div>
 
-      {/* BOTTOM ROW: flows right */}
-      <div className="testimonial-marquee">
+      {/* BOTTOM ROW: flows right (hidden on phones: one row there) */}
+      <div className="testimonial-marquee hidden sm:block">
         <div ref={bottomRef} className="testimonial-track">
           {reversed.map((item, index) => (
             <TestimonialCard
