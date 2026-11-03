@@ -1,4 +1,3 @@
-import GallerySkipButton from "@/components/home/Gallery/GallerySkipButton";
 
 export default function GalleryHeader() {
   return (
@@ -49,19 +48,6 @@ export default function GalleryHeader() {
         <span className="text-[#ED4823]">LACINIA</span> VEL.
       </h2>
 
-      {/* =========================================
-         SKIP BUTTON (Hidden on mobile, visible on md and up)
-      ========================================== */}
-      <div
-        className="
-          hidden
-          md:block
-          shrink-0
-          self-auto
-        "
-      >
-        <GallerySkipButton href="#homepage-bottom" />
-      </div>
     </div>
   );
 }

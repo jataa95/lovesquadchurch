@@ -75,3 +75,43 @@ export const galleryImages = [
     alt: "LoveSquad gallery image 15",
   },
 ];
+
+// Homepage gallery: 7 expanding panels. `theme` is the small label,
+// `title` the caption shown when a panel is open.
+export const galleryPanels = [
+  {
+    src: "/images/service-recap/sr4.jpg",
+    theme: "Community",
+    title: "A family that belongs together",
+  },
+  {
+    src: "/images/service-recap/sr1.jpg",
+    theme: "Love for God",
+    title: "Hearts lifted in worship",
+  },
+  {
+    src: "/images/about/about3.jpg",
+    theme: "Love for one another",
+    title: "Carrying each other's burdens",
+  },
+  {
+    src: "/images/service-recap/sr6.jpg",
+    theme: "Worship",
+    title: "Joy in His presence",
+  },
+  {
+    src: "/images/about/about1.jpg",
+    theme: "Prayer",
+    title: "Seeking Him together",
+  },
+  {
+    src: "/images/service-recap/sr5.jpg",
+    theme: "Fellowship",
+    title: "Sharing life, sharing faith",
+  },
+  {
+    src: "/images/service-recap/sr10.jpg",
+    theme: "Serving",
+    title: "Hands that serve His people",
+  },
+];

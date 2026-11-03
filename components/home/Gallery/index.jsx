@@ -1,6 +1,6 @@
 import Container from "@/components/ui/Container";
 import GalleryHeader from "./GalleryHeader";
-import GalleryGrid from "./GalleryGrid";
+import GalleryPanels from "./GalleryPanels";
 
 export default function Gallery() {
   return (
@@ -15,11 +15,11 @@ export default function Gallery() {
       </Container>
 
       {/* =========================
-          GALLERY GRID
+          GALLERY PANELS
       ========================== */}
       <Container>
         <div className="mt-(--section-gap)">
-          <GalleryGrid />
+          <GalleryPanels />
         </div>
       </Container>
     </section>
