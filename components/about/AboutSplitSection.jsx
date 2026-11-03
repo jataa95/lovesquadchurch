@@ -23,7 +23,7 @@ export default function AboutSplitSection({
   children,
 }) {
   const dark = tone === "dark";
-  const band = dark ? "bg-[#0E0E0E]" : "bg-cream";
+  const band = dark ? "bg-ink" : "bg-cream";
 
   return (
     <section

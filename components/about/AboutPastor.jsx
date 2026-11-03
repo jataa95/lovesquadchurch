@@ -10,6 +10,8 @@ export default function AboutPastor() {
       id="about_leaders"
       tone="dark"
       divider={false}
+      icon="/images/about/our-leaders-icon.svg"
+      iconAlt="Our Leaders"
       heading={
         <>
           <span className="block">OUR</span>

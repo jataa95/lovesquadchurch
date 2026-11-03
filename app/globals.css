@@ -169,6 +169,15 @@ img:not([src*=".svg"]) {
   filter: grayscale(1) !important;
 }
 
+/* Dark sections: near-black with a light grain, the counterpart of
+   bg-cream's paper texture. */
+@utility bg-ink {
+  background-color: #0E0E0E;
+  background-image: url("/textures/grain-dark.png");
+  background-size: 256px 256px;
+  background-repeat: repeat;
+}
+
 .heading-font {
   font-family: var(--font-heading);
 }
