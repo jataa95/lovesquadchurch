@@ -23,7 +23,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={`${spaceGrotesk.variable} ${poppins.variable} bg-[#0B0B0B] text-[#F4EBDC] antialiased`}>
+      <body className={`${spaceGrotesk.variable} ${poppins.variable} bg-[#0B0B0B] text-[#F9E9D3] antialiased`}>
         <Navbar />
         <main>{children}</main>
         <TextReveal />

@@ -1,7 +1,7 @@
 import LoveSpotHero from "@/components/lovespot/LoveSpotHero";
 import LoveSpotIntro from "@/components/lovespot/LoveSpotIntro";
 import LoveSpotTestimonials from "@/components/lovespot/LoveSpotTestimonials";
-import LoveSpotFAQs from "@/components/lovespot/LoveSpotFAQs";
+import AboutFAQs from "@/components/about/AboutFAQs";
 import Footer from "@/components/home/Footer";
 
 export default function LoveSpotPage() {
@@ -10,7 +10,7 @@ export default function LoveSpotPage() {
       <LoveSpotHero />
       <LoveSpotIntro />
       <LoveSpotTestimonials />
-      <LoveSpotFAQs />
+      <AboutFAQs id="lovespot-faqs" />
       <Footer />
     </>
   );

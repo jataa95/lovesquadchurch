@@ -2,6 +2,8 @@
 
 import Image from "next/image";
 import { Plus } from "lucide-react";
+import Container from "@/components/ui/Container";
+import SectionTitle from "@/components/ui/SectionTitle";
 import { useState } from "react";
 
 const faqs = [
@@ -37,7 +39,7 @@ const faqs = [
   },
 ];
 
-export default function AboutFAQs() {
+export default function AboutFAQs({ id = "faqs" }) {
   const [openIndex, setOpenIndex] = useState(null);
 
   const toggleFAQ = (index) => {
@@ -45,67 +47,16 @@ export default function AboutFAQs() {
   };
 
   return (
-    <section
-      id="faqs"
-      className="
-        relative
-        w-full
-        overflow-hidden
-        bg-cream
-        px-[8px]
-      "
-    >
-      {/* =====================================================
-          INNER WRAPPER
-      ====================================================== */}
-      <div
-        className="
-          relative
-          w-full
-          bg-cream
-          px-[16px]
-          py-[20px]
-
-          sm:px-[24px]
-          sm:py-[48px]
-
-          md:px-[32px]
-          md:py-[56px]
-
-          lg:px-[40px]
-          lg:py-[60px]
-        "
-      >
-        {/* =====================================================
-            HEADING
-        ====================================================== */}
-        <h2
-          className="
-            heading-font
-            uppercase
-            font-bold
-            leading-none
-            tracking-[-0.04em]
-            text-[#4A4A4A]
-
-            text-[36px]
-
-            sm:text-[64px]
-
-            md:text-[72px]
-
-            lg:text-[80px]
-          "
-        >
-          FAQs
-        </h2>
+    <section id={id} className="relative w-full bg-cream section-py">
+      <Container>
+        <SectionTitle top="FREQUENTLY ASKED" accent="QUESTIONS" />
 
         {/* =====================================================
             MAIN CONTENT
         ====================================================== */}
         <div
           className="
-            mt-[16px]
+            mt-(--section-gap)
             grid
             grid-cols-1
             gap-[28px]
@@ -307,8 +258,8 @@ export default function AboutFAQs() {
                             text-[#575656]
                           "
                           style={{
-                            fontSize: "13px",
-                            lineHeight: "18px",
+                            fontSize: "15px",
+                            lineHeight: "24px",
                           }}
                         >
                           {faq.answer}
@@ -321,7 +272,7 @@ export default function AboutFAQs() {
             })}
           </div>
         </div>
-      </div>
+      </Container>
     </section>
   );
 }

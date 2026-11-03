@@ -3,6 +3,7 @@
 import { useState } from "react";
 import AboutSplitSection from "@/components/about/AboutSplitSection";
 import { firstTimers } from "@/data/firstTimers";
+import { field, select, submit, Label } from "@/components/ui/formStyles";
 
 /*
  * First-timer card: their details, a few questions, and feedback about
@@ -13,22 +14,6 @@ import { firstTimers } from "@/data/firstTimers";
  * form backend in handleSubmit (e.g. Formspree, Resend, Google Sheets, or
  * a church CRM).
  */
-// Same field style as the Contact page form: solid grey fields with cream
-// text and placeholders, monospace uppercase labels, orange focus ring.
-// Extra room on the right so placeholders/arrows never touch the edge.
-const field =
-  "w-full bg-[#575656] py-3 pl-3 pr-10 text-sm text-[#F9E9D3] placeholder:text-[#F9E9D3] focus:outline-none focus:ring-2 focus:ring-[#ED4823] sm:pl-4 sm:pr-12";
-// Dropdowns: our own cream arrow; "Choose one" shows in the placeholder tone.
-const select = `${field} form-select`;
-
-function Label({ children }) {
-  return (
-    <span className="font-mono text-[14px] font-bold uppercase tracking-wider text-[#575656]">
-      {children}
-    </span>
-  );
-}
-
 function GroupTitle({ n, children }) {
   return (
     <div className="flex items-baseline gap-3 border-b border-[#9B9B9B] pb-3">
@@ -83,7 +68,7 @@ export default function ConnectCard() {
           >
             THANK YOU!
           </h3>
-          <p className="max-w-[520px] text-[15px] leading-[24px] text-[#555555] lg:text-[16px]">
+          <p className="max-w-[520px] text-[15px] leading-[24px] text-[#575656] lg:text-[16px]">
             We&apos;re so glad you joined us. Someone from our team will reach out soon.
           </p>
         </div>
@@ -92,7 +77,7 @@ export default function ConnectCard() {
           onSubmit={handleSubmit}
           className="flex max-w-[680px] flex-col gap-12 border border-[#575656] p-4 sm:p-5 md:p-8"
         >
-          <p className="text-[15px] leading-[24px] text-[#555555] lg:text-[16px]">
+          <p className="text-[15px] leading-[24px] text-[#575656] lg:text-[16px]">
             We&apos;d love to get to know you. It only takes a minute.
           </p>
 
@@ -221,7 +206,7 @@ export default function ConnectCard() {
 
           <button
             type="submit"
-            className="heading-font w-full bg-[#575656] py-3.5 text-base font-bold uppercase tracking-widest text-[#F9E9D3] transition-opacity hover:opacity-90"
+            className={submit}
           >
             SUBMIT
           </button>

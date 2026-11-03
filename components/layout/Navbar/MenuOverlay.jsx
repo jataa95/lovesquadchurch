@@ -167,7 +167,7 @@ export default function MenuOverlay({ onClose }) {
       role="dialog"
       aria-modal="true"
       aria-label="Site menu"
-      className="fixed inset-0 z-[99999] text-[#F5EBDD]"
+      className="fixed inset-0 z-[99999] text-[#F9E9D3]"
     >
       {/* Orange layer that leads the sweep */}
       <div className="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden="true">
@@ -247,7 +247,7 @@ export default function MenuOverlay({ onClose }) {
                   <Link
                     href={item.href}
                     onClick={close}
-                    className="heading-font relative inline-block uppercase font-bold leading-[0.95] tracking-tight text-[#F5EBDD] transition-colors duration-200 group-hover:text-[#F04423]"
+                    className="heading-font relative inline-block uppercase font-bold leading-[0.95] tracking-tight text-[#F9E9D3] transition-colors duration-200 group-hover:text-[#F04423]"
                     style={{
                       fontSize: "clamp(36px, 5vw, 72px)",
                     }}
@@ -274,7 +274,7 @@ export default function MenuOverlay({ onClose }) {
                           key={sub.label}
                           href={sub.href}
                           onClick={close}
-                          className="heading-font relative z-10 flex items-center text-xs font-semibold uppercase tracking-tight text-[#F5EBDD] transition-colors duration-200 hover:text-[#F04423] sm:text-sm lg:text-base"
+                          className="heading-font relative z-10 flex items-center text-xs font-semibold uppercase tracking-tight text-[#F9E9D3] transition-colors duration-200 hover:text-[#F04423] sm:text-sm lg:text-base"
                         >
                           <span className="mr-1 text-[#F04423]">(</span>
                           {sub.label}

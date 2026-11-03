@@ -198,7 +198,7 @@ export default function AboutGallery() {
       onMouseLeave={() => updatePause("hover", false)}
     >
       <div
-        className="relative w-full cursor-grab select-none overflow-hidden bg-[#151515] active:cursor-grabbing"
+        className="relative w-full cursor-grab select-none overflow-hidden bg-[#171515] active:cursor-grabbing"
         style={{ height: "var(--about-gallery-h)", touchAction: "pan-y" }}
         onPointerDown={onPointerDown}
         onPointerUp={onPointerUp}
@@ -244,7 +244,7 @@ export default function AboutGallery() {
               aria-label={`Show photo ${i + 1}`}
               aria-current={i === active}
               className={`h-[5px] rounded-full transition-all duration-300 ${
-                i === active ? "w-6 bg-[#ED4823]" : "w-1.5 bg-[#F4EBDC]/50"
+                i === active ? "w-6 bg-[#ED4823]" : "w-1.5 bg-[#F9E9D3]/50"
               }`}
             />
           ))}

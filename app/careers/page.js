@@ -1,7 +1,8 @@
 import Footer from "@/components/home/Footer";
 import CareersHero from "@/components/careers/CareersHero";
+import AvailablePositions from "@/components/careers/AvailablePositions";
 import BecomeVolunteer from "@/components/careers/BecomeVolunteer";
-import AboutFAQs from "@/components/about/AboutFAQs"; // Adjust import path if needed
+import AboutFAQs from "@/components/about/AboutFAQs";
 
 export const metadata = {
   title: "Careers | Love Squad Church",
@@ -13,6 +14,7 @@ export default function CareersPage() {
   return (
     <main className="min-h-screen bg-cream">
       <CareersHero />
+      <AvailablePositions />
       <BecomeVolunteer />
       <AboutFAQs />
       <Footer />

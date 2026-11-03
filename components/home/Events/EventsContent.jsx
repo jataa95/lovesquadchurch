@@ -48,7 +48,7 @@ export default function EventsContent() {
 
           {/* EVENT DESCRIPTION */}
           {events?.description && (
-            <p className="mt-4 max-w-[640px] text-[14px] leading-[22px] text-[#575656] sm:mt-5 sm:text-[16px] sm:leading-[25px] lg:text-[17px] lg:leading-[27px]">
+            <p className="text-[15px] leading-[24px] lg:text-[16px] mt-4 max-w-[640px] text-[#575656] sm:mt-5">
               {events.description}
             </p>
           )}

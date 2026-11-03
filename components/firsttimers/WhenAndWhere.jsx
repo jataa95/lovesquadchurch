@@ -34,7 +34,7 @@ export default function WhenAndWhere() {
               >
                 {s.name}
               </h3>
-              <p className="mt-3 text-[15px] leading-[24px] text-[#F4EBDC]/80">{s.text}</p>
+              <p className="mt-3 text-[15px] leading-[24px] text-[#F9E9D3]/80">{s.text}</p>
             </div>
             <div className="shrink-0 sm:text-right">
               <p className="heading-font text-[12px] uppercase tracking-[0.22em] text-[#ED4823] sm:text-[13px]">

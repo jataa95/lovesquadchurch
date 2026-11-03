@@ -1,31 +1,6 @@
+import SectionTitle from "@/components/ui/SectionTitle";
 import { loveSpots } from "@/data/lovespots";
 
 export default function LoveSpotsHeader() {
-  return (
-    <div className="flex flex-row items-center justify-center text-center gap-1 sm:gap-2 md:flex-row md:items-center md:text-left">
-      {/* Multiline Header */}
-      <h2
-        className="
-          heading-font
-          flex
-          flex-col
-          uppercase
-          text-[22px]
-          leading-[1.05]
-          items-center
-          md:items-start
-          sm:text-[36px]
-          md:text-[40px]
-          lg:text-[48px]
-        "
-        style={{
-          fontWeight: 900,
-          letterSpacing: "0px",
-        }}
-      >
-        <span className="text-[#575656]">{loveSpots.titleTop}</span>
-        <span className="text-[#ED4823]">{loveSpots.titleBottom}</span>
-      </h2>
-    </div>
-  );
+  return <SectionTitle top={loveSpots.titleTop} accent={loveSpots.titleBottom} />;
 }

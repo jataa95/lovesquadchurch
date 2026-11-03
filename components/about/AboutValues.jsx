@@ -63,10 +63,10 @@ export default function AboutValues() {
                 {value.title}
               </h3>
             </div>
-            <p className="mb-2 mt-3 max-w-[600px] text-[14px] leading-[20px] text-[#555555] sm:text-[15px] sm:leading-[22px] lg:text-[16px]">
+            <p className="text-[15px] leading-[24px] lg:text-[16px] mb-2 mt-3 max-w-[600px] text-[#575656]">
               {value.description}
             </p>
-            <p className="text-[14px] leading-[18px] text-[#555555] sm:text-[15px] lg:text-[16px]">
+            <p className="text-[15px] leading-[24px] lg:text-[16px] text-[#575656]">
               {value.scripture}
             </p>
           </div>

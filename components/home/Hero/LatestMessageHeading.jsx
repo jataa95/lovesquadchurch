@@ -9,7 +9,7 @@ export default function LatestMessageHeading() {
           heading-font
           mt-1
           uppercase
-          text-[#F04A23]
+          text-[#ED4823]
 
           text-[20px]          {/* Reduced from 28px */}
           leading-[22px]        {/* Reduced from 34px */}

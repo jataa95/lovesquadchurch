@@ -159,7 +159,7 @@ export default function TestimonialVideos({ stories = DEFAULT_STORIES }) {
       <div className="flex flex-col lg:col-span-7">
         <div
           ref={stageRef}
-          className="relative aspect-[4/5] w-full touch-pan-y sm:aspect-video lg:aspect-auto lg:min-h-[480px] lg:flex-1 overflow-hidden bg-[#151515] select-none"
+          className="relative aspect-[4/5] w-full touch-pan-y sm:aspect-video lg:aspect-auto lg:min-h-[480px] lg:flex-1 overflow-hidden bg-[#171515] select-none"
           onPointerDown={onPointerDown}
           onPointerUp={onPointerUp}
           onPointerCancel={() => (dragX.current = null)}
@@ -188,7 +188,7 @@ export default function TestimonialVideos({ stories = DEFAULT_STORIES }) {
                 type="button"
                 onClick={play}
                 aria-label={`Play ${story.name}'s testimony`}
-                className="group absolute left-1/2 top-1/2 z-10 flex h-16 w-16 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-[#ED4823] text-[#F5EBDD] shadow-[0_10px_30px_rgba(237,72,35,0.35)] transition-transform duration-300 hover:scale-110 sm:h-20 sm:w-20"
+                className="group absolute left-1/2 top-1/2 z-10 flex h-16 w-16 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-[#ED4823] text-[#F9E9D3] shadow-[0_10px_30px_rgba(237,72,35,0.35)] transition-transform duration-300 hover:scale-110 sm:h-20 sm:w-20"
               >
                 <span className="absolute inset-0 animate-ping rounded-full bg-[#ED4823]/40 motion-reduce:hidden" />
                 <Play className="relative ml-1 h-6 w-6 fill-current sm:h-7 sm:w-7" />
@@ -198,15 +198,15 @@ export default function TestimonialVideos({ stories = DEFAULT_STORIES }) {
                 data-story-caption
                 className="pointer-events-none absolute inset-x-0 bottom-0 z-10 p-5 sm:p-8"
               >
-                <p className="heading-font text-[11px] uppercase tracking-[0.25em] text-[#ED4823] sm:text-[12px]">
+                <p className="heading-font text-[12px] font-semibold uppercase tracking-[0.22em] text-[#ED4823] sm:text-[13px]">
                   Testimony · {story.duration}
                 </p>
-                <p className="mt-3 max-w-[520px] text-[18px] leading-[1.35] text-[#F5EBDD] sm:text-[24px]">
+                <p className="mt-3 max-w-[520px] text-[18px] leading-[1.35] text-[#F9E9D3] sm:text-[24px]">
                   “{story.quote}”
                 </p>
-                <p className="heading-font mt-4 text-[14px] font-bold uppercase tracking-wide text-[#F5EBDD] sm:text-[16px]">
+                <p className="heading-font mt-4 text-[14px] font-bold uppercase tracking-wide text-[#F9E9D3] sm:text-[16px]">
                   {story.name}
-                  <span className="ml-2 font-normal normal-case tracking-normal text-[#F5EBDD]/60">
+                  <span className="ml-2 font-normal normal-case tracking-normal text-[#F9E9D3]/60">
                     {story.detail}
                   </span>
                 </p>
@@ -233,7 +233,7 @@ export default function TestimonialVideos({ stories = DEFAULT_STORIES }) {
               aria-label={`Show ${s.name}'s testimony`}
               aria-current={i === active}
               className={`h-[5px] rounded-full transition-all duration-300 ${
-                i === active ? "w-6 bg-[#ED4823]" : "w-1.5 bg-[#F4EBDC]/40"
+                i === active ? "w-6 bg-[#ED4823]" : "w-1.5 bg-[#F9E9D3]/40"
               }`}
             />
           ))}
@@ -252,11 +252,11 @@ export default function TestimonialVideos({ stories = DEFAULT_STORIES }) {
                 aria-current={isActive}
                 className={`group flex h-full w-full items-center gap-5 border p-3 text-left transition-colors duration-300 ${
                   isActive
-                    ? "border-[#ED4823]/60 bg-[#F5EBDD]/[0.04]"
-                    : "border-[#F5EBDD]/10 hover:border-[#F5EBDD]/30"
+                    ? "border-[#ED4823]/60 bg-[#F9E9D3]/[0.04]"
+                    : "border-[#F9E9D3]/10 hover:border-[#F9E9D3]/30"
                 }`}
               >
-                <span className="relative aspect-[4/3] w-[120px] shrink-0 overflow-hidden bg-[#151515] xl:w-[140px]">
+                <span className="relative aspect-[4/3] w-[120px] shrink-0 overflow-hidden bg-[#171515] xl:w-[140px]">
                   <Image
                     src={s.poster}
                     alt=""
@@ -264,7 +264,7 @@ export default function TestimonialVideos({ stories = DEFAULT_STORIES }) {
                     sizes="140px"
                     className="object-cover transition-transform duration-500 group-hover:scale-105"
                   />
-                  <span className="absolute bottom-1.5 right-1.5 bg-black/70 px-1.5 py-0.5 text-[10px] tabular-nums text-[#F5EBDD]">
+                  <span className="absolute bottom-1.5 right-1.5 bg-black/70 px-1.5 py-0.5 text-[10px] tabular-nums text-[#F9E9D3]">
                     {s.duration}
                   </span>
                 </span>
@@ -272,17 +272,17 @@ export default function TestimonialVideos({ stories = DEFAULT_STORIES }) {
                 <span className="min-w-0 flex-1">
                   <span
                     className={`heading-font block text-[10px] uppercase tracking-[0.25em] transition-colors ${
-                      isActive ? "text-[#ED4823]" : "text-[#F5EBDD]/40"
+                      isActive ? "text-[#ED4823]" : "text-[#F9E9D3]/40"
                     }`}
                   >
                     {isActive
                       ? "Now showing"
                       : `Story ${String(i + 1).padStart(2, "0")}`}
                   </span>
-                  <span className="heading-font mt-1 block text-[16px] font-bold uppercase text-[#F5EBDD] xl:text-[18px]">
+                  <span className="heading-font mt-1 block text-[16px] font-bold uppercase text-[#F9E9D3] xl:text-[18px]">
                     {s.name}
                   </span>
-                  <span className="mt-1 block truncate text-[13px] text-[#F5EBDD]/60">
+                  <span className="mt-1 block truncate text-[13px] text-[#F9E9D3]/60">
                     “{s.quote}”
                   </span>
                 </span>

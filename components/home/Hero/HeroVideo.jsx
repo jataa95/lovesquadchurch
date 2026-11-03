@@ -13,7 +13,7 @@ export default function HeroVideo() {
         mx-auto sm:ml-auto sm:mr-0   {/* Centered on mobile, right-aligned on sm+ */}
         overflow-hidden
         rounded-[20px]
-        bg-[#1A1A1A]
+        bg-[#171515]
         shadow-xl
 
         sm:max-w-[380px]
@@ -55,7 +55,7 @@ export default function HeroVideo() {
           items-center
           justify-center
           rounded-full
-          bg-[#F04A23]
+          bg-[#ED4823]
           shadow-lg
           transition-all
           duration-300

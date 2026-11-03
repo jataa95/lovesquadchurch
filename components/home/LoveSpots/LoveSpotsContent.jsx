@@ -18,7 +18,7 @@ export default function LoveSpotsContent() {
         </h3>
 
         <p
-          className="max-w-[660px] text-[12px] leading-[16px] text-[#575656] sm:text-[14px] sm:leading-[19px] md:text-[15px] md:leading-[21px]"
+          className="text-[15px] leading-[24px] lg:text-[16px] max-w-[660px] text-[#575656]"
           style={{
             fontWeight: 400,
             whiteSpace: "pre-line",

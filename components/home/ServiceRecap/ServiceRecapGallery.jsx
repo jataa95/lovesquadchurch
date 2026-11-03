@@ -12,6 +12,7 @@ import {
 import Container from "@/components/ui/Container";
 import { serviceRecap } from "@/data/serviceRecap";
 import SecondaryButton from "@/components/ui/buttons/SecondaryButton";
+import SectionTitle from "@/components/ui/SectionTitle";
 
 const GALLERY_IMAGES = [
   "/images/service-recap/sr1.jpg",
@@ -49,19 +50,16 @@ function RecapText() {
     // heading and text at the top, buttons at the bottom.
     <div className="flex w-full flex-col items-start lg:w-1/2 lg:justify-between">
       <div>
-        <h2 className="heading-font text-[28px] font-black uppercase leading-none sm:text-[36px] md:text-[40px] lg:text-[48px]">
-          <span className="text-[#ED4823]">Service</span>{" "}
-          <span className="text-[#575656]">Recap</span>
-        </h2>
+        <SectionTitle align="left" top="SERVICE" accent="RECAP" />
 
         {/* Desktop: text sits 20px under the heading. Phones/tablets keep
             their original spacing (16px / 20px). */}
         <div className="mt-4 sm:mt-5 lg:mt-5">
-          <span className="block text-[12px] font-semibold uppercase tracking-[0.1em] text-[#575656] sm:text-[13px]">
+          <span className="heading-font block text-[12px] font-semibold uppercase tracking-[0.22em] text-[#ED4823] sm:text-[13px]">
             {serviceRecap.label}
           </span>
 
-          <p className="mt-2 max-w-[460px] text-[14px] leading-[21px] text-[#575656] sm:text-[16px] sm:leading-[24px] lg:text-[18px] lg:leading-[27px]">
+          <p className="mt-2 max-w-[460px] text-[15px] leading-[24px] text-[#575656] lg:text-[16px]">
             {serviceRecap.description}
           </p>
         </div>
@@ -96,7 +94,7 @@ function DesktopSlide({ src, index, position, slideWidth }) {
 
   return (
     <motion.div
-      className="relative h-full shrink-0 overflow-hidden bg-[#111]"
+      className="relative h-full shrink-0 overflow-hidden bg-[#171515]"
       style={{ width: slideWidth, scale, transformOrigin: origin }}
     >
       <Image
@@ -234,7 +232,7 @@ function MobileGallery() {
           return (
             <div
               key={src}
-              className={`relative aspect-[4/5] w-[84%] shrink-0 snap-start overflow-hidden bg-[#111] transition-transform duration-500 ease-out sm:aspect-[4/3] ${
+              className={`relative aspect-[4/5] w-[84%] shrink-0 snap-start overflow-hidden bg-[#171515] transition-transform duration-500 ease-out sm:aspect-[4/3] ${
                 isMain
                   ? "scale-100"
                   : index > active

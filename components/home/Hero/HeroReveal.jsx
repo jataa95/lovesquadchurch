@@ -269,10 +269,10 @@ export function HeroStage({ background, children }) {
         aria-hidden="true"
       >
         <div data-hero="cue" className="flex flex-col items-center gap-3">
-          <span className="heading-font text-[11px] uppercase tracking-[0.3em] text-[#F4EBDC]/80 sm:text-[12px]">
+          <span className="heading-font text-[11px] uppercase tracking-[0.3em] text-[#F9E9D3]/80 sm:text-[12px]">
             Scroll
           </span>
-          <span className="relative block h-10 w-px overflow-hidden bg-[#F4EBDC]/20">
+          <span className="relative block h-10 w-px overflow-hidden bg-[#F9E9D3]/20">
             <span className="hero-scroll-cue absolute left-0 top-0 block h-1/2 w-px bg-[#ED4823]" />
           </span>
         </div>

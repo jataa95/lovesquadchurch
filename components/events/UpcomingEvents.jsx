@@ -1,114 +1,59 @@
-"use client";
-
 import Image from "next/image";
+import AboutSplitSection from "@/components/about/AboutSplitSection";
+import { eventsPage } from "@/data/events";
 
 export default function UpcomingEvents() {
+  const f = eventsPage.featured;
   return (
-    <section id="upcoming-events" className="relative w-full bg-cream text-[#575656] py-6 md:py-16">
-      <div className="mx-auto max-w-[1440px] px-6 md:px-12">
-        <div className="grid grid-cols-1 gap-6 lg:grid-cols-12 lg:items-start lg:relative">
-          {/* =========================================
-              LEFT COLUMN: Header, Calendar SVG Icon & Sticky Wrapper (Mobile & Desktop)
-          ========================================== */}
-          <div className="flex flex-col lg:col-span-5 sticky top-16 md:top-20 lg:top-28 z-10 bg-cream pb-4 lg:pb-0">
-            {/* Header + Icon Row */}
-            <div className="flex items-left justify-center lg:justify-start gap-2">
-              {/* SVG Icon File */}
-              <div className="relative h-10 w-10 shrink-0 sm:h-14 sm:w-14 md:h-20 md:w-20">
-                <Image
-                  src="/images/events/calendar.svg"
-                  alt="Calendar Icon"
-                  fill
-                  className="object-contain"
-                />
-              </div>
-
-              {/* Title with reduced mobile font-size and center alignment */}
-              <h2
-                className="heading-font font-extrabold uppercase leading-[0.88] tracking-tight text-[#575656] text-left lg:text-left"
-                style={{
-                  fontSize: "clamp(1.75rem, 5vw, 80px)",
-                }}
-              >
-                UPCOMING
-                <br />
-                EVENTS
-              </h2>
-            </div>
-
-            {/* Horizontal Divider Line under the header block (Visible on mobile only) */}
-            <div className="border-t border-[#575656]/30 mt-4 lg:hidden" />
-          </div>
-
-          {/* Vertical Divider Line for Desktop (Positioned between left and right columns) */}
-          <div className="hidden lg:block absolute left-[41.666%] top-0 bottom-0 w-[1px] bg-[#575656]/30" />
-
-          {/* =========================================
-              RIGHT COLUMN: Main Content Block (Centered Texts)
-          ========================================== */}
-          <div className="flex flex-col lg:col-span-7 text-center lg:text-left lg:pl-8">
-            {/* Featured Image Box */}
-            <div className="relative aspect-square w-full bg-[#171515]">
-              {/* Image Placeholder Visual */}
-              <div className="absolute inset-0 flex items-center justify-center text-white/20">
-                <svg
-                  className="h-12 w-12"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={1.5}
-                    d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
-                  />
-                </svg>
-              </div>
-
-              {/* Real Image Placeholder:
-              <Image
-                src="/images/events/upcoming-featured.jpg"
-                alt="Upcoming Event"
-                fill
-                className="object-cover"
-              /> 
-              */}
-            </div>
-
-            {/* Featured Event Description */}
-            <p className="body-font py-4 text-[16px] sm:text-[18px] md:text-[20px] leading-relaxed text-[#575656]">
-              Cras Aliquet, Sem Consectetur Condimentum Ultricies, Risus Massa
-              Condimentum Quam, A Eleifend Dolor Elit Quis Orci.
-            </p>
-
-            {/* Divider Line */}
-            <div className="border-t border-[#575656]/20 my-2" />
-
-            {/* Secondary Event List */}
-            <div className="flex flex-col gap-3 pt-2">
-              <span className="font-mono text-[14px] md:text-[16px] font-bold uppercase tracking-wider text-[#575656]">
-                LOREM IPSUM
-              </span>
-
-              <div className="space-y-3 body-font text-[16px] sm:text-[18px] md:text-[20px] leading-relaxed text-[#575656]">
-                <p>
-                  Cras Aliquet, Sem Consectetur Condimentum Ultricies, Risus
-                  Massa Condimentum Quam, A Eleifend Dolor Elit Quis Orci.
-                </p>
-                <p>
-                  Cras Aliquet, Sem Consectetur Condimentum Ultricies, Risus
-                  Massa Condimentum Quam, A Eleifend Dolor Elit Quis Orci.
-                </p>
-                <p>
-                  Cras Aliquet, Sem Consectetur Condimentum Ultricies, Risus
-                  Massa Condimentum Quam, A Eleifend Dolor Elit Quis Orci.
-                </p>
-              </div>
-            </div>
-          </div>
+    <AboutSplitSection
+      id="upcoming-events"
+      icon="/images/events/calendar.svg"
+      iconWidth={86}
+      iconHeight={95}
+      centerOnMobile
+      heading={
+        <>
+          <span className="block">UPCOMING</span>
+          <span className="block text-[#ED4823]">EVENTS</span>
+        </>
+      }
+    >
+      {/* Featured event */}
+      <article>
+        <div className="relative aspect-[4/3] w-full overflow-hidden bg-[#171515]">
+          <Image src={f.photo} alt={f.title} fill sizes="(max-width: 1024px) 100vw, 60vw" className="object-cover" />
         </div>
-      </div>
-    </section>
+        <p className="heading-font mt-5 text-[12px] font-semibold uppercase tracking-[0.22em] text-[#ED4823] sm:text-[13px]">
+          {f.label} · {f.date} · {f.time}
+        </p>
+        <h3
+          className="heading-font mt-2 font-bold uppercase leading-[0.9] tracking-[-0.02em] text-[#4A4A4A]"
+          style={{ fontSize: "clamp(26px, 6vw, 40px)" }}
+        >
+          {f.title}
+        </h3>
+        <p className="mt-3 max-w-[600px] text-[15px] leading-[24px] text-[#575656] lg:text-[16px]">{f.text}</p>
+      </article>
+
+      {/* More events */}
+      <ul className="mt-10 flex flex-col border-t border-[#9B9B9B]">
+        {eventsPage.upcoming.map((e, i) => (
+          <li key={i} className="flex flex-col gap-2 border-b border-[#9B9B9B] py-6 sm:flex-row sm:gap-8">
+            <p className="heading-font shrink-0 text-[12px] font-semibold uppercase tracking-[0.22em] text-[#ED4823] sm:w-[120px] sm:pt-1.5 sm:text-[13px]">
+              {e.date}
+            </p>
+            <div>
+              <h3
+                className="heading-font font-bold uppercase leading-none tracking-[-0.02em] text-[#4A4A4A]"
+                style={{ fontSize: "clamp(22px, 2.4vw, 30px)" }}
+              >
+                {e.title}
+              </h3>
+              <p className="mt-2 max-w-[560px] text-[15px] leading-[24px] text-[#575656] lg:text-[16px]">{e.text}</p>
+            </div>
+          </li>
+        ))}
+      </ul>
+    </AboutSplitSection>
   );
 }

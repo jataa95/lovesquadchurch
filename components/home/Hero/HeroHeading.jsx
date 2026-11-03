@@ -18,7 +18,7 @@ export default function HeroHeading() {
         className="
           heading-font
           uppercase
-          text-[#F5EBDD]
+          text-[#F9E9D3]
           text-[14px]      {/* Scaled down slightly */}
           leading-none     {/* Removes extra inline line-height spacing */}
 
@@ -41,7 +41,7 @@ export default function HeroHeading() {
           heading-font
           select-none
           uppercase
-          text-[#F5EBDD]
+          text-[#F9E9D3]
           my-2             {/* Zero margins on mobile */}
           text-[52px]      {/* Reduced slightly to fit tighter */}
           leading-[0.8]
@@ -69,7 +69,7 @@ export default function HeroHeading() {
         className="
           heading-font
           uppercase
-          text-[#F5EBDD]
+          text-[#F9E9D3]
           text-[14px]      {/* Scaled down slightly */}
           leading-none     {/* Removes extra inline line-height spacing */}
 

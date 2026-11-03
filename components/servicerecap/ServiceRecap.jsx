@@ -1,7 +1,7 @@
 "use client";
 
-import Image from "next/image";
 import Container from "@/components/ui/Container";
+import PageHero from "@/components/ui/PageHero";
 import SecondaryButton from "@/components/ui/buttons/SecondaryButton";
 import ServiceRecapGallery from "@/components/home/ServiceRecap/ServiceRecapGallery";
 
@@ -29,50 +29,27 @@ export default function ServiceRecapPage({
   return (
     <div id="servicerecap" className="w-full bg-cream text-[#575656]">
       {/* ---------------- Hero ---------------- */}
-      <section className="pt-[calc(var(--nav-h)+40px)] lg:pt-[calc(var(--nav-h)+56px)]">
-        <Container>
-          <div className="flex flex-col items-center text-center">
-            <h1
-              className="heading-font font-bold uppercase leading-none tracking-[-0.035em]"
-              style={{ fontSize: "clamp(24px, 3vw, 40px)" }}
-            >
-              <span className="text-[#ED4823]">{title}</span>
-            </h1>
-            <h2
-              className="heading-font font-bold uppercase leading-[0.82] tracking-[-0.055em] text-[#4A4A4A]"
-              style={{ fontSize: "clamp(4rem, 13.9vw, 200px)" }}
-            >
-              {subtitle}
-            </h2>
-
-            <div className="relative mt-6 h-[260px] w-full overflow-hidden bg-[#171515] sm:h-[340px] md:h-[380px] lg:mt-8 lg:h-[460px]">
-              <Image
-                src={heroImageUrl}
-                alt={`${title} ${subtitle}`}
-                fill
-                priority
-                sizes="(max-width: 1280px) 100vw, 1152px"
-                className="object-cover"
-              />
-            </div>
-
-            <div className="mt-8 flex flex-col items-center lg:mt-10">
-              <p
-                className="heading-font font-bold uppercase leading-none tracking-[-0.02em] text-[#4A4A4A]"
-                style={{ fontSize: "clamp(20px, 2vw, 26px)" }}
-              >
-                {topic}
-              </p>
-              <p className="mt-2 text-[14px] uppercase tracking-[0.12em] text-[#5A5853] sm:text-[15px]">
-                {speaker}
-              </p>
-              <div className="mt-5">
-                <SecondaryButton href="/messages">GO TO MESSAGES</SecondaryButton>
-              </div>
-            </div>
+      <PageHero
+        label={title.split(" ").length > 1 ? [title.split(" ")[0], title.split(" ").slice(1).join(" ")] : [title, ""]}
+        title={subtitle}
+        image={heroImageUrl}
+        imageAlt={`${title} ${subtitle}`}
+      >
+        <div className="mt-8 flex flex-col items-center lg:mt-10">
+          <p
+            className="heading-font font-bold uppercase leading-none tracking-[-0.02em] text-[#4A4A4A]"
+            style={{ fontSize: "clamp(20px, 2vw, 26px)" }}
+          >
+            {topic}
+          </p>
+          <p className="heading-font mt-2 text-[12px] font-semibold uppercase tracking-[0.22em] text-[#ED4823] sm:text-[13px]">
+            {speaker}
+          </p>
+          <div className="mt-5">
+            <SecondaryButton href="/messages">GO TO MESSAGES</SecondaryButton>
           </div>
-        </Container>
-      </section>
+        </div>
+      </PageHero>
 
       {/* ---------------- Write-up ---------------- */}
       <section className="section-py">
@@ -90,7 +67,7 @@ export default function ServiceRecapPage({
             </p>
             <div className="mt-6 flex flex-col gap-4">
               {paragraphs.map((paragraph, index) => (
-                <p key={index} className="text-[15px] leading-[24px] lg:text-[16px]">
+                <p key={index} className="text-[15px] leading-[24px] text-[#575656] lg:text-[16px]">
                   {paragraph}
                 </p>
               ))}

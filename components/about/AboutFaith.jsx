@@ -80,22 +80,22 @@ function FaithCard({ index, number, title, description, scripture }) {
       }}
     >
       <article className="relative min-h-[220px] border border-[#3B3B3B] bg-[#0E0E0E] p-4 pb-12 sm:p-6 sm:pb-14 lg:min-h-[280px] lg:p-8 lg:pb-16 xl:p-10 xl:pb-20">
-        <h3 className="heading-font text-[24px] font-bold uppercase leading-none tracking-[-0.03em] text-[#F4EBDC] sm:text-[32px] lg:text-[40px] xl:text-[48px]">
+        <h3 className="heading-font text-[24px] font-bold uppercase leading-none tracking-[-0.03em] text-[#F9E9D3] sm:text-[32px] lg:text-[40px] xl:text-[48px]">
           {title}
         </h3>
 
-        <p className="mt-2 max-w-[680px] text-[13px] leading-[18px] text-[#F4EBDC] sm:mt-3 sm:text-[15px] sm:leading-[22px] lg:mt-4 lg:text-[16px] lg:leading-[24px] xl:text-[17px] xl:leading-[26px]">
+        <p className="text-[15px] leading-[24px] lg:text-[16px] mt-2 max-w-[680px] text-[#F9E9D3] sm:mt-3 lg:mt-4">
           {description}
         </p>
 
         <a
           href="#"
-          className="absolute bottom-3 left-4 text-[12px] text-[#F4EBDC] underline underline-offset-4 transition-colors duration-300 hover:text-[#ED4823] sm:bottom-4 sm:left-6 sm:text-[13px] lg:bottom-6 lg:left-8 lg:text-[15px]"
+          className="absolute bottom-3 left-4 text-[12px] text-[#F9E9D3] underline underline-offset-4 transition-colors duration-300 hover:text-[#ED4823] sm:bottom-4 sm:left-6 sm:text-[13px] lg:bottom-6 lg:left-8 lg:text-[15px]"
         >
           {scripture}
         </a>
 
-        <span className="heading-font absolute bottom-2 right-3 text-[32px] font-normal leading-none text-[#F4EBDC] sm:bottom-3 sm:right-4 sm:text-[44px] lg:bottom-5 lg:right-8 lg:text-[56px] xl:text-[64px]">
+        <span className="heading-font absolute bottom-2 right-3 text-[32px] font-normal leading-none text-[#F9E9D3] sm:bottom-3 sm:right-4 sm:text-[44px] lg:bottom-5 lg:right-8 lg:text-[56px] xl:text-[64px]">
           {number}
         </span>
       </article>

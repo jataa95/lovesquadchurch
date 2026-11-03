@@ -18,7 +18,7 @@ export default function HeroDescription() {
         data-hero="desc-text"
         className="
           body-font
-          text-[#F4EBDC]/85
+          text-[#F9E9D3]/85
           text-center sm:text-left
           text-[12px]
           leading-[15px]   {/* Tightened leading slightly */}

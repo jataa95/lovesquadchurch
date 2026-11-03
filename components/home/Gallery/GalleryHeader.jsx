@@ -10,32 +10,7 @@ export default function GalleryHeader() {
       {/* =========================================
           HEADING
       ========================================== */}
-      <h2
-        className="
-          heading-font
-          w-full
-          max-w-[1000px]
-          text-center
-          text-balance
-          uppercase
-          text-[#575656]
-
-          text-[22px]        {/* Reduced from 26px */}
-          leading-[26px]     {/* Reduced from 27px */}
-          tracking-[-0.03em]
-          font-bold
-
-          sm:max-w-[650px]
-          sm:text-[32px]
-          sm:leading-[34px]
-
-          md:text-[36px]
-          md:leading-[36px]
-
-          lg:text-[42px]
-          lg:leading-[40px]
-        "
-      >
+      <h2 className="w-full max-w-[1000px] text-balance text-center heading-font text-[26px] font-bold uppercase leading-[1.05] tracking-[-0.03em] text-[#4A4A4A] sm:text-[34px] lg:text-[42px] xl:text-[48px]">
         NUNC CONDIMENTUM <span className="text-[#ED4823]">SAPIEN</span> IPSUM,
         AC <span className="text-[#ED4823]">TINCIDUNT LOREM</span>{" "}
         <span className="text-[#ED4823]">LACINIA</span> VEL.

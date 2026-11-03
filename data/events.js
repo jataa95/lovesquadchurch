@@ -9,3 +9,24 @@ export const events = {
 
   button: "GO TO EVENTS",
 };
+// Events page content. Replace the placeholders with real events.
+const eventsLorem =
+  "Cras aliquet, sem consectetur condimentum ultricies, risus massa condimentum quam, a eleifend dolor elit quis orci.";
+
+export const eventsPage = {
+  intro: eventsLorem,
+  photo: "/images/events/event-3.jpg",
+  featured: {
+    label: "NEXT UP",
+    title: "Event name",
+    date: "Day, 00 Month",
+    time: "00:00 AM",
+    text: eventsLorem,
+    photo: "/images/events/event-2.jpg",
+  },
+  upcoming: [
+    { title: "Event name", date: "00 Month", text: eventsLorem },
+    { title: "Event name", date: "00 Month", text: eventsLorem },
+    { title: "Event name", date: "00 Month", text: eventsLorem },
+  ],
+};

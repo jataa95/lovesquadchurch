@@ -22,19 +22,19 @@ export default function AboutPastor() {
       <div className="flex flex-col gap-8">
         {/* Description */}
         <div className="w-full border border-[#3A3A3A] p-5 sm:p-6">
-          <p className="text-[13px] leading-[1.6] sm:text-[14px] lg:text-[15px]">
+          <p className="text-[15px] leading-[24px] lg:text-[16px]">
             Lorem Ipsum Adipiscing Elit. Proin Tempor Ligula Euismod Nibh
             Facilisis Molestie Non Vitae Dolor. Cras Auctor Venenatis Sem,
             Ultricies Rutrum Est Ultricies Vel. Proin Sit Amet Neque Nec Risus
             Tincidunt Ultricies In Quis Lorem.
           </p>
-          <p className="mt-3 text-[13px] leading-[1.6] sm:text-[14px] lg:text-[15px]">
+          <p className="text-[15px] leading-[24px] lg:text-[16px] mt-3">
             Lorem Ipsum Adipiscing Elit. Proin Tempor Ligula Euismod Nibh
             Facilisis Molestie Non Vitae Dolor. Cras Auctor Venenatis Sem,
             Ultricies Rutrum Est Ultricies Vel. Proin Sit Amet Neque Nec Risus
             Tincidunt Ultricies In Quis Lorem.
           </p>
-          <p className="mt-3 text-[13px] leading-[1.6] sm:text-[14px] lg:text-[15px]">
+          <p className="text-[15px] leading-[24px] lg:text-[16px] mt-3">
             Cras Auctor Venenatis Sem, Ultricies Rutrum Est Ultricies Vel. Proin
             Sit Amet Neque Nec Risus Tincidunt Ultricies In Quis Lorem.
           </p>

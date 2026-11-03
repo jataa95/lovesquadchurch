@@ -1,423 +1,76 @@
 "use client";
 
-import Image from "next/image";
+import { useState } from "react";
+import { Check, Copy } from "lucide-react";
+import AboutSplitSection from "@/components/about/AboutSplitSection";
+import { SecondaryButton } from "@/components/ui/buttons";
+import VisitDetail from "./VisitDetail";
+import { visit } from "@/data/visit";
+
+const text = "max-w-[640px] text-[15px] leading-[24px] text-[#575656] lg:text-[16px]";
 
 export default function VisitInPerson() {
+  const v = visit.inPerson;
+  const [copied, setCopied] = useState(false);
+
+  const copy = async () => {
+    try {
+      await navigator.clipboard.writeText(v.address);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 1800);
+    } catch {
+      /* clipboard not available */
+    }
+  };
+
   return (
-    <section id="in-person" className="w-full bg-cream">
-      <div
-        className="
-          mx-auto
-          grid
-          w-full
-          max-w-[1440px]
-          grid-cols-1
-          gap-8
-          px-4
-          py-6
-          
-          sm:px-6
-          sm:py-8
-
-          lg:grid-cols-2
-          lg:gap-[60px]
-          lg:px-12
-          lg:py-[80px]
-          
-          xl:px-[32px]
-          relative
-          items-start
-        "
+    <AboutSplitSection
+      id="in-person"
+      icon="/images/visit/greeting.svg"
+      iconWidth={96}
+      iconHeight={80}
+      centerOnMobile
+      heading={
+        <>
+          <span className="block">WE AWAIT</span>
+          <span className="block text-[#ED4823]">YOUR VISIT</span>
+        </>
+      }
+    >
+      <h3
+        className="heading-font mb-6 font-bold uppercase leading-[0.9] tracking-[-0.02em] text-[#4A4A4A]"
+        style={{ fontSize: "clamp(26px, 6vw, 40px)" }}
       >
-        {/* =========================================
-            LEFT SIDE (STICKY HEADING BLOCK)
-        ========================================== */}
-
-        <div
-          className="
-            flex
-            items-start
-            gap-2
-            
-            sm:gap-4
-
-            sticky
-            top-12
-            lg:top-24
-            self-start
-            h-fit
-            z-10
-            bg-cream
-            py-2
-          "
-        >
-          {/* ICON */}
-
-          <div
-            className="
-              mt-1.5
-              shrink-0
-
-              sm:mt-2
-
-              lg:mt-[10px]
-            "
+        IN PERSON
+      </h3>
+      <VisitDetail label="MEETING TIMES" rows={v.times} />
+      <VisitDetail label="LOCATION">
+        <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between sm:gap-6">
+          <p
+            className="heading-font font-bold uppercase leading-[1.1] tracking-[-0.015em] text-[#4A4A4A]"
+            style={{ fontSize: "clamp(18px, 2.4vw, 30px)" }}
           >
-            <Image
-              src="/images/visit/greeting.svg"
-              alt=""
-              width={96}
-              height={80}
-              className="
-                h-[40px]
-                w-[46px]
-                object-contain
-
-                sm:h-[48px]
-                sm:w-[48px]
-
-                lg:h-[64px]
-                lg:w-[64px]
-              "
-            />
-          </div>
-
-          {/* HEADING */}
-
-          <h2
-            className="
-              heading-font
-              uppercase
-              font-bold
-              leading-[0.85]
-              tracking-[-0.045em]
-              text-[#4A4A4A]
-            "
-            style={{
-              fontSize: "clamp(40px, 11vw, 80px)",
-            }}
-          >
-            WE AWAIT
-            <br />
-            YOUR VISIT!
-          </h2>
+            {v.address}
+          </p>
+          <SecondaryButton onClick={copy} icon={copied ? Check : Copy} className="shrink-0">
+            {copied ? "COPIED" : "COPY"}
+          </SecondaryButton>
         </div>
+      </VisitDetail>
+      <VisitDetail label="IMPORTANT DETAILS">
+        <p className={text}>{v.details}</p>
+      </VisitDetail>
+      <VisitDetail label="CHILDREN MINISTRY">
+        <p className={text}>{v.children}</p>
+      </VisitDetail>
 
-        {/* =========================================
-            RIGHT SIDE
-        ========================================== */}
-
-        <div className="w-full">
-          {/* =========================================
-              TITLE
-          ========================================== */}
-
-          <div
-            className="
-              flex
-              items-center
-              gap-2
-              border-b
-              border-[#A9A49D]
-              pb-2
-
-              sm:gap-[10px]
-            "
-          >
-            <Image
-              src="/images/visit/VisitInPersonButton.svg"
-              alt=""
-              width={60}
-              height={60}
-              className="
-                h-[30px]
-                w-[30px]
-                object-contain
-                grayscale
-                brightness-75
-
-                sm:h-[38px]
-                sm:w-[38px]
-
-                lg:h-[48px]
-                lg:w-[48px]
-              "
-            />
-
-            <h3
-              className="
-                heading-font
-                uppercase
-                font-bold
-                tracking-[-0.025em]
-                text-[#4A4A4A]
-              "
-              style={{
-                fontSize: "clamp(28px, 7vw, 64px)",
-                lineHeight: "1",
-              }}
-            >
-              IN-PERSON
-            </h3>
-          </div>
-
-          {/* =========================================
-              MEETING TIME
-          ========================================== */}
-
-          <div
-            className="
-              mt-5
-              border-b
-              border-[#A9A49D]
-              py-2.5
-
-              sm:mt-6
-              sm:py-3
-
-              lg:mt-[32px]
-            "
-          >
-            <p
-              className="
-                heading-font
-                uppercase
-                text-[#77736D]
-              "
-              style={{
-                fontSize: "clamp(12px, 1.1vw, 16px)",
-                lineHeight: "1.2",
-                fontWeight: 500,
-              }}
-            >
-              MEETING TIME
-            </p>
-
-            <div
-              className="
-                mt-1.5
-                flex
-                items-end
-                justify-between
-                gap-4
-              "
-            >
-              <div
-                className="
-                  heading-font
-                  uppercase
-                  font-bold
-                  leading-[1.05]
-                  tracking-[-0.015em]
-                  text-[#4A4A4A]
-                "
-                style={{
-                  fontSize: "clamp(18px, 3.5vw, 32px)",
-                }}
-              >
-                <div>SUNDAYS</div>
-                <div>WEDNESDAYS</div>
-              </div>
-
-              <div
-                className="
-                  heading-font
-                  text-right
-                  font-bold
-                  leading-[1.05]
-                  tracking-[-0.015em]
-                  text-[#4A4A4A]
-                "
-                style={{
-                  fontSize: "clamp(18px, 3.5vw, 32px)",
-                }}
-              >
-                <div>9AM</div>
-                <div>5:30PM</div>
-              </div>
-            </div>
-          </div>
-
-          {/* =========================================
-              LOCATION
-          ========================================== */}
-
-          <div
-            className="
-              mt-5
-              mb-5
-              border-b
-              border-[#A9A49D]
-              py-2.5
-
-              sm:mt-6
-              sm:mb-6
-              sm:py-3
-
-              lg:mt-[32px]
-              lg:mb-[32px]
-            "
-          >
-            <p
-              className="
-                heading-font
-                uppercase
-                text-[#77736D]
-              "
-              style={{
-                fontSize: "clamp(12px, 1.1vw, 16px)",
-                lineHeight: "1.2",
-                fontWeight: 500,
-              }}
-            >
-              LOCATION
-            </p>
-
-            <div
-              className="
-                mt-1.5
-                flex
-                flex-row
-                items-end
-                justify-between
-                gap-4
-
-                sm:flex-row
-                sm:items-end
-                sm:justify-between
-                sm:gap-4
-              "
-            >
-              <div
-                className="
-                  heading-font
-                  uppercase
-                  font-bold
-                  leading-[1.05]
-                  tracking-[-0.015em]
-                  text-[#4A4A4A]
-                "
-                style={{
-                  fontSize: "clamp(18px, 3.5vw, 32px)",
-                }}
-              >
-                <div>53 RIKAZ PLAZA,</div>
-                <div>ROAD, IKEJA LAGOS</div>
-              </div>
-
-              <button
-                type="button"
-                className="
-                  heading-font
-                  uppercase
-                  text-[#4A4A4A]
-                  transition-opacity
-                  duration-200
-                  hover:opacity-60
-                "
-                style={{
-                  fontSize: "clamp(12px, 1.1vw, 16px)",
-                  lineHeight: "1",
-                }}
-              >
-                ( COPY )
-              </button>
-            </div>
-          </div>
-
-          {/* =========================================
-              IMPORTANT DETAILS
-          ========================================== */}
-
-          <div
-            className="
-              mb-5
-              border-b
-              border-[#A9A49D]
-              py-2.5
-
-              sm:mb-6
-              sm:py-3
-
-              lg:mb-[32px]
-            "
-          >
-            <p
-              className="
-                heading-font
-                uppercase
-                text-[#77736D]
-              "
-              style={{
-                fontSize: "clamp(12px, 1.1vw, 16px)",
-                lineHeight: "1.2",
-                fontWeight: 500,
-              }}
-            >
-              IMPORTANT DETAILS
-            </p>
-
-            <p
-              className="
-                body-font
-                mt-1.5
-                max-w-[650px]
-                text-[#5A5853]
-              "
-              style={{
-                fontSize: "clamp(14px, 1.8vw, 20px)",
-                lineHeight: "1.3",
-              }}
-            >
-              Cras Aliquet, Sem Consectetur Condimentum Ultricies, Risus Massa
-              Condimentum Quam, A Eleifend Dolor Elit Quis Orci.
-            </p>
-          </div>
-
-          {/* =========================================
-              CHILDREN MINISTRY
-          ========================================== */}
-
-          <div
-            className="
-              py-2.5
-              
-              sm:py-3
-            "
-          >
-            <p
-              className="
-                heading-font
-                uppercase
-                text-[#77736D]
-              "
-              style={{
-                fontSize: "clamp(12px, 1.1vw, 16px)",
-                lineHeight: "1.2",
-                fontWeight: 500,
-              }}
-            >
-              CHILDREN MINISTRY
-            </p>
-
-            <p
-              className="
-                body-font
-                mt-1.5
-                max-w-[650px]
-                text-[#5A5853]
-              "
-              style={{
-                fontSize: "clamp(14px, 1.8vw, 20px)",
-                lineHeight: "1.3",
-              }}
-            >
-              Cras Aliquet, Sem Consectetur Condimentum Ultricies, Risus Massa
-              Condimentum Quam, A Eleifend Dolor Elit Quis Orci.
-            </p>
-          </div>
-        </div>
+      {/* Map: replace with a Google Maps embed when ready. */}
+      <div className="mt-8 aspect-[16/9] w-full bg-[#171515]" aria-label="Map" />
+      <div className="mt-6">
+        <SecondaryButton href={v.mapsUrl} target="_blank" rel="noopener noreferrer">
+          GET DIRECTIONS
+        </SecondaryButton>
       </div>
-    </section>
+    </AboutSplitSection>
   );
 }

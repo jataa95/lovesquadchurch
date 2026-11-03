@@ -91,7 +91,7 @@ export default function AboutHero() {
   return (
     <section
       ref={rootRef}
-      className="relative isolate flex min-h-[100dvh] w-full flex-col items-center justify-center overflow-hidden bg-[#0E0E0E] px-6 pb-16 pt-[calc(var(--nav-h)+48px)] text-[#F4EBDC] sm:px-8 lg:px-10"
+      className="relative isolate flex min-h-[100dvh] w-full flex-col items-center justify-center overflow-hidden bg-[#0E0E0E] px-6 pb-16 pt-[calc(var(--nav-h)+48px)] text-[#F9E9D3] sm:px-8 lg:px-10"
     >
       {/* Same photo + mouse spotlight as the footer and menu */}
       <SpotlightPhoto src={footer.photo} priority />
@@ -103,7 +103,7 @@ export default function AboutHero() {
       >
         <h1
           data-flip-title
-          className="heading-font text-center text-[48px] font-bold uppercase leading-none tracking-[-0.06em] text-[#F4EBDC] sm:text-[100px] md:text-[135px] lg:text-[170px] xl:text-[200px]"
+          className="heading-font text-center text-[48px] font-bold uppercase leading-none tracking-[-0.06em] text-[#F9E9D3] sm:text-[100px] md:text-[135px] lg:text-[170px] xl:text-[200px]"
         >
           WELCOME
         </h1>
@@ -114,7 +114,7 @@ export default function AboutHero() {
               key={link.label}
               href={link.href}
               data-flip-link
-              className="heading-font group relative inline-flex cursor-pointer items-center text-[15px] font-medium uppercase leading-tight tracking-[-0.02em] text-[#F4EBDC] transition-colors duration-300 hover:text-[#ED4823] focus-visible:text-[#ED4823] focus-visible:outline-none sm:text-[20px] sm:leading-[24px] md:text-[26px] md:leading-[34px] lg:text-[32px] lg:leading-[40px]"
+              className="heading-font group relative inline-flex cursor-pointer items-center text-[15px] font-medium uppercase leading-tight tracking-[-0.02em] text-[#F9E9D3] transition-colors duration-300 hover:text-[#ED4823] focus-visible:text-[#ED4823] focus-visible:outline-none sm:text-[20px] sm:leading-[24px] md:text-[26px] md:leading-[34px] lg:text-[32px] lg:leading-[40px]"
             >
               {link.label}
               <ArrowDown
@@ -129,7 +129,7 @@ export default function AboutHero() {
 
         <p
           data-flip-desc
-          className="mt-6 max-w-[330px] text-center text-[14px] leading-[22px] text-[#F4EBDC]/70 sm:mt-[40px] sm:max-w-[500px] sm:text-[17px] sm:leading-[26px] md:mt-[70px] md:max-w-[620px] md:text-[18px] md:leading-[28px] lg:mt-[80px] lg:max-w-[700px] lg:text-[20px] lg:leading-[30px]"
+          className="text-[15px] leading-[24px] lg:text-[16px] mt-6 max-w-[330px] text-center text-[#F9E9D3]/70 sm:mt-[40px] sm:max-w-[500px] md:mt-[70px] md:max-w-[620px] lg:mt-[80px] lg:max-w-[700px]"
         >
           Condimentum Ultricies, Risus Massa Condimentum Quam, A Eleifend Dolor
           Elit Quis Orci. Condimentum Ultricies, Risus Massa Condimentum Quam, A

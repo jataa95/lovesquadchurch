@@ -1,121 +1,70 @@
 "use client";
 
 import Image from "next/image";
+import { useState } from "react";
+import { Check, Copy } from "lucide-react";
+import AboutSplitSection from "@/components/about/AboutSplitSection";
+import { PrimaryButton } from "@/components/ui/buttons";
+import { giving } from "@/data/giving";
 
 export default function GivingDetails() {
+  const [copied, setCopied] = useState(null);
+
+  const copy = async (number, i) => {
+    try {
+      await navigator.clipboard.writeText(number);
+      setCopied(i);
+      setTimeout(() => setCopied(null), 1800);
+    } catch {
+      /* clipboard not available */
+    }
+  };
+
   return (
-    <section id="offering" className="w-full">
-      <div
-        className="
-          mx-auto
-          grid
-          w-full
-          max-w-[1440px]
-          grid-cols-1
-          items-start
-          gap-4
-          px-4
-          py-2
-          sm:gap-12
-          sm:px-6
-          sm:py-14
-          md:px-8
-          md:py-16
-          lg:grid-cols-2
-          lg:gap-[40px]
-          lg:px-[32px]
-          lg:py-[40px]
-          relative
-        "
-      >
-        {/* =========================================
-            LEFT — GIVING DETAILS HEADING (Sticky)
-        ========================================== */}
-
-        <div className="lg:relative">
-          <div
-            className="
-              flex
-              items-center
-              justify-center
-              gap-2
-              sm:gap-[14px]
-              lg:sticky
-              lg:top-24
-            "
-          >
-            {/* GIVING DETAILS ICON (Reduced size) */}
-
-            <div
-              className="
-                shrink-0
-                pt-[4px]
-                sm:pt-[6px]
-                lg:pt-[8px]
-              "
-            >
-              <Image
-                src="/images/giving/giving.svg"
-                alt=""
-                width={76}
-                height={56}
-                className="
-                  h-[40px]
-                  w-[48px]
-                  object-contain
-                  sm:h-[56px]
-                  sm:w-[68px]
-                  lg:h-[64px]
-                  lg:w-[76px]
-                "
-              />
-            </div>
-
-            {/* HEADING (Reduced size) */}
-
-            <h2
-              className="
-                heading-font
-                uppercase
-                font-bold
-                leading-[0.88]
-                tracking-[-0.055em]
-                text-[#4A4A4A]
-              "
-              style={{
-                fontSize: "clamp(2.75rem, 6vw, 60px)",
-              }}
-            >
-              GIVING DETAILS
-            </h2>
-          </div>
-        </div>
-
-        {/* =========================================
-            RIGHT — IMAGE
-        ========================================== */}
-
-        <div
-          className="
-            relative
-            h-[300px]
-            w-full
-            overflow-hidden
-            bg-[#171515]
-            sm:h-[340px]
-            md:h-[380px]
-            lg:h-[422px]
-          "
-        >
+    <AboutSplitSection
+      id="offering"
+      tone="dark"
+      divider={false}
+      icon="/images/giving/giving-cream.svg"
+      iconWidth={126}
+      iconHeight={95}
+      centerOnMobile
+      heading={
+        <>
+          <span className="block">GIVING</span>
+          <span className="block text-[#ED4823]">DETAILS</span>
+        </>
+      }
+    >
+      <div className="flex flex-col gap-5">
+        <div className="relative aspect-[16/9] w-full overflow-hidden bg-[#171515]">
           <Image
-            src="/images/giving/giving-hero.jpg"
-            alt="Giving details"
+            src="/images/gallery/gal5.jpg"
+            alt="Giving at LoveSquad Church"
             fill
+            sizes="(max-width: 1024px) 100vw, 60vw"
             className="object-cover"
-            sizes="(max-width: 1023px) 100vw,50vw"
           />
         </div>
+        {giving.accounts.map((a, i) => (
+          <article key={i} className="flex flex-col gap-4 border border-[#3B3B3B] p-6 sm:flex-row sm:items-end sm:justify-between">
+            <div>
+              <p className="heading-font text-[12px] font-semibold uppercase tracking-[0.22em] text-[#ED4823] sm:text-[13px]">
+                {a.label}
+              </p>
+              <p className="heading-font mt-2 font-bold leading-none tracking-[-0.02em]" style={{ fontSize: "clamp(26px, 3vw, 36px)" }}>
+                {a.number}
+              </p>
+              <p className="mt-2 text-[15px] leading-[24px] text-[#F9E9D3]/80">
+                {a.name} · {a.bank}
+              </p>
+            </div>
+            <PrimaryButton onClick={() => copy(a.number, i)} icon={copied === i ? Check : Copy}>
+              {copied === i ? "COPIED" : "COPY"}
+            </PrimaryButton>
+          </article>
+        ))}
       </div>
-    </section>
+    </AboutSplitSection>
   );
 }

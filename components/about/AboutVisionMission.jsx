@@ -88,7 +88,7 @@ function Statement({ title, text, isLast }) {
           max-w-[430px]
           font-normal
           leading-[1.4]
-          text-[#5A5853]
+          text-[#575656]
         "
         style={{
           fontSize: "13px",

@@ -90,7 +90,7 @@ export default function Footer() {
     <footer
       ref={rootRef}
       id="homepage-bottom"
-      className="relative isolate overflow-hidden bg-[#0E0E0E] text-[#F5EBDD]"
+      className="relative isolate overflow-hidden bg-[#0E0E0E] text-[#F9E9D3]"
     >
       {/* Black and white photo with the mouse spotlight (shared with the menu) */}
       <SpotlightPhoto src={footer.photo} />
@@ -128,7 +128,7 @@ export default function Footer() {
               <span className="text-[#ED4823]">{footer.lineBottom}</span>
             </p>
             {footer.address && (
-              <p className="mt-5 text-[14px] text-[#F5EBDD]/70 sm:text-[15px]">
+              <p className="mt-5 text-[14px] text-[#F9E9D3]/70 sm:text-[15px]">
                 {footer.address}
               </p>
             )}
@@ -139,7 +139,7 @@ export default function Footer() {
         </div>
 
         {/* ---------- Links (two rows) + social icons */}
-        <div className="mt-16 flex flex-col items-center gap-8 border-t border-[#F5EBDD]/15 pt-10 lg:mt-20 lg:flex-row lg:items-end lg:justify-between">
+        <div className="mt-16 flex flex-col items-center gap-8 border-t border-[#F9E9D3]/15 pt-10 lg:mt-20 lg:flex-row lg:items-end lg:justify-between">
           <nav aria-label="Footer" className="flex flex-col items-center gap-4 lg:items-start">
             {footer.links.map((row, i) => (
               <ul key={i} className="flex flex-wrap justify-center gap-x-7 gap-y-3 lg:justify-start lg:gap-x-10">
@@ -147,7 +147,7 @@ export default function Footer() {
                   <li key={l.href}>
                     <Link
                       href={l.href}
-                      className="heading-font group relative text-[13px] font-medium uppercase tracking-[0.08em] text-[#F5EBDD]/85 transition-colors hover:text-[#F5EBDD] sm:text-[14px]"
+                      className="heading-font group relative text-[13px] font-medium uppercase tracking-[0.08em] text-[#F9E9D3]/85 transition-colors hover:text-[#F9E9D3] sm:text-[14px]"
                     >
                       {l.label}
                       <span className="absolute -bottom-1 left-0 h-px w-full origin-left scale-x-0 bg-[#ED4823] transition-transform duration-300 group-hover:scale-x-100" />
@@ -166,7 +166,7 @@ export default function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={s.name}
-                className="flex h-11 w-11 items-center justify-center rounded-full border border-[#F5EBDD]/30 text-[#F5EBDD] transition-colors duration-300 hover:border-[#ED4823] hover:bg-[#ED4823]"
+                className="flex h-11 w-11 items-center justify-center rounded-full border border-[#F9E9D3]/30 text-[#F9E9D3] transition-colors duration-300 hover:border-[#ED4823] hover:bg-[#ED4823]"
               >
                 {ICONS[s.name]}
               </a>
@@ -175,7 +175,7 @@ export default function Footer() {
         </div>
 
         {/* ---------- Bottom line */}
-        <div className="mt-10 flex flex-col items-center gap-3 text-[12px] text-[#F5EBDD]/55 sm:flex-row sm:justify-between">
+        <div className="mt-10 flex flex-col items-center gap-3 text-[12px] text-[#F9E9D3]/55 sm:flex-row sm:justify-between">
           <span>© {new Date().getFullYear()} LoveSquad Church</span>
           <a href="#top" onClick={toTop} className="inline-flex items-center gap-1.5 transition-colors hover:text-[#ED4823]">
             Back to top <ArrowUp className="h-3.5 w-3.5" />

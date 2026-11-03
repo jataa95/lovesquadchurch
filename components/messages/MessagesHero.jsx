@@ -1,84 +1,12 @@
-"use client";
+import PageHero from "@/components/ui/PageHero";
 
 export default function MessagesHero() {
   return (
-    <section
+    <PageHero
       id="messages"
-      className="
-        mt-[60px]
-        w-full
-        bg-cream
-        pt-4
-        pb-4
-        text-[#575656]
-        sm:pt-6
-        md:pb-6
-        lg:mt-[80px]
-      "
-    >
-      <div
-        className="
-          mx-auto
-          flex
-          w-full
-          max-w-[1440px]
-          flex-col
-          items-center
-          text-center
-          px-4
-          sm:px-6
-          md:items-start
-          md:text-left
-          md:px-12
-        "
-      >
-        {/* =========================================
-            GIANT MESSAGES HEADING
-        ========================================== */}
-
-        <div className="w-full overflow-hidden flex justify-center md:justify-start">
-          <h1
-            className="
-              heading-font
-              m-0
-              w-full
-              font-extrabold
-              uppercase
-              leading-[0.8]
-              tracking-tighter
-              text-[#575656]
-              whitespace-nowrap
-            "
-            style={{
-              fontSize: "clamp(3.5rem, 16vw, 15rem)",
-            }}
-          >
-            MESSAGES
-          </h1>
-        </div>
-
-        {/* =========================================
-            SUBTITLE PARAGRAPH
-        ========================================== */}
-
-        <p
-          className="
-            body-font
-            mt-2
-            w-full
-            max-w-[800px]
-            text-[15px]
-            leading-[1.5]
-            text-[#575656]
-            sm:mt-4
-            sm:text-[16px]
-            sm:leading-relaxed
-          "
-        >
-          Cras Aliquet, Sem Consectetur Condimentum Ultricies, Risus Massa
-          Condimentum Quam, A Eleifend Dolor Elit Quis Orci.
-        </p>
-      </div>
-    </section>
+      label={["WATCH &", "LISTEN"]}
+      title="MESSAGES"
+      intro="Cras aliquet, sem consectetur condimentum ultricies, risus massa condimentum quam, a eleifend dolor elit quis orci."
+    />
   );
 }

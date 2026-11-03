@@ -251,7 +251,7 @@ export default function AboutCollage() {
             <div
               data-collage-photo
               data-zoom={p.zoom}
-              className="relative h-full w-full overflow-hidden bg-[#151515] will-change-transform"
+              className="relative h-full w-full overflow-hidden bg-[#171515] will-change-transform"
             >
               <Image
                 src={src}
@@ -274,7 +274,7 @@ export default function AboutCollage() {
           <div data-collage-text className="flex flex-col items-center">
             <h2
               data-collage-lines
-              className="heading-font text-[40px] font-black uppercase leading-[1.05] text-[#575656] xl:text-[48px]"
+              className="heading-font text-[26px] font-bold uppercase leading-[1.05] tracking-[-0.03em] text-[#4A4A4A] sm:text-[34px] lg:text-[42px] xl:text-[48px]"
             >
               {about.heading.map((part, i) =>
                 part.accent ? (
@@ -311,7 +311,7 @@ export default function AboutCollage() {
         <div
           data-parallax="80"
           data-collage-centre
-          className="relative mt-16 aspect-[16/11] w-full overflow-hidden bg-[#151515] will-change-transform"
+          className="relative mt-16 aspect-[16/11] w-full overflow-hidden bg-[#171515] will-change-transform"
         >
           <Image
             src={centre}
@@ -350,7 +350,7 @@ export default function AboutCollage() {
             <div
               data-collage-photo
               data-zoom="in"
-              className="relative h-full w-full overflow-hidden bg-[#151515] will-change-transform"
+              className="relative h-full w-full overflow-hidden bg-[#171515] will-change-transform"
             >
               <Image
                 src={closing}

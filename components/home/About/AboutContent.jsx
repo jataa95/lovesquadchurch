@@ -8,7 +8,7 @@ export default function AboutContent() {
       <div className="flex flex-col lg:col-span-5 xl:col-span-4">
         {/* Description */}
         <p
-          className="text-[13px] leading-[18px] text-[#575656] sm:text-[16px] sm:leading-[22px] md:text-[17px] md:leading-[24px] lg:text-[18px] lg:leading-[26px]"
+          className="text-[15px] leading-[24px] lg:text-[16px] text-[#575656]"
           style={{ fontWeight: 400 }}
         >
           {about.description}
@@ -26,11 +26,10 @@ export default function AboutContent() {
       {/* RIGHT COLUMN */}
       <div className="flex flex-col items-end lg:col-span-7 lg:items-end lg:flex-col xl:col-span-8">
         <h2
-          className="heading-font text-left text-[18px] leading-[20px] uppercase font-black sm:text-[28px] sm:leading-[32px] md:text-[32px] md:leading-[36px] lg:text-right lg:text-[36px] lg:leading-[40px]"
-          style={{ letterSpacing: "0px" }}
+          className="text-left lg:text-right heading-font text-[26px] font-bold uppercase leading-[1.05] tracking-[-0.03em] text-[#4A4A4A] sm:text-[34px] lg:text-[42px] xl:text-[48px]"
         >
           {/* Line 1 */}
-          <div className="text-[#575656]">NUNC CONDIMENTUM</div>
+          <div>NUNC CONDIMENTUM</div>
 
           {/* Line 2: Horizontal flow on mobile, wrapping smoothly */}
           <div className="flex flex-wrap gap-x-1.5 lg:justify-end">

@@ -1,368 +1,44 @@
-"use client";
-
 import Image from "next/image";
-import { SecondaryButton } from "@/components/ui/buttons";
+import AboutSplitSection from "@/components/about/AboutSplitSection";
+import { PrimaryButton } from "@/components/ui/buttons";
+import VisitDetail from "./VisitDetail";
+import { visit } from "@/data/visit";
 
 export default function VisitOnline() {
+  const v = visit.online;
   return (
-    <section id="online" className="w-full bg-cream">
-      <div
-        className="
-          mx-auto
-          grid
-          w-full
-          max-w-[1440px]
-          grid-cols-1
-          gap-10
-          px-5
-          pb-4
-          pt-4
-
-          sm:px-6
-          sm:pb-14
-
-          md:px-8
-          md:pb-16
-
-          lg:grid-cols-2
-          lg:gap-[60px]
-          lg:px-12
-          lg:pb-[80px]
-          lg:pt-[20px]
-
-          xl:px-[32px]
-        "
-      >
-        {/* =========================================
-            LEFT SIDE — ONLINE IMAGE
-        ========================================== */}
-
-        <div
-          className="
-            relative
-            h-[220px]
-            w-full
-            overflow-hidden
-            bg-[#171515]
-
-            sm:h-[260px]
-
-            md:h-[300px]
-
-            lg:h-[325px]
-          "
-        >
-          <Image
-            src="/images/visit/visit-online.jpg"
-            alt="LoveSquad Church online"
-            fill
-            className="object-cover"
-            sizes="(max-width: 768px) 100vw,(max-width: 1024px) 50vw,50vw"
-          />
-        </div>
-
-        {/* =========================================
-            RIGHT SIDE — ONLINE DETAILS
-        ========================================== */}
-
-        <div className="w-full">
-          {/* =========================================
-              ONLINE HEADING
-          ========================================== */}
-
-          <div
-            className="
-              flex
-              items-center
-              gap-2
-              border-b
-              border-[#A9A49D]
-              pb-2
-
-              sm:gap-[10px]
-            "
-          >
-            <Image
-              src="/images/visit/VisitOnlineButton.svg"
-              alt=""
-              width={56}
-              height={56}
-              className="
-                h-[36px]
-                w-[36px]
-                shrink-0
-                object-contain
-
-                sm:h-[42px]
-                sm:w-[42px]
-
-                md:h-[48px]
-                md:w-[48px]
-
-                lg:h-[56px]
-                lg:w-[56px]
-              "
-            />
-
-            <h2
-              className="
-                heading-font
-                uppercase
-                font-bold
-                tracking-[-0.025em]
-                text-[#4A4A4A]
-              "
-              style={{
-                fontSize: "clamp(36px, 5vw, 64px)",
-                lineHeight: "1",
-              }}
-            >
-              ONLINE
-            </h2>
-          </div>
-
-          {/* =========================================
-              GENERAL PRAYERS
-          ========================================== */}
-
-          <div
-            className="
-              mt-8
-              border-b
-              border-[#A9A49D]
-              py-3
-
-              lg:mt-[40px]
-            "
-          >
-            <p
-              className="
-                heading-font
-                uppercase
-                text-[#77736D]
-              "
-              style={{
-                fontSize: "clamp(13px, 1.2vw, 16px)",
-                lineHeight: "1.25",
-                fontWeight: 500,
-              }}
-            >
-              GENERAL PRAYERS
-            </p>
-
-            <div
-              className="
-                mt-2
-                grid
-                grid-cols-3
-                items-center
-                gap-2
-              "
-            >
-              <div
-                className="
-                  heading-font
-                  uppercase
-                  font-bold
-                  leading-none
-                  text-[#4A4A4A]
-                "
-                style={{
-                  fontSize: "clamp(18px, 2.5vw, 32px)",
-                }}
-              >
-                TELEGRAM
-              </div>
-
-              <div
-                className="
-                  heading-font
-                  uppercase
-                  font-bold
-                  leading-none
-                  text-[#4A4A4A]
-
-                  text-center
-                "
-                style={{
-                  fontSize: "clamp(18px, 2.5vw, 32px)",
-                }}
-              >
-                TUESDAYS
-              </div>
-
-              <div
-                className="
-                  heading-font
-                  uppercase
-                  font-bold
-                  leading-none
-                  text-[#4A4A4A]
-
-                  text-right
-                "
-                style={{
-                  fontSize: "clamp(18px, 2.5vw, 32px)",
-                }}
-              >
-                5AM
-              </div>
-            </div>
-          </div>
-
-          {/* =========================================
-              LOVESPOT
-          ========================================== */}
-
-          <div
-            className="
-              mt-8
-              border-b
-              border-[#A9A49D]
-              py-3
-
-              lg:mt-[40px]
-            "
-          >
-            <p
-              className="
-                heading-font
-                uppercase
-                text-[#77736D]
-              "
-              style={{
-                fontSize: "clamp(13px, 1.2vw, 16px)",
-                lineHeight: "1.25",
-                fontWeight: 500,
-              }}
-            >
-              LOVESPOT
-            </p>
-
-            <div
-              className="
-                mt-2
-                grid
-                grid-cols-3
-                gap-2
-              "
-            >
-              {/* LOCATIONS */}
-
-              <div
-                className="
-                  heading-font
-                  uppercase
-                  font-bold
-                  leading-[1.1]
-                  text-[#4A4A4A]
-                "
-                style={{
-                  fontSize: "clamp(18px, 2.5vw, 32px)",
-                }}
-              >
-                <div>KETU</div>
-                <div>IKEJA</div>
-                <div>SOMOLU</div>
-              </div>
-
-              {/* DAYS */}
-
-              <div
-                className="
-                  heading-font
-                  text-center
-                  uppercase
-                  font-bold
-                  leading-[1.1]
-                  text-[#4A4A4A]
-                "
-                style={{
-                  fontSize: "clamp(18px, 2.5vw, 32px)",
-                }}
-              >
-                <div>TUESDAYS</div>
-                <div>DAY</div>
-                <div>DAY</div>
-              </div>
-
-              {/* TIMES */}
-
-              <div
-                className="
-                  heading-font
-                  text-right
-                  uppercase
-                  font-bold
-                  leading-[1.1]
-                  text-[#4A4A4A]
-                "
-                style={{
-                  fontSize: "clamp(18px, 2.5vw, 32px)",
-                }}
-              >
-                <div>7:30PM</div>
-                <div>5:30PM</div>
-                <div>5:30PM</div>
-              </div>
-            </div>
-          </div>
-
-          {/* =========================================
-              IMPORTANT DETAILS
-          ========================================== */}
-
-          <div
-            className="
-              mt-8
-              border-b
-              border-[#A9A49D]
-              py-3
-
-              lg:mt-[40px]
-            "
-          >
-            <p
-              className="
-                heading-font
-                uppercase
-                text-[#77736D]
-              "
-              style={{
-                fontSize: "clamp(13px, 1.2vw, 16px)",
-                lineHeight: "1.25",
-                fontWeight: 500,
-              }}
-            >
-              IMPORTANT DETAILS
-            </p>
-
-            <p
-              className="
-                body-font
-                mt-2
-                max-w-[650px]
-                text-[#5A5853]
-              "
-              style={{
-                fontSize: "clamp(15px, 1.5vw, 16px)",
-                lineHeight: "1.35",
-              }}
-            >
-              Cras Aliquet, Sem Consectetur Condimentum Ultricies, Risus Massa
-              Condimentum Quam, A Eleifend Dolor Elit Quis Orci.
-            </p>
-          </div>
-
-          {/* =========================================
-              JOIN LOVESPOT BUTTON
-          ========================================== */}
-
-          <div className="mt-4">
-            <SecondaryButton href="/lovespot">JOIN A LOVESPOT</SecondaryButton>
-          </div>
-        </div>
+    <AboutSplitSection
+      id="online"
+      tone="dark"
+      divider={false}
+      icon="/images/visit/online-icon-cream.svg"
+      iconWidth={95}
+      iconHeight={95}
+      centerOnMobile
+      heading={
+        <>
+          <span className="block">JOIN US</span>
+          <span className="block text-[#ED4823]">ONLINE</span>
+        </>
+      }
+    >
+      <div className="relative mb-8 aspect-[16/9] w-full overflow-hidden bg-[#171515]">
+        <Image
+          src={v.photo}
+          alt="LoveSquad Church online"
+          fill
+          sizes="(max-width: 1024px) 100vw, 60vw"
+          className="object-cover"
+        />
       </div>
-    </section>
+      <VisitDetail tone="dark" label="GENERAL PRAYERS" rows={v.prayers} />
+      <VisitDetail tone="dark" label="LOVESPOT" rows={v.loveSpots} />
+      <VisitDetail tone="dark" label="IMPORTANT DETAILS">
+        <p className="max-w-[640px] text-[15px] leading-[24px] text-[#F9E9D3]/80 lg:text-[16px]">{v.details}</p>
+      </VisitDetail>
+      <div className="mt-8">
+        <PrimaryButton href="/lovespot">JOIN A LOVESPOT</PrimaryButton>
+      </div>
+    </AboutSplitSection>
   );
 }

@@ -82,7 +82,7 @@ export default function AboutSplitSection({
       ref={rootRef}
       id={id}
       className={`relative w-full scroll-mt-[var(--nav-h)] section-py ${band} ${
-        dark ? "text-[#F4EBDC]" : "text-[#4A4A4A]"
+        dark ? "text-[#F9E9D3]" : "text-[#4A4A4A]"
       }`}
     >
       <Container>
