@@ -183,8 +183,8 @@ export default function AboutFAQs() {
                       // Hover/open: a soft white wash, so the cream paper
                       // grain still shows through, just lighter.
                       isOpen
-                        ? "border-[#262626] bg-white/30"
-                        : "border-[#262626] bg-transparent hover:bg-white/30"
+                        ? "border-[#262626] bg-white/15"
+                        : "border-[#262626] bg-transparent hover:bg-white/15"
                     }
                   `}
                 >
