@@ -19,7 +19,7 @@ export default function Navbar() {
           className="absolute inset-x-0 top-0 -bottom-6 bg-gradient-to-b from-black/15 via-black/5 to-transparent backdrop-blur-sm [mask-image:linear-gradient(to_bottom,black_55%,transparent)]"
         />
 
-        <div className="relative z-10 flex items-center justify-between px-5 pt-5 pb-3 sm:px-8 sm:pt-6 sm:pb-3 lg:px-12 lg:pt-8 lg:pb-4 pointer-events-auto">
+        <div className="relative z-10 flex items-center justify-between px-4 pt-4 pb-3 lg:px-7 lg:pt-7 lg:pb-5 pointer-events-auto">
           {/* LOGO */}
           <Link
             href="/"
