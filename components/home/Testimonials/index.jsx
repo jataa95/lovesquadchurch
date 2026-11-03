@@ -2,7 +2,7 @@
 
 import Container from "@/components/ui/Container"; 
 import TestimonialsHeader from "./TestimonialsHeader";
-import TestimonialsGrid from "./TestimonialsGrid";
+import TestimonialVideos from "./TestimonialVideos";
 import SecondaryButton from "@/components/ui/buttons/SecondaryButton"; 
 import { testimonials } from "@/data/testimonials"; 
 
@@ -20,9 +20,9 @@ export default function Testimonials() {
         {/* HEADER */}
         <TestimonialsHeader />
 
-        {/* TESTIMONIALS GRID */}
+        {/* VIDEO TESTIMONIES */}
         <div className="mt-(--section-gap)">
-          <TestimonialsGrid />
+          <TestimonialVideos />
         </div>
 
         {/* BUTTON */}

@@ -167,32 +167,6 @@ body {
    TESTIMONIAL MARQUEE
 ========================================= */
 
-.testimonial-marquee {
-  width: 100%;
-  overflow: hidden;
-  /* Just enough room for the tilted card corners */
-  padding-top: 18px;
-  padding-bottom: 18px;
-}
-
-.testimonial-track {
-  display: flex;
-  width: max-content;
-  align-items: center;
-  gap: 40px;
-  /* Same as the gap, so half the row is exactly one set of cards and
-     the loop has no jump */
-  padding-right: 40px;
-  will-change: transform;
-}
-
-@media (min-width: 768px) {
-  .testimonial-track {
-    gap: 56px;
-    padding-right: 56px;
-  }
-}
-
 /* =========================================
    EVENTS MARQUEE
 ========================================= */
