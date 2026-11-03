@@ -1,11 +1,14 @@
 import Link from "next/link";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowDown, ArrowUpRight } from "lucide-react";
 
 export default function SecondaryButton({
   href = "#",
   children,
   className = "",
 }) {
+  // Links to a section on the same page point down; others point out.
+  const inPage = href.startsWith("#");
+  const Arrow = inPage ? ArrowDown : ArrowUpRight;
   return (
     <Link
       href={href}
@@ -29,11 +32,11 @@ export default function SecondaryButton({
           duration-300
           group-hover:text-[#575656]
 
-          text-[18px] leading-[16px]
-          sm:text-[20px] sm:leading-[18px]
-          md:text-[24px] md:leading-[20px]
+          text-[18px] sm:text-[20px] md:text-[24px]
+          leading-none
           font-bold
           tracking-[-0.02em]
+          -translate-y-[0.06em]
         "
       >
         {"{"}
@@ -60,19 +63,18 @@ export default function SecondaryButton({
       </span>
 
       {/* Arrow */}
-      <ArrowUpRight
-        className="
+      <Arrow
+        className={`
           text-[#575656]
           transition-all
           duration-300
           group-hover:text-[#ED4823]
-          group-hover:translate-x-0.5
-          group-hover:-translate-y-0.5
+          ${inPage ? "group-hover:translate-y-0.5" : "group-hover:translate-x-0.5 group-hover:-translate-y-0.5"}
 
           h-4 w-4
           sm:h-5 sm:w-5
           md:h-6 md:w-6
-        "
+        `}
       />
 
       {/* Right Bracket */}
@@ -85,11 +87,11 @@ export default function SecondaryButton({
           duration-300
           group-hover:text-[#575656]
 
-          text-[18px] leading-[16px]
-          sm:text-[20px] sm:leading-[18px]
-          md:text-[24px] md:leading-[20px]
+          text-[18px] sm:text-[20px] md:text-[24px]
+          leading-none
           font-bold
           tracking-[-0.02em]
+          -translate-y-[0.06em]
         "
       >
         {"}"}

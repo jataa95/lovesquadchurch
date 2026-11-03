@@ -38,8 +38,7 @@ export default function FirstTimersHero() {
             <p className="text-[15px] leading-[24px] text-[#5A5853] lg:text-[16px]">
               {firstTimers.intro}
             </p>
-            <div className="mt-5 flex flex-wrap items-center justify-center gap-x-8 gap-y-3">
-              <SecondaryButton href="#what-to-expect">WHAT TO EXPECT</SecondaryButton>
+            <div className="mt-5">
               <SecondaryButton href="#connect-card">TELL US ABOUT YOU</SecondaryButton>
             </div>
           </div>
