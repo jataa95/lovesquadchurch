@@ -37,10 +37,10 @@ const testimonials = [
 
 export default function Testimonials() {
   return (
-    <div className="w-full bg-[#080808] clear-both">
+    <div className="w-full bg-ink clear-both">
       <section 
         style={{ display: "block", position: "relative", width: "100%" }}
-        className="bg-[#080808]"
+        className="bg-ink"
       >
         <div
           style={{ display: "block", width: "100%", maxWidth: "1440px", margin: "0 auto" }}

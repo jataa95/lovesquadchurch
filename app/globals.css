@@ -9,7 +9,12 @@
 }
 
 body {
-  background: var(--background);
+  /* Same grainy cream as bg-cream, so any section without its own
+     background still gets the paper texture. */
+  background-color: var(--background);
+  background-image: url("/textures/paper.png");
+  background-size: 256px 256px;
+  background-repeat: repeat;
   color: var(--foreground);
   font-family: var(--font-body);
 }

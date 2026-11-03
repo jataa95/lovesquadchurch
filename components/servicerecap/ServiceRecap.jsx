@@ -294,7 +294,7 @@ export default function ServiceRecapPage({
       <section
         className="
           mt-4
-          bg-[#161616]
+          bg-ink
           py-6
           text-white
           sm:mt-16

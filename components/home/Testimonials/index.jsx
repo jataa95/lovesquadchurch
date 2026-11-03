@@ -12,7 +12,7 @@ export default function Testimonials() {
       className="
         relative 
         overflow-hidden 
-        bg-[#0E0E0E] 
+        bg-ink 
         section-py
       "
     >

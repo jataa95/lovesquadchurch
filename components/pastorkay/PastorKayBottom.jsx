@@ -10,7 +10,7 @@ export default function PastorKayBottom() {
       {/* =========================================
           1. 3-COLUMN IMAGE GALLERY
       ========================================== */}
-      <section className="w-full bg-[#171515] py-8 sm:py-12 md:py-16">
+      <section className="w-full bg-ink py-8 sm:py-12 md:py-16">
         <div className="mx-auto max-w-[1440px] px-4 sm:px-6 md:px-12">
           <div
             className="
