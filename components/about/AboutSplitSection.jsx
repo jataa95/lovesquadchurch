@@ -19,10 +19,10 @@ gsap.registerPlugin(ScrollTrigger, useGSAP);
  * - Phones/tablets: the heading sticks right under the navbar on a solid
  *   band (so content slides under it), with an orange rule below.
  * - Same section padding as the rest of the site (section-py).
- * - With `divider`, the vertical orange line beside the content (desktop)
- *   grows from 0 to 100% as the section scrolls through, and shrinks back
- *   on the way up. The horizontal line under the heading on phones and
- *   tablets stays still at full width.
+ * - Orange lines grow from 0 to 100% as the section scrolls through and
+ *   shrink back on the way up: on phones/tablets the line under every
+ *   heading (all sections, so they behave the same); on desktop the
+ *   vertical line beside the content (sections with `divider`).
  */
 export default function AboutSplitSection({
   id,
@@ -39,21 +39,31 @@ export default function AboutSplitSection({
 
   useGSAP(
     () => {
-      if (!divider) return;
+      const scrub = () => ({
+        trigger: rootRef.current,
+        start: "top 75%",
+        end: "bottom 75%",
+        scrub: 0.6,
+      });
       const mm = gsap.matchMedia();
-      mm.add("(prefers-reduced-motion: no-preference)", () => {
-        const scrub = {
-          trigger: rootRef.current,
-          start: "top 75%",
-          end: "bottom 75%",
-          scrub: 0.6,
-        };
+      // Phones/tablets: every section's line under the heading.
+      mm.add("(max-width: 1023px) and (prefers-reduced-motion: no-preference)", () => {
         gsap.fromTo(
-          "[data-divider-v]",
-          { scaleY: 0 },
-          { scaleY: 1, ease: "none", scrollTrigger: scrub }
+          "[data-divider-h]",
+          { scaleX: 0 },
+          { scaleX: 1, ease: "none", scrollTrigger: scrub() }
         );
       });
+      // Desktop: the vertical line beside the content.
+      if (divider) {
+        mm.add("(min-width: 1024px) and (prefers-reduced-motion: no-preference)", () => {
+          gsap.fromTo(
+            "[data-divider-v]",
+            { scaleY: 0 },
+            { scaleY: 1, ease: "none", scrollTrigger: scrub() }
+          );
+        });
+      }
       return () => mm.revert();
     },
     { scope: rootRef, dependencies: [divider] }
@@ -91,7 +101,10 @@ export default function AboutSplitSection({
                   {heading}
                 </h2>
               </div>
-              <div className="mt-4 h-[2px] w-full bg-[#ED4823] lg:hidden" />
+              <div
+                data-divider-h
+                className="mt-4 h-[2px] w-full origin-left bg-[#ED4823] lg:hidden"
+              />
 
               {aside && <div className="mt-8 hidden lg:block">{aside}</div>}
             </div>
