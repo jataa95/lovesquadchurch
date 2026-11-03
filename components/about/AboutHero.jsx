@@ -1,10 +1,10 @@
 "use client";
 
-import Link from "next/link";
 import { useRef } from "react";
 import gsap from "gsap";
 import { SplitText } from "gsap/SplitText";
 import { useGSAP } from "@gsap/react";
+import { ArrowDown } from "lucide-react";
 import { PrimaryButton } from "@/components/ui/buttons";
 import SpotlightPhoto from "@/components/ui/SpotlightPhoto";
 import { footer } from "@/data/footer";
@@ -110,14 +110,27 @@ export default function AboutHero() {
 
         <nav className="mt-6 flex max-w-[900px] flex-wrap items-center justify-center gap-x-4 gap-y-3 sm:mt-[20px] sm:gap-x-[40px] sm:gap-y-[20px] md:mt-[25px] md:gap-x-[60px] lg:mt-[60px] lg:gap-x-[90px]">
           {aboutLinks.map((link) => (
-            <Link
+            <a
               key={link.label}
               href={link.href}
               data-flip-link
-              className="heading-font inline-block text-[15px] font-medium uppercase leading-tight tracking-[-0.02em] text-[#F4EBDC] transition-colors duration-300 hover:text-[#ED4823] sm:text-[20px] sm:leading-[24px] md:text-[26px] md:leading-[34px] lg:text-[32px] lg:leading-[40px]"
+              onClick={(e) => {
+                const target = document.querySelector(link.href);
+                if (!target) return;
+                e.preventDefault();
+                target.scrollIntoView({ behavior: "smooth" });
+                history.replaceState(null, "", link.href);
+              }}
+              className="heading-font group relative inline-flex cursor-pointer items-center text-[15px] font-medium uppercase leading-tight tracking-[-0.02em] text-[#F4EBDC] transition-colors duration-300 hover:text-[#ED4823] focus-visible:text-[#ED4823] focus-visible:outline-none sm:text-[20px] sm:leading-[24px] md:text-[26px] md:leading-[34px] lg:text-[32px] lg:leading-[40px]"
             >
               {link.label}
-            </Link>
+              <ArrowDown
+                aria-hidden="true"
+                className="absolute left-full top-1/2 ml-2 h-[0.8em] w-[0.8em] -translate-y-[70%] opacity-0 transition-all duration-300 group-hover:-translate-y-1/2 group-hover:opacity-100 group-focus-visible:-translate-y-1/2 group-focus-visible:opacity-100"
+              />
+              {/* Underline slides in from the left on hover */}
+              <span className="absolute -bottom-1.5 left-0 h-[2px] w-full origin-left scale-x-0 bg-[#ED4823] transition-transform duration-300 ease-out group-hover:scale-x-100 group-focus-visible:scale-x-100" />
+            </a>
           ))}
         </nav>
 
