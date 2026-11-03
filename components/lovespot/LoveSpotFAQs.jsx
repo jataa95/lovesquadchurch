@@ -84,8 +84,10 @@ export default function LoveSpotFAQs() {
               return (
                 <div
                   key={faq.id}
-                  className={`group w-full overflow-hidden border border-[#262626] bg-transparent transition-all duration-300 ease-out ${
-                    isOpen ? "bg-[#EDE3D2]" : "hover:bg-[#EEE4D4]"
+                  className={`group w-full overflow-hidden border border-[#262626] transition-colors duration-300 ease-out ${
+                    // Same as the About FAQs: a soft white wash over the
+                    // grainy cream on hover / when open.
+                    isOpen ? "bg-white/15" : "bg-transparent hover:bg-white/15"
                   }`}
                 >
                   {/* QUESTION */}
@@ -93,7 +95,7 @@ export default function LoveSpotFAQs() {
                     type="button"
                     onClick={() => toggleFAQ(index)}
                     aria-expanded={isOpen}
-                    className="flex min-h-[48px] w-full items-center justify-between px-[12px] py-[10px] text-left transition-all duration-300 ease-out group-hover:px-[15px]"
+                    className="flex min-h-[48px] w-full items-center justify-between px-[12px] py-[10px] text-left transition-colors duration-300 ease-out"
                   >
                     <span
                       className="heading-font font-bold tracking-[-0.01em] text-[#262626]"

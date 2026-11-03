@@ -1,187 +1,67 @@
 "use client";
 
 import Image from "next/image";
+import Container from "@/components/ui/Container";
 import SecondaryButton from "@/components/ui/buttons/SecondaryButton";
 
+/*
+ * LoveSpots hero: everything centred. Top padding clears the fixed navbar
+ * with room to breathe; the bottom uses the site's section spacing so the
+ * gap to the next section matches the other pages.
+ */
 export default function LoveSpotHero() {
   return (
     <section
       id="lovespot"
-      className="
-        relative
-        w-full
-        overflow-hidden
-        bg-cream
-        px-[12px]
-        pt-20
-        pb-6
-        sm:px-[18px]
-        sm:pb-[4px]
-        lg:pt-[100px]
-      "
+      className="relative w-full overflow-hidden bg-cream pt-[calc(var(--nav-h)+40px)] pb-(--section-space) lg:pt-[calc(var(--nav-h)+56px)]"
     >
-      {/* ================================= */}
-      {/* HERO CONTENT                      */}
-      {/* ================================= */}
-
-      <div
-        className="
-          mx-auto
-          flex
-          w-full
-          max-w-[1440px]
-          flex-col
-          items-center
-          justify-center
-          text-center
-          lg:items-stretch
-          lg:text-left
-          lg:pt-[20px]
-        "
-      >
-        {/* ================================= */}
-        {/* TITLE                             */}
-        {/* ================================= */}
-
-        <div className="w-full">
-          {/* LOVESQUAD IN */}
+      <Container>
+        <div className="flex flex-col items-center text-center">
+          {/* Title */}
           <div
-            className="
-              heading-font
-              uppercase
-              font-bold
-              leading-none
-              tracking-[-0.035em]
-            "
-            style={{
-              fontSize: "clamp(24px, 3vw, 40px)",
-              lineHeight: "1",
-            }}
+            className="heading-font font-bold uppercase leading-none tracking-[-0.035em]"
+            style={{ fontSize: "clamp(24px, 3vw, 40px)" }}
           >
             <span className="text-[#ED4823]">LOVESQUAD</span>{" "}
             <span className="text-[#4A4A4A]">IN</span>
           </div>
-
-          {/* LOVESPOTS */}
           <h1
-            className="
-              heading-font
-              uppercase
-              font-bold
-              leading-[0.82]
-              tracking-[-0.055em]
-              text-[#4A4A4A]
-            "
-            style={{
-              fontSize: "clamp(4.5rem, 13.9vw, 200px)",
-            }}
+            className="heading-font font-bold uppercase leading-[0.82] tracking-[-0.055em] text-[#4A4A4A]"
+            style={{ fontSize: "clamp(4rem, 13.9vw, 200px)" }}
           >
             LOVESPOTS
           </h1>
-        </div>
 
-        {/* ================================= */}
-        {/* LOWER HERO CONTENT                */}
-        {/* ================================= */}
-
-        <div
-          className="
-            mt-4
-            flex
-            w-full
-            flex-col
-            items-center
-            gap-4
-            lg:mt-[18px]
-            lg:grid
-            lg:grid-cols-[minmax(0,1fr)_320px]
-            lg:items-end
-            lg:gap-[18px]
-          "
-        >
-          {/* ================================= */}
-          {/* IMAGE / VIDEO                     */}
-          {/* ================================= */}
-
-          <div
-            className="
-              relative
-              h-[260px]
-              w-full
-              overflow-hidden
-              bg-[#171515]
-              sm:h-[340px]
-              md:h-[380px]
-              lg:h-[420px]
-            "
-          >
+          {/* Image */}
+          <div className="relative mt-6 h-[260px] w-full overflow-hidden bg-[#171515] sm:h-[340px] md:h-[380px] lg:mt-8 lg:h-[460px]">
             <Image
               src="/images/lovespot/lovespot-hero.jpg"
               alt="LoveSpot"
               fill
               priority
               className="object-cover"
-              sizes="(max-width: 639px) 100vw,(max-width: 1023px) 100vw,70vw"
+              sizes="(max-width: 1280px) 100vw, 1152px"
             />
           </div>
 
-          {/* ================================= */}
-          {/* DESCRIPTION                       */}
-          {/* ================================= */}
-
-          <div
-            className="
-              flex
-              flex-col
-              items-center
-              justify-end
-              text-center
-              pb-0
-              lg:h-[420px]
-              lg:items-start
-              lg:text-left
-            "
-          >
+          {/* Description */}
+          <div className="mt-8 flex max-w-[620px] flex-col items-center lg:mt-10">
             <h2
-              className="
-                heading-font
-                uppercase
-                font-bold
-                leading-none
-                tracking-[-0.02em]
-                text-[#4A4A4A]
-              "
-              style={{
-                fontSize: "clamp(20px, 2vw, 24px)",
-              }}
+              className="heading-font font-bold uppercase leading-none tracking-[-0.02em] text-[#4A4A4A]"
+              style={{ fontSize: "clamp(20px, 2vw, 26px)" }}
             >
               LOREM IPSUM
             </h2>
-
-            <p
-              className="
-                mt-2
-                max-w-[700px]
-                text-[#5A5853]
-                lg:mt-[8px]
-              "
-              style={{
-                fontSize: "14px",
-                lineHeight: "20px",
-              }}
-            >
+            <p className="mt-3 text-[14px] leading-[22px] text-[#5A5853] sm:text-[15px] lg:text-[16px] lg:leading-[24px]">
               Cras Aliquet, Sem Consectetur Condimentum Ultricies, Risus Massa
               Condimentum Quam, A Eleifend Dolor Elit Quis Orci.
             </p>
-
-            <div className="mt-3 lg:mt-[8px]">
-              <SecondaryButton href="#lovespots">
-                JOIN A LOVESPOT
-              </SecondaryButton>
+            <div className="mt-5">
+              <SecondaryButton href="#what-is-lovespot">JOIN A LOVESPOT</SecondaryButton>
             </div>
           </div>
         </div>
-      </div>
+      </Container>
     </section>
   );
 }

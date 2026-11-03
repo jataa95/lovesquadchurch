@@ -1,8 +1,8 @@
 "use client";
 
 import Image from "next/image";
-import { useState, useEffect, useRef } from "react";
-import { TertiaryButton } from "@/components/ui/buttons";
+import { useEffect, useRef } from "react";
+import Container from "@/components/ui/Container";
 
 const testimonials = [
   {
@@ -19,162 +19,76 @@ const testimonials = [
   },
 ];
 
+/*
+ * LoveSpot testimonies: centred sticky heading, then cards that pin under
+ * it and stack on top of each other as you scroll.
+ */
 export default function LoveSpotTestimonials() {
   const sectionRef = useRef(null);
-  const [showSkip, setShowSkip] = useState(false);
+  const headRef = useRef(null);
 
+  // Cards pin just below the sticky heading: keep --testi-head equal to
+  // the heading's height (it changes with screen width).
   useEffect(() => {
-    const handleScroll = () => {
-      if (!sectionRef.current) return;
-      const rect = sectionRef.current.getBoundingClientRect();
-      const sectionHeight = rect.height;
-      const scrollProgress = -rect.top;
-      
-      const hideThreshold = sectionHeight - 350;
-      
-      if (scrollProgress > 0 && scrollProgress < hideThreshold) {
-        setShowSkip(true);
-      } else {
-        setShowSkip(false);
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    handleScroll();
-    return () => window.removeEventListener("scroll", handleScroll);
+    const head = headRef.current;
+    const section = sectionRef.current;
+    if (!head || !section) return;
+    const set = () =>
+      section.style.setProperty("--testi-head", `${head.offsetHeight + 12}px`);
+    set();
+    const ro = new ResizeObserver(set);
+    ro.observe(head);
+    return () => ro.disconnect();
   }, []);
-
-  const handleSkipClick = (e) => {
-    e.preventDefault();
-    e.stopPropagation();
-    const targetElement = document.getElementById("lovespot-faqs");
-    if (targetElement) {
-      const elementPosition = targetElement.getBoundingClientRect().top + window.pageYOffset;
-      window.scrollTo({
-        top: elementPosition,
-        behavior: "smooth"
-      });
-      history.pushState(null, null, "#lovespot-faqs");
-    }
-  };
 
   return (
     <section
       ref={sectionRef}
       id="lovespot-testimonials"
-      className="relative w-full bg-[#0B0B0B] px-1.5 sm:px-2 lg:px-4 text-[#F4EBDC]"
+      className="relative w-full bg-ink section-py text-[#F4EBDC] [--testi-head:130px]"
     >
-      {/* SKIP BUTTON */}
-      <div className={`fixed right-6 lg:right-12 z-50 transition-all duration-300 pointer-events-none top-24 pt-8 lg:pt-20 lg:top-32 ${showSkip ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-4 pointer-events-none"}`}>
-        <div className="pointer-events-auto shadow-2xl" onClick={handleSkipClick}>
-          <TertiaryButton href="#lovespot-faqs">
-            SKIP
-          </TertiaryButton>
-        </div>
-      </div>
-
-      <div className="relative min-h-screen bg-[#0B0B0B] py-4 text-[#F4EBDC] sm:pb-24 lg:py-24">
-        {/* BACKGROUND PATTERN */}
+      <Container>
+        {/* Sticky, centred heading */}
         <div
-          className="pointer-events-none absolute inset-0 opacity-40"
-          style={{
-            backgroundImage:
-              "radial-gradient(circle at 20% 20%, rgba(255,255,255,0.045) 0 1px, transparent 1px), radial-gradient(circle at 80% 70%, rgba(255,255,255,0.035) 0 1px, transparent 1px), radial-gradient(circle at 40% 80%, rgba(255,255,255,0.025) 0 1px, transparent 1px)",
-            backgroundSize: "5px 5px, 7px 7px, 11px 11px",
-          }}
-        />
-
-        {/* STICKY HEADER */}
-        <div className="sticky top-16 lg:top-24 z-40 mx-auto flex max-w-[1400px] flex-col gap-4 bg-[#0B0B0B]/95 px-4 pt-4 pb-4 backdrop-blur-md sm:px-8 sm:pt-6 sm:pb-6 lg:flex-row lg:items-start lg:justify-between lg:px-12">
-          <div className="flex items-start gap-3 sm:gap-4 lg:gap-6">
-            <h2
-              className="heading-font uppercase font-bold leading-[0.85] tracking-[-0.045em] text-[#F4EBDC]"
-              style={{ fontSize: "clamp(28px, 4vw, 56px)" }}
-            >
-              <span className="block">SAPIEN IPSUM, AC TINCIDUNT</span>
-              <span className="block text-[#ED4823]">LOREM LACINIA VEL.</span>
-            </h2>
-          </div>
+          ref={headRef}
+          className="sticky top-(--nav-h) z-40 -mx-6 bg-ink px-6 pb-6 pt-3 text-center lg:mx-0 lg:px-0"
+        >
+          <h2
+            className="heading-font font-bold uppercase leading-[0.9] tracking-[-0.045em]"
+            style={{ fontSize: "clamp(30px, 4.4vw, 60px)" }}
+          >
+            <span className="block">SAPIEN IPSUM, AC TINCIDUNT</span>
+            <span className="block text-[#ED4823]">LOREM LACINIA VEL.</span>
+          </h2>
         </div>
 
-        {/* CONTENT WRAPPER: GRAPHIC ON LEFT, STACKING CARDS ON RIGHT */}
-        <div className="relative z-10 mx-auto mt-6 flex max-w-[1400px] flex-col px-4 sm:px-8 lg:mt-12 lg:flex-row lg:items-start lg:gap-12 lg:px-12">
-          {/* LEFT SIDE GRAPHIC & MARQUEE (DESKTOP ONLY) */}
-          <div className="hidden shrink-0 flex-col items-center justify-center lg:sticky lg:top-72 lg:flex lg:w-[30%] xl:w-[25%]">
-            <Image
-              src="/images/footer/lovesquad-graphic-cream.svg"
-              alt="LoveSquad Church"
-              width={180}
-              height={180}
-              className="h-auto w-36 shrink-0 object-contain lg:w-44 xl:w-52"
+        {/* Stacking cards */}
+        <div className="mx-auto mt-6 flex max-w-[960px] flex-col gap-5 sm:gap-6 lg:mt-10 lg:gap-8">
+          {testimonials.map((testimonial, index) => (
+            <TestimonialCard
+              key={testimonial.name}
+              index={index}
+              text={testimonial.text}
+              name={testimonial.name}
             />
-
-            <div className="mt-4 w-36 overflow-hidden whitespace-nowrap lg:w-44 xl:w-52">
-              <div className="marquee-track flex w-max">
-                <span className="marquee-text heading-font shrink-0 text-[10px] font-bold uppercase tracking-[-0.02em] text-[#ED4823]">
-                  LOVE IS US * LOVESQUAD CHURCH * LOVE IS US * LOVESQUAD CHURCH
-                  *
-                </span>
-                <span
-                  className="marquee-text heading-font shrink-0 text-[10px] font-bold uppercase tracking-[-0.02em] text-[#ED4823]"
-                  aria-hidden="true"
-                >
-                  LOVE IS US * LOVESQUAD CHURCH * LOVE IS US * LOVESQUAD CHURCH
-                  *
-                </span>
-              </div>
-            </div>
-          </div>
-
-          {/* RIGHT SIDE STACKING CARDS CONTAINER */}
-          <div className="w-full lg:w-[70%] xl:w-[75%]">
-            <div className="flex flex-col gap-5 sm:gap-6 lg:gap-8">
-              {testimonials.map((testimonial, index) => (
-                <TestimonialCard
-                  key={testimonial.name}
-                  index={index}
-                  text={testimonial.text}
-                  name={testimonial.name}
-                />
-              ))}
-            </div>
-          </div>
+          ))}
         </div>
-      </div>
-
-      <style jsx>{`
-        .marquee-track {
-          animation: lovesquad-marquee 12s linear infinite;
-        }
-
-        @keyframes lovesquad-marquee {
-          from {
-            transform: translateX(0);
-          }
-
-          to {
-            transform: translateX(-50%);
-          }
-        }
-      `}</style>
+      </Container>
     </section>
   );
 }
 
-/* =====================================================
-   TESTIMONIAL CARD
-===================================================== */
-
 function TestimonialCard({ index, text, name }) {
   return (
     <div
-      className="sticky top-44 w-full border border-[#3B3B3B] bg-[#0B0B0B] p-2 shadow-2xl transition-all duration-300 sm:p-3 lg:top-48 lg:p-4"
+      className="sticky w-full border border-[#3B3B3B] bg-[#0E0E0E] p-2 shadow-2xl sm:p-3 lg:p-4"
+      // Cards pin just under the sticky heading and stack as you scroll.
       style={{
         zIndex: index + 10,
-        marginTop: index > 0 ? `${index * 8}px` : "0px",
+        top: `calc(var(--nav-h) + var(--testi-head) + ${index * 12}px)`,
       }}
     >
-      <div className="relative h-full w-full overflow-hidden border border-[#575656] bg-[#0B0B0B] px-[36px] py-[36px] sm:px-[48px] sm:py-[44px] lg:px-[64px] lg:py-[52px]">
+      <div className="relative h-full w-full overflow-hidden border border-[#575656] bg-[#0E0E0E] px-[36px] py-[36px] sm:px-[48px] sm:py-[44px] lg:px-[64px] lg:py-[52px]">
         {/* TOP LEFT CORNER */}
         <Image
           src="/images/lovespot/top-left.svg"
