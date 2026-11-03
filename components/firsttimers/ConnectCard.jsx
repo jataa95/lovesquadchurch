@@ -13,10 +13,13 @@ import { firstTimers } from "@/data/firstTimers";
  * form backend in handleSubmit (e.g. Formspree, Resend, Google Sheets, or
  * a church CRM).
  */
-// Same field style as the Contact page form: solid grey fields with white
-// text, monospace uppercase labels, orange focus ring.
+// Same field style as the Contact page form: solid grey fields with cream
+// text and placeholders, monospace uppercase labels, orange focus ring.
+// Extra room on the right so placeholders/arrows never touch the edge.
 const field =
-  "w-full bg-[#575656] px-3 py-3 text-sm text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#ED4823] sm:px-4";
+  "w-full bg-[#575656] py-3 pl-3 pr-10 text-sm text-[#F9E9D3] placeholder:text-[#F9E9D3] focus:outline-none focus:ring-2 focus:ring-[#ED4823] sm:pl-4 sm:pr-12";
+// Dropdowns: our own cream arrow; "Choose one" shows in the placeholder tone.
+const select = `${field} form-select`;
 
 function Label({ children }) {
   return (
@@ -61,7 +64,10 @@ export default function ConnectCard() {
   return (
     <AboutSplitSection
       id="connect-card"
-      icon="/images/about/our-leaders-icon-dark.svg"
+      icon="/images/firsttimers/tell-us-icon.svg"
+      iconWidth={95}
+      iconHeight={95}
+      centerOnMobile
       heading={
         <>
           <span className="block">TELL US</span>
@@ -96,22 +102,23 @@ export default function ConnectCard() {
             <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
               <label className="flex flex-col gap-2">
                 <Label>Full name *</Label>
-                <input name="name" required autoComplete="name" className={field} />
+                <input name="name" placeholder="Your full name" required autoComplete="name" className={field} />
               </label>
               <label className="flex flex-col gap-2">
                 <Label>Phone</Label>
-                <input name="phone" type="tel" autoComplete="tel" className={field} />
+                <input name="phone" type="tel" placeholder="Phone number" autoComplete="tel" className={field} />
               </label>
             </div>
             <label className="flex flex-col gap-2">
               <Label>Email *</Label>
-              <input name="email" type="email" required autoComplete="email" className={field} />
+              <input name="email" type="email" placeholder="you@example.com" required autoComplete="email" className={field} />
             </label>
             <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
               <label className="flex flex-col gap-2">
                 <Label>Age range</Label>
-                <select name="age" defaultValue="" className={field}>
-                  <option value="">Prefer not to say</option>
+                <select name="age" defaultValue="" className={select}>
+                  <option value="">Choose one</option>
+                  <option>Prefer not to say</option>
                   <option>Under 18</option>
                   <option>18 – 24</option>
                   <option>25 – 34</option>
@@ -121,7 +128,7 @@ export default function ConnectCard() {
               </label>
               <label className="flex flex-col gap-2">
                 <Label>Area you live in</Label>
-                <input name="area" autoComplete="address-level2" className={field} />
+                <input name="area" placeholder="Your area or city" autoComplete="address-level2" className={field} />
               </label>
             </div>
           </fieldset>
@@ -132,7 +139,7 @@ export default function ConnectCard() {
             <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
               <label className="flex flex-col gap-2">
                 <Label>Which service did you attend?</Label>
-                <select name="service" defaultValue="" className={field}>
+                <select name="service" defaultValue="" className={select}>
                   <option value="" disabled>Choose one</option>
                   {firstTimers.services.map((s) => (
                     <option key={s.name}>{s.name.charAt(0) + s.name.slice(1).toLowerCase()}</option>
@@ -142,7 +149,7 @@ export default function ConnectCard() {
               </label>
               <label className="flex flex-col gap-2">
                 <Label>How did you hear about us?</Label>
-                <select name="source" defaultValue="" className={field}>
+                <select name="source" defaultValue="" className={select}>
                   <option value="" disabled>Choose one</option>
                   <option>A friend or family member</option>
                   <option>Social media</option>
@@ -157,7 +164,7 @@ export default function ConnectCard() {
               <div className="flex flex-wrap gap-x-6 gap-y-2 text-[15px] text-[#4A4A4A]">
                 {["Yes", "Maybe", "Just visiting"].map((v) => (
                   <label key={v} className="inline-flex cursor-pointer items-center gap-2 font-mono text-[14px] font-bold uppercase tracking-wider text-[#575656]">
-                    <input type="radio" name="return" value={v} className="h-4 w-4 accent-[#ED4823]" />
+                    <input type="radio" name="return" value={v} className="form-check" />
                     {v}
                   </label>
                 ))}
@@ -168,7 +175,7 @@ export default function ConnectCard() {
               <div className="grid grid-cols-1 gap-2 text-[15px] text-[#4A4A4A] sm:grid-cols-2">
                 {NEXT_STEPS.map((v) => (
                   <label key={v} className="inline-flex cursor-pointer items-center gap-2 font-mono text-[14px] font-bold uppercase tracking-wider text-[#575656]">
-                    <input type="checkbox" name="next" value={v} className="h-4 w-4 accent-[#ED4823]" />
+                    <input type="checkbox" name="next" value={v} className="form-check" />
                     {v}
                   </label>
                 ))}
@@ -193,7 +200,7 @@ export default function ConnectCard() {
                     className={`h-11 w-11 font-mono text-[16px] font-bold transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#ED4823] ${
                       n <= rating
                         ? "bg-[#ED4823] text-[#F9E9D3]"
-                        : "bg-[#575656] text-white hover:bg-[#4A4A4A]"
+                        : "bg-[#575656] text-[#F9E9D3] hover:bg-[#4A4A4A]"
                     }`}
                   >
                     {n}
@@ -204,11 +211,11 @@ export default function ConnectCard() {
             </div>
             <label className="flex flex-col gap-2">
               <Label>What did you enjoy, or what could we do better?</Label>
-              <textarea name="feedback" rows={4} className={`${field} resize-y`} />
+              <textarea name="feedback" rows={4} placeholder="Tell us what stood out" className={`${field} resize-y`} />
             </label>
             <label className="flex flex-col gap-2">
               <Label>Anything we can pray about? (optional)</Label>
-              <textarea name="prayer" rows={3} className={`${field} resize-y`} />
+              <textarea name="prayer" rows={3} placeholder="Share a prayer request" className={`${field} resize-y`} />
             </label>
           </fieldset>
 

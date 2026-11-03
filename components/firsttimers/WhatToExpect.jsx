@@ -6,9 +6,10 @@ export default function WhatToExpect() {
   return (
     <AboutSplitSection
       id="what-to-expect"
-      icon="/images/lovespot/lovespot-icon.svg"
-      iconWidth={135}
+      icon="/images/firsttimers/what-to-expect-icon.svg"
+      iconWidth={95}
       iconHeight={95}
+      centerOnMobile
       heading={
         <>
           <span className="block">WHAT TO</span>

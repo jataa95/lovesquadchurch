@@ -34,6 +34,8 @@ export default function AboutSplitSection({
   iconHeight = 64,
   // Centre the heading (and icon) within its column.
   centerHeading = false,
+  // Centre the heading (and icon) on phones/tablets only.
+  centerOnMobile = false,
   heading,
   aside,
   divider = true,
@@ -96,7 +98,9 @@ export default function AboutSplitSection({
                 className={`flex gap-3 sm:gap-4 lg:gap-5 ${
                   centerHeading
                     ? "flex-col items-center text-center"
-                    : "items-start"
+                    : centerOnMobile
+                      ? "flex-col items-center text-center lg:flex-row lg:items-start lg:text-left"
+                      : "items-start"
                 }`}
               >
                 {icon && (
@@ -116,7 +120,7 @@ export default function AboutSplitSection({
               <div
                 data-divider-h
                 className={`mt-4 h-[2px] w-full bg-[#ED4823] lg:hidden ${
-                  centerHeading ? "origin-center" : "origin-left"
+                  centerHeading || centerOnMobile ? "origin-center" : "origin-left"
                 }`}
               />
 

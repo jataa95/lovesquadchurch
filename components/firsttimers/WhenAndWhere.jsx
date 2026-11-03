@@ -10,9 +10,10 @@ export default function WhenAndWhere() {
       id="our-services"
       tone="dark"
       divider={false}
-      icon="/images/about/statement-of-faith-icon.svg"
-      iconWidth={84}
+      icon="/images/firsttimers/our-services-icon.svg"
+      iconWidth={95}
       iconHeight={95}
+      centerOnMobile
       heading={
         <>
           <span className="block">OUR</span>

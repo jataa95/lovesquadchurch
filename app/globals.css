@@ -466,3 +466,48 @@ html {
 section[id] {
   scroll-margin-top: 100px;
 }
+/* ---------- Form controls (cream on grey, brand orange when on) ---------- */
+.form-select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%23F9E9D3' stroke-width='1.8'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 16px center;
+  cursor: pointer;
+}
+/* Nothing chosen yet: show the text like a placeholder. */
+.form-select:has(option[value=""]:checked) {
+  color: #f9e9d3;
+}
+.form-select option {
+  color: #f9e9d3;
+  background: #575656;
+}
+.form-check {
+  appearance: none;
+  flex-shrink: 0;
+  width: 18px;
+  height: 18px;
+  margin: 0;
+  border: 1.5px solid #575656;
+  background: transparent center / 12px no-repeat;
+  cursor: pointer;
+  transition: background-color 0.2s, border-color 0.2s;
+}
+.form-check[type="radio"] {
+  border-radius: 9999px;
+}
+.form-check:checked {
+  border-color: #ed4823;
+  background-color: #ed4823;
+}
+.form-check[type="checkbox"]:checked {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Cpath d='M2 6.2l2.6 2.6L10 3.4' fill='none' stroke='%23F9E9D3' stroke-width='2'/%3E%3C/svg%3E");
+}
+.form-check[type="radio"]:checked {
+  background-image: radial-gradient(circle, #f9e9d3 0 3.5px, transparent 4px);
+  background-size: auto;
+}
+.form-check:focus-visible {
+  outline: 2px solid #ed4823;
+  outline-offset: 2px;
+}
