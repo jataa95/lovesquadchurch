@@ -16,7 +16,7 @@ export const footer = {
     [
       { label: "About us", href: "/about" },
       { label: "Service recap", href: "/servicerecap" },
-      { label: "Pastor Kay", href: "/pastorkay" },
+      { label: "Our leaders", href: "/leaders" },
       { label: "Messages", href: "/messages" },
       { label: "Give", href: "/giving" },
     ],

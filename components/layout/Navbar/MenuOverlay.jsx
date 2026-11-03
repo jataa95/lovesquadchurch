@@ -45,8 +45,8 @@ const menuItems = [
     href: "/giving",
   },
   {
-    label: "PASTOR KAY",
-    href: "/pastorkay",
+    label: "OUR LEADERS",
+    href: "/leaders",
   },
   {
     label: "PLAN YOUR VISIT",

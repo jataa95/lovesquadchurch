@@ -39,7 +39,7 @@ export default function AboutPastor() {
             Sit Amet Neque Nec Risus Tincidunt Ultricies In Quis Lorem.
           </p>
           <div className="mt-5">
-            <PrimaryButton href="/pastorkay">MORE INFO</PrimaryButton>
+            <PrimaryButton href="/leaders">MORE INFO</PrimaryButton>
           </div>
         </div>
 
