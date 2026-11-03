@@ -29,6 +29,11 @@ export default function AboutSplitSection({
   tone = "cream",
   icon,
   iconAlt = "",
+  // Intrinsic size of the icon file, so wide icons keep their shape.
+  iconWidth = 64,
+  iconHeight = 64,
+  // Centre the heading (and icon) within its column.
+  centerHeading = false,
   heading,
   aside,
   divider = true,
@@ -87,14 +92,21 @@ export default function AboutSplitSection({
             <div
               className={`sticky top-(--nav-h) z-20 -mx-6 px-6 pb-4 pt-3 ${band} lg:top-(--sticky-top) lg:mx-0 lg:bg-transparent lg:bg-none lg:px-0 lg:pb-0 lg:pt-0`}
             >
-              <div className="flex items-start gap-3 sm:gap-4 lg:gap-5">
+              <div
+                className={`flex gap-3 sm:gap-4 lg:gap-5 ${
+                  centerHeading
+                    ? "flex-col items-center text-center"
+                    : "items-start"
+                }`}
+              >
                 {icon && (
                   <Image
                     src={icon}
                     alt={iconAlt}
-                    width={64}
-                    height={64}
-                    className="mt-1 h-auto w-[30px] shrink-0 object-contain sm:w-[44px] lg:w-[56px]"
+                    width={iconWidth}
+                    height={iconHeight}
+                    // Same height for every section icon: 30 / 44 / 56px.
+                    className="mt-1 h-[30px] w-auto shrink-0 object-contain sm:h-[44px] lg:h-[56px]"
                   />
                 )}
                 <h2 className="heading-font text-[40px] font-bold uppercase leading-[0.9] tracking-[-0.05em] sm:text-[60px] lg:text-[52px] xl:text-[66px]">
@@ -103,7 +115,9 @@ export default function AboutSplitSection({
               </div>
               <div
                 data-divider-h
-                className="mt-4 h-[2px] w-full origin-left bg-[#ED4823] lg:hidden"
+                className={`mt-4 h-[2px] w-full bg-[#ED4823] lg:hidden ${
+                  centerHeading ? "origin-center" : "origin-left"
+                }`}
               />
 
               {aside && <div className="mt-8 hidden lg:block">{aside}</div>}

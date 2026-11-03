@@ -13,7 +13,7 @@ export default function LoveSpotHero() {
   return (
     <section
       id="lovespot"
-      className="relative w-full overflow-hidden bg-cream pt-[calc(var(--nav-h)+40px)] pb-(--section-space) lg:pt-[calc(var(--nav-h)+56px)]"
+      className="relative w-full overflow-hidden bg-cream pt-[calc(var(--nav-h)+40px)] lg:pt-[calc(var(--nav-h)+56px)]"
     >
       <Container>
         <div className="flex flex-col items-center text-center">

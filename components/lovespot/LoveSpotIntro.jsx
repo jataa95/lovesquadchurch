@@ -23,6 +23,9 @@ export default function LoveSpotIntro() {
     <AboutSplitSection
       id="what-is-lovespot"
       icon="/images/lovespot/lovespot-icon.svg"
+      iconWidth={135}
+      iconHeight={95}
+      centerHeading
       iconAlt="LoveSpot community"
       heading={
         <>

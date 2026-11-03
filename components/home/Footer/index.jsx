@@ -97,9 +97,9 @@ export default function Footer() {
 
       <div className="mx-auto max-w-7xl px-8 section-pt pb-8 sm:px-12 lg:px-20 xl:px-28">
         {/* ---------- Top: graphic left, details right */}
-        <div className="flex flex-col items-center gap-12 text-center lg:flex-row lg:items-start lg:justify-between lg:gap-16 lg:text-left">
+        <div className="flex flex-col items-center gap-12 text-center">
           {/* Left: graphic with the scrolling text running off its edges */}
-          <div data-foot-brand className="flex w-[200px] flex-col items-center will-change-transform sm:w-[240px]">
+          <div data-foot-brand className="hidden w-[200px] flex-col items-center will-change-transform sm:w-[240px]">
             <div className="relative h-[150px] w-[160px] sm:h-[180px] sm:w-[190px] lg:h-[106px] lg:w-[112px] xl:h-[137px] xl:w-[144px]">
               <Image
                 src="/images/footer/lovesquad-graphic-cream.svg"
@@ -121,7 +121,7 @@ export default function Footer() {
           </div>
 
           {/* Right: invitation, address, button */}
-          <div className="flex flex-col items-center lg:items-end lg:text-right">
+          <div className="flex flex-col items-center text-center">
             <p className="heading-font text-[40px] font-bold uppercase leading-[0.95] tracking-[-0.03em] sm:text-[56px] xl:text-[72px]">
               {footer.lineTop}
               <br />

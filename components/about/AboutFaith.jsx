@@ -40,6 +40,8 @@ export default function AboutFaith() {
       tone="dark"
       divider={false}
       icon="/images/about/statement-of-faith-icon.svg"
+      iconWidth={84}
+      iconHeight={95}
       iconAlt="Statement of Faith"
       heading={
         <>
