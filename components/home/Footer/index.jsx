@@ -1,18 +1,232 @@
-import FooterBrand from "./FooterBrand";
-import FooterLinks from "./FooterLinks";
+"use client";
 
+import Image from "next/image";
+import Link from "next/link";
+import { useRef } from "react";
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
+import { ArrowUp } from "lucide-react";
+import PrimaryButton from "@/components/ui/buttons/PrimaryButton";
+import { footer } from "@/data/footer";
+
+gsap.registerPlugin(useGSAP);
+
+/* Brand icons (lucide no longer ships brand logos). */
+const ICONS = {
+  Instagram: (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" className="h-[18px] w-[18px]">
+      <rect x="3" y="3" width="18" height="18" rx="5" />
+      <circle cx="12" cy="12" r="4" />
+      <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none" />
+    </svg>
+  ),
+  Facebook: (
+    <svg viewBox="0 0 24 24" fill="currentColor" className="h-[18px] w-[18px]">
+      <path d="M13.5 21v-7.5h2.5l.4-3h-2.9V8.6c0-.9.3-1.5 1.5-1.5h1.5V4.4c-.3 0-1.2-.1-2.2-.1-2.2 0-3.7 1.3-3.7 3.8v2.4H8.1v3h2.5V21h2.9Z" />
+    </svg>
+  ),
+  Telegram: (
+    <svg viewBox="0 0 24 24" fill="currentColor" className="h-[18px] w-[18px]">
+      <path d="M21.4 4.3 18.3 19c-.2 1-.8 1.3-1.7.8l-4.6-3.4-2.2 2.1c-.2.2-.5.5-1 .5l.3-4.7 8.6-7.8c.4-.3-.1-.5-.6-.2L6.5 13 2 11.6c-1-.3-1-1 .2-1.5l17.9-6.9c.8-.3 1.6.2 1.3 1.1Z" />
+    </svg>
+  ),
+};
+
+/*
+ * Footer: full black and white photo, LoveSquad graphic + scrolling text
+ * on the left, invitation + address + button on the right, all links in
+ * two rows with social icons on the far right.
+ *
+ * Desktop mouse effect: a soft spotlight follows the cursor and lifts the
+ * darkness off the photo around it; the photo and the graphic drift a
+ * little in opposite directions (parallax).
+ */
 export default function Footer() {
+  const rootRef = useRef(null);
+
+  useGSAP(
+    () => {
+      const root = rootRef.current;
+      const mm = gsap.matchMedia();
+      mm.add(
+        "(hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference)",
+        () => {
+          const q = gsap.utils.selector(root);
+          const photo = q("[data-foot-photo]");
+          const brand = q("[data-foot-brand]");
+          const light = q("[data-foot-light]");
+
+          const photoX = gsap.quickTo(photo, "x", { duration: 1.2, ease: "power3.out" });
+          const photoY = gsap.quickTo(photo, "y", { duration: 1.2, ease: "power3.out" });
+          const brandX = gsap.quickTo(brand, "x", { duration: 1, ease: "power3.out" });
+          const brandY = gsap.quickTo(brand, "y", { duration: 1, ease: "power3.out" });
+          // The spotlight position is a CSS variable eased with GSAP.
+          const pos = { x: 50, y: 50 };
+          const setLight = () =>
+            light.forEach((el) => {
+              el.style.setProperty("--mx", `${pos.x}%`);
+              el.style.setProperty("--my", `${pos.y}%`);
+            });
+
+          const onMove = (e) => {
+            const r = root.getBoundingClientRect();
+            const nx = (e.clientX - r.left) / r.width - 0.5; // -0.5 .. 0.5
+            const ny = (e.clientY - r.top) / r.height - 0.5;
+            photoX(nx * -40);
+            photoY(ny * -24);
+            brandX(nx * 24);
+            brandY(ny * 16);
+            gsap.to(pos, {
+              x: (nx + 0.5) * 100,
+              y: (ny + 0.5) * 100,
+              duration: 0.6,
+              ease: "power3.out",
+              overwrite: true,
+              onUpdate: setLight,
+            });
+          };
+          const onEnter = () => gsap.to(light, { opacity: 1, duration: 0.6 });
+          const onLeave = () => {
+            gsap.to(light, { opacity: 0, duration: 0.8 });
+            photoX(0);
+            photoY(0);
+            brandX(0);
+            brandY(0);
+          };
+
+          root.addEventListener("mousemove", onMove);
+          root.addEventListener("mouseenter", onEnter);
+          root.addEventListener("mouseleave", onLeave);
+          return () => {
+            root.removeEventListener("mousemove", onMove);
+            root.removeEventListener("mouseenter", onEnter);
+            root.removeEventListener("mouseleave", onLeave);
+          };
+        }
+      );
+      return () => mm.revert();
+    },
+    { scope: rootRef }
+  );
+
+  const toTop = (e) => {
+    e.preventDefault();
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
   return (
     <footer
+      ref={rootRef}
       id="homepage-bottom"
-      className="relative overflow-hidden bg-[#0E0E0E] section-pt px-[20px] pb-[24px] sm:px-[30px] sm:pb-[28px] md:px-[40px] lg:px-[40px]"
+      className="relative isolate overflow-hidden bg-[#0E0E0E] text-[#F5EBDD]"
     >
-      <div className="mx-auto flex w-fit max-w-full flex-col items-center justify-center gap-[10px] sm:gap-[45px] md:gap-[50px] lg:flex-row lg:items-center lg:justify-center lg:gap-[40px]">
-        {/* BRAND */}
-        <FooterBrand />
+      {/* ---------- Background photo (slightly oversized for the parallax) */}
+      <div data-foot-photo className="absolute -inset-10 -z-20 will-change-transform">
+        <Image src={footer.photo} alt="" fill sizes="100vw" className="object-cover" />
+      </div>
+      {/* Darkening */}
+      <div className="absolute inset-0 -z-10 bg-black/75" />
+      <div className="absolute inset-0 -z-10 bg-gradient-to-b from-black/30 via-transparent to-black/80" />
+      {/* Spotlight: lifts the darkness around the cursor (desktop) */}
+      <div
+        data-foot-light
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 -z-10 opacity-0 mix-blend-soft-light"
+        style={{
+          background:
+            "radial-gradient(420px circle at var(--mx, 50%) var(--my, 50%), rgba(255,255,255,0.55), transparent 70%)",
+        }}
+      />
+      <div
+        data-foot-light
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 -z-10 opacity-0"
+        style={{
+          background:
+            "radial-gradient(260px circle at var(--mx, 50%) var(--my, 50%), rgba(237,72,35,0.14), transparent 70%)",
+        }}
+      />
 
-        {/* LINKS */}
-        <FooterLinks />
+      <div className="mx-auto max-w-7xl px-6 section-pt pb-8 lg:px-10 xl:px-16">
+        {/* ---------- Top: graphic left, details right */}
+        <div className="flex flex-col items-center gap-12 text-center lg:flex-row lg:items-center lg:justify-between lg:gap-16 lg:text-left">
+          {/* Left: graphic with the scrolling text running off its edges */}
+          <div data-foot-brand className="flex w-[200px] flex-col items-center will-change-transform sm:w-[240px]">
+            <div className="relative h-[150px] w-[160px] sm:h-[180px] sm:w-[190px] lg:h-[210px] lg:w-[220px]">
+              <Image
+                src="/images/footer/lovesquad-graphic-cream.svg"
+                alt="LoveSquad Church"
+                fill
+                className="object-contain"
+              />
+            </div>
+            <div className="footer-marquee mt-5 w-[300px] [mask-image:linear-gradient(90deg,transparent,black_18%,black_82%,transparent)] sm:w-[360px]">
+              <div className="footer-marquee-track">
+                <span className="!pr-[0.3em] !text-[12px] sm:!text-[13px]">{footer.marquee.repeat(4)}</span>
+                <span className="!pr-[0.3em] !text-[12px] sm:!text-[13px]">{footer.marquee.repeat(4)}</span>
+              </div>
+            </div>
+          </div>
+
+          {/* Right: invitation, address, button */}
+          <div className="flex flex-col items-center lg:items-end lg:text-right">
+            <p className="heading-font text-[40px] font-bold uppercase leading-[0.95] tracking-[-0.03em] sm:text-[56px] lg:text-[72px]">
+              {footer.lineTop}
+              <br />
+              <span className="text-[#ED4823]">{footer.lineBottom}</span>
+            </p>
+            <p className="mt-5 text-[14px] text-[#F5EBDD]/70 sm:text-[15px]">
+              {footer.address}
+            </p>
+            <div className="mt-8">
+              <PrimaryButton href={footer.button.href}>{footer.button.label}</PrimaryButton>
+            </div>
+          </div>
+        </div>
+
+        {/* ---------- Links (two rows) + social icons */}
+        <div className="mt-16 flex flex-col items-center gap-8 border-t border-[#F5EBDD]/15 pt-10 lg:mt-20 lg:flex-row lg:items-end lg:justify-between">
+          <nav aria-label="Footer" className="flex flex-col items-center gap-4 lg:items-start">
+            {footer.links.map((row, i) => (
+              <ul key={i} className="flex flex-wrap justify-center gap-x-7 gap-y-3 lg:justify-start lg:gap-x-10">
+                {row.map((l) => (
+                  <li key={l.href}>
+                    <Link
+                      href={l.href}
+                      className="heading-font group relative text-[13px] font-medium uppercase tracking-[0.08em] text-[#F5EBDD]/85 transition-colors hover:text-[#F5EBDD] sm:text-[14px]"
+                    >
+                      {l.label}
+                      <span className="absolute -bottom-1 left-0 h-px w-full origin-left scale-x-0 bg-[#ED4823] transition-transform duration-300 group-hover:scale-x-100" />
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            ))}
+          </nav>
+
+          <div className="flex gap-3">
+            {footer.socials.map((s) => (
+              <a
+                key={s.name}
+                href={s.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={s.name}
+                className="flex h-11 w-11 items-center justify-center rounded-full border border-[#F5EBDD]/30 text-[#F5EBDD] transition-colors duration-300 hover:border-[#ED4823] hover:bg-[#ED4823]"
+              >
+                {ICONS[s.name]}
+              </a>
+            ))}
+          </div>
+        </div>
+
+        {/* ---------- Bottom line */}
+        <div className="mt-10 flex flex-col items-center gap-3 text-[12px] text-[#F5EBDD]/55 sm:flex-row sm:justify-between">
+          <span>© {new Date().getFullYear()} LoveSquad Church</span>
+          <a href="#top" onClick={toTop} className="inline-flex items-center gap-1.5 transition-colors hover:text-[#ED4823]">
+            Back to top <ArrowUp className="h-3.5 w-3.5" />
+          </a>
+        </div>
       </div>
     </footer>
   );
