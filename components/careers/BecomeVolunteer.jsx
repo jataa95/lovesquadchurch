@@ -107,7 +107,7 @@ export default function BecomeVolunteer() {
 
             {/* APPLY BUTTON */}
             <div className="pt-0.5 sm:pt-1 flex justify-center">
-              <SecondaryButton href="#volunteer-apply">APPLY</SecondaryButton>
+              <SecondaryButton href="/contact">APPLY</SecondaryButton>
             </div>
 
             {/* STANDALONE PARAGRAPH */}

@@ -265,7 +265,7 @@ export default function CareersHero() {
             ========================================== */}
 
             <div className="pt-[0px] flex justify-center lg:justify-start">
-              <SecondaryButton href="#apply">APPLY</SecondaryButton>
+              <SecondaryButton href="/contact">APPLY</SecondaryButton>
             </div>
           </div>
 

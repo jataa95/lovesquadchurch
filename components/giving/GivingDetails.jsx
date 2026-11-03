@@ -4,7 +4,7 @@ import Image from "next/image";
 
 export default function GivingDetails() {
   return (
-    <section className="w-full">
+    <section id="offering" className="w-full">
       <div
         className="
           mx-auto

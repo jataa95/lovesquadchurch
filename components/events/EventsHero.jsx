@@ -160,8 +160,13 @@ export default function EventsHero() {
                   onClick={() => {
                     const target = document.getElementById("upcoming-events");
                     if (target) {
+                      // Stop just below the fixed navbar.
+                      const nav =
+                        parseFloat(
+                          getComputedStyle(document.documentElement).getPropertyValue("--nav-h")
+                        ) || 0;
                       const topPosition =
-                        target.getBoundingClientRect().top + window.pageYOffset;
+                        target.getBoundingClientRect().top + window.pageYOffset - nav;
                       window.scrollTo({
                         top: topPosition,
                         behavior: "smooth",

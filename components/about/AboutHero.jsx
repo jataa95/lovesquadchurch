@@ -114,13 +114,6 @@ export default function AboutHero() {
               key={link.label}
               href={link.href}
               data-flip-link
-              onClick={(e) => {
-                const target = document.querySelector(link.href);
-                if (!target) return;
-                e.preventDefault();
-                target.scrollIntoView({ behavior: "smooth" });
-                history.replaceState(null, "", link.href);
-              }}
               className="heading-font group relative inline-flex cursor-pointer items-center text-[15px] font-medium uppercase leading-tight tracking-[-0.02em] text-[#F4EBDC] transition-colors duration-300 hover:text-[#ED4823] focus-visible:text-[#ED4823] focus-visible:outline-none sm:text-[20px] sm:leading-[24px] md:text-[26px] md:leading-[34px] lg:text-[32px] lg:leading-[40px]"
             >
               {link.label}
