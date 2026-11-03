@@ -1,13 +1,21 @@
-// app/service-recap/page.jsx
-import Image from "next/image";
-import SecondaryButton from "@/components/ui/buttons/SecondaryButton";
+"use client";
 
+import Image from "next/image";
+import Container from "@/components/ui/Container";
+import SecondaryButton from "@/components/ui/buttons/SecondaryButton";
+import ServiceRecapGallery from "@/components/home/ServiceRecap/ServiceRecapGallery";
+
+/*
+ * Service Recap page: centred hero (like the other pages), the recap
+ * write-up in the site's standard type, then the homepage's scroll-driven
+ * Service Recap picture slider.
+ */
 export default function ServiceRecapPage({
   title = "LAST SERVICE",
   subtitle = "RECAP",
   topic = "CRAS ALIQUET, SEM",
   speaker = "PST. SDESRWHXBS",
-  heroImageUrl = "",
+  heroImageUrl = "/images/service-recap/sr4.jpg",
   bodyTitle = "LOREM IPSUM",
   leadText = "Cras Aliquet, Sem Consectetur Condimentum Ultricies, Risus Massa Condimentum Quam, A Eleifend Dolor Elit Quis Orci.",
   paragraphs = [
@@ -16,368 +24,83 @@ export default function ServiceRecapPage({
     "Cras Aliquet, Sem Consectetur Condimentum Ultricies, Risus Massa Condimentum Quam, A Eleifend Dolor Elit Quis Orci.",
     "Cras Aliquet, Sem Consectetur Condimentum Ultricies, Risus Massa Condimentum Quam, A Eleifend Dolor Elit Quis Orci.",
     "Cras Aliquet, Sem Consectetur Condimentum Ultricies, Risus Massa Condimentum Quam, A Eleifend Dolor Elit Quis Orci.",
-    "Cras Aliquet, Sem Consectetur Condimentum Ultricies, Risus Massa Condimentum Quam, A Eleifend Dolor Elit Quis Orci.",
-    "Cras Aliquet, Sem Consectetur Condimentum Ultricies, Risus Massa Condimentum Quam, A Eleifend Dolor Elit Quis Orci.",
   ],
-  galleryImages = [],
 }) {
   return (
-    <div
-      id="servicerecap"
-      className="min-h-screen w-full overflow-hidden bg-cream text-[#1E1E1E]"
-    >
-      {/* =====================================================
-          MAIN CONTENT
-      ====================================================== */}
-
-      <main
-        className="
-          mx-auto
-          w-full
-          max-w-7xl
-          px-4
-          py-4
-          sm:px-6
-          sm:py-8
-          md:px-10
-          lg:px-16
-          mt-[60px]
-          lg:mt-[80px]
-        "
-      >
-        {/* =====================================================
-            HEADER SECTION
-        ====================================================== */}
-
-        <header
-          className="
-            flex
-            flex-col
-            gap-4
-            items-center
-            text-center
-            md:flex-row
-            md:items-end
-            md:justify-between
-            md:text-left
-          "
-        >
-          {/* MAIN TITLE STACK */}
-
-          <div className="leading-none flex flex-col items-center md:items-start">
+    <div id="servicerecap" className="w-full bg-cream text-[#575656]">
+      {/* ---------------- Hero ---------------- */}
+      <section className="pt-[calc(var(--nav-h)+40px)] lg:pt-[calc(var(--nav-h)+56px)]">
+        <Container>
+          <div className="flex flex-col items-center text-center">
             <h1
-              className="
-                heading-font
-                text-xl
-                font-bold
-                uppercase
-                tracking-tight
-                text-[#8A8989]
-                sm:text-2xl
-                md:text-3xl
-                lg:text-4xl
-              "
+              className="heading-font font-bold uppercase leading-none tracking-[-0.035em]"
+              style={{ fontSize: "clamp(24px, 3vw, 40px)" }}
             >
-              {title}
+              <span className="text-[#ED4823]">{title}</span>
             </h1>
-
             <h2
-              className="
-                heading-font
-                mt-1
-                text-[clamp(4rem,16vw,9rem)]
-                font-black
-                uppercase
-                leading-[0.78]
-                tracking-[-0.06em]
-                text-[#575656]
-              "
+              className="heading-font font-bold uppercase leading-[0.82] tracking-[-0.055em] text-[#4A4A4A]"
+              style={{ fontSize: "clamp(4rem, 13.9vw, 200px)" }}
             >
               {subtitle}
             </h2>
-          </div>
 
-          {/* RIGHT META INFO */}
-
-          <div
-            className="
-              flex
-              w-full
-              flex-col
-              items-center
-              justify-center
-              gap-1
-              text-center
-              md:w-auto
-              md:min-w-[220px]
-              md:items-end
-              md:text-right
-            "
-          >
-            <p
-              className="
-                max-w-full
-                text-xs
-                font-bold
-                uppercase
-                tracking-wider
-                text-[#575656]
-                sm:text-sm
-              "
-            >
-              {topic}
-            </p>
-
-            <p
-              className="
-                max-w-full
-                break-words
-                text-xs
-                font-medium
-                uppercase
-                tracking-wider
-                text-[#8A8989]
-                sm:text-sm
-              "
-            >
-              {speaker}
-            </p>
-
-            <div className="mt-1">
-              <SecondaryButton href="/messages">GO TO MESSAGES</SecondaryButton>
-            </div>
-          </div>
-        </header>
-
-        {/* =====================================================
-            HERO MEDIA BLOCK
-        ====================================================== */}
-
-        <section className="mt-3 sm:mt-5 md:mt-7">
-          <div
-            className="
-              relative
-              aspect-[16/10]
-              w-full
-              overflow-hidden
-              rounded-sm
-              bg-[#161616]
-              shadow-md
-              sm:aspect-[16/9]
-            "
-          >
-            {heroImageUrl ? (
+            <div className="relative mt-6 h-[260px] w-full overflow-hidden bg-[#171515] sm:h-[340px] md:h-[380px] lg:mt-8 lg:h-[460px]">
               <Image
                 src={heroImageUrl}
-                alt={title}
+                alt={`${title} ${subtitle}`}
                 fill
                 priority
-                sizes="(max-width: 640px) 100vw,(max-width: 1024px) 100vw,1200px"
+                sizes="(max-width: 1280px) 100vw, 1152px"
                 className="object-cover"
               />
-            ) : (
-              <div className="absolute inset-0 flex items-center justify-center text-[#4A4A4A]">
-                <svg
-                  className="
-                    h-10
-                    w-10
-                    opacity-40
-                    sm:h-12
-                    sm:w-12
-                    md:h-14
-                    md:w-14
-                  "
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="1.5"
-                    d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
-                  />
-                </svg>
+            </div>
+
+            <div className="mt-8 flex flex-col items-center lg:mt-10">
+              <p
+                className="heading-font font-bold uppercase leading-none tracking-[-0.02em] text-[#4A4A4A]"
+                style={{ fontSize: "clamp(20px, 2vw, 26px)" }}
+              >
+                {topic}
+              </p>
+              <p className="mt-2 text-[14px] uppercase tracking-[0.12em] text-[#5A5853] sm:text-[15px]">
+                {speaker}
+              </p>
+              <div className="mt-5">
+                <SecondaryButton href="/messages">GO TO MESSAGES</SecondaryButton>
               </div>
-            )}
+            </div>
           </div>
-        </section>
+        </Container>
+      </section>
 
-        {/* =====================================================
-            BODY ARTICLE
-        ====================================================== */}
-
-        <article
-          className="
-            mx-auto
-            mt-4
-            w-full
-            max-w-2xl
-            text-center
-            sm:mt-12
-            md:mt-16
-          "
-        >
-          {/* ARTICLE TITLE */}
-
-          <h3
-            className="
-              heading-font
-              text-lg
-              font-bold
-              uppercase
-              tracking-wider
-              text-[#1E1E1E]
-              sm:text-xl
-              md:text-2xl
-            "
-          >
-            {bodyTitle}
-          </h3>
-
-          <div className="my-4 border-b border-[#DCD3C5] sm:my-5" />
-
-          {/* LEAD TEXT */}
-
-          <p
-            className="
-              text-sm
-              font-medium
-              leading-7
-              text-[#4A4A4A]
-              sm:text-base
-              sm:leading-relaxed
-            "
-          >
-            {leadText}
-          </p>
-
-          <div className="my-2 border-b border-[#DCD3C5] sm:my-5" />
-
-          {/* SUBHEADING + PARAGRAPHS */}
-
-          <div
-            className="
-              space-y-2
-              text-center
-              text-xs
-              leading-6
-              text-[#555555]
-              sm:text-sm
-              sm:leading-relaxed
-            "
-          >
-            <p
-              className="
-                text-[10px]
-                font-bold
-                uppercase
-                tracking-[0.2em]
-                text-[#8C827A]
-                sm:text-xs
-              "
+      {/* ---------------- Write-up ---------------- */}
+      <section className="section-py">
+        <Container>
+          <article className="mx-auto flex max-w-[680px] flex-col items-center text-center">
+            <h3
+              className="heading-font font-bold uppercase leading-[1.05] tracking-[-0.025em] text-[#4A4A4A]"
+              style={{ fontSize: "clamp(26px, 3.4vw, 40px)" }}
             >
               {bodyTitle}
+            </h3>
+            <div className="mt-5 h-[2px] w-16 bg-[#ED4823]" />
+            <p className="mt-6 text-[16px] font-medium leading-[26px] text-[#4A4A4A] lg:text-[18px] lg:leading-[28px]">
+              {leadText}
             </p>
-
-            {paragraphs.map((paragraph, index) => (
-              <p key={index}>{paragraph}</p>
-            ))}
-          </div>
-        </article>
-      </main>
-
-      {/* =====================================================
-          DARK BOTTOM GALLERY GRID
-      ====================================================== */}
-
-      <section
-        className="
-          mt-4
-          bg-ink
-          py-6
-          text-white
-          sm:mt-16
-          sm:py-12
-          md:py-16
-        "
-      >
-        <div
-          className="
-            mx-auto
-            w-full
-            max-w-7xl
-            px-4
-            sm:px-6
-            md:px-10
-            lg:px-16
-          "
-        >
-          <div
-            className="
-              grid
-              grid-cols-1
-              gap-4
-              sm:grid-cols-2
-              sm:gap-5
-              lg:grid-cols-3
-              lg:gap-6
-            "
-          >
-            {(galleryImages.length > 0 ? galleryImages : [1, 2, 3]).map(
-              (item, idx) => (
-                <div
-                  key={idx}
-                  className="
-                  relative
-                  aspect-[16/10]
-                  w-full
-                  overflow-hidden
-                  rounded-sm
-                  bg-[#222222]
-                "
-                >
-                  {typeof item === "string" ? (
-                    <Image
-                      src={item}
-                      alt={`Recap Gallery Image ${idx + 1}`}
-                      fill
-                      sizes="
-                      (max-width: 640px) 100vw,
-                      (max-width: 1024px) 50vw,
-                      33vw
-                    "
-                      className="object-cover transition-transform duration-500 hover:scale-105"
-                    />
-                  ) : (
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <svg
-                        className="
-                        h-8
-                        w-8
-                        text-[#444444]
-                        sm:h-10
-                        sm:w-10
-                      "
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth="1.5"
-                          d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
-                        />
-                      </svg>
-                    </div>
-                  )}
-                </div>
-              ),
-            )}
-          </div>
-        </div>
+            <div className="mt-6 flex flex-col gap-4">
+              {paragraphs.map((paragraph, index) => (
+                <p key={index} className="text-[15px] leading-[24px] lg:text-[16px]">
+                  {paragraph}
+                </p>
+              ))}
+            </div>
+          </article>
+        </Container>
       </section>
+
+      {/* ---------------- Pictures (same slider as the homepage) ---------------- */}
+      <ServiceRecapGallery withText={false} id="recap-gallery" />
     </div>
   );
 }

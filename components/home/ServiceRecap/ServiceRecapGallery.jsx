@@ -104,7 +104,7 @@ function DesktopSlide({ src, index, position, slideWidth }) {
         alt={`Service recap photo ${index + 1}`}
         fill
         draggable={false}
-        sizes="(min-width: 1280px) 420px, 34vw"
+        sizes="(min-width: 1024px) 60vw, 34vw"
         className="pointer-events-none object-cover"
       />
       <motion.div
@@ -281,12 +281,17 @@ function MobileGallery() {
 /* Section                                                             */
 /* ------------------------------------------------------------------ */
 
-export default function ServiceRecapGallery() {
+// `withText={false}` shows only the pictures (full width), e.g. on the
+// Service Recap page; `id` names the wrapper.
+export default function ServiceRecapGallery({
+  withText = true,
+  id = "service-recap",
+}) {
   const sectionRef = useRef(null);
   const panelRef = useRef(null);
 
   return (
-    <div ref={sectionRef} id="service-recap" className="relative w-full bg-cream">
+    <div ref={sectionRef} id={id} className="relative w-full bg-cream">
       {/* Pinned on desktop while the pictures slide; normal flow below lg */}
       <div
         ref={panelRef}
@@ -295,13 +300,13 @@ export default function ServiceRecapGallery() {
       >
         <Container>
           <div className="flex flex-col gap-(--section-gap) lg:flex-row lg:items-stretch lg:gap-[60px]">
-            <RecapText />
+            {withText && <RecapText />}
 
             <div className="w-full lg:hidden">
               <MobileGallery />
             </div>
 
-            <div className="hidden w-1/2 lg:block">
+            <div className={`hidden lg:block ${withText ? "w-1/2" : "w-full"}`}>
               <DesktopGallery sectionRef={sectionRef} panelRef={panelRef} />
             </div>
           </div>
