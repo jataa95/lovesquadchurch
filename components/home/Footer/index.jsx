@@ -175,9 +175,11 @@ export default function Footer() {
               <br />
               <span className="text-[#ED4823]">{footer.lineBottom}</span>
             </p>
-            <p className="mt-5 text-[14px] text-[#F5EBDD]/70 sm:text-[15px]">
-              {footer.address}
-            </p>
+            {footer.address && (
+              <p className="mt-5 text-[14px] text-[#F5EBDD]/70 sm:text-[15px]">
+                {footer.address}
+              </p>
+            )}
             <div className="mt-8">
               <PrimaryButton href={footer.button.href}>{footer.button.label}</PrimaryButton>
             </div>

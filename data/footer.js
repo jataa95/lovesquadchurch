@@ -5,7 +5,7 @@ export const footer = {
 
   lineTop: "Come as you are.",
   lineBottom: "You belong here.",
-  address: "12 Placeholder Street, City, Country", // placeholder
+  // Optional: add `address: "..."` to show it under the closing lines.
 
   button: { label: "PLAN YOUR VISIT", href: "/visit" },
 
