@@ -76,12 +76,13 @@ const SCATTERED = [
     zoom: "out",
     speed: 300,
   },
-  // The 8th picture sits close to the paragraph.
+  // The 8th picture: same size as the centre picture, just below the
+  // paragraph and offset to the right.
   {
-    left: "60%",
-    top: 1260,
-    width: "min(22vw, 317px)",
-    ratio: "4 / 3",
+    left: "44%",
+    top: 1400,
+    width: "min(44vw, 640px)",
+    ratio: "16 / 11",
     zoom: "in",
     speed: 220,
   },
@@ -223,7 +224,7 @@ export default function AboutCollage() {
   );
 
   return (
-    <div ref={rootRef} className="relative h-[1520px] w-full">
+    <div ref={rootRef} className="relative h-[1900px] w-full">
       {/* Two vertical lines, far apart, behind the photos */}
       {["left-[6%]", "right-[6%]"].map((side) => (
         <span

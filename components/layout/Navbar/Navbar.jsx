@@ -3,7 +3,6 @@
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import Menu from "lucide-react/dist/esm/icons/menu";
 import MenuOverlay from "./MenuOverlay";
 
 export default function Navbar() {
@@ -36,19 +35,21 @@ export default function Navbar() {
             />
           </Link>
 
-          {/* MENU BUTTON */}
+          {/* MENU BUTTON: brand-orange pill with "MENU" and two lines */}
           <button
             type="button"
             onClick={() => setIsMenuOpen(true)}
             aria-label="Open navigation menu"
             aria-expanded={isMenuOpen}
-            className="flex items-center justify-center p-1 text-[#F04A23] transition-transform duration-300 hover:scale-105 active:scale-95"
+            className="group flex items-center gap-4 rounded-full border border-white/25 bg-[#ED4823] py-2.5 pl-5 pr-4 text-[#F5EBDD] shadow-[0_8px_24px_rgba(237,72,35,0.30)] transition-all duration-300 hover:bg-[#D63D1A] hover:shadow-[0_10px_28px_rgba(237,72,35,0.40)] active:scale-95 sm:gap-5 sm:py-3 sm:pl-7 sm:pr-5 lg:gap-6 lg:py-3.5 lg:pl-8 lg:pr-6"
           >
-            <Menu
-              size={30}
-              strokeWidth={2}
-              className="text-[#F04A23] sm:h-7 sm:w-7 lg:h-8 lg:w-8"
-            />
+            <span className="heading-font text-[12px] font-semibold uppercase leading-none tracking-[0.32em] sm:text-[13px] lg:text-[14px]">
+              Menu
+            </span>
+            <span aria-hidden="true" className="flex w-7 flex-col items-end gap-[6px] lg:w-8">
+              <span className="block h-[2px] w-full rounded-full bg-current" />
+              <span className="block h-[2px] w-[65%] rounded-full bg-current transition-all duration-300 group-hover:w-full" />
+            </span>
           </button>
         </div>
       </header>
