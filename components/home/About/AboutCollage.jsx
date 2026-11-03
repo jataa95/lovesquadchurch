@@ -224,12 +224,12 @@ export default function AboutCollage() {
       <span
         data-collage-line
         aria-hidden="true"
-        className="pointer-events-none absolute top-0 bottom-0 left-[6%] w-px origin-top bg-gradient-to-b from-[#ED4823]/0 via-[#ED4823] to-[#ED4823]"
+        className="pointer-events-none absolute top-0 bottom-0 left-[6%] w-px origin-top bg-[#ED4823]"
       />
       <span
         data-collage-line
         aria-hidden="true"
-        className="pointer-events-none absolute top-0 bottom-0 right-[6%] w-px origin-bottom bg-gradient-to-t from-[#ED4823]/0 via-[#ED4823] to-[#ED4823]"
+        className="pointer-events-none absolute top-0 bottom-0 right-[6%] w-px origin-bottom bg-[#ED4823]"
       />
 
       {/* Scattered photos */}
@@ -266,9 +266,11 @@ export default function AboutCollage() {
       })}
 
       {/* Centre column */}
-      <div className="relative z-10 mx-auto flex w-[min(640px,44vw)] flex-col items-center pt-[120px] text-center">
-        {/* 1. Heading, the paragraph (copy) and the button */}
-        <div data-parallax="140" className="will-change-transform">
+      <div className="relative z-10 mx-auto flex w-[min(640px,44vw)] flex-col items-center pt-0 text-center">
+        {/* 1. The heading, the same heading again, then the button. Light
+            parallax so the first heading stays level with the top of the
+            vertical lines as the section arrives. */}
+        <div data-parallax="40" className="-mt-4 will-change-transform">
           <div data-collage-text className="flex flex-col items-center">
             <h2
               data-collage-lines
@@ -286,9 +288,18 @@ export default function AboutCollage() {
             </h2>
             <p
               data-collage-lines
-              className="mt-8 max-w-[560px] text-[20px] leading-[1.6] text-[#575656]"
+              aria-hidden="true"
+              className="mt-8 heading-font text-[40px] font-black uppercase leading-[1.05] text-[#575656] xl:text-[48px]"
             >
-              {about.description}
+              {about.heading.map((part, i) =>
+                part.accent ? (
+                  <span key={i} className="text-[#ED4823]">
+                    {part.text}
+                  </span>
+                ) : (
+                  <span key={i}>{part.text}</span>
+                ),
+              )}
             </p>
             <div data-collage-fade className="mt-10">
               <SecondaryButton href="/about">{about.button}</SecondaryButton>
