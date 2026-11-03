@@ -41,7 +41,7 @@ export default function Navbar() {
             onClick={() => setIsMenuOpen(true)}
             aria-label="Open navigation menu"
             aria-expanded={isMenuOpen}
-            className="group flex items-center gap-4 rounded-full border border-[#ED4823]/60 bg-transparent py-2.5 pl-5 pr-4 text-[#ED4823]/85 transition-colors duration-300 hover:border-[#ED4823] hover:text-[#ED4823] active:scale-95 sm:gap-5 sm:py-3 sm:pl-7 sm:pr-5 lg:gap-6 lg:py-3.5 lg:pl-8 lg:pr-6"
+            className="group flex items-center gap-2.5 rounded-full border border-[#ED4823]/60 bg-transparent py-2.5 pl-5 pr-4 text-[#ED4823]/85 transition-colors duration-300 hover:border-[#ED4823] hover:text-[#ED4823] active:scale-95 sm:gap-3 sm:py-3 sm:pl-7 sm:pr-5 lg:gap-3 lg:py-3.5 lg:pl-8 lg:pr-6"
           >
             <span className="heading-font text-[12px] font-semibold uppercase leading-none tracking-[0.32em] sm:text-[13px] lg:text-[14px]">
               Menu
