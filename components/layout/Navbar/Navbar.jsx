@@ -1,12 +1,33 @@
 "use client";
 
-import { useState } from "react";
-import Image from "next/image";
+import { useEffect, useState } from "react";
+import Image, { getImageProps } from "next/image";
+import { footer } from "@/data/footer";
 import Link from "next/link";
 import MenuOverlay from "./MenuOverlay";
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  // Warm the cache with the menu's background photo once the page is idle,
+  // so the menu opens without waiting for it.
+  useEffect(() => {
+    const preload = () => {
+      const { props } = getImageProps({
+        src: footer.photo,
+        alt: "",
+        fill: true,
+        sizes: "100vw",
+      });
+      const img = new window.Image();
+      img.sizes = props.sizes;
+      img.srcset = props.srcSet;
+      img.src = props.src;
+    };
+    const idle = window.requestIdleCallback ?? ((cb) => setTimeout(cb, 1500));
+    const id = idle(preload);
+    return () => (window.cancelIdleCallback ?? clearTimeout)(id);
+  }, []);
 
   return (
     <>

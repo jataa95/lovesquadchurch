@@ -2,9 +2,11 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
+import SpotlightPhoto from "@/components/ui/SpotlightPhoto";
+import { footer } from "@/data/footer";
 
 gsap.registerPlugin(useGSAP);
 
@@ -59,7 +61,6 @@ const menuItems = [
  * one after another. Closing plays the same thing backwards, faster.
  */
 export default function MenuOverlay({ onClose }) {
-  const [bgError, setBgError] = useState(false);
   const rootRef = useRef(null);
   const tlRef = useRef(null);
   const closingRef = useRef(false);
@@ -83,25 +84,26 @@ export default function MenuOverlay({ onClose }) {
           { autoAlpha: 1, duration: 0.25 },
         );
       } else {
-        const from = "circle(0% at 100% 0%)";
-        const to = "circle(150% at 100% 0%)";
+        // Transform/opacity only (cheap for the GPU): an orange disc grows
+        // out of the menu button's corner, then the menu fades in over it
+        // while its photo settles from a slight zoom.
         tl.fromTo(
           q("[data-menu-wipe]"),
-          { clipPath: from },
-          { clipPath: to, duration: 0.8 },
+          { scale: 0 },
+          { scale: 1, duration: 0.7 },
           0,
         )
           .fromTo(
             q("[data-menu-panel]"),
-            { clipPath: from },
-            { clipPath: to, duration: 0.8 },
-            0.14,
+            { autoAlpha: 0 },
+            { autoAlpha: 1, duration: 0.45, ease: "power2.out" },
+            0.3,
           )
           .fromTo(
-            q("[data-menu-bg]"),
+            q("[data-spot-photo]"),
             { scale: 1.15 },
-            { scale: 1, duration: 1.4, ease: "power3.out" },
-            0.14,
+            { scale: 1, duration: 1.3, ease: "power3.out" },
+            0.3,
           )
           .fromTo(
             q("[data-menu-header]"),
@@ -136,6 +138,16 @@ export default function MenuOverlay({ onClose }) {
     tl.timeScale(1.6).reverse();
   }, [onClose]);
 
+  // While open, pause the page's videos (they're hidden behind the menu
+  // and decoding them is what made opening feel draggy); resume on close.
+  useEffect(() => {
+    const paused = [...document.querySelectorAll("video")].filter(
+      (v) => !v.paused && !rootRef.current?.contains(v),
+    );
+    paused.forEach((v) => v.pause());
+    return () => paused.forEach((v) => v.play().catch(() => {}));
+  }, []);
+
   // Lock page scrolling while open; Escape closes.
   useEffect(() => {
     const prev = document.body.style.overflow;
@@ -157,53 +169,20 @@ export default function MenuOverlay({ onClose }) {
       className="fixed inset-0 z-[99999] text-[#F5EBDD]"
     >
       {/* Orange layer that leads the sweep */}
-      <div
-        data-menu-wipe
-        aria-hidden="true"
-        className="absolute inset-0 bg-[#ED4823]"
-        style={{ clipPath: "circle(0% at 100% 0%)" }}
-      />
+      <div className="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden="true">
+        <div
+          data-menu-wipe
+          className="absolute -right-[150vmax] -top-[150vmax] h-[300vmax] w-[300vmax] scale-0 rounded-full bg-[#ED4823] will-change-transform"
+        />
+      </div>
 
       {/* The menu itself */}
       <div
         data-menu-panel
-        className="absolute inset-0 flex flex-col justify-between overflow-hidden bg-[#0B0B0B]"
-        style={{ clipPath: "circle(0% at 100% 0%)" }}
+        className="invisible absolute inset-0 isolate flex flex-col justify-between overflow-hidden bg-[#0E0E0E] opacity-0"
       >
-        {/* =====================================================
-          1. BACKGROUND IMAGE
-      ====================================================== */}
-        {!bgError && (
-          <div
-            data-menu-bg
-            className="pointer-events-none absolute inset-0 z-0"
-          >
-            <Image
-              src="/images/hero/heromenubg.png"
-              alt=""
-              fill
-              priority
-              quality={100}
-              onError={() => setBgError(true)}
-              className="object-cover object-center opacity-80"
-            />
-          </div>
-        )}
-
-        {/* =====================================================
-          2. MOVING BACKGROUND SVG
-      ====================================================== */}
-        <div className="pointer-events-none absolute inset-0 z-1 flex items-center justify-center overflow-hidden opacity-20">
-          <div className="relative h-[120vh] w-[120vw] animate-pulse">
-            <Image
-              src="/images/hero/lsbg.svg"
-              alt=""
-              fill
-              priority
-              className="object-contain"
-            />
-          </div>
-        </div>
+        {/* Same black and white photo + mouse spotlight as the footer */}
+        <SpotlightPhoto src={footer.photo} />
 
         {/* =====================================================
           HEADER
@@ -232,9 +211,19 @@ export default function MenuOverlay({ onClose }) {
             type="button"
             onClick={close}
             aria-label="Close navigation menu"
-            className="flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center rounded-full text-[#F04423] transition-transform duration-200 hover:scale-105"
+            className="group flex h-[34px] w-[34px] items-center justify-center rounded-full border border-[#ED4823]/30 text-[#ED4823]/85 transition-colors duration-300 hover:border-[#ED4823]/60 hover:text-[#ED4823] sm:h-[39px] sm:w-[39px] lg:h-[44px] lg:w-[44px]"
           >
-            <span className="text-3xl font-light leading-none">×</span>
+            <svg
+              viewBox="0 0 24 24"
+              aria-hidden="true"
+              className="h-3.5 w-3.5 transition-transform duration-300 group-hover:rotate-90 lg:h-4 lg:w-4"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="1.8"
+              strokeLinecap="round"
+            >
+              <path d="M5 5l14 14M19 5L5 19" />
+            </svg>
           </button>
         </header>
 

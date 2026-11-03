@@ -7,6 +7,7 @@ import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ArrowUp } from "lucide-react";
 import PrimaryButton from "@/components/ui/buttons/PrimaryButton";
+import SpotlightPhoto from "@/components/ui/SpotlightPhoto";
 import { footer } from "@/data/footer";
 
 gsap.registerPlugin(useGSAP);
@@ -51,55 +52,26 @@ export default function Footer() {
       mm.add(
         "(hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference)",
         () => {
-          const q = gsap.utils.selector(root);
-          const photo = q("[data-foot-photo]");
-          const brand = q("[data-foot-brand]");
-          const light = q("[data-foot-light]");
-
-          const photoX = gsap.quickTo(photo, "x", { duration: 1.2, ease: "power3.out" });
-          const photoY = gsap.quickTo(photo, "y", { duration: 1.2, ease: "power3.out" });
+          const brand = gsap.utils.selector(root)("[data-foot-brand]");
           const brandX = gsap.quickTo(brand, "x", { duration: 1, ease: "power3.out" });
           const brandY = gsap.quickTo(brand, "y", { duration: 1, ease: "power3.out" });
-          // The spotlight position is a CSS variable eased with GSAP.
-          const pos = { x: 50, y: 50 };
-          const setLight = () =>
-            light.forEach((el) => {
-              el.style.setProperty("--mx", `${pos.x}%`);
-              el.style.setProperty("--my", `${pos.y}%`);
-            });
 
+          // The graphic drifts with the mouse (the photo, in SpotlightPhoto,
+          // drifts the other way).
           const onMove = (e) => {
             const r = root.getBoundingClientRect();
-            const nx = (e.clientX - r.left) / r.width - 0.5; // -0.5 .. 0.5
-            const ny = (e.clientY - r.top) / r.height - 0.5;
-            photoX(nx * -40);
-            photoY(ny * -24);
-            brandX(nx * 24);
-            brandY(ny * 16);
-            gsap.to(pos, {
-              x: (nx + 0.5) * 100,
-              y: (ny + 0.5) * 100,
-              duration: 0.6,
-              ease: "power3.out",
-              overwrite: true,
-              onUpdate: setLight,
-            });
+            brandX(((e.clientX - r.left) / r.width - 0.5) * 24);
+            brandY(((e.clientY - r.top) / r.height - 0.5) * 16);
           };
-          const onEnter = () => gsap.to(light, { opacity: 1, duration: 0.6 });
           const onLeave = () => {
-            gsap.to(light, { opacity: 0, duration: 0.8 });
-            photoX(0);
-            photoY(0);
             brandX(0);
             brandY(0);
           };
 
           root.addEventListener("mousemove", onMove);
-          root.addEventListener("mouseenter", onEnter);
           root.addEventListener("mouseleave", onLeave);
           return () => {
             root.removeEventListener("mousemove", onMove);
-            root.removeEventListener("mouseenter", onEnter);
             root.removeEventListener("mouseleave", onLeave);
           };
         }
@@ -120,32 +92,8 @@ export default function Footer() {
       id="homepage-bottom"
       className="relative isolate overflow-hidden bg-[#0E0E0E] text-[#F5EBDD]"
     >
-      {/* ---------- Background photo (slightly oversized for the parallax) */}
-      <div data-foot-photo className="absolute -inset-10 -z-20 will-change-transform">
-        <Image src={footer.photo} alt="" fill sizes="100vw" className="object-cover" />
-      </div>
-      {/* Darkening */}
-      <div className="absolute inset-0 -z-10 bg-black/75" />
-      <div className="absolute inset-0 -z-10 bg-gradient-to-b from-black/30 via-transparent to-black/80" />
-      {/* Spotlight: lifts the darkness around the cursor (desktop) */}
-      <div
-        data-foot-light
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-0 -z-10 opacity-0 mix-blend-soft-light"
-        style={{
-          background:
-            "radial-gradient(420px circle at var(--mx, 50%) var(--my, 50%), rgba(255,255,255,0.55), transparent 70%)",
-        }}
-      />
-      <div
-        data-foot-light
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-0 -z-10 opacity-0"
-        style={{
-          background:
-            "radial-gradient(260px circle at var(--mx, 50%) var(--my, 50%), rgba(237,72,35,0.14), transparent 70%)",
-        }}
-      />
+      {/* Black and white photo with the mouse spotlight (shared with the menu) */}
+      <SpotlightPhoto src={footer.photo} />
 
       <div className="mx-auto max-w-7xl px-8 section-pt pb-8 sm:px-12 lg:px-20 xl:px-28">
         {/* ---------- Top: graphic left, details right */}
