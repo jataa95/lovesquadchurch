@@ -13,12 +13,14 @@ import { firstTimers } from "@/data/firstTimers";
  * form backend in handleSubmit (e.g. Formspree, Resend, Google Sheets, or
  * a church CRM).
  */
+// Same field style as the Contact page form: solid grey fields with white
+// text, monospace uppercase labels, orange focus ring.
 const field =
-  "w-full border border-[#262626] bg-transparent px-4 py-3 text-[15px] text-[#4A4A4A] placeholder:text-[#8A8989] transition-colors hover:bg-white/15 focus:border-[#ED4823] focus:outline-none";
+  "w-full bg-[#575656] px-3 py-3 text-sm text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#ED4823] sm:px-4";
 
 function Label({ children }) {
   return (
-    <span className="heading-font text-[12px] font-semibold uppercase tracking-[0.18em] text-[#575656]">
+    <span className="font-mono text-[14px] font-bold uppercase tracking-wider text-[#575656]">
       {children}
     </span>
   );
@@ -80,7 +82,10 @@ export default function ConnectCard() {
           </p>
         </div>
       ) : (
-        <form onSubmit={handleSubmit} className="flex max-w-[680px] flex-col gap-12">
+        <form
+          onSubmit={handleSubmit}
+          className="flex max-w-[680px] flex-col gap-12 border border-[#575656] p-4 sm:p-5 md:p-8"
+        >
           <p className="text-[15px] leading-[24px] text-[#555555] lg:text-[16px]">
             We&apos;d love to get to know you. It only takes a minute.
           </p>
@@ -151,7 +156,7 @@ export default function ConnectCard() {
               <Label>Would you like to visit again?</Label>
               <div className="flex flex-wrap gap-x-6 gap-y-2 text-[15px] text-[#4A4A4A]">
                 {["Yes", "Maybe", "Just visiting"].map((v) => (
-                  <label key={v} className="inline-flex cursor-pointer items-center gap-2">
+                  <label key={v} className="inline-flex cursor-pointer items-center gap-2 font-mono text-[14px] font-bold uppercase tracking-wider text-[#575656]">
                     <input type="radio" name="return" value={v} className="h-4 w-4 accent-[#ED4823]" />
                     {v}
                   </label>
@@ -162,7 +167,7 @@ export default function ConnectCard() {
               <Label>What would you like next? (tick any)</Label>
               <div className="grid grid-cols-1 gap-2 text-[15px] text-[#4A4A4A] sm:grid-cols-2">
                 {NEXT_STEPS.map((v) => (
-                  <label key={v} className="inline-flex cursor-pointer items-center gap-2">
+                  <label key={v} className="inline-flex cursor-pointer items-center gap-2 font-mono text-[14px] font-bold uppercase tracking-wider text-[#575656]">
                     <input type="checkbox" name="next" value={v} className="h-4 w-4 accent-[#ED4823]" />
                     {v}
                   </label>
@@ -185,10 +190,10 @@ export default function ConnectCard() {
                     aria-checked={rating === n}
                     aria-label={`${n} out of 5`}
                     onClick={() => setRating(n)}
-                    className={`heading-font h-11 w-11 border text-[16px] font-bold transition-colors ${
+                    className={`h-11 w-11 font-mono text-[16px] font-bold transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#ED4823] ${
                       n <= rating
-                        ? "border-[#ED4823] bg-[#ED4823] text-[#F9E9D3]"
-                        : "border-[#262626] text-[#575656] hover:bg-white/15"
+                        ? "bg-[#ED4823] text-[#F9E9D3]"
+                        : "bg-[#575656] text-white hover:bg-[#4A4A4A]"
                     }`}
                   >
                     {n}
@@ -207,16 +212,12 @@ export default function ConnectCard() {
             </label>
           </fieldset>
 
-          <div>
-            <button
-              type="submit"
-              className="heading-font inline-flex items-center gap-2 text-[16px] font-bold uppercase tracking-[-0.02em] text-[#575656] transition-colors hover:text-[#ED4823] md:text-[20px]"
-            >
-              <span className="text-[24px] text-[#ED4823]">{"{"}</span>
-              SEND
-              <span className="text-[24px] text-[#ED4823]">{"}"}</span>
-            </button>
-          </div>
+          <button
+            type="submit"
+            className="heading-font w-full bg-[#575656] py-3.5 text-base font-bold uppercase tracking-widest text-[#F9E9D3] transition-opacity hover:opacity-90"
+          >
+            SUBMIT
+          </button>
         </form>
       )}
     </AboutSplitSection>
