@@ -57,7 +57,7 @@ export default function AboutSplitSection({
               </div>
               <div className="mt-4 h-[2px] w-full bg-[#ED4823] lg:hidden" />
 
-              {aside && <div className="mt-10 hidden lg:block">{aside}</div>}
+              {aside && <div className="mt-8 hidden lg:block">{aside}</div>}
             </div>
           </div>
 

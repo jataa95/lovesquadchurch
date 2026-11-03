@@ -51,13 +51,13 @@ export default function AboutFaith() {
         </>
       }
       aside={
-        <div className="flex w-52 flex-col items-center">
+        <div className="flex w-44 flex-col items-center lg:ml-[76px] xl:w-48">
           <Image
             src="/images/footer/lovesquad-graphic-cream.svg"
             alt=""
             width={180}
             height={180}
-            className="h-auto w-40 object-contain xl:w-48"
+            className="h-auto w-full object-contain"
           />
           <div className="footer-marquee mt-4 w-full [mask-image:linear-gradient(90deg,transparent,black_18%,black_82%,transparent)]">
             <div className="footer-marquee-track" style={{ animationDuration: "40s" }}>
