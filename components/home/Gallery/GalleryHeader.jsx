@@ -4,16 +4,7 @@ export default function GalleryHeader() {
     <div
       className="
         flex
-        flex-col
-        items-start
-        gap-[12px]
-
-        sm:gap-[16px]
-
-        md:flex-row
-        md:items-end
-        md:justify-between
-        md:gap-[20px]
+        justify-center
       "
     >
       {/* =========================================
@@ -24,6 +15,8 @@ export default function GalleryHeader() {
           heading-font
           w-full
           max-w-[1000px]
+          text-center
+          text-balance
           uppercase
           text-[#575656]
 
