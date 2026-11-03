@@ -133,6 +133,16 @@ body {
   .hero-scroll-cue { animation: none; }
 }
 
+/* =========================================
+   BLACK AND WHITE PHOTOS, SITE-WIDE
+   Every raster image (photos) is shown in greyscale. SVGs (the logo,
+   icons, brand graphics) keep their colours. Videos are not included.
+========================================= */
+
+img:not([src*=".svg"]) {
+  filter: grayscale(1) !important;
+}
+
 .heading-font {
   font-family: var(--font-heading);
 }

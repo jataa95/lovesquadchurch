@@ -214,8 +214,7 @@ export default function AboutGallery() {
           >
             <div
               ref={(el) => (imgRefs.current[i] = el)}
-              // Desktop (with a mouse): black and white, full colour on hover.
-              className="absolute inset-0 transition-[filter] duration-700 ease-out will-change-transform lg:[@media(hover:hover)]:grayscale lg:[@media(hover:hover)]:group-hover/gallery:grayscale-0"
+              className="absolute inset-0 will-change-transform"
             >
               <Image
                 src={src}

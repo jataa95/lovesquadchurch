@@ -45,6 +45,13 @@ export default function EventsContent() {
               className="object-cover transition-transform duration-500 hover:scale-105"
             />
           </div>
+
+          {/* EVENT DESCRIPTION */}
+          {events?.description && (
+            <p className="mt-4 max-w-[640px] text-[14px] leading-[22px] text-[#575656] sm:mt-5 sm:text-[16px] sm:leading-[25px] lg:text-[17px] lg:leading-[27px]">
+              {events.description}
+            </p>
+          )}
         </div>
       </div>
     </div>

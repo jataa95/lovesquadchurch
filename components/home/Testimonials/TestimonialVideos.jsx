@@ -259,11 +259,7 @@ export default function TestimonialVideos() {
                     alt=""
                     fill
                     sizes="140px"
-                    className={`object-cover transition-[filter,transform] duration-500 group-hover:scale-105 ${
-                      isActive
-                        ? "grayscale-0"
-                        : "grayscale group-hover:grayscale-0"
-                    }`}
+                    className="object-cover transition-transform duration-500 group-hover:scale-105"
                   />
                   <span className="absolute bottom-1.5 right-1.5 bg-black/70 px-1.5 py-0.5 text-[10px] tabular-nums text-[#F5EBDD]">
                     {s.duration}
