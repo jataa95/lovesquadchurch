@@ -210,7 +210,7 @@ export default function MenuOverlay({ onClose }) {
       ====================================================== */}
         <header
           data-menu-header
-          className="relative z-50 flex w-full items-center justify-between pl-2 pr-1 pt-3 pb-4 sm:px-2 sm:py-2 lg:pl-6 lg:pr-3 lg:py-6"
+          className="relative z-50 flex w-full items-center justify-between px-5 pt-5 pb-3 sm:px-8 sm:pt-6 sm:pb-3 lg:px-12 lg:pt-8 lg:pb-4"
         >
           {/* Logo */}
           <Link
