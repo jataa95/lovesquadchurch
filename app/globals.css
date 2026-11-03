@@ -511,3 +511,28 @@ section[id] {
   outline: 2px solid #ed4823;
   outline-offset: 2px;
 }
+
+/* Browser autofill paints filled fields light blue; keep our grey field
+   with cream text instead (every form on the site uses this field style). */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+textarea:-webkit-autofill,
+select:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 1000px #575656 inset !important;
+  box-shadow: 0 0 0 1000px #575656 inset !important;
+  -webkit-text-fill-color: #f9e9d3 !important;
+  caret-color: #f9e9d3;
+  transition: background-color 9999s ease-out 0s;
+}
+input:autofill {
+  -webkit-box-shadow: 0 0 0 1000px #575656 inset !important;
+  -webkit-text-fill-color: #f9e9d3 !important;
+}
+/* Keep the orange focus ring on an autofilled field. */
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill:focus {
+  -webkit-box-shadow: 0 0 0 2px #ed4823, 0 0 0 1000px #575656 inset !important;
+  box-shadow: 0 0 0 2px #ed4823, 0 0 0 1000px #575656 inset !important;
+  -webkit-text-fill-color: #f9e9d3 !important;
+  caret-color: #f9e9d3;
+}
