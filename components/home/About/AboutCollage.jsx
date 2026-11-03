@@ -24,7 +24,7 @@ gsap.registerPlugin(ScrollTrigger, SplitText, useGSAP);
  * don't push photos out of the section); `top` is in px.
  */
 
-// Scattered photos (about.collage[1..7]). zoom: "in" grows, "out" shrinks.
+// Scattered photos (about.collage[1..6]). zoom: "in" grows, "out" shrinks.
 // speed: how far (px) the photo travels up while the section scrolls by.
 // Bigger = feels closer and faster; mixed speeds give the parallax depth.
 const SCATTERED = [
@@ -76,16 +76,6 @@ const SCATTERED = [
     zoom: "out",
     speed: 300,
   },
-  // The 8th picture: same size as the centre picture, just below the
-  // paragraph and offset to the right.
-  {
-    left: "44%",
-    top: 1400,
-    width: "min(44vw, 640px)",
-    ratio: "16 / 11",
-    zoom: "in",
-    speed: 220,
-  },
 ];
 
 const ZOOM = {
@@ -95,7 +85,10 @@ const ZOOM = {
 
 export default function AboutCollage() {
   const rootRef = useRef(null);
-  const [centre, ...scattered] = about.collage;
+  const [centre, ...rest] = about.collage;
+  const scattered = rest.slice(0, SCATTERED.length);
+  // The last photo sits in the column, right under the paragraph.
+  const closing = rest[SCATTERED.length];
 
   useGSAP(
     () => {
@@ -224,16 +217,20 @@ export default function AboutCollage() {
   );
 
   return (
-    <div ref={rootRef} className="relative h-[1900px] w-full">
+    <div ref={rootRef} className="relative w-full">
       {/* Two vertical lines, far apart, behind the photos */}
-      {["left-[6%]", "right-[6%]"].map((side) => (
-        <span
-          key={side}
-          data-collage-line
-          aria-hidden="true"
-          className={`pointer-events-none absolute top-0 bottom-0 w-px origin-top bg-gradient-to-b from-[#ED4823]/0 via-[#ED4823] to-[#ED4823] ${side}`}
-        />
-      ))}
+      {/* Left line grows down from the top, right line grows up from
+          the bottom. */}
+      <span
+        data-collage-line
+        aria-hidden="true"
+        className="pointer-events-none absolute top-0 bottom-0 left-[6%] w-px origin-top bg-gradient-to-b from-[#ED4823]/0 via-[#ED4823] to-[#ED4823]"
+      />
+      <span
+        data-collage-line
+        aria-hidden="true"
+        className="pointer-events-none absolute top-0 bottom-0 right-[6%] w-px origin-bottom bg-gradient-to-t from-[#ED4823]/0 via-[#ED4823] to-[#ED4823]"
+      />
 
       {/* Scattered photos */}
       {scattered.map((src, i) => {
@@ -269,8 +266,8 @@ export default function AboutCollage() {
       })}
 
       {/* Centre column */}
-      <div className="relative z-10 mx-auto flex w-[min(640px,44vw)] flex-col items-center pt-[260px] text-center">
-        {/* 1. Heading + button */}
+      <div className="relative z-10 mx-auto flex w-[min(640px,44vw)] flex-col items-center pt-[120px] text-center">
+        {/* 1. Heading, the paragraph (copy) and the button */}
         <div data-parallax="140" className="will-change-transform">
           <div data-collage-text className="flex flex-col items-center">
             <h2
@@ -287,6 +284,12 @@ export default function AboutCollage() {
                 ),
               )}
             </h2>
+            <p
+              data-collage-lines
+              className="mt-8 max-w-[560px] text-[20px] leading-[1.6] text-[#575656]"
+            >
+              {about.description}
+            </p>
             <div data-collage-fade className="mt-10">
               <SecondaryButton href="/about">{about.button}</SecondaryButton>
             </div>
@@ -325,6 +328,29 @@ export default function AboutCollage() {
             </p>
           </div>
         </div>
+
+        {/* 4. The 8th picture, same size as the centre one, right under
+            the paragraph and offset to the right */}
+        {closing && (
+          <div
+            data-parallax="40"
+            className="relative left-[36%] mt-12 aspect-[16/11] w-full will-change-transform"
+          >
+            <div
+              data-collage-photo
+              data-zoom="in"
+              className="relative h-full w-full overflow-hidden bg-[#151515] will-change-transform"
+            >
+              <Image
+                src={closing}
+                alt=""
+                fill
+                sizes="(min-width: 1440px) 640px, 44vw"
+                className="object-cover grayscale"
+              />
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );
