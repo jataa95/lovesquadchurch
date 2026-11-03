@@ -134,19 +134,25 @@ export default function TextReveal() {
       const main = document.querySelector("main");
       if (!main) return;
 
-      // Top-level blocks of the page (sections), in order.
-      const blocks = [...main.querySelectorAll("section")].filter(
-        (s) => !s.parentElement.closest("section")
-      );
+      // Group text into blocks so neighbouring blocks get different heading
+      // styles: the outermost <section> it sits in, or (for text outside
+      // any section) its own header/article/parent container.
+      const blockIndex = new Map();
+      const blockOf = (el) => {
+        let outer = null;
+        for (let s = el.closest("section"); s; s = s.parentElement?.closest("section")) outer = s;
+        return outer || el.parentElement.closest("header, article") || el.parentElement;
+      };
 
-      blocks.forEach((block, i) => {
-        const headingStyle = HEADING_STYLES[i % HEADING_STYLES.length];
-        block.querySelectorAll("h1, h2, h3, p").forEach((el) => {
-          if (el.closest(SKIP) || el.dataset.revealed) return;
-          if (!el.textContent.trim()) return;
-          el.dataset.revealed = "1";
-          splits.push(el.tagName === "P" ? revealText(el) : headingStyle(el));
-        });
+      main.querySelectorAll("h1, h2, h3, p").forEach((el) => {
+        if (el.closest(SKIP) || el.dataset.revealed) return;
+        if (!el.textContent.trim()) return;
+        const block = blockOf(el);
+        if (!blockIndex.has(block)) blockIndex.set(block, blockIndex.size);
+        const headingStyle =
+          HEADING_STYLES[blockIndex.get(block) % HEADING_STYLES.length];
+        el.dataset.revealed = "1";
+        splits.push(el.tagName === "P" ? revealText(el) : headingStyle(el));
       });
 
       ScrollTrigger.refresh();
