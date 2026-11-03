@@ -9,7 +9,7 @@ import { testimonials } from "@/data/testimonials";
 
 gsap.registerPlugin(useGSAP);
 
-const STORIES = testimonials.videos ?? [];
+const DEFAULT_STORIES = testimonials.videos ?? [];
 
 /*
  * Featured video testimony with a list of other stories beside it.
@@ -20,7 +20,10 @@ const STORIES = testimonials.videos ?? [];
  * - Desktop: list on the right. Phones/tablets: the list is replaced by
  *   swiping on the player and pill indicators under it.
  */
-export default function TestimonialVideos() {
+// `stories` lets other pages (e.g. LoveSpots) reuse the player with their
+// own testimonies; the homepage uses data/testimonials.js videos.
+export default function TestimonialVideos({ stories = DEFAULT_STORIES }) {
+  const STORIES = stories;
   const rootRef = useRef(null);
   const stageRef = useRef(null);
   const videoRef = useRef(null);
