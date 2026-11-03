@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import AboutSplitSection from "./AboutSplitSection";
 
 const faithStatements = [
@@ -49,23 +48,6 @@ export default function AboutFaith() {
             OF <span className="text-[#ED4823]">FAITH</span>
           </span>
         </>
-      }
-      aside={
-        <div className="flex w-44 flex-col items-center lg:ml-[76px] xl:w-48">
-          <Image
-            src="/images/footer/lovesquad-graphic-cream.svg"
-            alt=""
-            width={180}
-            height={180}
-            className="h-auto w-full object-contain"
-          />
-          <div className="footer-marquee mt-4 w-full [mask-image:linear-gradient(90deg,transparent,black_18%,black_82%,transparent)]">
-            <div className="footer-marquee-track" style={{ animationDuration: "40s" }}>
-              <span className="!pr-[0.3em]">{"LOVE IS US * LOVESQUAD CHURCH * ".repeat(4)}</span>
-              <span className="!pr-[0.3em]">{"LOVE IS US * LOVESQUAD CHURCH * ".repeat(4)}</span>
-            </div>
-          </div>
-        </div>
       }
     >
       <div className="flex flex-col gap-5 sm:gap-6 lg:gap-8">
