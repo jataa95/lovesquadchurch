@@ -12,7 +12,6 @@ import {
 import Container from "@/components/ui/Container";
 import { serviceRecap } from "@/data/serviceRecap";
 import SecondaryButton from "@/components/ui/buttons/SecondaryButton";
-import TertiaryButton from "@/components/ui/buttons/TertiaryButton";
 
 const GALLERY_IMAGES = [
   "/images/service-recap/sr1.jpg",
@@ -44,7 +43,7 @@ const NEXT_SCALE = 0.8;
 /* Text block (heading, description, buttons)                          */
 /* ------------------------------------------------------------------ */
 
-function RecapText({ onSkip }) {
+function RecapText() {
   return (
     // On desktop the block stretches to the height of the pictures:
     // heading and text at the top, buttons at the bottom.
@@ -68,16 +67,11 @@ function RecapText({ onSkip }) {
         </div>
       </div>
 
-      {/* Side by side: main button on the left, Skip on the right next to
-          the pictures */}
-      <div className="mt-10 flex w-full flex-wrap items-center justify-between gap-x-6 gap-y-4 sm:mt-12 lg:mt-0">
+      {/* Main button */}
+      <div className="mt-10 flex w-full items-center sm:mt-12 lg:mt-0">
         <SecondaryButton href="/servicerecap">
           {serviceRecap.button}
         </SecondaryButton>
-
-        <TertiaryButton href="#about-page" tone="dark" onClick={onSkip}>
-          Skip
-        </TertiaryButton>
       </div>
     </div>
   );
@@ -291,17 +285,6 @@ export default function ServiceRecapGallery() {
   const sectionRef = useRef(null);
   const panelRef = useRef(null);
 
-  const handleSkip = (e) => {
-    e.preventDefault();
-    const about = document.getElementById("about-page");
-    if (about) {
-      about.scrollIntoView({ behavior: "smooth" });
-    } else if (sectionRef.current) {
-      const s = sectionRef.current;
-      window.scrollTo({ top: s.offsetTop + s.offsetHeight, behavior: "smooth" });
-    }
-  };
-
   return (
     <div ref={sectionRef} id="service-recap" className="relative w-full bg-cream">
       {/* Pinned on desktop while the pictures slide; normal flow below lg */}
@@ -312,7 +295,7 @@ export default function ServiceRecapGallery() {
       >
         <Container>
           <div className="flex flex-col gap-(--section-gap) lg:flex-row lg:items-stretch lg:gap-[60px]">
-            <RecapText onSkip={handleSkip} />
+            <RecapText />
 
             <div className="w-full lg:hidden">
               <MobileGallery />

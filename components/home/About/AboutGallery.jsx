@@ -233,8 +233,10 @@ export default function AboutGallery() {
         {/* Soft shade so the dots stay visible on bright photos */}
         <div className="pointer-events-none absolute inset-x-0 bottom-0 z-[3] h-20 bg-gradient-to-t from-black/45 to-transparent" />
 
-        {/* Dot indicators, on the bottom of the picture */}
-        <div className="absolute inset-x-0 bottom-2 z-[4] flex justify-center sm:bottom-4">
+        {/* Slide indicators, on the bottom of the picture. Same pills as
+            the Service Recap slider: 5px tall, 6px wide, the active one
+            24px wide and orange, 4px apart. */}
+        <div className="absolute inset-x-0 bottom-3 z-[4] flex justify-center gap-1 sm:bottom-4">
           {ABOUT_IMAGES.map((src, i) => (
             <button
               key={src}
@@ -242,16 +244,10 @@ export default function AboutGallery() {
               onClick={() => goTo(i, i > activeRef.current ? 1 : -1)}
               aria-label={`Show photo ${i + 1}`}
               aria-current={i === active}
-              className="group flex h-6 w-3 items-center justify-center"
-            >
-              <span
-                className={`block h-2 w-2 rounded-full transition-all duration-300 ease-out ${
-                  i === active
-                    ? "scale-125 bg-[#ED4823]"
-                    : "bg-[#F4EBDC]/55 group-hover:bg-[#F4EBDC]/90"
-                }`}
-              />
-            </button>
+              className={`h-[5px] rounded-full transition-all duration-300 ${
+                i === active ? "w-6 bg-[#ED4823]" : "w-1.5 bg-[#F4EBDC]/50"
+              }`}
+            />
           ))}
         </div>
       </div>
