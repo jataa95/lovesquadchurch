@@ -91,7 +91,7 @@ export default function AboutSplitSection({
                     className="mt-1 h-auto w-[30px] shrink-0 object-contain sm:w-[44px] lg:w-[56px]"
                   />
                 )}
-                <h2 className="heading-font text-[34px] font-bold uppercase leading-[0.9] tracking-[-0.05em] sm:text-[52px] lg:text-[48px] xl:text-[60px]">
+                <h2 className="heading-font text-[40px] font-bold uppercase leading-[0.9] tracking-[-0.05em] sm:text-[60px] lg:text-[52px] xl:text-[66px]">
                   {heading}
                 </h2>
               </div>
