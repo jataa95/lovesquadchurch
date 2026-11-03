@@ -154,12 +154,9 @@ export default function VisitOnline() {
               className="
                 mt-2
                 grid
-                grid-cols-1
+                grid-cols-3
+                items-center
                 gap-2
-
-                sm:grid-cols-3
-                sm:items-center
-                sm:gap-0
               "
             >
               <div
@@ -171,7 +168,7 @@ export default function VisitOnline() {
                   text-[#4A4A4A]
                 "
                 style={{
-                  fontSize: "clamp(20px, 2.5vw, 32px)",
+                  fontSize: "clamp(18px, 2.5vw, 32px)",
                 }}
               >
                 TUESDAYS
@@ -185,10 +182,10 @@ export default function VisitOnline() {
                   leading-none
                   text-[#4A4A4A]
 
-                  sm:text-center
+                  text-center
                 "
                 style={{
-                  fontSize: "clamp(20px, 2.5vw, 32px)",
+                  fontSize: "clamp(18px, 2.5vw, 32px)",
                 }}
               >
                 5AM
@@ -202,10 +199,10 @@ export default function VisitOnline() {
                   leading-none
                   text-[#4A4A4A]
 
-                  sm:text-right
+                  text-right
                 "
                 style={{
-                  fontSize: "clamp(20px, 2.5vw, 32px)",
+                  fontSize: "clamp(18px, 2.5vw, 32px)",
                 }}
               >
                 TELEGRAM
