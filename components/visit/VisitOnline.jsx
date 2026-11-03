@@ -171,7 +171,7 @@ export default function VisitOnline() {
                   fontSize: "clamp(18px, 2.5vw, 32px)",
                 }}
               >
-                TUESDAYS
+                TELEGRAM
               </div>
 
               <div
@@ -188,7 +188,7 @@ export default function VisitOnline() {
                   fontSize: "clamp(18px, 2.5vw, 32px)",
                 }}
               >
-                5AM
+                TUESDAYS
               </div>
 
               <div
@@ -205,7 +205,7 @@ export default function VisitOnline() {
                   fontSize: "clamp(18px, 2.5vw, 32px)",
                 }}
               >
-                TELEGRAM
+                5AM
               </div>
             </div>
           </div>
