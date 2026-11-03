@@ -1,5 +1,5 @@
 import AboutHero from "@/components/about/AboutHero";
-import AboutPictures from "@/components/about/AboutPictures";
+import Gallery from "@/components/home/Gallery";
 import AboutValues from "@/components/about/AboutValues";
 import AboutFaith from "@/components/about/AboutFaith";
 import AboutVisionMission from "@/components/about/AboutVisionMission";
@@ -13,7 +13,7 @@ export default function AboutPage() {
 
       <main>
         <AboutHero />
-        <AboutPictures />
+        <Gallery />
         <AboutValues />
         <AboutFaith />
         <AboutVisionMission />

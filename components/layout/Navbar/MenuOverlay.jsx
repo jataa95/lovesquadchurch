@@ -11,10 +11,10 @@ import { footer } from "@/data/footer";
 gsap.registerPlugin(useGSAP);
 
 const aboutLinks = [
-  { label: "OUR MISSION", href: "/about#mission" },
-  { label: "OUR VALUES", href: "/about#values" },
-  { label: "OUR BELIEFS", href: "/about#beliefs" },
-  { label: "OUR LEADERS", href: "/about#leaders" },
+  { label: "OUR MISSION", href: "/about#about_vision-mission" },
+  { label: "OUR VALUES", href: "/about#about_values" },
+  { label: "OUR BELIEFS", href: "/about#statement-of-faith" },
+  { label: "OUR LEADERS", href: "/about#about_leaders" },
 ];
 
 const connectLinks = [

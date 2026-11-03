@@ -82,6 +82,32 @@ body {
   }
 }
 
+/* Navbar height, and where sticky section headings sit under it. */
+:root {
+  --nav-h: 64px;
+  --sticky-top: calc(var(--nav-h) + 8px);
+}
+
+@media (min-width: 640px) {
+  :root {
+    --nav-h: 70px;
+  }
+}
+
+@media (min-width: 1024px) {
+  :root {
+    --nav-h: 94px;
+    --sticky-top: calc(var(--nav-h) + 32px);
+  }
+}
+
+/* Sticky section heading block (About page sections). */
+@utility sticky-head {
+  position: sticky;
+  top: var(--sticky-top);
+  z-index: 20;
+}
+
 @utility section-py {
   padding-top: var(--section-space);
   padding-bottom: var(--section-space);

@@ -1,6 +1,6 @@
 "use client";
 
-import Image from "next/image";
+import AboutSplitSection from "./AboutSplitSection";
 
 const statements = [
   {
@@ -23,160 +23,32 @@ const statements = [
 
 export default function AboutVisionMission() {
   return (
-    <section
+    <AboutSplitSection
       id="about_vision-mission"
-      className="relative w-full bg-[#F5EBDD] px-[8px]"
+      icon="/images/about/our-vision-icon.svg"
+      iconAlt="Our Vision"
+      heading={
+        <>
+          <span className="block">OUR</span>
+          <span className="block text-[#ED4823]">VISION</span>
+          <span className="block">
+            &amp; <span className="text-[#ED4823]">MISSION</span>
+          </span>
+          <span className="block">STATEMENTS</span>
+        </>
+      }
     >
-      {/* INNER WRAPPER */}
-      <div
-        className="
-          relative
-          w-full
-          bg-cream
-          px-[18px]
-          py-[55px]
-          sm:px-[28px]
-          sm:py-[65px]
-          lg:min-h-[720px]
-          lg:px-[72px]
-          lg:py-[56px]
-        "
-      >
-        <div
-          className="
-            grid
-            w-full
-            grid-cols-1
-            items-start
-            gap-[55px]
-            lg:min-h-[610px]
-            lg:grid-cols-2
-            lg:gap-0
-          "
-        >
-          {/* =================================
-              LEFT SIDE (STICKY)
-          ================================== */}
-          <div
-            className="
-              flex
-              flex-col
-              items-start
-              pt-0
-              sticky
-              top-16.5
-              lg:top-28
-              h-fit
-              bg-cream
-              z-10
-              pb-4
-              lg:pb-0
-              lg:pt-[8px]
-            "
-          >
-            <div
-              className="
-                flex
-                items-start
-                gap-[12px]
-                sm:gap-[16px]
-                lg:gap-[22px]
-              "
-            >
-              {/* ICON */}
-              <div
-                className="
-                  mt-[20px]
-                  shrink-0
-                  sm:mt-[25px]
-                  lg:mt-[50px]
-                "
-              >
-                <Image
-                  src="/images/about/our-vision-icon.svg"
-                  alt="Our vision and mission"
-                  width={96}
-                  height={80}
-                  className="
-                    h-[32px]
-                    w-[32px]
-                    object-contain
-                    sm:h-[50px]
-                    sm:w-[50px]
-                    lg:h-[62px]
-                    lg:w-[62px]
-                  "
-                />
-              </div>
-
-              {/* HEADING */}
-              <h2
-                className="
-                  heading-font
-                  uppercase
-                  font-bold
-                  leading-[0.84]
-                  tracking-[-0.045em]
-                  text-[#4A4A4A]
-                "
-                style={{
-                  fontSize: "clamp(36px, 7vw, 80px)",
-                }}
-              >
-                <span className="block">OUR</span>
-
-                <span className="block text-[#ED4823]">VISION</span>
-
-                <span className="block">
-                  &amp; <span className="text-[#ED4823]">MISSION</span>
-                </span>
-
-                <span className="block">STATEMENTS</span>
-              </h2>
-            </div>
-
-            {/* Sticky Orange Divider (Mobile / Tablet) */}
-            <div className="mt-4 w-full border-t-2 border-[#ED4823] lg:hidden" />
-          </div>
-
-          {/* =================================
-              RIGHT SIDE
-          ================================== */}
-          <div
-            className="
-              flex
-              w-full
-              pt-0
-
-              lg:border-l-[3px]
-              lg:border-[#ED4823]
-              lg:pl-[34px]
-              lg:pt-0
-            "
-          >
-            <div
-              className="
-                flex
-                w-full
-                flex-col
-                gap-[30px]
-                sm:gap-[42px]
-                lg:gap-[80px]
-              "
-            >
-              {statements.map((statement, index) => (
-                <Statement
-                  key={statement.title}
-                  title={statement.title}
-                  text={statement.text}
-                  isLast={index === statements.length - 1}
-                />
-              ))}
-            </div>
-          </div>
-        </div>
+      <div className="flex w-full flex-col gap-[30px] sm:gap-[42px] lg:gap-[64px]">
+        {statements.map((statement, index) => (
+          <Statement
+            key={statement.title}
+            title={statement.title}
+            text={statement.text}
+            isLast={index === statements.length - 1}
+          />
+        ))}
       </div>
-    </section>
+    </AboutSplitSection>
   );
 }
 
