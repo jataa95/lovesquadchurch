@@ -147,7 +147,7 @@ export default function Footer() {
         }}
       />
 
-      <div className="mx-auto max-w-7xl px-6 section-pt pb-8 lg:px-10 xl:px-16">
+      <div className="mx-auto max-w-7xl px-8 section-pt pb-8 sm:px-12 lg:px-20 xl:px-28">
         {/* ---------- Top: graphic left, details right */}
         <div className="flex flex-col items-center gap-12 text-center lg:flex-row lg:items-center lg:justify-between lg:gap-16 lg:text-left">
           {/* Left: graphic with the scrolling text running off its edges */}
@@ -161,7 +161,11 @@ export default function Footer() {
               />
             </div>
             <div className="footer-marquee mt-5 w-[300px] [mask-image:linear-gradient(90deg,transparent,black_18%,black_82%,transparent)] sm:w-[360px]">
-              <div className="footer-marquee-track">
+              <div
+                className="footer-marquee-track"
+                // Slow, calm drift (the shared default is 12s)
+                style={{ animationDuration: "40s" }}
+              >
                 <span className="!pr-[0.3em] !text-[12px] sm:!text-[13px]">{footer.marquee.repeat(4)}</span>
                 <span className="!pr-[0.3em] !text-[12px] sm:!text-[13px]">{footer.marquee.repeat(4)}</span>
               </div>
