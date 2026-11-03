@@ -26,6 +26,7 @@ export const footer = {
       { label: "Careers", href: "/careers" },
       { label: "Events", href: "/events" },
       { label: "LoveSpots", href: "/lovespot" },
+      { label: "First time?", href: "/first-timers" },
     ],
   ],
 

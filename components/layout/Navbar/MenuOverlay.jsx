@@ -18,6 +18,7 @@ const aboutLinks = [
 ];
 
 const connectLinks = [
+  { label: "FIRST TIME?", href: "/first-timers" },
   { label: "LOVESPOT", href: "/lovespot" },
   { label: "EVENTS", href: "/events" },
   { label: "CONTACT US", href: "/contact" },
