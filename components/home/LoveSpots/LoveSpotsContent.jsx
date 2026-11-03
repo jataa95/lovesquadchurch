@@ -29,7 +29,7 @@ export default function LoveSpotsContent() {
       </div>
 
       {/* RIGHT COLUMN: Button */}
-      <div className="self-center md:self-end md:shrink-0">
+      <div className="flex self-center md:self-end md:shrink-0">
         <SecondaryButton href="/lovespot">{loveSpots.button}</SecondaryButton>
       </div>
     </div>
