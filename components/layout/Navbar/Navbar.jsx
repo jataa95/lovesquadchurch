@@ -35,13 +35,13 @@ export default function Navbar() {
             />
           </Link>
 
-          {/* MENU BUTTON: transparent with a 1px soft orange border; "MENU" and two lines in soft orange */}
+          {/* MENU BUTTON: transparent with a hairline (1px, 30% orange) border; "MENU" and two lines in soft orange */}
           <button
             type="button"
             onClick={() => setIsMenuOpen(true)}
             aria-label="Open navigation menu"
             aria-expanded={isMenuOpen}
-            className="group flex items-center gap-2.5 rounded-full border border-[#ED4823]/60 bg-transparent py-2.5 pl-5 pr-4 text-[#ED4823]/85 transition-colors duration-300 hover:border-[#ED4823] hover:text-[#ED4823] active:scale-95 sm:gap-3 sm:py-3 sm:pl-7 sm:pr-5 lg:gap-3 lg:py-3.5 lg:pl-8 lg:pr-6"
+            className="group flex items-center gap-2.5 rounded-full border border-[#ED4823]/30 bg-transparent py-2.5 pl-5 pr-4 text-[#ED4823]/85 transition-colors duration-300 hover:border-[#ED4823]/60 hover:text-[#ED4823] active:scale-95 sm:gap-3 sm:py-3 sm:pl-7 sm:pr-5 lg:gap-3 lg:py-3.5 lg:pl-8 lg:pr-6"
           >
             <span className="heading-font text-[12px] font-semibold uppercase leading-none tracking-[0.32em] sm:text-[13px] lg:text-[14px]">
               Menu
