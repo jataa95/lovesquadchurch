@@ -180,9 +180,11 @@ export default function AboutFAQs() {
                     ease-out
 
                     ${
+                      // Hover/open: a soft white wash, so the cream paper
+                      // grain still shows through, just lighter.
                       isOpen
-                        ? "border-[#575656] bg-[#EFD9B8]"
-                        : "border-[#262626]/70 bg-transparent hover:border-[#575656] hover:bg-[#F3E0C4]"
+                        ? "border-[#262626] bg-white/30"
+                        : "border-[#262626] bg-transparent hover:bg-white/30"
                     }
                   `}
                 >
@@ -222,7 +224,7 @@ export default function AboutFAQs() {
                         tracking-[-0.01em]
                         transition-colors
                         duration-300
-                        text-[#4A4A4A]
+                        text-[#575656]
                       `}
                       style={{
                         fontSize: "clamp(14px, 1.4vw, 16px)",
@@ -247,9 +249,7 @@ export default function AboutFAQs() {
                         duration-300
 
                         ${
-                          isOpen
-                            ? "bg-[#575656] text-[#F9E9D3]"
-                            : "text-[#575656] group-hover:bg-[#575656] group-hover:text-[#F9E9D3]"
+                          "text-[#575656]"
                         }
 
                         sm:h-[30px]
@@ -264,7 +264,7 @@ export default function AboutFAQs() {
                           duration-300
                           ease-out
 
-                          ${isOpen ? "rotate-45" : "rotate-0 group-hover:rotate-90"}
+                          ${isOpen ? "rotate-45" : "rotate-0"}
                         `}
                       />
                     </span>
