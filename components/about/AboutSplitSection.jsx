@@ -19,9 +19,10 @@ gsap.registerPlugin(ScrollTrigger, useGSAP);
  * - Phones/tablets: the heading sticks right under the navbar on a solid
  *   band (so content slides under it), with an orange rule below.
  * - Same section padding as the rest of the site (section-py).
- * - With `divider`, the orange line (vertical beside the content on
- *   desktop, horizontal under the heading on phones) grows from 0 to
- *   100% as the section scrolls through, and shrinks back on the way up.
+ * - With `divider`, the vertical orange line beside the content (desktop)
+ *   grows from 0 to 100% as the section scrolls through, and shrinks back
+ *   on the way up. The horizontal line under the heading on phones and
+ *   tablets stays still at full width.
  */
 export default function AboutSplitSection({
   id,
@@ -51,11 +52,6 @@ export default function AboutSplitSection({
           "[data-divider-v]",
           { scaleY: 0 },
           { scaleY: 1, ease: "none", scrollTrigger: scrub }
-        );
-        gsap.fromTo(
-          "[data-divider-h]",
-          { scaleX: 0 },
-          { scaleX: 1, ease: "none", scrollTrigger: { ...scrub } }
         );
       });
       return () => mm.revert();
@@ -95,10 +91,7 @@ export default function AboutSplitSection({
                   {heading}
                 </h2>
               </div>
-              <div
-                {...(divider ? { "data-divider-h": "" } : {})}
-                className="mt-4 h-[2px] w-full origin-left bg-[#ED4823] lg:hidden"
-              />
+              <div className="mt-4 h-[2px] w-full bg-[#ED4823] lg:hidden" />
 
               {aside && <div className="mt-8 hidden lg:block">{aside}</div>}
             </div>
