@@ -1,5 +1,13 @@
+"use client";
+
 import Image from "next/image";
+import { useRef } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useGSAP } from "@gsap/react";
 import Container from "@/components/ui/Container";
+
+gsap.registerPlugin(ScrollTrigger, useGSAP);
 
 /*
  * Shared layout for the About page sections (Values, Statements of Faith,
@@ -11,6 +19,9 @@ import Container from "@/components/ui/Container";
  * - Phones/tablets: the heading sticks right under the navbar on a solid
  *   band (so content slides under it), with an orange rule below.
  * - Same section padding as the rest of the site (section-py).
+ * - With `divider`, the orange line (vertical beside the content on
+ *   desktop, horizontal under the heading on phones) grows from 0 to
+ *   100% as the section scrolls through, and shrinks back on the way up.
  */
 export default function AboutSplitSection({
   id,
@@ -22,11 +33,40 @@ export default function AboutSplitSection({
   divider = true,
   children,
 }) {
+  const rootRef = useRef(null);
   const dark = tone === "dark";
+
+  useGSAP(
+    () => {
+      if (!divider) return;
+      const mm = gsap.matchMedia();
+      mm.add("(prefers-reduced-motion: no-preference)", () => {
+        const scrub = {
+          trigger: rootRef.current,
+          start: "top 75%",
+          end: "bottom 75%",
+          scrub: 0.6,
+        };
+        gsap.fromTo(
+          "[data-divider-v]",
+          { scaleY: 0 },
+          { scaleY: 1, ease: "none", scrollTrigger: scrub }
+        );
+        gsap.fromTo(
+          "[data-divider-h]",
+          { scaleX: 0 },
+          { scaleX: 1, ease: "none", scrollTrigger: { ...scrub } }
+        );
+      });
+      return () => mm.revert();
+    },
+    { scope: rootRef, dependencies: [divider] }
+  );
   const band = dark ? "bg-ink" : "bg-cream";
 
   return (
     <section
+      ref={rootRef}
       id={id}
       className={`relative w-full scroll-mt-[var(--nav-h)] section-py ${band} ${
         dark ? "text-[#F4EBDC]" : "text-[#4A4A4A]"
@@ -55,18 +95,24 @@ export default function AboutSplitSection({
                   {heading}
                 </h2>
               </div>
-              <div className="mt-4 h-[2px] w-full bg-[#ED4823] lg:hidden" />
+              <div
+                {...(divider ? { "data-divider-h": "" } : {})}
+                className="mt-4 h-[2px] w-full origin-left bg-[#ED4823] lg:hidden"
+              />
 
               {aside && <div className="mt-8 hidden lg:block">{aside}</div>}
             </div>
           </div>
 
           {/* Content */}
-          <div
-            className={`lg:col-span-7 ${
-              divider ? "lg:border-l-2 lg:border-[#ED4823] lg:pl-10" : ""
-            }`}
-          >
+          <div className={`relative lg:col-span-7 ${divider ? "lg:pl-10" : ""}`}>
+            {divider && (
+              <span
+                data-divider-v
+                aria-hidden="true"
+                className="absolute left-0 top-0 hidden h-full w-[2px] origin-top bg-[#ED4823] lg:block"
+              />
+            )}
             {children}
           </div>
         </div>

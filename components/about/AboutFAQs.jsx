@@ -181,19 +181,11 @@ export default function AboutFAQs() {
 
                     ${
                       isOpen
-                        ? "border-[#ED4823] bg-[#ED4823]/[0.05]"
-                        : "border-[#262626]/70 bg-transparent hover:border-[#ED4823]"
+                        ? "border-[#575656] bg-[#EFD9B8]"
+                        : "border-[#262626]/70 bg-transparent hover:border-[#575656] hover:bg-[#F3E0C4]"
                     }
                   `}
                 >
-                  {/* Orange accent bar that grows on hover / when open */}
-                  <span
-                    aria-hidden="true"
-                    className={`pointer-events-none absolute left-0 top-0 h-full w-[3px] origin-top bg-[#ED4823] transition-transform duration-300 ease-out ${
-                      isOpen ? "scale-y-100" : "scale-y-0 group-hover:scale-y-100"
-                    }`}
-                  />
-
                   {/* =================================================
                       QUESTION
                   ================================================== */}
@@ -230,7 +222,7 @@ export default function AboutFAQs() {
                         tracking-[-0.01em]
                         transition-colors
                         duration-300
-                        ${isOpen ? "text-[#ED4823]" : "text-[#575656] group-hover:text-[#ED4823]"}
+                        text-[#4A4A4A]
                       `}
                       style={{
                         fontSize: "clamp(14px, 1.4vw, 16px)",
@@ -256,8 +248,8 @@ export default function AboutFAQs() {
 
                         ${
                           isOpen
-                            ? "bg-[#ED4823] text-[#F5EBDD]"
-                            : "text-[#575656] group-hover:bg-[#ED4823] group-hover:text-[#F5EBDD]"
+                            ? "bg-[#575656] text-[#F9E9D3]"
+                            : "text-[#575656] group-hover:bg-[#575656] group-hover:text-[#F9E9D3]"
                         }
 
                         sm:h-[30px]
