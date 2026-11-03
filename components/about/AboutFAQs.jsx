@@ -171,18 +171,29 @@ export default function AboutFAQs() {
                   key={index}
                   className={`
                     group
+                    relative
                     w-full
                     overflow-hidden
                     border
-                    border-[#262626]
-                    bg-transparent
-                    transition-all
+                    transition-colors
                     duration-300
                     ease-out
 
-                    ${isOpen ? "bg-[#EDE3D2]" : "hover:bg-[#EEE4D4]"}
+                    ${
+                      isOpen
+                        ? "border-[#ED4823] bg-[#ED4823]/[0.05]"
+                        : "border-[#262626]/70 bg-transparent hover:border-[#ED4823]"
+                    }
                   `}
                 >
+                  {/* Orange accent bar that grows on hover / when open */}
+                  <span
+                    aria-hidden="true"
+                    className={`pointer-events-none absolute left-0 top-0 h-full w-[3px] origin-top bg-[#ED4823] transition-transform duration-300 ease-out ${
+                      isOpen ? "scale-y-100" : "scale-y-0 group-hover:scale-y-100"
+                    }`}
+                  />
+
                   {/* =================================================
                       QUESTION
                   ================================================== */}
@@ -212,13 +223,15 @@ export default function AboutFAQs() {
                   >
                     {/* QUESTION TEXT */}
                     <span
-                      className="
+                      className={`
                         heading-font
                         max-w-[90%]
                         font-bold
                         tracking-[-0.01em]
-                        text-[#575656]
-                      "
+                        transition-colors
+                        duration-300
+                        ${isOpen ? "text-[#ED4823]" : "text-[#575656] group-hover:text-[#ED4823]"}
+                      `}
                       style={{
                         fontSize: "clamp(14px, 1.4vw, 16px)",
                         lineHeight: "20px",
@@ -229,29 +242,37 @@ export default function AboutFAQs() {
 
                     {/* PLUS ICON */}
                     <span
-                      className="
+                      className={`
                         ml-[12px]
                         flex
-                        h-[24px]
-                        w-[24px]
+                        h-[28px]
+                        w-[28px]
                         shrink-0
                         items-center
                         justify-center
-                        text-[#575656]
+                        rounded-full
+                        transition-colors
+                        duration-300
 
-                        sm:h-[26px]
-                        sm:w-[26px]
-                      "
+                        ${
+                          isOpen
+                            ? "bg-[#ED4823] text-[#F5EBDD]"
+                            : "text-[#575656] group-hover:bg-[#ED4823] group-hover:text-[#F5EBDD]"
+                        }
+
+                        sm:h-[30px]
+                        sm:w-[30px]
+                      `}
                     >
                       <Plus
-                        size={22}
+                        size={18}
                         strokeWidth={1.8}
                         className={`
                           transition-transform
                           duration-300
                           ease-out
 
-                          ${isOpen ? "rotate-45" : "rotate-0"}
+                          ${isOpen ? "rotate-45" : "rotate-0 group-hover:rotate-90"}
                         `}
                       />
                     </span>
