@@ -34,9 +34,9 @@ const ICONS = {
 };
 
 /*
- * Footer: full black and white photo, LoveSquad graphic + scrolling text
- * on the left, invitation + address + button on the right, all links in
- * two rows with social icons on the far right.
+ * Footer: full black and white photo; centred closing lines + button; all
+ * links in two rows with social icons on the far right; then the LoveSquad
+ * graphic with its scrolling text; then the copyright line.
  *
  * Desktop mouse effect: a soft spotlight follows the cursor and lifts the
  * darkness off the photo around it; the photo and the graphic drift a
@@ -96,31 +96,9 @@ export default function Footer() {
       <SpotlightPhoto src={footer.photo} />
 
       <div className="mx-auto max-w-7xl px-8 section-pt pb-8 sm:px-12 lg:px-20 xl:px-28">
-        {/* ---------- Top: graphic left, details right */}
+        {/* ---------- Top: closing lines and button */}
         <div className="flex flex-col items-center gap-12 text-center">
-          {/* Left: graphic with the scrolling text running off its edges */}
-          <div data-foot-brand className="hidden w-[200px] flex-col items-center will-change-transform sm:w-[240px]">
-            <div className="relative h-[150px] w-[160px] sm:h-[180px] sm:w-[190px] lg:h-[106px] lg:w-[112px] xl:h-[137px] xl:w-[144px]">
-              <Image
-                src="/images/footer/lovesquad-graphic-cream.svg"
-                alt="LoveSquad Church"
-                fill
-                className="object-contain"
-              />
-            </div>
-            <div className="footer-marquee mt-5 w-[300px] [mask-image:linear-gradient(90deg,transparent,black_18%,black_82%,transparent)] sm:w-[360px]">
-              <div
-                className="footer-marquee-track"
-                // Slow, calm drift (the shared default is 12s)
-                style={{ animationDuration: "40s" }}
-              >
-                <span className="!pr-[0.3em] !text-[12px] sm:!text-[13px]">{footer.marquee.repeat(4)}</span>
-                <span className="!pr-[0.3em] !text-[12px] sm:!text-[13px]">{footer.marquee.repeat(4)}</span>
-              </div>
-            </div>
-          </div>
-
-          {/* Right: invitation, address, button */}
+          {/* Invitation, address, button */}
           <div className="flex flex-col items-center text-center">
             <p className="heading-font text-[40px] font-bold uppercase leading-[0.95] tracking-[-0.03em] sm:text-[56px] xl:text-[72px]">
               {footer.lineTop}
@@ -171,6 +149,31 @@ export default function Footer() {
                 {ICONS[s.name]}
               </a>
             ))}
+          </div>
+        </div>
+
+        {/* ---------- LoveSquad graphic with the scrolling text running off its edges */}
+        <div
+          data-foot-brand
+          className="mt-12 flex flex-col items-center will-change-transform lg:mt-16"
+        >
+          <div className="relative h-[90px] w-[95px] sm:h-[110px] sm:w-[116px] lg:h-[130px] lg:w-[137px]">
+            <Image
+              src="/images/footer/lovesquad-graphic-cream.svg"
+              alt="LoveSquad Church"
+              fill
+              className="object-contain"
+            />
+          </div>
+          <div className="footer-marquee mt-4 max-w-[280px] [mask-image:linear-gradient(90deg,transparent,black_18%,black_82%,transparent)] sm:max-w-[340px] lg:max-w-[400px]">
+            <div
+              className="footer-marquee-track"
+              // Slow, calm drift (the shared default is 12s)
+              style={{ animationDuration: "40s" }}
+            >
+              <span className="!pr-[0.3em] !text-[12px] sm:!text-[13px]">{footer.marquee.repeat(4)}</span>
+              <span className="!pr-[0.3em] !text-[12px] sm:!text-[13px]">{footer.marquee.repeat(4)}</span>
+            </div>
           </div>
         </div>
 
