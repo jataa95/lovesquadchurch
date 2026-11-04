@@ -536,3 +536,134 @@ textarea:-webkit-autofill:focus {
   -webkit-text-fill-color: #f9e9d3 !important;
   caret-color: #f9e9d3;
 }
+
+/* ---------- Homepage preloader (components/home/Preloader.jsx) ---------- */
+.preloader {
+  position: fixed;
+  inset: 0;
+  z-index: 100000;
+  overflow: hidden;
+  pointer-events: auto;
+  --em: 140px;
+  /* Fail-safe: fades out on its own if scripts never take over. */
+  animation: preloader-failsafe 0.6s ease 6s forwards;
+}
+@keyframes preloader-failsafe {
+  to { opacity: 0; visibility: hidden; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .preloader { display: none; }
+}
+.preloader-paper {
+  position: absolute;
+  inset: 0;
+  background-color: #ED4823;
+  overflow: hidden;
+}
+/* Soft light in the centre, darker towards the edges. */
+.preloader-paper::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.1), rgba(0, 0, 0, 0.2) 75vmax);
+}
+/* Film grain: the site's grain texture plus a finer generated noise. */
+.preloader-paper::after {
+  content: "";
+  position: absolute;
+  inset: -50%;
+  background-image: url("/textures/grain.png"),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.5 0 0 0 0 0.5 0 0 0 0 0.5 0 0 0 1.4 -0.2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 256px 256px, 160px 160px;
+  opacity: 0.55;
+  mix-blend-mode: multiply;
+  animation: preloader-grain 0.6s steps(6) infinite;
+}
+@keyframes preloader-grain {
+  0% { transform: translate(0, 0); }
+  20% { transform: translate(-3%, 2%); }
+  40% { transform: translate(2%, -3%); }
+  60% { transform: translate(-2%, -1%); }
+  80% { transform: translate(3%, 3%); }
+  100% { transform: translate(0, 0); }
+}
+/* The underside of a fold: darker orange. */
+.preloader-flap {
+  background-color: #C93A1A;
+  transform-origin: 0 0;
+}
+.preloader-flap::before {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(0, 0, 0, 0.18));
+}
+.preloader-flap-shadow {
+  position: absolute;
+  inset: 0;
+  filter: drop-shadow(0 0 22px rgba(0, 0, 0, 0.35));
+}
+.preloader-piece {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: var(--em);
+  height: var(--em);
+  margin: calc(var(--em) / -2) 0 0 calc(var(--em) / -2);
+  overflow: visible;
+  z-index: 1;
+  opacity: 0; /* shown by the script */
+}
+.preloader-crack,
+.preloader-crease {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(249, 233, 211, 0.9) 30%, rgba(249, 233, 211, 0.9) 70%, transparent);
+  z-index: 2;
+}
+.preloader-crack { width: 300vmax; transform: translate(-50%, -50%) rotate(45deg) scaleX(0); }
+.preloader-crease { opacity: 0; }
+.preloader-crease {
+  left: 0;
+  top: 0;
+  width: 300vmax;
+  margin-left: -150vmax;
+  background: linear-gradient(90deg, transparent, rgba(255, 220, 200, 0.55) 35%, rgba(255, 220, 200, 0.55) 65%, transparent);
+}
+.preloader-tag {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 10%;
+  margin: 0;
+  text-align: center;
+  z-index: 2;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.5em;
+  text-transform: uppercase;
+  color: #F9E9D3;
+  opacity: 0;
+}
+.preloader-count {
+  position: absolute;
+  right: 5%;
+  bottom: 5%;
+  margin: 0;
+  z-index: 2;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  color: rgba(249, 233, 211, 0.75);
+}
+.preloader-count::before {
+  content: "";
+  display: inline-block;
+  vertical-align: middle;
+  width: 40px;
+  height: 1px;
+  background: rgba(249, 233, 211, 0.5);
+  margin-right: 0.8em;
+}
+@media (min-width: 1024px) {
+  .preloader-tag, .preloader-count { font-size: 13px; }
+}
